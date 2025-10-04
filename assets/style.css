@@ -1,0 +1,115 @@
+/* Reset Básico e Fontes */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Navegação */
+header {
+    background-color: #1f1f1f;
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+}
+
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #bb86fc; /* Um roxo para destacar */
+}
+
+/* Conteúdo Principal */
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #bb86fc;
+    margin-top: 0;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 15px 30px;
+    background-color: #bb86fc;
+    color: #121212;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #a062e8;
+}
+
+/* Seção de Formulário */
+.form-section {
+    background-color: #1f1f1f;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+form label {
+    text-align: left;
+    font-weight: bold;
+}
+
+form input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #bb86fc;
+    color: #121212;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #a062e8;
+}
+
+/* Rodapé */
+footer {
+    margin-top: 3rem;
+    padding: 1rem;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+    color: #888;
+}
