@@ -188,3 +188,205 @@ footer {
     opacity: 0;
     pointer-events: none; /* Impede que ele seja clicável depois de sumir */
 }
+
+/* --- ESTILOS ATUALIZADOS DO RODAPÉ --- */
+
+footer {
+    margin-top: 3rem;
+    padding: 2rem; /* Aumenta o espaçamento interno */
+    border-top: 1px solid #333;
+    background-color: #1f1f1f; /* Adiciona uma cor de fundo para destacar */
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between; /* Alinha os itens */
+    align-items: center;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    gap: 20px;
+}
+
+.footer-nav {
+    text-align: left;
+}
+
+.footer-nav h4 {
+    margin: 0 0 10px 0;
+    color: #e0e0e0;
+}
+
+.footer-nav a {
+    display: block; /* Faz cada link ocupar uma linha */
+    color: #b0b0b0;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.footer-nav a:hover {
+    color: #bb86fc;
+}
+
+.footer-info {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* --- ESTILOS DA PÁGINA DE PROJETOS --- */
+
+.featured-project {
+    background-color: #1f1f1f;
+    border: 1px solid #bb86fc; /* Borda roxa para destacar */
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.featured-project h2 {
+    color: #bb86fc;
+    margin-top: 0;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grid responsivo */
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Reutiliza e ajusta o estilo do .project-card que já tínhamos */
+.project-card {
+    background-color: #1f1f1f;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    color: #e0e0e0;
+}
+
+/* --- NOVOS ESTILOS PARA A PÁGINA INICIAL --- */
+
+/* Ajuste do Hero Section existente para usar o banner */
+.hero-section {
+    background-image: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), url('/image/banner.png');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Estrutura base para as novas seções */
+.home-section {
+    padding: 4rem 2rem;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.home-section .section-content {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.home-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    color: #e0e0e0;
+}
+
+/* Seção de Introdução à Filosofia */
+.intro-section .section-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+.intro-section .text-content { flex: 1; min-width: 300px; text-align: left; }
+.intro-section .image-content { flex: 1; min-width: 300px; }
+.intro-section .image-content img { width: 100%; border-radius: 8px; }
+
+/* Seção da Dualidade (Equipe e Comunidade) */
+.dual-section {
+    background-color: #1f1f1f;
+}
+.dual-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.dual-column {
+    flex-basis: 400px;
+    text-align: center;
+    padding: 2rem;
+    background-color: #121212;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+.dual-column img {
+    height: 120px;
+    margin-bottom: 1rem;
+}
+
+/* Seção de Prévia dos Projetos */
+.projects-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+.project-preview-card {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+    transition: transform 0.3s ease;
+}
+.project-preview-card:hover {
+    transform: translateY(-5px);
+}
+.project-preview-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+.project-preview-card .card-content {
+    padding: 1.5rem;
+}
+.project-preview-card h4 { margin: 0 0 0.5rem 0; font-size: 1.2rem; }
+.projects-preview-section { text-align: center; }
+
+/* Botão Secundário */
+.secondary-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    border: 1px solid #bb86fc;
+    color: #bb86fc;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.secondary-button:hover {
+    background-color: #bb86fc;
+    color: #121212;
+}

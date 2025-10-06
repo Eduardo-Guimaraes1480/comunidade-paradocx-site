@@ -6,6 +6,7 @@ const routes = {
     '/sobre':    { content: '/pages/sobre.html',    layout: '/layouts/_principais-base.html' },
     '/projetos': { content: '/pages/projetos.html', layout: '/layouts/_principais-base.html' },
     '/faq':      { content: '/pages/faq.html',      layout: '/layouts/_principais-base.html' },
+    '/equipe':   { content: '/pages/equipe.html',   layout: '/layouts/_principais-base.html' },
     '/junte-se': { content: '/pages/junte-se.html', layout: '/layouts/_formularios-base.html' }
 };
 
