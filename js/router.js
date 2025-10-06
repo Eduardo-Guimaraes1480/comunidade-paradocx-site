@@ -7,11 +7,33 @@ const routes = {
     '/projetos': { content: '/pages/projetos.html', layout: '/layouts/_principais-base.html' },
     '/faq':      { content: '/pages/faq.html',      layout: '/layouts/_principais-base.html' },
     '/equipe':   { content: '/pages/equipe.html',   layout: '/layouts/_principais-base.html' },
-    '/junte-se': { content: '/pages/junte-se.html', layout: '/layouts/_formularios-base.html' }
+    '/criador': { content: '/pages/criador.html', layout: '/layouts/_estatica-base.html' },
+    // Páginas de projetos individuais
+    '/projetos/radio-multiversus': { content: '/pages/projetos/radio-multiversus.html', layout: '/layouts/_principais-base.html' },
+    '/junte-se': { content: '/pages/junte-se.html', layout: '/layouts/_formularios-base.html' },
+    '/termos-de-uso': { content: '/pages/termos-de-uso.html', layout: '/layouts/_estatica-base.html' }
 };
 
 const appBody = document.getElementById('app-body');
 const loader = document.getElementById('loader');
+
+function setupAnchorLinks() {
+    const anchorLinks = document.querySelectorAll('.anchor-link');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Impede o navegador de mudar a URL
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth' // Faz a rolagem ser suave
+                });
+            }
+        });
+    });
+}
 
 async function loadPartials() {
     const navPlaceholder = appBody.querySelector('#nav-placeholder');
@@ -52,6 +74,7 @@ async function navigate() {
         }
 
         await loadPartials();
+        setupAnchorLinks(); // <-- CHAMAMOS A NOVA FUNÇÃO AQUI!
 
     } catch (error) {
         console.error('Erro ao carregar a página:', error);

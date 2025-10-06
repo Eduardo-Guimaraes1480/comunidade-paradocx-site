@@ -390,3 +390,121 @@ footer {
     background-color: #bb86fc;
     color: #121212;
 }
+
+/* --- ESTILOS PARA PÁGINA DE DETALHES DE PROJETO --- */
+
+.project-intro {
+    font-size: 1.1rem;
+    color: #b0b0b0;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.tracklist {
+    text-align: left;
+}
+
+.track-item {
+    background-color: #1f1f1f;
+    border-left: 4px solid #bb86fc; /* Destaque roxo à esquerda */
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.track-item h3 {
+    margin-top: 0;
+}
+
+.track-item p {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.track-item p:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilo para fazer o card inteiro ser um link */
+.card-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* --- ESTILOS PARA PÁGINA DO CRIADOR --- */
+
+.text-left {
+    text-align: left;
+}
+
+.character-profile {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.character-profile:last-of-type {
+    border-bottom: none;
+}
+
+.character-profile h2 {
+    text-align: left;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #bb86fc;
+}
+
+/* --- ESTILOS PARA PÁGINA DE TERMOS DE USO --- */
+
+.terms-summary {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    padding: 1.5rem;
+    margin: 2rem 0 3rem 0;
+    border-radius: 8px;
+}
+
+.terms-summary h3 {
+    margin-top: 0;
+}
+
+.terms-summary ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.terms-summary ul li a {
+    text-decoration: none;
+    color: #bb86fc;
+    font-weight: bold;
+    display: block;
+    padding: 0.5rem 0;
+}
+
+.terms-summary ul li a:hover {
+    text-decoration: underline;
+}
+
+.terms-content h2 {
+    text-align: left;
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #333;
+}
+
+.footer-legal-link {
+    display: block;
+    color: #888;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.footer-legal-link:hover {
+    color: #b0b0b0;
+}
