@@ -8,8 +8,19 @@ const routes = {
     '/faq':      { content: '/pages/faq.html',      layout: '/layouts/_principais-base.html' },
     '/equipe':   { content: '/pages/equipe.html',   layout: '/layouts/_principais-base.html' },
     '/criador': { content: '/pages/criador.html', layout: '/layouts/_estatica-base.html' },
+
     // Páginas de projetos individuais
     '/projetos/radio-multiversus': { content: '/pages/projetos/radio-multiversus.html', layout: '/layouts/_principais-base.html' },
+
+    //Docs
+    '/docs': { content: '/pages/docs.html', layout: '/layouts/_principais-base.html' },
+    '/docs/produzido-comunidade': { content: '/pages/docs/produzido-comunidade.html', layout: '/layouts/_principais-base.html' },
+    '/docs/referencias': { content: '/pages/docs/referencias.html', layout: '/layouts/_principais-base.html' }, 
+    '/docs/detail/ese-guanambi-2-0': { content: '/pages/docs/detail/ese-guanambi-2-0.html', layout: '/layouts/_principais-base.html' },
+    '/docs/detail/wiplash': { content: '/pages/docs/detail/wiplash.html', layout: '/layouts/_principais-base.html' }, 
+
+    // Páginas especiais
+    '/contato': { content: '/pages/contato.html', layout: '/layouts/_principais-base.html' },
     '/junte-se': { content: '/pages/junte-se.html', layout: '/layouts/_formularios-base.html' },
     '/termos-de-uso': { content: '/pages/termos-de-uso.html', layout: '/layouts/_estatica-base.html' }
 };
@@ -48,6 +59,31 @@ async function loadPartials() {
     }
 }
 
+function setupDocsSearch() {
+    const searchInput = document.getElementById('doc-search-input');
+    const searchButton = document.getElementById('doc-search-button');
+    const container = document.getElementById('docs-grid-container');
+
+    if (!searchInput || !container) return; // Só executa se os elementos existirem
+
+    const allCards = Array.from(container.getElementsByClassName('doc-card'));
+
+    function filterDocs() {
+        const searchTerm = searchInput.value.toLowerCase();
+        allCards.forEach(card => {
+            const title = card.getAttribute('data-title').toLowerCase();
+            if (title.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    searchInput.addEventListener('keyup', filterDocs);
+    searchButton.addEventListener('click', filterDocs);
+}
+
 async function navigate() {
     try {
         // Esta linha remove o '#' da URL, por isso as chaves não podem tê-lo
@@ -74,7 +110,8 @@ async function navigate() {
         }
 
         await loadPartials();
-        setupAnchorLinks(); // <-- CHAMAMOS A NOVA FUNÇÃO AQUI!
+        setupAnchorLinks();
+        setupDocsSearch();
 
     } catch (error) {
         console.error('Erro ao carregar a página:', error);
