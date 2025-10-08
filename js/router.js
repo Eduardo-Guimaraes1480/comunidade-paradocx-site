@@ -12,6 +12,20 @@ const routes = {
     // Páginas de projetos individuais
     '/projetos/radio-multiversus': { content: '/pages/projetos/radio-multiversus.html', layout: '/layouts/_principais-base.html' },
 
+    // Paginas destinadas a AREAS
+    '/areas': { content: '/pages/areas.html', layout: '/layouts/_principais-base.html' }, 
+    '/areas/discutidores': { content: '/pages/areas/discutidores.html', layout: '/layouts/_principais-base.html' }, 
+    '/areas/subgrupo/the-free-society': { content: '/pages/areas/subgrupo/the-free-society.html', layout: '/layouts/_especiais-base.html' }, 
+
+    // Páginas de Eventos e Noticias
+    '/eventos-noticias': { content: '/pages/eventos-noticias.html', layout: '/layouts/_principais-base.html' }, 
+    '/eventos/workshop-pilares': { content: '/pages/eventos/workshop-pilares.html', layout: '/layouts/_atualizacoes-base.html' }, 
+    '/noticias/ese-kosmo-alpha': { content: '/pages/noticias/ese-kosmo-alpha.html', layout: '/layouts/_atualizacoes-base.html' }, 
+
+    // Páginas de integrantes 
+    '/integrantes': { content: '/pages/integrantes.html', layout: '/layouts/_principais-base.html' }, 
+    '/integrantes/eduardo-guimaraes': { content: '/pages/integrantes/eduardo-guimaraes.html', layout: '/layouts/_principais-base.html' },
+
     //Docs
     '/docs': { content: '/pages/docs.html', layout: '/layouts/_principais-base.html' },
     '/docs/produzido-comunidade': { content: '/pages/docs/produzido-comunidade.html', layout: '/layouts/_principais-base.html' },

@@ -668,3 +668,254 @@ footer {
     font-weight: bold;
     text-decoration: none;
 }
+
+/* --- ESTILOS PARA PÁGINA DE INTEGRANTES --- */
+
+/* Página de Listagem */
+.integrantes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+.integrante-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    height: 350px;
+}
+.integrante-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.integrante-card:hover img {
+    transform: scale(1.05);
+}
+.integrante-card .card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 1rem 1rem 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: white;
+}
+.integrante-card h3 { margin: 0; font-size: 1.4rem; }
+.integrante-card p { margin: 0.25rem 0 0 0; color: #b0b0b0; }
+
+/* Página de Detalhe */
+.integrante-hero {
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+}
+.hero-overlay {
+    width: 100%;
+    padding: 4rem 2rem;
+    background: linear-gradient(to top, rgba(18,18,18,1) 10%, rgba(18,18,18,0.5) 50%, transparent);
+}
+.hero-overlay h1 { font-size: 4rem; margin: 0; }
+.hero-overlay p { font-size: 1.5rem; margin: 0; color: #b0b0b0; }
+
+.integrante-content {
+    max-width: 800px;
+    margin: auto;
+    padding: 4rem 2rem;
+}
+.integrante-quote {
+    font-size: 1.8rem;
+    font-style: italic;
+    text-align: center;
+    border-left: 4px solid #bb86fc;
+    padding-left: 2rem;
+    margin-bottom: 4rem;
+}
+.integrante-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    text-align: left;
+}
+.detail-item h4 { font-size: 1rem; color: #888; margin: 0 0 0.5rem 0; text-transform: uppercase; }
+.detail-item p { margin: 0; font-size: 1.1rem; }
+.tags span {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.tag-vermelho { background-color: #ff4d4d; color: black; }
+.tag-preto { background-color: #333; color: white; }
+.tag-branco { background-color: #f0f0f0; color: black; }
+
+/* --- ESTILOS PARA PÁGINA DE EVENTOS E NOTÍCIAS --- */
+
+/* Lista de Eventos */
+.event-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.event-item {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.event-info { flex: 3; min-width: 300px; }
+.event-info h3 { margin: 0 0 0.5rem 0; }
+.event-info p { margin: 0; color: #b0b0b0; }
+.event-action { flex: 1; text-align: right; min-width: 200px; }
+.event-date { display: block; font-size: 0.9rem; color: #888; margin-bottom: 0.5rem; }
+
+/* Grid de Notícias */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.news-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    height: 300px;
+}
+.news-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.news-card:hover img { transform: scale(1.05); }
+.news-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: white;
+}
+.news-category { font-size: 0.8rem; font-weight: bold; text-transform: uppercase; color: #bb86fc; }
+.news-content h4 { margin: 0.25rem 0 0 0; font-size: 1.3rem; }
+
+/* Página de Detalhe do Evento */
+.event-detail-page { text-align: left; }
+.event-hero {
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+}
+.event-body {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: auto;
+    padding: 3rem 2rem;
+}
+.event-meta { color: #888; margin-bottom: 2rem; }
+.event-content h3 { margin-top: 2rem; }
+
+.event-sidebar .sidebar-widget {
+    background-color: #1f1f1f;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+.sidebar-widget h4 { margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
+.sidebar-widget ul { list-style: none; padding: 0; }
+.sidebar-widget ul li { margin-bottom: 0.5rem; }
+
+.author-bio {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    background-color: #1f1f1f;
+    padding: 2rem;
+    max-width: 1100px;
+    margin: auto;
+    border-radius: 8px;
+}
+.author-bio img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
+.author-bio h4 { margin: 0 0 0.5rem 0; }
+.author-bio p { margin: 0; color: #b0b0b0; }
+
+@media (max-width: 800px) {
+    .event-body { grid-template-columns: 1fr; }
+}
+
+/* --- ESTILOS PARA PÁGINA DE ÁREAS --- */
+
+/* Página Principal de Áreas */
+.areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.area-card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: left;
+}
+.area-card h3 { margin-top: 0; }
+.area-card p { color: #b0b0b0; min-height: 100px; }
+
+/* Página de Listagem de Subgrupos */
+.subgroup-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    background-color: #1f1f1f;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #333;
+    transition: border-color 0.3s ease;
+}
+.subgroup-card:hover {
+    border-color: #bb86fc;
+}
+.subgroup-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.subgroup-info h3 { margin: 0 0 0.5rem 0; }
+.subgroup-info p { margin: 0; color: #b0b0b0; }
+.subgroup-info span { font-size: 0.9rem; color: #888; margin-top: 0.5rem; display: block; }
+
+/* Página de Detalhe de Subgrupo */
+.article-link {
+    display: block;
+    margin-top: 2rem;
+    text-decoration: none;
+    color: inherit;
+}
+.article-preview {
+    background-color: #1f1f1f;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: border-color 0.3s ease;
+}
+.article-preview:hover {
+    border-color: #bb86fc;
+}
+.article-preview h4 { margin: 0 0 0.5rem 0; }
+.article-preview p { font-size: 0.9rem; color: #b0b0b0; margin: 0; }
+.article-preview span { font-size: 0.9rem; color: #bb86fc; margin-top: 1rem; display: block; font-weight: bold; }
