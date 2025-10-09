@@ -3,11 +3,16 @@
 // O MAPA DO SITE: AS CHAVES SEM O '#'
 const routes = {
     '/inicio':   { content: '/pages/inicio.html',   layout: '/layouts/_principais-base.html' },
-    '/sobre':    { content: '/pages/sobre.html',    layout: '/layouts/_principais-base.html' },
     '/projetos': { content: '/pages/projetos.html', layout: '/layouts/_principais-base.html' },
     '/faq':      { content: '/pages/faq.html',      layout: '/layouts/_principais-base.html' },
-    '/equipe':   { content: '/pages/equipe.html',   layout: '/layouts/_principais-base.html' },
+    '/conexoes': { content: '/pages/conexoes.html', layout: '/layouts/_principais-base.html' },
+    
+    // Páginas Sobre a Comunidade
+    '/pilares': { content: '/pages/pilares.html', layout: '/layouts/_principais-base.html' }, 
+    '/sobre':    { content: '/pages/sobre.html',    layout: '/layouts/_principais-base.html' },
     '/criador': { content: '/pages/criador.html', layout: '/layouts/_estatica-base.html' },
+    '/equipe':   { content: '/pages/equipe.html',   layout: '/layouts/_principais-base.html' },
+    '/glossario': { content: '/pages/glossario.html', layout: '/layouts/_principais-base.html' }, 
 
     // Páginas de projetos individuais
     '/projetos/radio-multiversus': { content: '/pages/projetos/radio-multiversus.html', layout: '/layouts/_principais-base.html' },
@@ -98,6 +103,24 @@ function setupDocsSearch() {
     searchButton.addEventListener('click', filterDocs);
 }
 
+function setupGlossarySearch() {
+    const searchInput = document.getElementById('glossary-search-input');
+    if (!searchInput) return; // Só executa se estiver na página do glossário
+    const allItems = document.querySelectorAll('.glossary-item');
+
+    searchInput.addEventListener('keyup', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        allItems.forEach(item => {
+            const term = item.getAttribute('data-term').toLowerCase();
+            if (term.includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+}
+
 async function navigate() {
     try {
         // Esta linha remove o '#' da URL, por isso as chaves não podem tê-lo
@@ -126,6 +149,7 @@ async function navigate() {
         await loadPartials();
         setupAnchorLinks();
         setupDocsSearch();
+        setupGlossarySearch();
 
     } catch (error) {
         console.error('Erro ao carregar a página:', error);

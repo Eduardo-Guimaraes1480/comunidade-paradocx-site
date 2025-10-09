@@ -919,3 +919,182 @@ footer {
 .article-preview h4 { margin: 0 0 0.5rem 0; }
 .article-preview p { font-size: 0.9rem; color: #b0b0b0; margin: 0; }
 .article-preview span { font-size: 0.9rem; color: #bb86fc; margin-top: 1rem; display: block; font-weight: bold; }
+
+/* --- ESTILOS PARA PÁGINA DOS PILARES --- */
+
+.pillar-section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #2a2a2a;
+}
+.pillar-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.pillar-section h2 {
+    text-align: left;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.pillar-grid-dual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.pillar-group h3 {
+    border-bottom: 2px solid #bb86fc;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.pillar-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pillar-group ul li {
+    background-color: #1f1f1f;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+}
+
+.pillar-grid-life {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.pillar-card {
+    background-color: #1f1f1f;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* --- ESTILOS CORRIGIDOS PARA O QUADRO DE CONEXÕES --- */
+
+#connections-board {
+    display: grid;
+    /* Definimos 5 colunas e 5 linhas com tamanho fixo */
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 160px); /* Aumentamos o espaço entre os cards */
+    gap: 1rem;
+    position: relative; /* Essencial para o posicionamento das linhas */
+    margin-bottom: 3rem; /* Adiciona uma margem para separar do rodapé */
+}
+
+.node {
+    background-color: #1f1f1f;
+    border: 1px solid #444;
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    grid-column: span 1;
+    grid-row: span 1;
+    height: 300px; /* <-- A MUDANÇA PRINCIPAL: ALTURA FIXA */
+    box-sizing: border-box;
+}
+.node h3 { margin: 0.5rem 0; }
+.node h4 { margin: 0; font-size: 0.8rem; text-transform: uppercase; color: #888; }
+.node p { font-size: 0.9rem; color: #b0b0b0; margin: 0; }
+.node .card-link { font-size: 0.9rem; }
+
+/* Posicionando cada peça no grid */
+.node-pillar { grid-column: 3 / 4; grid-row: 3 / 4; border-color: #bb86fc; }
+.node-doc { grid-column: 1 / 2; grid-row: 1 / 2; }
+.node-paradox { grid-column: 5 / 6; grid-row: 1 / 2; }
+.node-project { grid-column: 1 / 2; grid-row: 5 / 6; }
+.node-reference { grid-column: 5 / 6; grid-row: 5 / 6; }
+
+/* As linhas de conexão (recalculadas para o novo layout) */
+.line {
+    background-color: rgba(187, 134, 252, 0.3);
+    position: absolute;
+    width: 2px;
+    z-index: 1;
+    /* Ponto de origem da rotação */
+    transform-origin: top left;
+}
+
+.line-1 { /* Canto superior esquerdo para o centro */
+    height: 480px; /* Distância diagonal calculada */
+    left: 10%;
+    top: 10%;
+    transform: rotate(45deg);
+}
+
+.line-2 { /* Canto superior direito para o centro */
+    height: 480px;
+    right: 10%;
+    top: 10%;
+    transform: rotate(-45deg);
+    transform-origin: top right;
+}
+
+.line-3 { /* Canto inferior esquerdo para o centro */
+    height: 480px;
+    left: 10%;
+    bottom: 10%;
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+}
+
+.line-4 { /* Canto inferior direito para o centro */
+    height: 480px;
+    right: 10%;
+    bottom: 10%;
+    transform: rotate(45deg);
+    transform-origin: bottom right;
+}
+
+/* --- ESTILOS PARA PÁGINA DE GLOSSÁRIO --- */
+.glossary-search {
+    margin-bottom: 3rem;
+}
+#glossary-search-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    box-sizing: border-box;
+}
+
+.glossary-category h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+.glossary-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+.glossary-item:last-child {
+    border-bottom: none;
+}
+
+.glossary-item dt {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+}
+
+.glossary-item dd {
+    margin-left: 0;
+    color: #b0b0b0;
+    line-height: 1.6;
+}
