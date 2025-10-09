@@ -50,6 +50,7 @@ main {
     margin-top: 2rem;
     padding: 15px 30px;
     background-color: #bb86fc;
+    border: 1px solid rgba(0, 0, 0, 0);
     color: #121212;
     text-decoration: none;
     font-weight: bold;
@@ -58,7 +59,9 @@ main {
 }
 
 .cta-button:hover {
-    background-color: #a062e8;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #bb86fc;
+    color: #bb86fc;
 }
 
 /* Seção de Formulário */
@@ -1097,4 +1100,197 @@ footer {
     margin-left: 0;
     color: #b0b0b0;
     line-height: 1.6;
+}
+
+/* --- NOVOS ESTILOS PARA HEADER E FOOTER (VERSÃO CORRIGIDA) --- */
+
+/* 1. Efeito Liquid Glass e Layout do Header */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(20, 20, 20, 0.75); /* Fundo "glass" na barra principal */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 2rem;
+}
+
+/* 2. Alinhamento: Logo à esquerda, links à direita */
+.main-nav {
+    display: flex;
+    justify-content: space-between; /* Mágica do alinhamento acontece aqui */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo img {
+    height: 70px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s;
+    opacity: 0.9;
+}
+
+.nav-logo img:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+}
+
+.nav-links > li > a {
+    color: #e0e0e0;
+    text-decoration: none;
+    padding: 0.75rem 0.2rem;
+    display: block;
+    font-weight: normal;
+    font-size: 0.95rem;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 6px;
+}
+
+.nav-links > li > a:hover {
+    color: #bb86fc;
+}
+
+/* 3. Correção e Estilo do Dropdown (VERSÃO FINAL) */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    padding-top: 10px; 
+    left: 0; /* Alinha o dropdown com o início do item pai */
+    transform: none; /* Remove o transform que centralizava */
+
+    background: rgba(30, 30, 30, 0.9);
+    backdrop-filter: blur(15px) saturate(1.8);
+    -webkit-backdrop-filter: blur(15px) saturate(1.8);
+    list-style: none;
+    
+    /* Remove min-width para deixar o tamanho se ajustar ao conteúdo */
+    /* min-width: 150px; (REMOVIDO) */
+    width: max-content; /* FAZ A CAIXA TER A LARGURA DO MAIOR ITEM */
+    
+    padding: 0.5rem; /* Padding geral para a caixa do dropdown */
+    margin: 0;
+    
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-content li {
+    text-align: left; /* ALINHA O TEXTO DOS ITENS À ESQUERDA */
+}
+
+.dropdown-content li a {
+    color: #c0c0c0;
+    /* Padding ajustado para ser mais proporcional */
+    padding: 0.6rem 1rem; 
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+    border-radius: 6px;
+    display: block; /* Garante que o link ocupe toda a área do li */
+}
+
+.dropdown-content li a:hover {
+    background-color: rgba(187, 134, 252, 0.2);
+    color: #ffffff;
+}
+
+/* Layout do Rodapé (sem alterações) */
+#footer-logo {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 250px;
+    width: 1450px;
+    opacity: 0.01;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    pointer-events: none;
+    z-index: 0;
+    margin-bottom: -100px;
+}
+footer {
+    position: relative;
+    overflow: hidden;
+}
+
+.main-footer {
+    background-color: #101010;
+    color: #a0a0a0;
+    padding: 4rem 2rem;
+    border-top: 1px solid #333;
+    margin-top: 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-brand img {
+    max-height: 50px;
+    margin-bottom: 1rem;
+    margin-left: -5px;
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.footer-links h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.footer-links a {
+    display: block;
+    color: #a0a0a0;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #bb86fc;
+}
+
+.footer-brand a {
+    display: block;
+    color: #a0a0a0;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s;
 }

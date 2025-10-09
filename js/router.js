@@ -6,6 +6,7 @@ const routes = {
     '/projetos': { content: '/pages/projetos.html', layout: '/layouts/_principais-base.html' },
     '/faq':      { content: '/pages/faq.html',      layout: '/layouts/_principais-base.html' },
     '/conexoes': { content: '/pages/conexoes.html', layout: '/layouts/_principais-base.html' },
+    '/comece-aqui': { content: '/pages/comece-aqui.html', layout: '/layouts/_principais-base.html' },
     
     // Páginas Sobre a Comunidade
     '/como-participar': { content: '/pages/como-participar.html', layout: '/layouts/_principais-base.html' },
@@ -43,6 +44,7 @@ const routes = {
 
     // Páginas especiais
     '/contato': { content: '/pages/contato.html', layout: '/layouts/_principais-base.html' },
+    '/contribuicoes': { content: '/pages/contribuicoes.html', layout: '/layouts/_principais-base.html' },
     '/junte-se': { content: '/pages/junte-se.html', layout: '/layouts/_formularios-base.html' },
     '/termos-de-uso': { content: '/pages/termos-de-uso.html', layout: '/layouts/_estatica-base.html' }
 };
