@@ -1294,3 +1294,9 @@ footer {
     margin-bottom: 0.75rem;
     transition: color 0.3s;
 }
+
+.event-hero,
+.integrante-hero {
+    position: relative;
+    z-index: 1;
+}
