@@ -1227,15 +1227,11 @@ header {
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    height: 250px;
-    width: 1450px;
-    opacity: 0.01;
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
     pointer-events: none;
-    z-index: 0;
-    margin-bottom: -100px;
+    z-index: 0; /* Coloca atrás do conteúdo */
+    margin-bottom: -50px;
 }
+
 footer {
     position: relative;
     overflow: hidden;
