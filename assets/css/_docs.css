@@ -1,0 +1,199 @@
+/* /assets/css/_docs.css */
+/* Estilos específicos para páginas que usam _docs-base.html */
+
+/* Banner/Header Opcional no Topo da Página */
+.doc-hero-banner {
+    height: 40vh; /* Altura padrão para banners de docs/eventos */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end; /* Alinha conteúdo (overlay) na base */
+    position: relative;
+    z-index: var(--z-index-base); /* Abaixo do header principal */
+    color: var(--color-white);
+    /* Permite que a página decida se quer margem ou não */
+    /* margin-bottom: 3rem; */
+}
+
+/* Reutiliza o estilo .hero-overlay já definido (assumindo que está em _pages.css ou _layout.css) */
+/* Se não estiver global, defina aqui: */
+.doc-hero-banner .hero-overlay {
+    width: 100%;
+    padding: 3rem 2rem; /* Padding ajustado para banner menor */
+    background: linear-gradient(to top, rgba(18,18,18,1) 15%, rgba(18,18,18,0.6) 60%, transparent);
+    color: var(--color-white);
+}
+.doc-hero-banner .hero-overlay h1 {
+    font-size: clamp(2.2rem, 5vw, 3rem); /* Tamanho de título ajustado */
+    margin: 0;
+}
+
+
+/* Corpo Principal da Página (Conteúdo + Sidebar) */
+.doc-body {
+    display: grid;
+    /* Grid responsivo: duas colunas em telas maiores, uma em menores */
+    grid-template-columns: minmax(0, 1fr); /* Padrão: uma coluna */
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 3rem auto; /* Centraliza e adiciona margem vertical */
+    padding: 0 2rem;
+    align-items: flex-start;
+}
+
+/* Define duas colunas apenas em telas maiores */
+@media (min-width: 800px) {
+    .doc-body {
+        grid-template-columns: minmax(0, 3fr) minmax(250px, 1fr); /* Conteúdo principal flexível, sidebar com largura mínima/máxima */
+    }
+}
+
+
+/* Conteúdo Principal do Documento/Artigo */
+.doc-main-content {
+    text-align: left;
+    line-height: 1.7; /* Boa legibilidade */
+    min-width: 0; /* Ajuda o flexbox/grid a calcular corretamente */
+}
+
+.doc-main-content .doc-meta {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.doc-main-content h1,
+.doc-main-content h2,
+.doc-main-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+    font-weight: bold; /* Títulos mais destacados */
+}
+.doc-main-content h1 { font-size: 2.2rem; } /* H1 dentro do conteúdo */
+.doc-main-content h2 { font-size: 1.8rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;}
+.doc-main-content h3 { font-size: 1.4rem; }
+
+.doc-main-content p {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.doc-main-content ul,
+.doc-main-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-secondary);
+    list-style: initial; /* Garante marcadores */
+}
+.doc-main-content ul ul, /* Sublistas */
+.doc-main-content ol ol {
+    margin-top: 0.5rem; /* Espaço antes da sublista */
+}
+.doc-main-content li {
+    margin-bottom: 0.5rem;
+}
+
+.doc-main-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-medium);
+    margin: 2rem 0;
+}
+
+.doc-main-content blockquote {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    background-color: var(--color-surface);
+    border-left: 4px solid var(--color-primary);
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+/* Sidebar Lateral */
+.doc-sidebar {
+    position: sticky;
+    top: 100px; /* Distância do topo */
+}
+
+/* Reutiliza .sidebar-widget de _components.css */
+.doc-sidebar .sidebar-widget {
+    background-color: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--color-border);
+    margin-bottom: 1.5rem; /* Espaço entre widgets */
+}
+.sidebar-widget h4 {
+    margin-top: 0;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem; /* Espaço após o título */
+    font-size: 1rem;
+    color: var(--color-text-primary);
+}
+.sidebar-widget ul {
+    padding: 0;
+    margin: 0;
+    list-style: none; /* Garante que não haja marcadores */
+}
+.sidebar-widget ul li {
+    margin-bottom: 0.5rem;
+}
+.sidebar-widget ul li a.inline-link { /* Links dentro da sidebar */
+    font-weight: normal; /* Não negrito por padrão */
+    font-size: 0.9rem;
+}
+.sidebar-widget p { /* Parágrafos dentro da sidebar */
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+}
+/* Estilos para botões ou imagens dentro da sidebar podem ser adicionados aqui se necessário */
+
+
+/* Footer Opcional: Biografia do Autor */
+.doc-author-bio {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    background-color: var(--color-surface);
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 3rem auto; /* Mesmo alinhamento do .doc-body */
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--color-border);
+}
+
+.doc-author-bio img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* Impede que a imagem encolha */
+}
+
+.doc-author-bio .author-info h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+}
+
+.doc-author-bio .author-info p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+.doc-author-bio .author-info p strong { /* Destaca o nome do autor */
+    color: var(--color-text-primary);
+}
+
+/* Ajuste para telas menores onde a sidebar vai para baixo */
+@media (max-width: 799px) {
+    .doc-sidebar {
+        position: static; /* Remove o sticky */
+        margin-top: 3rem; /* Espaço acima da sidebar quando empilhada */
+    }
+}

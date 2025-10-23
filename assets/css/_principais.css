@@ -1,0 +1,60 @@
+/* /assets/css/_principais.css */
+/* Estilos específicos para páginas que usam _principais-base.html */
+
+/* Seção Hero Padrão */
+.hero-principal {
+    background-color: var(--color-surface); /* Cor de fundo padrão */
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-white); /* Cor do texto padrão */
+    /* Garante que fique abaixo do header se houver sobreposição */
+    position: relative;
+    z-index: var(--z-index-base);
+}
+
+.hero-principal-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-principal h1 {
+    font-family: var(--font-family-monospace);
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* Tamanho responsivo */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-principal p {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+.hero-principal .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0; /* Reset */
+}
+
+/* Ajustes nos botões dentro deste hero específico */
+.hero-principal .cta-button,
+.hero-principal .secondary-button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    margin-top: 0; /* Reset */
+}
+
+/* Área de Conteúdo Principal Padrão */
+.main-content-principal {
+    padding: 4rem 2rem;
+    max-width: 1100px; /* Largura padrão para conteúdo principal */
+    margin: 0 auto;
+    text-align: left; /* Conteúdo alinhado à esquerda por padrão */
+}

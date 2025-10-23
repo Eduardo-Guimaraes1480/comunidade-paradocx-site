@@ -1,0 +1,106 @@
+/* /assets/css/_pesquisa.css */
+/* Estilos específicos para páginas que usam _pesquisa-base.html (CORRIGIDO v3) */
+
+/* Garante que o container principal dentro do #content-placeholder seja um bloco */
+.search-layout-base {
+    display: block; /* Força o comportamento de bloco */
+    width: 100%; /* Ocupa a largura total */
+}
+
+/* Header da Página de Pesquisa */
+.search-header {
+    max-width: 800px;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 4rem 2rem 2rem 2rem;
+    text-align: center;
+    width: 100%; /* Garante largura total dentro do seu container */
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+.search-header h1 {
+    font-family: var(--font-family-monospace);
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+}
+
+.search-header p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* Container do Input de Busca */
+.search-input-container {
+    max-width: 800px;
+    margin: 0 auto 4rem auto; /* Centraliza horizontalmente */
+    padding: 0 2rem;
+    width: 100%; /* Garante largura total dentro do seu container */
+    box-sizing: border-box;
+}
+
+/* Input de Busca com Efeito Glassmorphism */
+.search-input-container input[type="text"] {
+    width: 100%;
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    background: rgba(42, 42, 42, 0.6);
+    color: var(--color-text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--border-radius-medium);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.search-input-container input[type="text"]::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.8;
+}
+
+.search-input-container input[type="text"]:focus {
+    border-color: rgba(187, 134, 252, 0.5);
+    background-color: rgba(42, 42, 42, 0.7);
+}
+
+/* --- Seção de Resultados (Fundo Padrão) --- */
+.search-results-section {
+    padding: 4rem 2rem;
+    min-height: 40vh;
+    width: 100%; /* Garante largura total dentro do seu container */
+    box-sizing: border-box;
+    /* Removemos o fundo roxo */
+    background-color: var(--color-background); /* Fundo padrão do site */
+}
+
+.search-results-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+    color: var(--color-text-primary);
+}
+
+.search-results-main h2 {
+    color: var(--color-text-primary);
+    text-align: left;
+    margin-bottom: 2rem;
+    font-family: var(--font-family-monospace);
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.search-results-main p {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos de cards dentro dos resultados */
+.search-results-main .doc-card,
+.search-results-main .faq-item,
+.search-results-main .glossary-category {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+}

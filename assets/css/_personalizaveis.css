@@ -1,0 +1,16 @@
+/* /assets/css/_personalizaveis.css */
+/* Estilos específicos (mínimos) para páginas que usam _personalizaveis-base.html */
+
+/* Nenhum estilo específico é aplicado por padrão para garantir 
+   máxima liberdade no conteúdo injetado no #content-placeholder. 
+   As páginas individuais são responsáveis por toda a sua estilização 
+   interna ou por usar classes globais de _components.css e _pages.css.
+*/
+
+/* Opcional: Se quiséssemos um padding padrão mínimo em todas as 
+   páginas personalizáveis, poderíamos adicionar algo como:
+   #content-placeholder > * { 
+       padding: 2rem; 
+   } 
+   Mas vamos omitir por enquanto para manter a liberdade total.
+*/

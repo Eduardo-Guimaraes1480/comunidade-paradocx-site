@@ -2,51 +2,61 @@
 
 // O MAPA DO SITE: AS CHAVES SEM O '#'
 const routes = {
-    '/inicio':   { content: '/pages/inicio.html',   layout: '/layouts/_principais-base.html' },
-    '/projetos': { content: '/pages/projetos.html', layout: '/layouts/_principais-base.html' },
-    '/faq':      { content: '/pages/faq.html',      layout: '/layouts/_principais-base.html' },
-    '/conexoes': { content: '/pages/conexoes.html', layout: '/layouts/_principais-base.html' },
-    '/comece-aqui': { content: '/pages/comece-aqui.html', layout: '/layouts/_principais-base.html' },
-    
-    // Páginas Sobre a Comunidade
-    '/como-participar': { content: '/pages/como-participar.html', layout: '/layouts/_principais-base.html' },
-    '/pilares': { content: '/pages/pilares.html', layout: '/layouts/_principais-base.html' }, 
-    '/sobre':    { content: '/pages/sobre.html',    layout: '/layouts/_principais-base.html' },
-    '/criador': { content: '/pages/criador.html', layout: '/layouts/_estatica-base.html' },
-    '/equipe':   { content: '/pages/equipe.html',   layout: '/layouts/_principais-base.html' },
-    '/glossario': { content: '/pages/glossario.html', layout: '/layouts/_principais-base.html' }, 
-    '/cronologia': { content: '/pages/cronologia.html', layout: '/layouts/_principais-base.html' },
+    '/inicio': { content: '/pages/inicio.html', layout: '/layouts/_personalizaveis-base.html' },
 
-    // Páginas de projetos individuais
-    '/projetos/radio-multiversus': { content: '/pages/projetos/radio-multiversus.html', layout: '/layouts/_principais-base.html' },
-    '/projetos/ese-kosmo': { content: '/pages/projetos/ese-kosmo.html', layout: '/layouts/_principais-base.html' },
+    // Páginas Principais
+    '/projetos': { content: '/pages/projetos.html', layout: '/layouts/_principais-base.html' },
+    '/conexoes': { content: '/pages/conexoes.html', layout: '/layouts/_principais-base.html' },
+    '/contribuicoes': { content: '/pages/contribuicoes.html', layout: '/layouts/_principais-base.html' },
+    '/equipe': { content: '/pages/equipe.html', layout: '/layouts/_principais-base.html' },
+    '/docs': { content: '/pages/docs.html', layout: '/layouts/_personalizaveis-base.html' },
+
+    //Formularios
+    '/junte-se': { content: '/pages/junte-se.html', layout: '/layouts/_formularios-base.html' },
+
+    // Páginas de Pesquisa
+    '/docs/produzido-comunidade': { content: '/pages/docs/produzido-comunidade.html', layout: '/layouts/_pesquisa-base.html' },
+    '/docs/referencias': { content: '/pages/docs/referencias.html', layout: '/layouts/_pesquisa-base.html' },
+    '/glossario': { content: '/pages/glossario.html', layout: '/layouts/_pesquisa-base.html' },
+    '/faq': { content: '/pages/faq.html', layout: '/layouts/_pesquisa-base.html' },
+
+    // Páginas Sobre a Comunidade
+    '/comece-aqui': { content: '/pages/comece-aqui.html', layout: '/layouts/_principais-base.html' },
+    '/como-participar': { content: '/pages/como-participar.html', layout: '/layouts/_principais-base.html' },
+    '/pilares': { content: '/pages/pilares.html', layout: '/layouts/_estatico-base.html' },
+    '/sobre': { content: '/pages/sobre.html', layout: '/layouts/_estatico-base.html' },
+    '/cronologia': { content: '/pages/cronologia.html', layout: '/layouts/_estatico-base.html' },
+    '/contato': { content: '/pages/contato.html', layout: '/layouts/_estatico-base.html' },
+    '/termos-de-uso': { content: '/pages/termos-de-uso.html', layout: '/layouts/_estatico-base.html' },
 
     // Paginas destinadas a AREAS
-    '/areas': { content: '/pages/areas.html', layout: '/layouts/_principais-base.html' }, 
-    '/areas/discutidores': { content: '/pages/areas/discutidores.html', layout: '/layouts/_principais-base.html' }, 
-    '/areas/subgrupo/the-free-society': { content: '/pages/areas/subgrupo/the-free-society.html', layout: '/layouts/_especiais-base.html' }, 
+    '/areas': { content: '/pages/areas.html', layout: '/layouts/_principais-base.html' },
+    '/areas/discutidores': { content: '/pages/areas/discutidores.html', layout: '/layouts/_principais-base.html' },
+    '/areas/subgrupo/the-free-society': { content: '/pages/areas/subgrupo/the-free-society.html', layout: '/layouts/_personalizaveis-base.html' },
 
     // Páginas de Eventos e Noticias
-    '/eventos-noticias': { content: '/pages/eventos-noticias.html', layout: '/layouts/_principais-base.html' }, 
-    '/eventos/workshop-pilares': { content: '/pages/eventos/workshop-pilares.html', layout: '/layouts/_atualizacoes-base.html' }, 
-    '/noticias/ese-kosmo-alpha': { content: '/pages/noticias/ese-kosmo-alpha.html', layout: '/layouts/_atualizacoes-base.html' }, 
+    '/eventos-noticias': { content: '/pages/eventos-noticias.html', layout: '/layouts/_principais-base.html' },
+    '/eventos/workshop-pilares': { content: '/pages/eventos/workshop-pilares.html', layout: '/layouts/_docs-base.html' },
+    '/noticias/ese-kosmo-alpha': { content: '/pages/noticias/ese-kosmo-alpha.html', layout: '/layouts/_docs-base.html' },
 
     // Páginas de integrantes 
-    '/integrantes': { content: '/pages/integrantes.html', layout: '/layouts/_principais-base.html' }, 
-    '/integrantes/eduardo-guimaraes': { content: '/pages/integrantes/eduardo-guimaraes.html', layout: '/layouts/_principais-base.html' },
+    '/integrantes': { content: '/pages/integrantes.html', layout: '/layouts/_estatico-base.html' },
+    '/integrantes/eduardo-guimaraes': { content: '/pages/integrantes/eduardo-guimaraes.html', layout: '/layouts/_personalizaveis-base.html' },
 
     //Docs
-    '/docs': { content: '/pages/docs.html', layout: '/layouts/_principais-base.html' },
-    '/docs/produzido-comunidade': { content: '/pages/docs/produzido-comunidade.html', layout: '/layouts/_principais-base.html' },
-    '/docs/referencias': { content: '/pages/docs/referencias.html', layout: '/layouts/_principais-base.html' }, 
-    '/docs/detail/ese-guanambi-2-0': { content: '/pages/docs/detail/ese-guanambi-2-0.html', layout: '/layouts/_principais-base.html' },
-    '/docs/detail/wiplash': { content: '/pages/docs/detail/wiplash.html', layout: '/layouts/_principais-base.html' }, 
+    '/docs/detail/ese-guanambi-2-0': { content: '/pages/docs/detail/ese-guanambi-2-0.html', layout: '/layouts/_docs-base.html' },
+    '/docs/detail/wiplash': { content: '/pages/docs/detail/wiplash.html', layout: '/layouts/_docs-base.html' },
+    // Projetos Individuais
+    '/projetos/ese-kosmo': { content: '/pages/projetos/ese-kosmo.html', layout: '/layouts/_docs-base.html' },
+    '/projetos/radio-multiversus': { content: '/pages/projetos/radio-multiversus.html', layout: '/layouts/_docs-base.html' },
 
-    // Páginas especiais
-    '/contato': { content: '/pages/contato.html', layout: '/layouts/_principais-base.html' },
-    '/contribuicoes': { content: '/pages/contribuicoes.html', layout: '/layouts/_principais-base.html' },
-    '/junte-se': { content: '/pages/junte-se.html', layout: '/layouts/_formularios-base.html' },
-    '/termos-de-uso': { content: '/pages/termos-de-uso.html', layout: '/layouts/_estatica-base.html' }
+    // Modelos Layouts
+    '/modelo/principais': { content: '/pages/modelo/modelo-principais.html', layout: '/layouts/_principais-base.html' },
+    '/modelo/pesquisa': { content: '/pages/modelo/modelo-pesquisa.html', layout: '/layouts/_pesquisa-base.html' },
+    '/modelo/personalizaveis': { content: '/pages/modelo/modelo-personalizaveis.html', layout: '/layouts/_personalizaveis-base.html' },
+    '/modelo/formularios': { content: '/pages/modelo/modelo-formularios.html', layout: '/layouts/_formularios-base.html' },
+    '/modelo/estatico': { content: '/pages/modelo/modelo-estatico.html', layout: '/layouts/_estatico-base.html' },
+    '/modelo/docs': { content: '/pages/modelo/modelo-docs.html', layout: '/layouts/_docs-base.html' },
 };
 
 const appBody = document.getElementById('app-body');
@@ -55,8 +65,8 @@ const loader = document.getElementById('loader');
 function setupAnchorLinks() {
     const anchorLinks = document.querySelectorAll('.anchor-link');
     anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault(); // Impede o navegador de mudar a URL
+        link.addEventListener('click', function (event) {
+            event.preventDefault(); // Impede o navegador de mudar a URL
 
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
@@ -113,7 +123,7 @@ function setupGlossarySearch() {
 
     function filterAndRender() {
         const searchTerm = searchInput.value.toLowerCase();
-        
+
         const filteredData = glossaryData.map(category => {
             const filteredTerms = category.terms.filter(item => {
                 return item.tags.toLowerCase().includes(searchTerm);
@@ -265,17 +275,17 @@ async function navigate() {
         await loadPartials();
         // --- ADICIONE AS CHAMADAS DE RENDERIZAÇÃO AQUI ---
         renderIntegrantes();
-        renderDocs('community-docs-grid-container', communityDocsData); 
-        renderDocs('reference-docs-grid-container', referenceDocsData); 
-        renderEvents(); 
-        renderNews();  
+        renderDocs('community-docs-grid-container', communityDocsData);
+        renderDocs('reference-docs-grid-container', referenceDocsData);
+        renderEvents();
+        renderNews();
         renderGlossary(glossaryData);
 
         setupAnchorLinks();
 
         // --- ATIVANDO AS BUSCAS DINÂMICAS ---
-        setupDocsSearch('community-docs-grid-container', communityDocsData); 
-        setupDocsSearch('reference-docs-grid-container', referenceDocsData); 
+        setupDocsSearch('community-docs-grid-container', communityDocsData);
+        setupDocsSearch('reference-docs-grid-container', referenceDocsData);
         setupGlossarySearch();
 
     } catch (error) {

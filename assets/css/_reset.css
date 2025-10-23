@@ -1,0 +1,43 @@
+/* assets/css/_reset.css */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Mantido como padrão geral */
+    line-height: 1.6; /* Melhora a legibilidade */
+}
+
+/* Reset básico para espaçamentos */
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl, figure {
+    margin: 0 0 1rem 0;
+    padding: 0;
+}
+
+/* Remove estilos de lista padrão onde não são necessários */
+ul, ol {
+    list-style: none;
+}
+
+/* Box-sizing para facilitar layouts */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Links básicos */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-primary-variant);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Evita espaços indesejados abaixo das imagens */
+}

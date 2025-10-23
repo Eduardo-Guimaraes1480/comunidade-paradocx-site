@@ -1,0 +1,21 @@
+/* assets/css/_variables.css */
+:root {
+  --color-background: #121212;
+  --color-surface: #1f1f1f;
+  --color-surface-darker: #101010;
+  --color-primary: #bb86fc;
+  --color-primary-variant: #a062e8;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #b0b0b0;
+  --color-text-muted: #888;
+  --color-border: #333;
+  --color-border-light: #555;
+  --color-text-on-primary: #121212; /* Texto escuro para botões roxos */
+
+  --font-family-base: Arial, Helvetica, sans-serif;
+  --font-family-monospace: 'Courier New', Courier, monospace; /* Para títulos específicos */
+
+  --border-radius-small: 5px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+}

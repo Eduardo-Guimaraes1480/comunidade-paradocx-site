@@ -1,0 +1,107 @@
+/* /assets/css/_formularios.css */
+/* Estilos específicos para páginas que usam _formularios-base.html */
+
+/* Container Principal do Layout de Formulário */
+.form-layout-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
+    gap: 4rem; /* Espaço entre as colunas */
+    max-width: 1100px;
+    margin: 4rem auto; /* Centraliza e adiciona margem vertical */
+    padding: 2rem;
+    align-items: center; /* Alinha verticalmente os conteúdos das colunas */
+}
+
+/* Coluna da Esquerda (Imagem/Texto) */
+.form-image-section {
+    text-align: center; /* Centraliza a imagem e o texto abaixo */
+}
+
+.form-image-section img {
+    width: 100%;
+    max-width: 400px; /* Limita o tamanho máximo da imagem */
+    margin: 0 auto; /* Centraliza a imagem se for menor que max-width */
+    border-radius: var(--border-radius-medium);
+    margin-bottom: 1rem; /* Espaço entre imagem e texto abaixo */
+}
+
+.form-image-section p {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Coluna da Direita (Formulário) */
+.form-content-section {
+    background-color: var(--color-surface); /* Fundo cinza claro como no mockup */
+    padding: 3rem;
+    border-radius: var(--border-radius-medium);
+    text-align: left; /* Alinha o conteúdo do form à esquerda */
+    position: relative; /* Para o texto "FORM AQUI" */
+    border: 1px solid var(--color-border);
+}
+
+
+.form-content-section h1 {
+    font-family: var(--font-family-monospace);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+}
+
+.form-content-section p.form-description { /* Classe específica para a descrição */
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+/* Estilos herdados de _components.css para 'form', 'label', 'input', 'button' */
+/* Ajustes específicos para este formulário, se necessário */
+
+.form-content-section form input[type="text"],
+.form-content-section form input[type="email"] {
+    background-color: var(--color-background); /* Fundo mais escuro para os inputs */
+    border: 1px solid var(--color-border-light); /* Borda um pouco mais clara */
+    padding: 15px; /* Mais padding */
+}
+
+.form-content-section form button[type="submit"] {
+    background-color: transparent; /* Botão transparente */
+    border: 2px solid var(--color-text-secondary); /* Borda cinza */
+    color: var(--color-text-secondary); /* Texto cinza */
+    padding: 15px;
+    font-weight: bold;
+    text-transform: uppercase; /* Texto em maiúsculas */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.form-content-section form button[type="submit"]:hover {
+    background-color: var(--color-primary); /* Roxo no hover */
+    border-color: var(--color-primary); /* Borda roxa no hover */
+    color: var(--color-text-on-primary); /* Texto escuro no hover */
+}
+
+/* Responsividade: Empilha as colunas em telas menores */
+@media (max-width: 800px) {
+    .form-layout-container {
+        grid-template-columns: 1fr; /* Uma coluna */
+        gap: 2rem; /* Reduz o espaço */
+        margin-top: 2rem;
+        padding: 1rem;
+    }
+
+    .form-image-section {
+        order: 2; /* Coloca a imagem depois do formulário */
+        margin-top: 2rem;
+    }
+
+    .form-content-section {
+        order: 1; /* Coloca o formulário primeiro */
+        padding: 2rem;
+    }
+
+     .form-content-section::after {
+        display: none; /* Esconde o texto vertical */
+    }
+}

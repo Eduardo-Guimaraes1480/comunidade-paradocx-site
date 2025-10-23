@@ -1,0 +1,20 @@
+/* assets/css/style.css */
+
+@import url('_variables.css');
+@import url('_reset.css');
+@import url('_layout.css');
+@import url('_components.css');
+@import url('_pages.css');
+
+/* --- CORREÇÃO DE SOBREPOSIÇÃO DO HEADER (Z-INDEX) --- */
+/* Mantido aqui para garantir que seja aplicado */
+.event-hero,
+.integrante-hero {
+    position: relative;
+    z-index: 1;
+}
+
+html {
+    scroll-behavior: smooth; /* Garante rolagem suave globalmente, se não estiver já */
+    scroll-padding-top: 90px; /* Ajuste este valor. Ex: altura do header + um pequeno espaçamento */
+}
