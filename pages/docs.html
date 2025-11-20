@@ -1,17 +1,111 @@
+<style>
+    /* --- ESTILO DE TELA DIVIDIDA (SPLIT SCREEN) --- */
+    
+    @font-face {
+        font-family: 'Paradocx CA';
+        src: url('/assets/fonts/PARADOCX_CA-Regular.ttf') format('truetype');
+    }
+
+    .docs-choice-container {
+        display: flex;
+        flex-direction: column; /* Mobile: um embaixo do outro */
+        min-height: 85vh;
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .docs-choice-container {
+            flex-direction: row; /* PC: lado a lado */
+        }
+    }
+
+    .docs-choice-panel {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 4rem 2rem;
+        text-decoration: none;
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Efeito: O painel cresce ao passar o mouse (apenas desktop) */
+    @media (min-width: 768px) {
+        .docs-choice-panel:hover {
+            flex: 1.5;
+        }
+    }
+
+    .panel-content {
+        z-index: 2;
+        max-width: 500px;
+    }
+
+    .panel-content h2 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+
+    .panel-content p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .panel-content span {
+        display: inline-block;
+        padding: 12px 25px;
+        border: 2px solid currentColor;
+        border-radius: 50px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    /* Tema Escuro (Comunidade) */
+    .dark-panel {
+        background-color: #101010;
+        color: #ffffff;
+        border-right: 1px solid #333;
+    }
+    .dark-panel:hover .panel-content span {
+        background-color: #fff;
+        color: #000;
+        border-color: #fff;
+    }
+    .dark-panel:hover{
+        background-color: #000000;
+    }
+
+    /* Tema Claro (Referências) */
+    .light-panel {
+        background-color: #e0e0e0;
+        color: #121212;
+    }
+    .light-panel:hover .panel-content span {
+        background-color: #000;
+        color: #fff;
+    }
+</style>
+
 <div class="docs-choice-container">
-    <a href="#/docs/produzido-comunidade" class="docs-choice-panel dark-panel">
+    <a href="#/docs/produzido-comunidade" class="docs-choice-panel light-panel">
         <div class="panel-content">
             <h2>DOCS da Comunidade</h2>
-            <p>Documentos originais, artigos e manifestos produzidos pelos integrantes da Equipe ESE e da Comunidade
-                PARADOCX.</p>
+            <p>Documentos originais, artigos e manifestos produzidos pelos integrantes da Equipe ESE e da Comunidade PARADOCX.</p>
             <span>Explorar Documentos Originais &rarr;</span>
         </div>
     </a>
-    <a href="#/docs/referencias" class="docs-choice-panel light-panel">
+    <a href="#/docs/referencias" class="docs-choice-panel dark-panel">
         <div class="panel-content">
             <h2>DOCS de Referência</h2>
-            <p>A base de conhecimento. Documentos, livros e artigos que estão sendo estudados ou que servem como
-                referência para nossos projetos e filosofia.</p>
+            <p>A base de conhecimento. Documentos, livros e artigos que estão sendo estudados ou que servem como referência para nossos projetos.</p>
             <span>Explorar Base de Conhecimento &rarr;</span>
         </div>
     </a>

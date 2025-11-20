@@ -223,3 +223,22 @@ const glossaryData = [
         ]
     }
 ];
+
+const faqData = [
+    {
+        question: "Qual o propósito da Comunidade PARADOCX?",
+        answer: "Nosso propósito é entender como a vida funciona nas diversas áreas que o ser humano pode alcançar. Buscamos passar dos limites que a sociedade impõe, questionando a realidade através da filosofia 'E SE?' para trazer novas perspectivas e possibilidades para o nosso dia a dia."
+    },
+    {
+        question: "Como posso otimizar meu tempo nos estudos ou projetos?",
+        answer: "A metodologia incentiva a aplicação da filosofia 'E SE?' ao seu favor, questionando seus métodos atuais para encontrar novas soluções. Além disso, recomendamos ferramentas como Notion e One Note, e a criação de mapas mentais com palavras-chave para reter melhor o conhecimento."
+    },
+    {
+        question: "O que fazer quando estou sem criatividade ou ideias?",
+        answer: "Primeiro, aceite que ficar um tempo sem fazer nada faz bem. Para gerar novas ideias, saia da sua zona de conforto e faça coisas que não está acostumado. Você também pode usar os 'Pilares Universais' como um mapa para ter novas ideias e planejar seus próximos passos."
+    },
+    {
+        question: "Quais hábitos a comunidade incentiva?",
+        answer: "Incentivamos hábitos saudáveis como caminhadas, alimentação balanceada e organização da sua agenda. É importante também sair de casa, ter novas experiências e transformar seus hobbies em algo produtivo. Evitamos prazeres de curto prazo, procrastinação e ambientes tóxicos."
+    }
+];

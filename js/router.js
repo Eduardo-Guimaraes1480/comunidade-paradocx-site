@@ -107,50 +107,7 @@ async function loadPartials() {
     }
 }
 
-function setupDocsSearch(containerId, sourceData) {
-    const searchInput = document.getElementById('doc-search-input');
-    const searchButton = document.getElementById('doc-search-button');
-    const container = document.getElementById(containerId);
-
-    // Se não encontrarmos os elementos necessários (estamos em outra página), não fazemos nada.
-    if (!searchInput || !container) return;
-
-    function filterAndRender() {
-        const searchTerm = searchInput.value.toLowerCase();
-
-        // Filtra o array de dados original (sourceData)
-        const filteredData = sourceData.filter(doc => {
-            return doc.title.toLowerCase().includes(searchTerm);
-        });
-
-        // Renderiza os cards novamente, mas apenas com os dados filtrados
-        renderDocs(containerId, filteredData);
-    }
-
-    searchInput.addEventListener('keyup', filterAndRender);
-    searchButton.addEventListener('click', filterAndRender);
-}
-
-function setupGlossarySearch() {
-    const searchInput = document.getElementById('glossary-search-input');
-    if (!searchInput) return;
-
-    function filterAndRender() {
-        const searchTerm = searchInput.value.toLowerCase();
-
-        const filteredData = glossaryData.map(category => {
-            const filteredTerms = category.terms.filter(item => {
-                return item.tags.toLowerCase().includes(searchTerm);
-            });
-            return { ...category, terms: filteredTerms };
-        }).filter(category => category.terms.length > 0);
-
-        renderGlossary(filteredData);
-    }
-
-    searchInput.addEventListener('keyup', filterAndRender);
-}
-
+// --- FUNÇÕES DE RENDERIZAÇÃO ---
 function renderIntegrantes() {
     const container = document.getElementById('integrantes-grid-container');
     if (!container) return; // Se não estiver na página de integrantes, não faz nada
@@ -261,6 +218,153 @@ function renderGlossary(data) {
     });
 }
 
+// --- 4. FUNÇÃO DE RENDERIZAÇÃO E BUSCA DO FAQ (CORRIGIDA) ---
+
+function renderFaq(data) {
+    const container = document.getElementById('faq-list-container');
+    // DEBUG: Verifica se o container foi achado
+    if (!container) {
+        console.warn('RenderFaq: Container #faq-list-container não encontrado no HTML.');
+        return;
+    }
+
+    // Limpa o container
+    container.innerHTML = '';
+
+    if (!data || data.length === 0) {
+        container.innerHTML = '<p style="color: var(--color-text-muted); font-style: italic; padding: 1rem;">Nenhuma pergunta encontrada com esse título.</p>';
+        return;
+    }
+
+    // Injeta o HTML
+    data.forEach(item => {
+        const faqHTML = `
+            <details class="faq-item">
+                <summary>${item.question}</summary>
+                <p>${item.answer}</p>
+            </details>
+        `;
+        container.innerHTML += faqHTML;
+    });
+    console.log('RenderFaq: Renderizou ' + data.length + ' perguntas.');
+}
+
+function setupFaqSearch() {
+    const searchInput = document.getElementById('faq-search-input');
+    // Se não houver input (não está na página de FAQ), sai da função
+    if (!searchInput) return; 
+    
+    // Verifica se os dados existem
+    if (typeof faqData === 'undefined') {
+        console.error('Erro: faqData não está definido. Verifique o data.js');
+        return;
+    }
+
+    // Renderiza INICIALMENTE (Para aparecer ao carregar a página)
+    console.log('SetupFaqSearch: Renderizando lista inicial.');
+    renderFaq(faqData);
+
+    // Configura o evento de digitação
+    searchInput.addEventListener('input', function() {
+        const term = this.value.toLowerCase().trim();
+        
+        // Se vazio, mostra tudo
+        if (term === '') {
+            renderFaq(faqData);
+            return;
+        }
+
+        // FILTRO CORRIGIDO: APENAS PELO TÍTULO (QUESTION)
+        const filteredData = faqData.filter(item => 
+            item.question.toLowerCase().includes(term)
+        );
+
+        renderFaq(filteredData);
+        
+        // Abre automaticamente os resultados se estiver filtrado
+        if(filteredData.length > 0) {
+            const details = document.querySelectorAll('#faq-list-container details');
+            details.forEach(d => d.open = true);
+        }
+    });
+}
+
+function setupDocsSearch(containerId, sourceData) {
+    const searchInput = document.getElementById('doc-search-input');
+    if (!searchInput) return;
+    searchInput.addEventListener('input', function() {
+        const term = this.value.toLowerCase();
+        const filteredData = sourceData.filter(doc => doc.title.toLowerCase().includes(term));
+        renderDocs(containerId, filteredData);
+    });
+}
+
+function setupGlossarySearch() {
+    const searchInput = document.getElementById('glossary-search-input');
+    if (!searchInput || typeof glossaryData === 'undefined') return;
+    searchInput.addEventListener('input', function() {
+        const term = this.value.toLowerCase();
+        const filteredData = glossaryData.map(cat => ({
+            ...cat, terms: cat.terms.filter(t => t.term.toLowerCase().includes(term) || t.tags.toLowerCase().includes(term))
+        })).filter(cat => cat.terms.length > 0);
+        renderGlossary(filteredData);
+    });
+}
+
+// --- NOVO: LÓGICA DE ENVIO DO FORMULÁRIO (Netlify) ---
+function setupFormSubmission() {
+    // CORREÇÃO: Procura o formulário APENAS dentro da área de conteúdo injetada
+    // Isso evita pegar o formulário oculto do index.html por engano
+    const form = document.querySelector('#content-placeholder form[name="inscricao-oficial"]');
+    
+    if (!form) return; // Se não achar o formulário visível, sai da função
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // 1. IMPEDE O REDIRECIONAMENTO E O ERRO 405
+
+        // Cria os dados para envio
+        const formData = new FormData(form);
+
+        // Mostra que está enviando (feedback visual)
+        const btn = form.querySelector('button');
+        const originalText = btn.innerText;
+        btn.innerText = "Enviando...";
+        btn.disabled = true;
+        btn.style.opacity = "0.7"; // Visual de desabilitado
+
+        // Envia usando AJAX (Fetch)
+        fetch('/', {
+            method: 'POST',
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString()
+        })
+        .then(() => {
+            // SUCESSO! Substitui o form por uma mensagem bonita
+            const container = document.querySelector('.form-content-section');
+            if(container) {
+                container.innerHTML = `
+                    <div style="text-align:center; animation: fadeIn 1s;">
+                        <h2 style="color: var(--color-primary); font-size: 2rem; margin-bottom: 1rem;">Bem-vindo ao Paradoxo!</h2>
+                        <img src="/image/escudo-equipe-logo.png" style="width: 80px; margin: 0 auto 1rem auto; opacity: 0.8;">
+                        <p style="font-size: 1.1rem; line-height: 1.6;">Seus dados foram recebidos com sucesso.<br>Em breve entraremos em contato.</p>
+                        <a href="#/inicio" class="cta-button" style="margin-top: 2rem; display:inline-block;">Voltar ao Início</a>
+                    </div>
+                `;
+            }
+        })
+        .catch((error) => {
+            // ERRO (Comum no Localhost)
+            console.error('Erro no envio:', error);
+            alert("Nota de Desenvolvimento: O envio real funcionará quando publicado no Netlify. No Localhost, esse erro é esperado.");
+            
+            // Reseta o botão para tentar de novo
+            btn.innerText = originalText;
+            btn.disabled = false;
+            btn.style.opacity = "1";
+        });
+    });
+}
+
 async function navigate() {
     try {
         // Esta linha remove o '#' da URL, por isso as chaves não podem tê-lo
@@ -301,6 +405,9 @@ async function navigate() {
         setupDocsSearch('community-docs-grid-container', communityDocsData);
         setupDocsSearch('reference-docs-grid-container', referenceDocsData);
         setupGlossarySearch();
+
+        // CHAMADA EXPLÍCITA PARA O FAQ
+        setupFaqSearch();
 
         // --- NOVO: INICIALIZAR CARROSSEL ---
         // Verifica se o objeto existe (carregado do carousel.js) e inicializa

@@ -1,15 +1,34 @@
-<section class="form-section">
-    <h1>Junte-se à Comunidade PARADOCX</h1>
-    <p>Deixe seu contato para receber novidades, participar de discussões e fazer parte do movimento PARADOCX.
-    </p>
+<div class="form-layout-container">
 
-    <form name="inscricao" method="POST" data-netlify="true">
-        <label for="name">Seu Nome:</label>
-        <input type="text" id="name" name="name" required>
+    <section class="form-image-section">
+        <img src="/image/comunidade.jpg" alt="Junte-se à Comunidade PARADOCX">
+        <p>"O multiverso de possibilidades espera por você."</p>
+    </section>
 
-        <label for="email">Seu Melhor E-mail:</label>
-        <input type="email" id="email" name="email" required>
+    <section class="form-content-section">
+        <h1>Junte-se à Comunidade</h1>
+        <p class="form-description">
+            Quer fazer parte de algo maior? Deixe seu contato para receber novidades, participar de discussões e iniciar sua jornada no "Rito de Passagem".
+        </p>
 
-        <button type="submit">Quero Fazer Parte</button>
-    </form>
-</section>
+        <form name="inscricao-oficial" method="POST" data-netlify="true">
+            
+            <input type="hidden" name="form-name" value="inscricao-oficial" />
+            
+            <label for="name">Seu Nome:</label>
+            <input type="text" id="name" name="name" required placeholder="Como você quer ser chamado?">
+
+            <label for="email">Seu Melhor E-mail:</label>
+            <input type="email" id="email" name="email" required placeholder="exemplo@email.com">
+
+            <label for="whatsapp">Número WhatsApp:</label>
+            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(XX) 9XXXX-XXXX">
+
+            <label for="social">Instagram ou Outra Rede:</label>
+            <input type="text" id="social" name="social" placeholder="@seuusuario">
+
+            <button type="submit">Quero Fazer Parte</button>
+        </form>
+    </section>
+
+</div>

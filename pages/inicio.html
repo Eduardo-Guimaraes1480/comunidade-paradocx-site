@@ -1,106 +1,440 @@
-<!-- /pages/inicio.html -->
-<section class="hero-section">
+<style>
+    /* --- ESTILOS VISUAIS AVANÇADOS (Home Exclusiva) --- */
+    
+    @font-face {
+        font-family: 'Paradocx CA';
+        src: url('/assets/fonts/PARADOCX_CA-Regular.ttf') format('truetype');
+    }
+
+    /* Variáveis Locais para facilitar ajustes */
+    :root {
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --glass-blur: 10px;
+        --purple-glow: rgba(187, 134, 252, 0.4);
+        --gradient-text: linear-gradient(45deg, #fff, #bb86fc);
+    }
+
+    /* Animação de Fade In suave ao carregar */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HERO SECTION - Com efeito de profundidade */
+    .hero-section {
+        position: relative;
+        min-height: 90vh; /* Ocupa quase toda a tela */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
+        overflow: hidden;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Elemento decorativo de fundo (Glow Roxo) */
+    .hero-glow {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 0;
+        animation: pulseGlow 5s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+        0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+        100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        padding: 0 2rem;
+        animation: fadeIn 1s ease-out;
+    }
+
+    /* TÍTULO ESTILIZADO */
+    .hero-content h1 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: clamp(4rem, 10vw, 7rem); /* Gigante e Responsivo */
+        font-weight: normal;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        line-height: 0.9;
+        background: linear-gradient(to bottom, #fff 30%, #888 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 20px rgba(187, 134, 252, 0.3));
+        letter-spacing: 2px;
+    }
+
+    .hero-content h2 {
+        font-family: var(--font-family-base);
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        color: var(--color-primary);
+        font-style: italic;
+        font-weight: 300;
+        margin: 1rem 0 2rem 0;
+        letter-spacing: 4px;
+        text-shadow: 0 0 10px var(--purple-glow);
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        color: #ccc;
+        max-width: 600px;
+        margin: 0 auto 3rem auto;
+        line-height: 1.6;
+    }
+
+    /* Botão Hero Customizado */
+    .btn-hero {
+        padding: 15px 40px;
+        font-size: 1.1rem;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid var(--color-primary);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(187, 134, 252, 0.2);
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+    .btn-hero:hover {
+        background: var(--color-primary);
+        color: #000;
+        box-shadow: 0 0 30px rgba(187, 134, 252, 0.6);
+        transform: translateY(-3px);
+    }
+
+    /* --- SEÇÕES COM GLASSMORPHISM --- */
+    .glass-section {
+        padding: 6rem 2rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .section-title {
+        text-align: center;
+        font-family: 'Paradocx CA', monospace;
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+        background: var(--gradient-text);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Cards Glassmorphism */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 3rem;
+        backdrop-filter: blur(var(--glass-blur));
+        -webkit-backdrop-filter: blur(var(--glass-blur));
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+    }
+
+    .glass-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--color-primary);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(187, 134, 252, 0.05);
+    }
+
+    /* Dual Section Layout */
+    .dual-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .dual-content {
+        text-align: center;
+    }
+    .dual-content h3 {
+        font-size: 2rem;
+        margin: 1.5rem 0;
+        color: #fff;
+    }
+    .dual-content p {
+        color: #aaa;
+        margin-bottom: 2rem;
+    }
+    .dual-img-wrapper {
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .dual-img-wrapper img {
+        max-height: 100%;
+        filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));
+        transition: filter 0.3s;
+    }
+    .glass-card:hover .dual-img-wrapper img {
+        filter: drop-shadow(0 0 15px var(--color-primary));
+    }
+
+    /* FAQ Minimalista */
+    .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 1.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .faq-mini-card {
+        background: rgba(20, 20, 20, 0.6);
+        border: 1px solid #333;
+        padding: 2rem;
+        border-radius: 12px;
+        transition: background 0.3s;
+    }
+    .faq-mini-card:hover {
+        background: rgba(30, 30, 30, 0.8);
+        border-color: #555;
+    }
+    .faq-mini-card h4 {
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+    .faq-mini-card p {
+        font-size: 0.95rem;
+        color: #ccc;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Projetos Preview - Layout Alternativo */
+    .preview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .preview-item {
+        position: relative;
+        height: 300px;
+        border-radius: 16px;
+        overflow: hidden;
+        group:hover {
+            cursor: pointer;
+        }
+    }
+    
+    .preview-bg {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.5s ease;
+    }
+    
+    .preview-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 2rem;
+        background: linear-gradient(to top, #000 10%, transparent);
+        color: #fff;
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+    }
+
+    .preview-item:hover .preview-bg {
+        transform: scale(1.1);
+    }
+    .preview-item:hover .preview-overlay {
+        transform: translateY(0);
+    }
+
+</style>
+
+<section class="hero-section" id="home-hero">
+    <div class="hero-glow"></div>
+    
     <div class="hero-content">
-        <h1>Comunidade PARADOCX</h1>
-        <h2>The art of living 'WHAT IF?'</h2>
-        <p>Um universo criado pela Equipe de Soluções Experimentais (ESE) para explorar as infinitas possibilidades da
-            existência.</p>
-        <a href="#/como-participar" class="cta-button">Comece a Explorar Agora</a>
+        <h1>Comunidade<br>Paradocx</h1>
+        <h2 id="typewriter-text">The art of living 'WHAT IF?'</h2>
+        <p>Um universo criado pela Equipe de Soluções Experimentais (ESE) para explorar as infinitas possibilidades da existência.</p>
+        <a href="#/como-participar" class="btn-hero">Comece a Explorar Agora</a>
     </div>
 </section>
 
-<section class="home-section intro-section">
-    <div class="section-content">
-        <div class="text-content">
-            <h2>O que é o Paradoxo?</h2>
-            <p>Nossa filosofia se baseia em usar o termo "E SE" como um portal para realidades alternativas. É uma
-                ferramenta para questionar o status quo, desafiar suposições e usar a lógica e a criatividade para
-                construir novas perspectivas.</p>
-            <a href="#/sobre" class="secondary-button">Explore a Filosofia</a>
+<section class="glass-section">
+    <div class="section-content" style="max-width: 1000px; margin: auto; display: flex; align-items: center; gap: 4rem; flex-wrap: wrap-reverse;">
+        <div style="flex: 1; min-width: 300px;">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">O que é o Paradoxo?</h2>
+            <p style="font-size: 1.1rem; color: #ccc; line-height: 1.7;">
+                Nossa filosofia se baseia em usar o termo <strong style="color: #fff;">"E SE"</strong> como um portal para realidades alternativas. 
+                É uma ferramenta para questionar o status quo, desafiar suposições e usar a lógica e a criatividade para construir novas perspectivas.
+            </p>
+            <a href="#/sobre" class="secondary-button" style="margin-top: 2rem;">Explore a Filosofia &rarr;</a>
         </div>
-        <div class="image-content">
-            <img src="/image/filosofia-pilares.jpg" alt="Ilustração da filosofia e dos pilares do Universo ESE">
+        <div style="flex: 1; min-width: 300px;">
+            <div class="glass-card" style="padding: 10px; transform: rotate(2deg);">
+                <img src="/image/filosofia-pilares.jpg" alt="Filosofia" style="width: 100%; border-radius: 8px; display: block;">
+            </div>
         </div>
     </div>
 </section>
 
-<section class="home-section dual-section">
-    <div class="section-content">
-        <h2>Dois Lados, Um Universo</h2>
-        <div class="dual-container">
-            <div class="dual-column">
-                <img src="/image/escudo-equipe-logo.png" alt="Logo da Equipe ESE">
+<section class="glass-section" style="background: linear-gradient(to bottom, #000, #111);">
+    <h2 class="section-title">Dois Lados, Um Universo</h2>
+    
+    <div class="dual-container">
+        <div class="glass-card tilt-card">
+            <div class="dual-content">
+                <div class="dual-img-wrapper">
+                    <img src="/image/escudo-equipe-logo.png" alt="Equipe ESE">
+                </div>
                 <h3>A Equipe ESE</h3>
-                <p>O motor criativo e filosófico. A Equipe de Soluções Experimentais é o "círculo interno", responsável
-                    por desenvolver os projetos e aprofundar os conceitos que dão vida ao nosso universo</p>
+                <p>O motor criativo e filosófico. O "círculo interno", responsável por desenvolver os projetos e aprofundar os conceitos.</p>
                 <a href="#/equipe" class="secondary-button">Conheça a Estrutura</a>
             </div>
-            <div class="dual-column">
-                <img src="/image/comunidade.jpg" alt="Logo da Comunidade PARADOCX">
-                <h3>A Comunidade PARADOCX</h3>
-                <p>O "círculo externo", onde todos são bem-vindos. É o espaço público para consumir, interagir,
-                    colaborar e se inspirar no trabalho da ESE. Esta é a porta de entrada para o nosso movimento</p>
-                <!-- ATUALIZAÇÃO: O botão agora leva para a página que explica como participar. -->
+        </div>
+
+        <div class="glass-card tilt-card">
+            <div class="dual-content">
+                <div class="dual-img-wrapper">
+                    <img src="/image/comunidade.jpg" alt="Comunidade PARADOCX" style="border-radius: 50%;">
+                </div>
+                <h3>A Comunidade</h3>
+                <p>O "círculo externo". O espaço público para consumir, interagir, colaborar e se inspirar.</p>
                 <a href="#/como-participar" class="secondary-button">Veja Como Participar</a>
             </div>
         </div>
     </div>
 </section>
 
-<section class="home-section projects-preview-section">
-    <div class="section-content">
-        <h2>Nossa Filosofia em Ação</h2>
-        <div class="projects-preview-grid">
-            <div class="project-preview-card">
-                <img src="/image/ESE-Kosmo.jpg" alt="Projeto ESE Kosmo">
-                <div class="card-content">
-                    <h4>Projeto Bandeira: ESE Kosmo</h4>
-                    <p>Nossa futura rede social gamificada para explorar seu potencial e aplicar os "Pilares" na
-                        prática.</p>
-                </div>
-            </div>
-            <div class="project-preview-card">
-                <img src="/image/explore-o-ese.jpg" alt="Universo Criativo">
-                <div class="card-content">
-                    <h4>Universo Criativo</h4>
-                    <p>Explore álbuns conceituais como "Rádio Multiversus", mixtapes, livros e outras obras que expandem
-                        nossa realidade.</p>
-                </div>
+<section class="glass-section">
+    <h2 class="section-title">Filosofia em Ação</h2>
+    <div class="preview-grid">
+        <div class="preview-item">
+            <div class="preview-bg" style="background-image: url('/image/ESE-Kosmo.jpg');"></div>
+            <div class="preview-overlay">
+                <h3>ESE Kosmo</h3>
+                <p>Gamificação da vida real.</p>
             </div>
         </div>
-        <a href="#/projetos" class="cta-button">Ver Todos os Projetos</a>
-    </div>
-</section>
-    <!-- Seção de principais perguntas (FAQ) -->
-    <section class="home-section faq-section">
-        <div class="section-content">
-            <h2>Perguntas Frequentes (FAQ)</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <h4>O que é a Comunidade PARADOCX?</h4>
-                    <p>É um espaço aberto para todos que desejam explorar novas ideias, colaborar em projetos criativos e participar de discussões filosóficas baseadas no conceito do "E SE".</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Como posso participar?</h4>
-                    <p>Basta acessar a página <a style="color: #bb86fc; text-decoration: none;" href="#/como-participar">"Como Participar"</a> e seguir as instruções para se juntar à comunidade.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Quais tipos de projetos existem?</h4>
-                    <p>Temos projetos de arte, tecnologia, literatura, música e iniciativas experimentais que buscam expandir os limites da criatividade.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Preciso ter experiência prévia para participar?</h4>
-                    <p>Não! Todos são bem-vindos, independentemente do nível de experiência. O importante é a vontade de aprender e colaborar.</p>
-                </div>
+        <div class="preview-item">
+            <div class="preview-bg" style="background-image: url('/image/explore-o-ese.jpg');"></div>
+            <div class="preview-overlay">
+                <h3>Universo Criativo</h3>
+                <p>Música, arte e histórias.</p>
             </div>
         </div>
-    </section>
-</section>
-<section class="home-section join-section">
-    <div class="section-content">
-        <h2>Junte-se à Comunidade</h2>
-        <p>Quer fazer parte de algo maior? Descubra como você pode contribuir, colaborar e crescer conosco. Seja
-            você um criador, pensador ou apenas alguém curioso, há um lugar para você aqui.</p>
-        <a href="#/junte-se" class="cta-button">Comece Sua Jornada</a>
+        <div class="preview-item">
+            <div class="preview-bg" style="background-image: url('/image/filosofia-pilares.jpg');"></div>
+            <div class="preview-overlay">
+                <h3>Pilares Universais</h3>
+                <p>A base do nosso conhecimento.</p>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem;">
+        <a href="#/projetos" class="btn-hero" style="font-size: 0.9rem;">Ver Todos os Projetos</a>
     </div>
 </section>
+
+<section class="glass-section" style="background: #0a0a0a;">
+    <h2 class="section-title" style="font-size: 2.5rem;">Perguntas Frequentes</h2>
+    <div class="faq-grid">
+        <div class="faq-mini-card">
+            <h4>O que é a Comunidade?</h4>
+            <p>Um espaço aberto para explorar ideias, colaborar em projetos criativos e discutir a filosofia do "E SE".</p>
+        </div>
+        <div class="faq-mini-card">
+            <h4>Como participar?</h4>
+            <p>Acesse a página "Como Participar" e siga os passos para entrar no Discord e interagir.</p>
+        </div>
+        <div class="faq-mini-card">
+            <h4>Preciso de experiência?</h4>
+            <p>Não! A única exigência é a curiosidade e a vontade de evoluir junto com o grupo.</p>
+        </div>
+        <div class="faq-mini-card">
+            <h4>Quais os projetos?</h4>
+            <p>Desde apps de produtividade até álbuns musicais e livros de ficção científica.</p>
+        </div>
+    </div>
+</section>
+
+<section class="glass-section" style="text-align: center; padding: 8rem 2rem;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #fff;">Pronto para a Jornada?</h2>
+    <p style="color: #888; margin-bottom: 3rem;">O multiverso de possibilidades espera por você.</p>
+    <a href="#/junte-se" class="btn-hero">Junte-se à Comunidade</a>
+</section>
+
+
+<script>
+    // Função auto-executável para isolar o escopo
+    (function() {
+        console.log("Home Scripts Loaded");
+
+        // 1. Efeito TILT 3D nos Cards (Movimento sutil ao passar o mouse)
+        const cards = document.querySelectorAll('.tilt-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Calcula o centro
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Calcula a rotação (máximo 10 graus)
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+
+        // 2. Efeito Parallax Simples no Mouse Move na Hero Section
+        const heroSection = document.getElementById('home-hero');
+        const heroGlow = document.querySelector('.hero-glow');
+        
+        if(heroSection && heroGlow) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth - e.pageX * 2) / 50;
+                const y = (window.innerHeight - e.pageY * 2) / 50;
+                
+                // Move o brilho levemente na direção oposta do mouse
+                heroGlow.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+            });
+        }
+
+    })();
+</script>

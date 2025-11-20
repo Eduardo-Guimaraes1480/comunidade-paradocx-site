@@ -1,87 +1,157 @@
 /* /assets/css/_formularios.css */
-/* Estilos específicos para páginas que usam _formularios-base.html */
 
-/* Container Principal do Layout de Formulário */
-.form-layout-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
-    gap: 4rem; /* Espaço entre as colunas */
-    max-width: 1100px;
-    margin: 4rem auto; /* Centraliza e adiciona margem vertical */
-    padding: 2rem;
-    align-items: center; /* Alinha verticalmente os conteúdos das colunas */
+/* --- 1. IMPORTAÇÃO DA FONTE --- */
+@font-face {
+    font-family: 'Paradocx CA';
+    src: url('../fonts/PARADOCX_CA-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-/* Coluna da Esquerda (Imagem/Texto) */
+/* --- 2. LAYOUT GERAL (GRID) --- */
+.form-layout-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile First: Uma coluna */
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 2rem;
+    align-items: center;
+    min-height: 60vh;
+}
+
+/* Desktop: Duas colunas */
+@media (min-width: 900px) {
+    .form-layout-container {
+        grid-template-columns: 1fr 1.2fr; /* Imagem menor, Form maior */
+        gap: 5rem;
+    }
+}
+
+/* --- 3. COLUNA DA ESQUERDA (VISUAL) --- */
 .form-image-section {
-    text-align: center; /* Centraliza a imagem e o texto abaixo */
+    text-align: center;
+    animation: fadeIn 1s ease-out;
 }
 
 .form-image-section img {
     width: 100%;
-    max-width: 400px; /* Limita o tamanho máximo da imagem */
-    margin: 0 auto; /* Centraliza a imagem se for menor que max-width */
+    max-width: 450px;
     border-radius: var(--border-radius-medium);
-    margin-bottom: 1rem; /* Espaço entre imagem e texto abaixo */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s ease;
+}
+
+.form-image-section img:hover {
+    transform: scale(1.02);
+    border-color: var(--color-primary);
 }
 
 .form-image-section p {
     color: var(--color-text-muted);
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    opacity: 0.8;
 }
 
-/* Coluna da Direita (Formulário) */
+/* --- 4. COLUNA DA DIREITA (FORMULÁRIO) --- */
 .form-content-section {
-    background-color: var(--color-surface); /* Fundo cinza claro como no mockup */
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 3rem;
-    border-radius: var(--border-radius-medium);
-    text-align: left; /* Alinha o conteúdo do form à esquerda */
-    position: relative; /* Para o texto "FORM AQUI" */
-    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
-
 
 .form-content-section h1 {
-    font-family: var(--font-family-monospace);
-    font-size: 2.5rem;
+    font-family: 'Paradocx CA', monospace;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     text-transform: uppercase;
     margin-bottom: 0.5rem;
     color: var(--color-text-primary);
+    letter-spacing: 1px;
+    line-height: 1.1;
 }
 
-.form-content-section p.form-description { /* Classe específica para a descrição */
+.form-content-section .form-description {
     font-size: 1rem;
     color: var(--color-text-secondary);
     margin-bottom: 2.5rem;
+    line-height: 1.6;
 }
 
-/* Estilos herdados de _components.css para 'form', 'label', 'input', 'button' */
-/* Ajustes específicos para este formulário, se necessário */
-
-.form-content-section form input[type="text"],
-.form-content-section form input[type="email"] {
-    background-color: var(--color-background); /* Fundo mais escuro para os inputs */
-    border: 1px solid var(--color-border-light); /* Borda um pouco mais clara */
-    padding: 15px; /* Mais padding */
-}
-
-.form-content-section form button[type="submit"] {
-    background-color: transparent; /* Botão transparente */
-    border: 2px solid var(--color-text-secondary); /* Borda cinza */
-    color: var(--color-text-secondary); /* Texto cinza */
-    padding: 15px;
+/* --- 5. ESTILOS DOS CAMPOS (INPUTS) --- */
+.form-content-section form label {
+    display: block;
+    font-family: var(--font-family-base);
     font-weight: bold;
-    text-transform: uppercase; /* Texto em maiúsculas */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ATENÇÃO: Adicionado input[type="tel"] aqui */
+.form-content-section form input[type="text"],
+.form-content-section form input[type="email"],
+.form-content-section form input[type="tel"] {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-border);
+    padding: 15px;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+}
+
+.form-content-section form input:focus {
+    border-color: var(--color-primary);
+    background-color: rgba(0, 0, 0, 0.5);
+    outline: none;
+    box-shadow: 0 0 10px rgba(187, 134, 252, 0.2);
+}
+
+/* --- 6. BOTÃO DE ENVIO --- */
+.form-content-section form button[type="submit"] {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--color-text-primary);
+    color: var(--color-text-primary);
+    padding: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin-top: 1rem;
 }
 
 .form-content-section form button[type="submit"]:hover {
-    background-color: var(--color-primary); /* Roxo no hover */
-    border-color: var(--color-primary); /* Borda roxa no hover */
-    color: var(--color-text-on-primary); /* Texto escuro no hover */
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(187, 134, 252, 0.4);
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 7. DETALHES ADICIONAIS --- */
 /* Responsividade: Empilha as colunas em telas menores */
 @media (max-width: 800px) {
     .form-layout-container {

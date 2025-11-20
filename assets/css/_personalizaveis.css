@@ -14,3 +14,15 @@
    } 
    Mas vamos omitir por enquanto para manter a liberdade total.
 */
+
+/* IMPORTANTE:
+   Como estas páginas são de "Liberdade Total", o estilo específico de cada uma 
+   deve ser inserido diretamente dentro do arquivo HTML correspondente usando 
+   a tag <style>. Isso garante que a personalização de um integrante não afete o outro.
+*/
+
+/* Apenas garantimos que o container ocupe a largura total para permitir banners */
+#content-placeholder {
+    width: 100%;
+    padding: 0;
+}

@@ -1,38 +1,135 @@
-<div class="event-body"> <main class="event-content">
-        <div style="text-align: center; margin-bottom: 2rem;">
-            <img src="/image/the-free-society.png" alt="Logo The Free Society" style="width: 150px; border-radius: 50%;">
-        </div>
-        <h1>The Free Society</h1>
-        <p class="project-intro">"Defendendo a liberdade com humor e razão, revelamos o caminho para a sociedade livre, expondo as contradições do controle. A força está na escolha."</p>
-        
-        <h3>Artigos e Reflexões</h3>
-        <p>Como parte de nossa exploração, produzimos artigos que aprofundam os temas que debatemos. Confira nossa última reflexão sobre Maquiavel, poder e moral.</p>
-        
-        <a href="https://substack.com/inbox/post/175563378" target="_blank" class="article-link">
-            <div class="article-preview">
-                <h4>Sobre Maquiavel e a "Moral Política" no Príncipe</h4>
-                <p>Uma reflexão do líder da organização The Free Society sobre uma de suas leituras principais, O príncipe de Maquiavel.</p>
-                <span>Ler artigo no Substack &rarr;</span>
-            </div>
-        </a>
-    </main>
+<style>
+    /* --- CSS ESPECÍFICO DO SUBGRUPO --- */
     
-    <aside class="event-sidebar">
-        <div class="sidebar-widget">
-            <h4>Líder da Área</h4>
-            <div class="author-bio" style="background: none; padding: 0;">
-                <img src="/image/integrantes/Guilherme-Nunes.png" alt="Guilherme Nunes">
-                <div class="author-info">
-                    <p style="margin: 0;"><strong>Guilherme Nunes</strong><br>Belo Discutidor</p>
+    @font-face {
+        font-family: 'Paradocx CA';
+        src: url('/assets/fonts/PARADOCX_CA-Regular.ttf') format('truetype');
+    }
+
+    .subgrupo-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+    }
+
+    /* Cabeçalho Centralizado */
+    .subgrupo-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        /* Garante que todo o conteúdo de texto interno seja centralizado */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subgrupo-logo {
+        /* CORREÇÃO AQUI: Transformar em bloco e forçar margem automática */
+        display: block;
+        margin: 0 auto 2rem auto; 
+        
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--color-surface);
+        box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    .subgrupo-header h1 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: clamp(3rem, 6vw, 4.5rem);
+        margin-bottom: 1rem;
+        color: var(--color-text-primary);
+    }
+
+    .subgrupo-intro {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: var(--color-text-secondary);
+        max-width: 800px;
+        /* Margem automática aqui também por segurança */
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    /* Layout Conteúdo + Sidebar (MANTIDO IGUAL) */
+    .subgrupo-body {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: left;
+    }
+    
+    @media (min-width: 800px) {
+        .subgrupo-body {
+            grid-template-columns: 2fr 1fr;
+        }
+    }
+
+    .article-preview {
+        background-color: var(--color-surface);
+        padding: 2rem;
+        border-radius: var(--border-radius-medium);
+        border: 1px solid var(--color-border);
+        transition: border-color 0.3s;
+        margin-top: 1rem;
+    }
+    .article-preview:hover {
+        border-color: var(--color-primary);
+    }
+    .article-preview h4 { margin-top: 0; font-size: 1.3rem; }
+    .article-link { text-decoration: none; color: inherit; }
+
+    /* Estilos rápidos para a sidebar */
+    .sidebar-widget {
+        background: var(--color-surface);
+        padding: 1.5rem;
+        border-radius: var(--border-radius-medium);
+        margin-bottom: 2rem;
+        border: 1px solid var(--color-border);
+    }
+</style>
+
+<div class="subgrupo-container">
+    
+    <div class="subgrupo-header">
+        <img src="/image/the-free-society.png" alt="Logo The Free Society" class="subgrupo-logo">
+        <h1>The Free Society</h1>
+        <p class="subgrupo-intro">"Defendendo a liberdade com humor e razão, revelamos o caminho para a sociedade livre, expondo as contradições do controle. A força está na escolha."</p>
+    </div>
+
+    <div class="subgrupo-body">
+        <main>
+            <h3 style="border-bottom: 1px solid #333; padding-bottom: 1rem;">Artigos e Reflexões</h3>
+            <p>Como parte de nossa exploração, produzimos artigos que aprofundam os temas que debatemos. Confira nossa última reflexão sobre Maquiavel, poder e moral.</p>
+            
+            <a href="https://substack.com/inbox/post/175563378" target="_blank" class="article-link">
+                <div class="article-preview">
+                    <h4>Sobre Maquiavel e a "Moral Política" no Príncipe</h4>
+                    <p style="color: #bbb;">Uma reflexão do líder da organização The Free Society sobre uma de suas leituras principais, O príncipe de Maquiavel.</p>
+                    <span style="color: var(--color-primary); display: block; margin-top: 1rem; font-weight: bold;">Ler artigo no Substack &rarr;</span>
+                </div>
+            </a>
+        </main>
+        
+        <aside>
+            <div class="sidebar-widget">
+                <h4>Líder da Área</h4>
+                <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
+                    <img src="/image/integrantes/Guilherme-Nunes.png" alt="Guilherme Nunes" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                    <div>
+                        <p style="margin: 0; font-weight: bold;">Guilherme Nunes</p>
+                        <p style="margin: 0; font-size: 0.9rem; color: #888;">Belo Discutidor</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="sidebar-widget">
-            <h4>Conecte-se</h4>
-            <ul>
-                <li><a href="https://www.instagram.com/thefreesociety_/" target="_blank" class="inline-link">Instagram do Grupo</a></li>
-                <li><a href="https://chat.whatsapp.com/Bc7kd2NKOCfGciRRy2e1VC" target="_blank" class="inline-link">Grupo no WhatsApp</a></li>
-            </ul>
-        </div>
-    </aside>
+            <div class="sidebar-widget">
+                <h4>Conecte-se</h4>
+                <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><a href="https://www.instagram.com/thefreesociety_/" target="_blank" class="inline-link">Instagram do Grupo</a></li>
+                    <li><a href="https://chat.whatsapp.com/Bc7kd2NKOCfGciRRy2e1VC" target="_blank" class="inline-link">Grupo no WhatsApp</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
 </div>
