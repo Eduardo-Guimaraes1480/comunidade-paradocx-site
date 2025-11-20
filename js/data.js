@@ -48,7 +48,7 @@ const integrantesData = [
 const communityDocsData = [
     {
         title: "ESE Guanambi 2.0",
-        image: "/image/Escudo Equipe LOGO.png",
+        image: "/image/escudo-equipe-logo.png",
         alt: "Logo ESE",
         description: "O artigo oficial que detalha toda a filosofia, regras, cargos e propósito da Equipe de Soluções Experimentais.",
         url: "#/docs/detail/ese-guanambi-2-0",

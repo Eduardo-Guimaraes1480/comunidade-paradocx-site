@@ -64,6 +64,7 @@ const loader = document.getElementById('loader');
 
 function setupAnchorLinks() {
     const anchorLinks = document.querySelectorAll('.anchor-link');
+    const anchorLinksButton = document.querySelectorAll('.anchor-link-button');
     anchorLinks.forEach(link => {
         link.addEventListener('click', function (event) {
             event.preventDefault(); // Impede o navegador de mudar a URL
@@ -75,6 +76,19 @@ function setupAnchorLinks() {
                 targetElement.scrollIntoView({
                     behavior: 'smooth' // Faz a rolagem ser suave
                 });
+            }
+        });
+    });
+    anchorLinksButton.forEach(btn => {
+        btn.addEventListener('click', function (event) {
+            event.preventDefault();
+            // suporta href="#id" ou data-target="id"
+            const href = this.getAttribute('href') || this.dataset.target;
+            if (!href) return;
+            const targetId = href.startsWith('#') ? href.substring(1) : href;
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
@@ -287,6 +301,12 @@ async function navigate() {
         setupDocsSearch('community-docs-grid-container', communityDocsData);
         setupDocsSearch('reference-docs-grid-container', referenceDocsData);
         setupGlossarySearch();
+
+        // --- NOVO: INICIALIZAR CARROSSEL ---
+        // Verifica se o objeto existe (carregado do carousel.js) e inicializa
+        if (window.CarouselSystem) {
+            window.CarouselSystem.init();
+        }
 
     } catch (error) {
         console.error('Erro ao carregar a página:', error);
