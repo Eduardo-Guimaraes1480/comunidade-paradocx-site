@@ -110,23 +110,33 @@ async function loadPartials() {
 // --- FUNÇÕES DE RENDERIZAÇÃO ---
 function renderIntegrantes() {
     const container = document.getElementById('integrantes-grid-container');
-    if (!container) return; // Se não estiver na página de integrantes, não faz nada
+    
+    // Se não achou o container (não está na página certa), para a execução
+    if (!container) return; 
+    
+    // Verifica se os dados existem
+    if (typeof integrantesData === 'undefined') {
+        console.error('Erro: integrantesData não encontrado.');
+        return;
+    }
 
-    // Limpa o container caso já tenha algo
+    // Limpa o container para não duplicar
     container.innerHTML = '';
 
-    // Itera sobre os dados de integrantesData (que vem do data.js)
+    // Renderiza os cards
     integrantesData.forEach(integrante => {
+        // Se o link for apenas '#', remove o href para não pular pro topo
+        const linkAttr = integrante.url === '#' ? 'href="javascript:void(0)" style="cursor: default;"' : `href="${integrante.url}"`;
+        
         const cardHTML = `
-            <a href="${integrante.url}" class="integrante-card">
-                <img src="${integrante.image}" alt="Foto de ${integrante.name}">
+            <a ${linkAttr} class="integrante-card">
+                <img src="${integrante.image}" alt="Foto de ${integrante.name}" loading="lazy">
                 <div class="card-info">
                     <h3>${integrante.name}</h3>
                     <p>${integrante.role}</p>
                 </div>
             </a>
         `;
-        // Adiciona o card gerado ao container
         container.innerHTML += cardHTML;
     });
 }

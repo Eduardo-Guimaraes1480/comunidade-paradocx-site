@@ -1,199 +1,257 @@
 /* /assets/css/_docs.css */
-/* Estilos específicos para páginas que usam _docs-base.html */
 
-/* Banner/Header Opcional no Topo da Página */
+/* --- 1. IMPORTAÇÃO DAS FONTES (Apenas para Títulos Principais se desejar) --- */
+@font-face {
+    font-family: 'Paradocx CA';
+    src: url('../fonts/PARADOCX_CA-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrainsMono-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* --- 2. BANNER HERO (TOPO - Estilo Prévio) --- */
 .doc-hero-banner {
-    height: 40vh; /* Altura padrão para banners de docs/eventos */
+    height: 40vh;
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: flex-end; /* Alinha conteúdo (overlay) na base */
+    align-items: flex-end;
     position: relative;
-    z-index: var(--z-index-base); /* Abaixo do header principal */
-    color: var(--color-white);
-    /* Permite que a página decida se quer margem ou não */
-    /* margin-bottom: 3rem; */
+    z-index: 1;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--color-border);
 }
 
-/* Reutiliza o estilo .hero-overlay já definido (assumindo que está em _pages.css ou _layout.css) */
-/* Se não estiver global, defina aqui: */
 .doc-hero-banner .hero-overlay {
     width: 100%;
-    padding: 3rem 2rem; /* Padding ajustado para banner menor */
-    background: linear-gradient(to top, rgba(18,18,18,1) 15%, rgba(18,18,18,0.6) 60%, transparent);
+    padding: 1rem 2rem;
+    background: linear-gradient(to top, rgba(10,10,10, 1) 20%, rgba(10,10,10, 0.5) 100%);
     color: var(--color-white);
 }
-.doc-hero-banner .hero-overlay h1 {
-    font-size: clamp(2.2rem, 5vw, 3rem); /* Tamanho de título ajustado */
-    margin: 0;
+
+.doc-hero-banner h1 {
+    font-family: 'Paradocx CA', sans-serif; /* Mantém a identidade só no H1 */
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.1;
+    text-transform: uppercase;
 }
 
+/* Tag de Data/Categoria (Roxinha) */
+.doc-meta-tag {
+    font-family: 'JetBrains Mono', monospace;
+    display: inline-block;
+    background-color: rgba(187, 134, 252, 0.15); /* Roxo translúcido */
+    color: #bb86fc;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(187, 134, 252, 0.3);
+}
 
-/* Corpo Principal da Página (Conteúdo + Sidebar) */
+/* --- 3. ESTRUTURA PRINCIPAL (GRID) --- */
 .doc-body {
     display: grid;
-    /* Grid responsivo: duas colunas em telas maiores, uma em menores */
-    grid-template-columns: minmax(0, 1fr); /* Padrão: uma coluna */
+    grid-template-columns: 1fr; /* Mobile: 1 coluna */
     gap: 3rem;
     max-width: 1100px;
-    margin: 3rem auto; /* Centraliza e adiciona margem vertical */
+    margin: 0 auto 6rem auto;
     padding: 0 2rem;
     align-items: flex-start;
 }
 
-/* Define duas colunas apenas em telas maiores */
-@media (min-width: 800px) {
+@media (min-width: 900px) {
     .doc-body {
-        grid-template-columns: minmax(0, 3fr) minmax(250px, 1fr); /* Conteúdo principal flexível, sidebar com largura mínima/máxima */
+        grid-template-columns: 3fr 1fr; /* Conteúdo largo + Sidebar estreita */
+        gap: 4rem;
     }
 }
 
-
-/* Conteúdo Principal do Documento/Artigo */
+/* --- 4. CONTEÚDO DO ARTIGO (TEXTO PURO E FORMAL) --- */
 .doc-main-content {
-    text-align: left;
-    line-height: 1.7; /* Boa legibilidade */
-    min-width: 0; /* Ajuda o flexbox/grid a calcular corretamente */
+    text-align: left; /* Alinhamento padrão de leitura */
+    font-family: var(--font-family-base); /* Fonte padrão do site (sem ser mono) */
+    font-size: 1.05rem;
+    line-height: 1.8; /* Bom espaçamento entre linhas */
+    color: #e0e0e0;
 }
 
-.doc-main-content .doc-meta {
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-    display: block;
-}
-
-.doc-main-content h1,
-.doc-main-content h2,
-.doc-main-content h3 {
-    margin-top: 2rem;
+/* Títulos Internos (Limpos) */
+.doc-main-content h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-top: 2.5rem;
     margin-bottom: 1rem;
-    line-height: 1.3;
-    color: var(--color-text-primary);
-    font-weight: bold; /* Títulos mais destacados */
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.5rem;
+    font-weight: bold;
 }
-.doc-main-content h1 { font-size: 2.2rem; } /* H1 dentro do conteúdo */
-.doc-main-content h2 { font-size: 1.8rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;}
-.doc-main-content h3 { font-size: 1.4rem; }
 
+.doc-main-content h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    font-weight: bold;
+}
+
+/* Parágrafos e Listas */
 .doc-main-content p {
-    color: var(--color-text-secondary);
     margin-bottom: 1.5rem;
+    text-align: justify; /* Texto justificado como pedido */
 }
 
-.doc-main-content ul,
+.doc-main-content ul, 
 .doc-main-content ol {
-    padding-left: 1.5rem;
     margin-bottom: 1.5rem;
-    color: var(--color-text-secondary);
-    list-style: initial; /* Garante marcadores */
+    padding-left: 1.5rem;
+    color: #ccc;
 }
-.doc-main-content ul ul, /* Sublistas */
-.doc-main-content ol ol {
-    margin-top: 0.5rem; /* Espaço antes da sublista */
-}
+
 .doc-main-content li {
     margin-bottom: 0.5rem;
 }
 
+/* Imagens no Texto (Sem sombras exageradas) */
 .doc-main-content img {
     max-width: 100%;
     height: auto;
-    border-radius: var(--border-radius-medium);
+    border-radius: 4px;
     margin: 2rem 0;
+    border: 1px solid var(--color-border);
+    display: block;
 }
 
+/* Citação (Simples e Elegante) */
 .doc-main-content blockquote {
     margin: 2rem 0;
     padding: 1rem 1.5rem;
-    background-color: var(--color-surface);
     border-left: 4px solid var(--color-primary);
-    color: var(--color-text-secondary);
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #ddd;
     font-style: italic;
 }
 
-/* Sidebar Lateral */
+/* --- 5. SIDEBAR LATERAL (WIDGETS) --- */
 .doc-sidebar {
     position: sticky;
-    top: 100px; /* Distância do topo */
+    top: 100px; /* Fixa ao rolar */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-/* Reutiliza .sidebar-widget de _components.css */
-.doc-sidebar .sidebar-widget {
+.sidebar-widget {
     background-color: var(--color-surface);
-    padding: 1.5rem;
-    border-radius: var(--border-radius-medium);
     border: 1px solid var(--color-border);
-    margin-bottom: 1.5rem; /* Espaço entre widgets */
+    border-radius: 8px;
+    padding: 1.5rem;
 }
+
 .sidebar-widget h4 {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--color-text-primary);
     margin-top: 0;
     border-bottom: 1px solid var(--color-border);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem; /* Espaço após o título */
+    padding-bottom: 0.8rem;
+    margin-bottom: 1rem;
     font-size: 1rem;
-    color: var(--color-text-primary);
+    text-transform: uppercase;
+    text-align: center;
 }
-.sidebar-widget ul {
+
+.sidebar-info-list {
+    list-style: none;
     padding: 0;
     margin: 0;
-    list-style: none; /* Garante que não haja marcadores */
 }
-.sidebar-widget ul li {
-    margin-bottom: 0.5rem;
-}
-.sidebar-widget ul li a.inline-link { /* Links dentro da sidebar */
-    font-weight: normal; /* Não negrito por padrão */
-    font-size: 0.9rem;
-}
-.sidebar-widget p { /* Parágrafos dentro da sidebar */
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 1rem;
-}
-/* Estilos para botões ou imagens dentro da sidebar podem ser adicionados aqui se necessário */
 
+.sidebar-info-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.95rem;
+}
 
-/* Footer Opcional: Biografia do Autor */
+.sidebar-info-list li:last-child {
+    border-bottom: none;
+}
+
+.sidebar-info-list span.label {
+    color: var(--color-text-muted);
+}
+.sidebar-info-list span.value {
+    color: #fff;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* Botão na Sidebar */
+.sidebar-cta {
+    display: block;
+    text-align: center;
+    background: var(--color-primary);
+    color: #000;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: opacity 0.2s;
+}
+
+.sidebar-cta:hover {
+    opacity: 0.9;
+}
+
+/* --- 6. BIOGRAFIA DO AUTOR (RODAPÉ DO ARTIGO) --- */
 .doc-author-bio {
     display: flex;
-    gap: 1.5rem;
     align-items: center;
-    background-color: var(--color-surface);
-    padding: 2rem;
-    max-width: 1100px;
-    margin: 3rem auto; /* Mesmo alinhamento do .doc-body */
-    border-radius: var(--border-radius-medium);
-    border: 1px solid var(--color-border);
+    gap: 1.5rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
 }
 
 .doc-author-bio img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
-    flex-shrink: 0; /* Impede que a imagem encolha */
 }
 
-.doc-author-bio .author-info h4 {
-    margin: 0 0 0.5rem 0;
+.doc-author-bio h4 {
+    margin: 0 0 0.3rem 0;
+    color: #fff;
     font-size: 1.1rem;
-    color: var(--color-text-primary);
 }
 
-.doc-author-bio .author-info p {
+.doc-author-bio p {
     margin: 0;
-    color: var(--color-text-secondary);
     font-size: 0.9rem;
-}
-.doc-author-bio .author-info p strong { /* Destaca o nome do autor */
-    color: var(--color-text-primary);
+    color: #888;
+    text-align: left; /* Garante alinhamento à esquerda */
 }
 
-/* Ajuste para telas menores onde a sidebar vai para baixo */
-@media (max-width: 799px) {
+/* Responsividade */
+@media (max-width: 899px) {
     .doc-sidebar {
-        position: static; /* Remove o sticky */
-        margin-top: 3rem; /* Espaço acima da sidebar quando empilhada */
+        position: static;
+        margin-top: 3rem;
+    }
+    .doc-hero-banner h1 {
+        font-size: 2rem;
     }
 }

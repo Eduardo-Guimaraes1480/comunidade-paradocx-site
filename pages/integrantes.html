@@ -1,8 +1,188 @@
-<section class="page-header">
-    <h1>Integrantes da Equipe</h1>
-    <p>Conheça os colaboradores, artistas e programadores que formam o núcleo da Comunidade PARADOCX e impulsionam nossos projetos.</p>
-</section>
+<style>
+    /* --- ESTILOS EXCLUSIVOS DESTA PÁGINA --- */
 
-<section class="home-section">
-    <div class="integrantes-grid" id="integrantes-grid-container"></div>
-</section>
+    /* 1. FAIXA AZUL (MARQUEE ANIMADO) */
+    .blue-strip-container {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%); /* Força a largura total da tela */
+        overflow: hidden;
+        background: linear-gradient(90deg, #0052D4, #4364F7, #6FB1FC); /* Gradiente Azul */
+        transform: rotate(-1deg); /* Leve inclinação estilosa */
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+        box-shadow: 0 0 20px rgba(67, 100, 247, 0.6);
+        z-index: 2;
+    }
+
+    .marquee-track {
+        display: flex;
+        white-space: nowrap;
+        gap: 2rem;
+        animation: marqueeScroll 30s linear infinite;
+    }
+
+    .marquee-item {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 4rem;
+        color: #b7d9ff;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    @keyframes marqueeScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* 2. TEXTO INTRODUTÓRIO */
+    .intro-blue-role {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 4rem auto;
+    }
+    .intro-blue-role h2 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: 2.5rem;
+        color: #4364F7; /* Azul claro */
+        margin-bottom: 1.5rem;
+    }
+    .intro-blue-role p {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.8;
+        text-align: justify;
+    }
+
+    /* 3. CARROSSEL DE INTEGRANTES (ESTILO EFFECTIVE ALTRUISM) */
+    /* Transformamos o grid antigo em um container flexível com scroll */
+    #integrantes-grid-container {
+        display: flex;
+        overflow-x: auto; /* Permite rolar para o lado */
+        gap: 2rem;
+        padding: 2rem 1rem 5rem 1rem; /* Espaço para sombra e scrollbar */
+        scroll-snap-type: x mandatory; /* Efeito magnético ao rolar */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin; /* Scrollbar fina no Firefox */
+        scrollbar-color: var(--color-primary) var(--color-background);
+    }
+
+    /* Estilização da barra de rolagem */
+    #integrantes-grid-container::-webkit-scrollbar {
+        height: 8px;
+    }
+    #integrantes-grid-container::-webkit-scrollbar-track {
+        background: #1a1a1a;
+        border-radius: 4px;
+    }
+    #integrantes-grid-container::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+        border-radius: 4px;
+    }
+
+    /* CARD DO INTEGRANTE (PORTRAIT / EM PÉ) */
+    .integrante-card {
+        flex: 0 0 300px; /* Largura fixa: garante 3 ou 4 na tela dependendo do zoom */
+        height: 450px;   /* Altura fixa: formato retrato */
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+        scroll-snap-align: center; /* Centraliza o card ao parar de rolar */
+        text-decoration: none;
+    }
+
+    .integrante-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+        border-color: var(--color-primary);
+        z-index: 10;
+    }
+
+    /* Imagem ocupando o card */
+    .integrante-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Corta a imagem perfeitamente para preencher */
+        object-position: center top; /* Foca no rosto */
+        transition: transform 0.5s ease;
+    }
+
+    .integrante-card:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Informações sobrepostas no final (Overlay) */
+    .integrante-card .card-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        /* Gradiente preto para o texto ficar legível */
+        background: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0.8) 50%, transparent);
+        color: #fff;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    .integrante-card h3 {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.6rem;
+        margin: 0 0 0.3rem 0;
+        text-transform: uppercase;
+        color: #fff;
+    }
+
+    .integrante-card p {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin: 0;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+</style>
+
+<div class="static-layout-container">
+
+    <section class="static-header" style="background-image: url('/image/escudo-equipe-logo.png');">
+        <h1>Integrantes da Equipe</h1>
+        <p>Conheça os colaboradores, artistas e programadores que formam o núcleo da Comunidade PARADOCX.</p>
+    </section>
+
+    <div class="blue-strip-container">
+        <div class="marquee-track">
+            <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
+            <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
+            <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
+            <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
+            <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
+            <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
+        </div>
+    </div>
+
+    <div class="static-main-wrapper" style="display: block;"> <div class="intro-blue-role">
+            <h2>O Exemplo do Cargo Azul</h2>
+            <p>
+                Na hierarquia da ESE, o <strong>Cargo Azul (XXX)</strong> representa aqueles que encontraram seu propósito e possuem habilidades valiosas.
+                Os integrantes listados abaixo são a prova viva desse conceito. Eles não apenas lideram, mas aplicam suas competências — seja em código, arte, design ou gestão — para expandir o nosso universo.
+                <br><br>
+                Eles são os exemplos práticos do que buscamos: <strong>Proatividade, Talento e Entrega.</strong> Inspire-se na jornada deles.
+            </p>
+        </div>
+
+        <div class="static-main-content" style="width: 100%;">
+            <div id="integrantes-grid-container">
+                </div>
+            
+            <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                &larr; Deslize para ver mais integrantes &rarr;
+            </p>
+        </div>
+    </div>
+
+</div>
