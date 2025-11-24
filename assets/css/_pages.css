@@ -104,7 +104,7 @@
 
 /* --- SEÇÕES ESPECÍFICAS DA PÁGINA INICIAL --- */
 .hero-section { /* Hero da Página Inicial */
-    background-image: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), url(/image/banner.png);
+    background-image: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9));
     background-size: cover;
     background-position: center;
     padding: 6rem 2rem;

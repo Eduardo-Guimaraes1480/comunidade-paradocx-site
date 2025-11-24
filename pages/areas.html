@@ -1,3 +1,281 @@
+<style>
+    /* --- ESTILOS EXCLUSIVOS DESTA PÁGINA (ÁREAS/VERMELHO) --- */
+
+    /* 1. FAIXA VERMELHA (MARQUEE ANIMADO) */
+    .red-strip-container {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%); /* Força a largura total da tela */
+        overflow: hidden;
+        /* Gradiente Vermelho/Vinho intenso */
+        background: linear-gradient(90deg, #8E0E00, #cb2d3e, #ef473a); 
+        transform: rotate(1deg); /* Inclinação oposta ao azul para diferenciar */
+        margin-top: 4rem;
+        margin-bottom: 5rem;
+        box-shadow: 0 0 25px rgba(203, 45, 62, 0.5);
+        z-index: 2;
+    }
+
+    .marquee-track-red {
+        display: flex;
+        white-space: nowrap;
+        gap: 3rem;
+        animation: marqueeScrollRed 25s linear infinite;
+    }
+
+    .marquee-item-red {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 4rem;
+        color: #f7959f; /* Texto branco puro para contraste no vermelho */
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    @keyframes marqueeScrollRed {
+        0% { transform: translateX(-50%); } /* Começa do meio para variar */
+        100% { transform: translateX(0); }
+    }
+
+    /* 2. TEXTO INTRODUTÓRIO (CARGO VERMELHO) */
+    .intro-red-role {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 3rem auto;
+        padding: 0 1rem;
+    }
+    .intro-red-role h2 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: clamp(2rem, 5vw, 3rem);
+        color: #ef473a; /* Vermelho destaque */
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+    }
+    .intro-red-role p {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.8;
+        text-align: justify;
+    }
+
+    /* 3. ESTILIZAÇÃO EXTRA DOS CARDS DE ÁREA */
+    /* Adiciona detalhes técnicos dentro do card */
+    .role-specs {
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(239, 71, 58, 0.3); /* Borda avermelhada sutil */
+        border-radius: 6px;
+        padding: 1rem;
+        margin: 1.5rem 0;
+        text-align: left;
+    }
+
+    .role-specs h4 {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: #ef473a;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(239, 71, 58, 0.2);
+        padding-bottom: 0.3rem;
+    }
+
+    .role-specs p {
+        font-size: 0.85rem;
+        color: #ccc;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+    }
+    
+    .role-specs p:last-child { margin-bottom: 0; }
+
+    /* 4. ESTILIZAÇÃO "FODA" PARA OS CARDS (VISUAL GLOW) */
+    .area-card-visual {
+        background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+        border: 1px solid #333;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        /* Garante que o card seja o contexto de empilhamento */
+        z-index: 1;
+    }
+
+    /* Efeito de Borda Brilhante ao passar o mouse */
+    .area-card-visual::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: var(--border-radius-medium);
+        padding: 2px;
+        background: linear-gradient(45deg, transparent, #ef473a, transparent);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0.3;
+        transition: opacity 0.4s ease;
+
+        pointer-events: none; 
+        z-index: 2;
+    }
+
+    .area-card-visual:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 0 30px rgba(239, 71, 58, 0.2);
+    }
+
+    .area-card-visual:hover::before {
+        opacity: 1;
+    }
+
+    /* Conteúdo do Card (Para ficar acima do efeito) */
+    .card-content-wrapper {
+        position: relative;
+        z-index: 3; /* Acima do ::before */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .area-card-visual h3 {
+        color: #fff;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .area-card-visual .card-icon-glow {
+        filter: drop-shadow(0 0 10px rgba(239, 71, 58, 0.3));
+        transition: filter 0.4s;
+        /* O ícone também precisa estar no fluxo normal */
+        position: relative; 
+        z-index: 3;
+    }
+    .area-card-visual:hover .card-icon-glow {
+        filter: drop-shadow(0 0 20px rgba(239, 71, 58, 0.8));
+    }
+    /* Grupo de Botões */
+    .card-actions {
+        margin-top: auto; /* Empurra para o fundo */
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 100%;
+    }
+
+    .btn-primary-area {
+        background-color: #ef473a;
+        color: #fff;
+        border: 1px solid #ef473a;
+        padding: 12px;
+        border-radius: 4px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+    }
+    .btn-primary-area:hover {
+        background-color: #c0392b;
+        box-shadow: 0 0 15px rgba(239, 71, 58, 0.4);
+        color:#0d0d0d;
+    }
+    .btn-primary-area.disabled {
+        background-color: transparent;
+        border-color: #555;
+        color: #777;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    .btn-secondary-area {
+        background-color: transparent;
+        color: #ef473a;
+        border: 1px solid #ef473a;
+        padding: 10px;
+        border-radius: 4px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        transition: all 0.3s;
+    }
+    .btn-secondary-area:hover {
+        background-color: rgba(239, 71, 58, 0.1);
+        color: #fff;
+    }
+
+    /* 5. SEÇÃO DE DETALHES (DOSSIÊ TÉCNICO) */
+    .role-dossier {
+        background-color: rgba(20, 20, 20, 0.5);
+        border: 1px solid #333;
+        border-left: 4px solid #ef473a; /* Marca Vermelha */
+        padding: 3rem;
+        margin-bottom: 4rem;
+        border-radius: 0 16px 16px 0;
+        position: relative;
+    }
+
+    .role-dossier h3 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: 2.5rem;
+        color: #ef473a;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .role-code {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1rem;
+        color: #666;
+        background: #111;
+        padding: 4px 8px;
+        border-radius: 4px;
+        vertical-align: middle;
+    }
+
+    .role-description {
+        font-size: 1.1rem;
+        color: #ccc;
+        margin-bottom: 2rem;
+        line-height: 1.7;
+        max-width: 800px;
+    }
+
+    /* Grid de Specs (Poder vs Requisito) */
+    .specs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .spec-box {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .spec-box h4 {
+        font-family: 'JetBrains Mono', monospace;
+        color: #ef473a; /* Vermelho */
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(239, 71, 58, 0.3);
+        padding-bottom: 0.5rem;
+    }
+
+    .spec-box p {
+        font-size: 0.95rem;
+        color: #bbb;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+</style>
+
 <div class="hero-carousel">
     
     <div class="carousel-track">
@@ -49,37 +327,179 @@
 
 </div>
 
-<div class="main-content-principal">
+<section class="text-section" style="padding-bottom: 0;">
+    <h2>Os Pilares da Operação</h2>
+    <p>Nossa equipe é dividida em áreas de especialização. Para liderar essas áreas, é necessário alcançar o <strong>Cargo Vermelho</strong>.</p>
+</section>
 
-    <div class="areas-grid">
-        <div class="area-card">
-            <h3>Pequeno Criador</h3>
-            <p>Áreas dedicadas a colocar a criatividade em prática, desenvolvendo projetos, experimentos e novas ideias com equipes selecionadas.</p>
-            <a href="#" class="secondary-button disabled">Em Breve</a>
-        </div>
-
-        <div class="area-card">
-            <h3>Belo Discutidor</h3>
-            <p>Espaços para conversas, debates e compartilhamento de conhecimento. O foco é a comunicação e reflexão.</p>
-            <a href="#/areas/discutidores" class="secondary-button">Explorar Área</a>
-        </div>
-
-        <div class="area-card">
-            <h3>Grande Pesquisador</h3>
-            <p>A área arqueológica da equipe. Grupos focados em pesquisar, organizar e coletar dados baseados em fatos.</p>
-            <a href="#" class="secondary-button disabled">Em Breve</a>
-        </div>
-
-        <div class="area-card">
-            <h3>Saúde</h3>
-            <p>Um espaço para cuidar da saúde física e mental dos integrantes, com foco em descanso e estilo de vida.</p>
-            <a href="#" class="secondary-button disabled">Em Breve</a>
-        </div>
-
-        <div class="area-card">
-            <h3>Administração Financeira</h3>
-            <p>Área voltada para negócios, empreendedorismo, marketing e investimentos para garantir a sustentabilidade.</p>
-            <a href="#" class="secondary-button disabled">Em Breve</a>
-        </div>
+<div class="red-strip-container">
+    <div class="marquee-track-red">
+        <div class="marquee-item-red">CARGO VERMELHO /// LIDERANÇA /// ESPECIALISTA ///</div>
+        <div class="marquee-item-red">CARGO VERMELHO /// LIDERANÇA /// ESPECIALISTA ///</div>
+        <div class="marquee-item-red">CARGO VERMELHO /// LIDERANÇA /// ESPECIALISTA ///</div>
+        <div class="marquee-item-red">CARGO VERMELHO /// LIDERANÇA /// ESPECIALISTA ///</div>
+        <div class="marquee-item-red">CARGO VERMELHO /// LIDERANÇA /// ESPECIALISTA ///</div>
     </div>
 </div>
+
+<div class="content-grid">
+    
+    <div class="content-card area-card-visual">
+        <div class="card-content-wrapper">
+            <img src="/image/logo.png" alt="Ícone Criação" class="card-icon-glow">
+            <h3>Pequeno Criador</h3>
+            <p>Foco: Criatividade Prática & Projetos</p>
+            
+            <div class="card-actions">
+                <a href="#" class="btn-primary-area disabled">Em Breve</a>
+                <a href="#detalhe-criador" class="anchor-link btn-secondary-area">Ver Dossiê</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card area-card-visual">
+        <div class="card-content-wrapper">
+            <img src="/image/the-free-society.png" alt="Ícone Debate" class="card-icon-glow">
+            <h3>Belo Discutidor</h3>
+            <p>Foco: Comunicação, Debate & Reuniões</p>
+            
+            <div class="card-actions">
+                <a href="#/areas/discutidores" class="btn-primary-area">Acessar Área</a>
+                <a href="#detalhe-discutidor" class="anchor-link btn-secondary-area">Ver Dossiê</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card area-card-visual">
+        <div class="card-content-wrapper">
+            <img src="/image/escudo-equipe-logo.png" alt="Ícone Pesquisa" class="card-icon-glow">
+            <h3>Grande Pesquisador</h3>
+            <p>Foco: Lógica, Dados & Arqueologia</p>
+            
+            <div class="card-actions">
+                <a href="#" class="btn-primary-area disabled">Em Breve</a>
+                <a href="#detalhe-pesquisador" class="anchor-link btn-secondary-area">Ver Dossiê</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card area-card-visual">
+        <div class="card-content-wrapper">
+            <img src="/image/filosofia-pilares.jpg" alt="Ícone Saúde" class="card-icon-glow" style="border-radius: 50%;">
+            <h3>Saúde</h3>
+            <p>Foco: Bem-estar Físico & Mental</p>
+            
+            <div class="card-actions">
+                <a href="#" class="btn-primary-area disabled">Em Breve</a>
+                <a href="#detalhe-saude" class="anchor-link btn-secondary-area">Ver Dossiê</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card area-card-visual">
+        <div class="card-content-wrapper">
+            <img src="/image/banner.png" alt="Ícone Finanças" class="card-icon-glow" style="border-radius: 50%;">
+            <h3>Administração</h3>
+            <p>Foco: Finanças, Marketing & Recursos</p>
+            
+            <div class="card-actions">
+                <a href="#" class="btn-primary-area disabled">Em Breve</a>
+                <a href="#detalhe-adm" class="anchor-link btn-secondary-area">Ver Dossiê</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr style="border: 0; border-top: 1px solid #333; margin: 4rem auto; max-width: 1000px;">
+
+<section class="text-section" style="text-align: left; max-width: 1000px; padding-top: 0;">
+    
+    <h2 style="text-align: center; margin-bottom: 4rem; font-size: 3rem; color: #fff;">Especificações de Liderança</h2>
+
+    <div id="detalhe-criador" class="role-dossier">
+        <h3>Pequeno Criador <span class="role-code">ID: 3.c</span></h3>
+        <p class="role-description">
+            É aquele que prefere pôr a mão na massa. Esta pessoa tem capacidade de liderança natural e usa o lado criativo do cérebro para materializar o que antes era apenas uma ideia. Ela cria suas próprias virtudes ou segue as da equipe com maestria.
+        </p>
+        <div class="specs-grid">
+            <div class="spec-box">
+                <h4>/// Poder da Área</h4>
+                <p>Autoridade para separar uma ÁREA no servidor dedicada a criar projetos ou fazer experimentos. Pode recrutar integrantes selecionados para suas iniciativas e conta com suporte direto do Criador.</p>
+            </div>
+            <div class="spec-box">
+                <h4>/// Requisito de Acesso</h4>
+                <p>Ser comprovadamente criativo. Ter um portfólio de projetos em desenvolvimento ou assumir a responsabilidade por iniciar novos empreendimentos dentro da Equipe.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="detalhe-discutidor" class="role-dossier">
+        <h3>Belo Discutidor <span class="role-code">ID: 3.d</span></h3>
+        <p class="role-description">
+            O mestre da retórica. Prefere usar os dois lados do cérebro para desenvolver conversas complexas. É o elo social da equipe, capaz de conectar pessoas através de reflexões profundas e debates saudáveis.
+        </p>
+        <div class="specs-grid">
+            <div class="spec-box">
+                <h4>/// Poder da Área</h4>
+                <p>Controle sobre Comunicação e Conexões Teóricas. Pode criar espaços para compartilhar conhecimentos, discutir ideias e organizar reuniões oficiais da comunidade.</p>
+            </div>
+            <div class="spec-box">
+                <h4>/// Requisito de Acesso</h4>
+                <p>Levantar debates pertinentes, demonstrar o hábito de pensar criticamente e gostar de filosofia. Responsabilizar-se pela organização da agenda de reuniões.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="detalhe-pesquisador" class="role-dossier">
+        <h3>Grande Pesquisador <span class="role-code">ID: 3.p</span></h3>
+        <p class="role-description">
+            O guardião da verdade. Prefere os fatos e o lado lógico do cérebro. É a mente analítica que fundamenta nossas teorias em realidade, transformando suposições em conhecimento sólido.
+        </p>
+        <div class="specs-grid">
+            <div class="spec-box">
+                <h4>/// Poder da Área</h4>
+                <p>Gerenciar a Biblioteca e o Museu da Equipe. Separar áreas para pesquisa intensiva, coleta de dados e comprovação científica de teses levantadas pelo grupo.</p>
+            </div>
+            <div class="spec-box">
+                <h4>/// Requisito de Acesso</h4>
+                <p>Curiosidade insaciável. Gostar de fatos científicos e uso rigoroso da lógica. Responsabilizar-se por aprofundar temas técnicos solicitados pela equipe.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="detalhe-saude" class="role-dossier">
+        <h3>Saúde <span class="role-code">ID: 3.s</span></h3>
+        <p class="role-description">
+            O pilar de sustentação biológica. Estuda as capacidades do corpo humano e serve como exemplo de estilo de vida. Entende que uma mente potente precisa de um corpo funcional.
+        </p>
+        <div class="specs-grid">
+            <div class="spec-box">
+                <h4>/// Poder da Área</h4>
+                <p>Cuidar dos Integrantes. Criar espaços de descanso, meditação e relaxamento. Oferecer recomendações medicinais básicas e atendimentos individuais de suporte.</p>
+            </div>
+            <div class="spec-box">
+                <h4>/// Requisito de Acesso</h4>
+                <p>Estudar Educação Física, Nutrição ou Neurociência. Responsabilizar-se pelo bem-estar físico e mental dos membros da equipe.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="detalhe-adm" class="role-dossier">
+        <h3>Administração <span class="role-code">ID: 3.f</span></h3>
+        <p class="role-description">
+            O estrategista de recursos. Focado na liberdade financeira e na sustentabilidade do projeto. Domina a arte da lábia, do marketing e a gestão de Ativos e Passivos.
+        </p>
+        <div class="specs-grid">
+            <div class="spec-box">
+                <h4>/// Poder da Área</h4>
+                <p>Administrar o "Tesouro" da Equipe. Gerenciar negócios, empreendimentos, estratégias de marketing e analisar a viabilidade de investimentos.</p>
+            </div>
+            <div class="spec-box">
+                <h4>/// Requisito de Acesso</h4>
+                <p>Estudar Empreendedorismo e Finanças. Ter habilidade em comunicação persuasiva. Responsabilizar-se pela saúde financeira da comunidade.</p>
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -9,6 +9,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrainsMono-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 /* Estilos específicos para páginas que usam _principais-base.html */
 
 /* Seção Hero Padrão (Estático) */
@@ -158,6 +165,270 @@
 
 .nav-prev { left: 20px; }
 .nav-next { right: 20px; }
+
+/* --- SISTEMA DE GRID (NOVO) --- */
+.content-grid {
+    display: grid;
+    /* Cria colunas automáticas de no mínimo 300px */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0rem 8rem;
+    padding-bottom: 2rem;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.featured-project {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(187, 134, 252, 0.07));
+    border: 1px solid #bb86fc; /* Borda roxa para destacar */
+    border-radius: 8px;
+    padding: 2rem 5rem;
+    margin: 3rem 12rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100%; /* Garante altura igual na linha */
+}
+
+.featured-project img{
+    width: 800px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%; /* Imagens redondas por padrão */
+    margin: 0 auto 1.5rem auto;
+    border: 2px solid var(--color-border);
+}
+
+.featured-project p{
+    text-align: justify;
+}
+
+/* Card Genérico (Usado em Projetos, Áreas, Passos) */
+.content-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-medium);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center; /* Centraliza conteúdo do card */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Garante altura igual na linha */
+    position: relative;
+    overflow: hidden;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.content-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%; /* Imagens redondas por padrão */
+    margin: 0 auto 1.5rem auto;
+    border: 2px solid var(--color-border);
+}
+
+/* Títulos dentro do card */
+.content-card h3 {
+    font-family: var(--font-family-display);
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.content-card p {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex-grow: 1; /* Empurra o botão para o final */
+}
+
+/* Botão dentro do Card */
+.card-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-top: auto;
+}
+
+.card-button:hover {
+    background-color: var(--color-primary);
+    color: #000;
+    border-color: var(--color-primary);
+    font-weight: bold;
+}
+
+/* Estilo para botão desabilitado (Em Breve) */
+.card-button[style*="opacity"] {
+    pointer-events: none;
+}
+
+/* --- SEÇÕES DE TEXTO (TEXT-SECTION) --- */
+.text-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.text-section h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.text-section p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* --- GRID DE NOTÍCIAS (Correção do Layout Bugado) --- */
+#news-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Grid Responsivo */
+    gap: 2.5rem;
+    max-width: var(--container-width);
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    height: 100%;
+    position: relative;
+    
+}
+
+.news-card .news-content {
+    margin-bottom: 0; /* Garante alinhamento na grid */
+}
+
+.news-card:hover {
+    transform: translateY(-8px); /* Efeito de levitar */
+    border-color: var(--color-primary);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.news-card img {
+    width: 100%;
+    height: 220px; /* Altura fixa para padronizar */
+    object-fit: cover;
+    border-bottom: 1px solid var(--color-border);
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover img {
+    transform: scale(1.05); /* Zoom suave na imagem */
+}
+
+.news-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-category {
+    font-family: var(--font-family-mono);
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.news-card h4 {
+    font-family: var(--font-family-display);
+    font-size: 1.4rem;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.2;
+    transition: color 0.3s;
+}
+
+.news-card:hover h4 {
+    color: var(--color-primary);
+}
+
+/* --- LISTA DE EVENTOS (Estilização para acompanhar) --- */
+#event-list-container {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(187, 134, 252, 0.07));
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-medium);
+    padding: 2rem;
+    gap: 2rem;
+    transition: border-color 0.3s;
+}
+
+.event-item:hover {
+    border-color: var(--color-primary);
+}
+
+.event-info h3 {
+    font-family: var(--font-family-display);
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin-top: -5rem;
+}
+
+.event-info p {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    margin-top: -1rem;
+}
+
+.event-action {
+    text-align: left;
+    min-width: 150px;
+}
+
+.event-date {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
 
 /* Responsividade */
 @media (max-width: 768px) {

@@ -22,6 +22,27 @@
     color: var(--color-primary);
 }
 
+.cta-button-footer {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    color: var(--color-text-on-primary) !important; 
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: var(--border-radius-small);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cta-button-footer:hover {
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary) !important;
+}
+
 .secondary-button {
     display: inline-block;
     padding: 10px 20px;

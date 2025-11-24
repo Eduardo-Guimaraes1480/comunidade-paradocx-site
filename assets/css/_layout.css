@@ -39,7 +39,7 @@ header {
     display: flex;
     margin: 0;
     padding: 0;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .nav-links > li > a {
@@ -112,72 +112,169 @@ header {
     color: #ffffff;
 }
 
-/* --- FOOTER --- */
-footer#footer-placeholder { /* Target the placeholder directly */
-    position: relative;
-    overflow: hidden;
-}
-
+/* --- FOOTER (CORRIGIDO) --- */
 .main-footer {
-    background-color: var(--color-surface-darker);
-    color: var(--color-text-muted);
-    padding: 4rem 2rem;
+    background-color: #050505;
+    padding: 6rem 2rem 4rem 2rem;
+    padding-bottom: 14rem;
+    position: relative;
+    overflow: hidden; /* Essencial para cortar a marca d'água */
     border-top: 1px solid var(--color-border);
-    margin-top: 0; /* Reset */
-    position: relative; /* Para z-index do logo funcionar */
-    z-index: 1; /* Garante que o conteúdo fique acima do logo */
+    margin-top: auto;
 }
 
-#footer-logo { /* Logo PARADOCX no fundo */
+/* Marca D'água "Escondida" (Estilo Help Scout) */
+.footer-watermark {
     position: absolute;
-    left: 50%;
-    bottom: 0;
+    bottom: -7vw; /* Empurra bem para baixo para cortar a base */
+    left: 43%;
     transform: translateX(-50%);
+    font-family: 'Paradocx CA', sans-serif;
+    font-size: 18vw; /* Gigante para preencher a largura */
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.02); /* Transparente/Sutil */
+    -webkit-text-stroke-width: 2px; /* Largura da borda */
+    -webkit-text-stroke-color: rgb(255, 255, 255, 0.03); /* Cor da borda */
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02), rgb(255, 255, 255, 0.05));
+    -webkit-background-clip: text; /* Para compatibilidade com navegadores */
+    background-clip: text; /* Clip o background para o texto */
+    -webkit-text-fill-color: transparent; /* Faz a cor do texto ser transparente */
+    color: transparent; /* Cor alternativa para navegadores que não suportam */
+    display: inline-block;
+    white-space: nowrap;
     pointer-events: none;
-    z-index: 0; /* Atrás do conteúdo */
-    margin-bottom: -50px; /* Ajuste conforme necessário */
-    opacity: 0.1; /* Deixa mais sutil */
-    max-width: 80%; /* Limita o tamanho */
+    z-index: 0;
+    user-select: none;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 2rem;
+/* Container do Grid */
+.footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    position: relative; /* Garante que fique acima do #footer-logo */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4rem;
+    position: relative;
     z-index: 1;
 }
 
-.footer-brand img {
-    max-height: 50px;
-    margin-bottom: 1rem;
-    margin-left: -5px;
+/* Coluna da Marca (Alinhamento corrigido) */
+.footer-brand-column {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    
+    /* CORREÇÃO DE ALINHAMENTO AQUI */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha tudo à esquerda (Start) */
+    text-align: left;
 }
 
-.footer-brand p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+.footer-logo-img {
+    height: 75px; /* Tamanho controlado */
+    width: auto;
+    margin-bottom: 0.5rem;
+    margin-left: -35px; /* Compensação visual fina se necessário */
+    display: block;
 }
 
-.footer-links h4 {
+.footer-tagline {
     color: var(--color-text-primary);
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    margin-top: 0;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 2rem;
 }
 
-.footer-links a,
-.footer-brand a { /* Combina os estilos dos links do footer */
+.copyright {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.legal-links {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.legal-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.legal-links a:hover { color: var(--color-primary); }
+.legal-links span { opacity: 0.3; }
+
+
+/* Colunas de Navegação (Alinhadas à Direita) */
+.footer-nav-columns {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end; /* Joga o bloco para a direita */
+    gap: 4rem; /* Espaço generoso entre colunas */
+    flex-wrap: wrap;
+}
+
+.nav-column {
+    min-width: 120px;
+    text-align: right; /* Texto alinhado à direita */
+}
+
+.nav-column h4 {
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.nav-column a {
     display: block;
     color: var(--color-text-secondary);
-    margin-bottom: 0.75rem;
+    text-decoration: none;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    transition: color 0.2s, transform 0.2s;
 }
 
-.footer-links a:hover,
-.footer-brand a:hover {
+.nav-column a:hover {
     color: var(--color-primary);
+    transform: translateX(-5px); /* Move levemente para esquerda ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-brand-column {
+        align-items: center; /* Centraliza marca no mobile */
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .footer-nav-columns {
+        justify-content: center; /* Centraliza links no mobile */
+        gap: 2rem;
+    }
+
+    .nav-column {
+        text-align: center; /* Texto centralizado no mobile */
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-watermark {
+        bottom: -5rem;
+        font-size: 18vw; /* Ajuste para mobile */
+    }
 }
 
 /* --- MAIN CONTAINER --- */

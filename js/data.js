@@ -56,6 +56,15 @@ const communityDocsData = [
         enabled: true
     },
     {
+        title: "Guia de Estilo e Templates",
+        image: "/image/banner.png", 
+        alt: "Design System",
+        description: "Documentação técnica dos modelos de página e design system do Hub. Essencial para desenvolvedores.",
+        url: "#/docs/detail/guia-modelos",
+        buttonText: "Acesso Técnico",
+        enabled: true
+    },
+    {
         title: "UNIVERSO E SE Livro Oficial",
         image: "/image/explore-o-ese.jpg",
         alt: "Universo ESE",

@@ -41,3 +41,38 @@ img {
     height: auto;
     display: block; /* Evita espaços indesejados abaixo das imagens */
 }
+
+/* MELHORIA DE ROLAGEM */
+html {
+    /* Garante rolagem suave nativa para todo o site */
+    scroll-behavior: smooth !important;
+    
+    /* CRUCIAL: Compensa a altura do Header Fixo (80px + folga) */
+    /* Isso impede que o título fique escondido atrás do menu ao clicar */
+    scroll-padding-top: 120px; 
+}
+
+/* Opcional: Melhora a aparência da barra de rolagem em navegadores Webkit (Chrome, Edge) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-background); 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333; 
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary); 
+}
+
+/* Garante que qualquer elemento com ID (ex: #detalhe-criador) 
+   tenha um espaço no topo quando for o alvo da rolagem.
+   Isso impede que o Header Fixo esconda o título. */
+*[id] {
+    scroll-margin-top: 120px; /* 80px do header + 40px de respiro */
+}
