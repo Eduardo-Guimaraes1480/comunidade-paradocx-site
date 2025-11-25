@@ -1,18 +1,26 @@
 <div class="search-layout-base">
 
-    <section class="search-header">
-        <h1>Documentos de Referência</h1>
-        <p>A base de conhecimento. Livros, artigos externos e estudos que fundamentam nossa filosofia.</p>
-    </section>
+    <div class="search-sidebar-layout">
+        
+        <aside class="search-sidebar">
+            <h2>Biblioteca</h2>
+            <p>Pesquise na nossa base de conhecimento externa (Livros, Filmes, Estudos).</p>
+            
+            <input type="text" id="doc-search-input" class="sidebar-search-input" placeholder="Filtrar referências...">
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                <p style="text-align: justify; font-size: 0.8rem; color: #666;">DICA: Use palavras-chave como "Livros" ou "Personas".</p>
+            </div>
+        </aside>
 
-    <section class="search-input-container">
-        <input type="text" id="doc-search-input" placeholder="Buscar referência por título...">
-    </section>
+        <main class="search-results-area">
+            <div class="results-header">
+                <h1>Referências de Estudo</h1>
+                <p>Materiais que fundamentam nossa filosofia.</p>
+            </div>
 
-    <section class="search-results-section">
-        <div class="search-results-main">
             <div class="docs-grid" id="reference-docs-grid-container"></div>
-        </div>
-    </section>
+        </main>
+
+    </div>
 
 </div>

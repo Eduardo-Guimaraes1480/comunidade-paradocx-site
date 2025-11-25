@@ -1,100 +1,185 @@
 /* /assets/css/_pesquisa.css */
 
-/* --- 1. IMPORTAÇÃO DA FONTE PERSONALIZADA --- */
-@font-face {
-    font-family: 'Paradocx CA';
-    /* O caminho sobe um nível (..) para sair de 'css' e entra em 'fonts' */
-    src: url('../fonts/PARADOCX_CA-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+main {
+    margin: 0;
 }
-
-/* Garante que o container principal ocupe a largura total */
+/* Layout Base */
 .search-layout-base {
     display: block;
     width: 100%;
+    /* CORREÇÃO CRÍTICA: Aumentado para o Header fixo não cobrir o título */
+    padding-top: 20px; 
+    min-height: 100vh;
 }
 
-/* --- HEADER DA PÁGINA DE PESQUISA --- */
-.search-header {
+/* --- ESTILO 1: GLOSSÁRIO (BUSCA CENTRALIZADA) --- */
+
+.glossary-wrapper {
     max-width: 900px;
     margin: 0 auto;
-    padding: 4rem 2rem 2rem 2rem;
+    padding: 4rem 2rem;
     text-align: center;
-    width: 100%;
-    box-sizing: border-box;
 }
 
-/* TÍTULO COM A FONTE PARADOCX */
-.search-header h1 {
-    font-family: 'Paradocx CA', var(--font-family-monospace); /* Aplica a fonte aqui */
-    font-size: clamp(3rem, 7vw, 4.5rem); /* Tamanho ajustado para a fonte personalizada */
-    font-weight: normal; /* Fontes display geralmente não precisam de negrito */
-    text-transform: uppercase;
-    margin-bottom: 1rem;
+.glossary-header h1 {
+    font-family: var(--font-family-paradocx);
+    font-size: clamp(3rem, 6vw, 4.5rem);
     color: var(--color-text-primary);
-    letter-spacing: 2px; /* Espaçamento para ficar mais elegante */
-    line-height: 1.1;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
-.search-header p {
+.glossary-category h2{
+    font-family: var(--font-family-code);
+    color: var(--color-primary);
+}
+
+.glossary-item {
+    background: linear-gradient(245deg, rgba(187, 134, 252, 0.09), rgba(255, 255, 255, 0.05));
+}
+
+.glossary-item dt{
+    font-weight: bold;
+}
+.glossary-header p {
     font-size: 1.2rem;
     color: var(--color-text-secondary);
+    margin-bottom: 3rem;
+}
+
+/* Input Gigante do Glossário */
+.glossary-input {
+    width: 100%;
+    padding: 20px 25px;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 50px; /* Bem redondo */
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.glossary-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 40px rgba(187, 134, 252, 0.15);
+    transform: scale(1.02);
+}
+
+/* --- ESTILO 2: LAYOUT COM SIDEBAR (DOCS E FAQ) --- */
+
+.search-sidebar-layout {
+    display: grid;
+    /* Sidebar fixa de 280px, Linha divisória, Conteúdo */
+    grid-template-columns: 280px 1fr; 
+    gap: 3rem; /* Espaço entre a linha e o conteúdo */
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem 6rem 2rem;
+    align-items: flex-start;
+}
+
+/* A Sidebar (Estilo Limpo com Linha) */
+.search-sidebar {
+    position: sticky;
+    top: 120px; /* Fixa abaixo do header */
+    
+    /* REMOVIDO: Background e Borda de Caixa */
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+
+    /* ADICIONADO: A Linha Divisória */
+    border-right: 1px solid var(--color-border);
+    padding-right: 2rem; /* Espaço entre o texto e a linha */
+    height: auto;
+    min-height: 70vh; /* Garante que a linha desça */
+}
+
+.search-sidebar h2 {
+    font-family: var(--font-family-code);
+    text-align: left;
+    font-size: 2.5rem; /* Um pouco menor para elegância */
+    line-height: 1;
+    color: var(--color-primary);
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.search-sidebar p {
+    font-size: 0.95rem;
+    text-align: justify;
+    color: var(--color-text-secondary);
+    margin-top: -0.5rem;
     line-height: 1.6;
 }
 
-/* --- INPUT DE BUSCA --- */
-.search-input-container {
-    max-width: 800px;
-    margin: 0 auto 4rem auto;
-    padding: 0 2rem;
+/* Input de Busca (Estilo Minimalista) */
+.sidebar-search-input {
     width: 100%;
-    box-sizing: border-box;
-}
-
-.search-input-container input[type="text"] {
-    width: 100%;
-    padding: 18px 25px;
-    font-size: 1.1rem;
-    background: rgba(42, 42, 42, 0.6);
+    padding: 15px 20px;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.3);
     color: var(--color-text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--border-radius-medium);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
     outline: none;
-    transition: border-color 0.3s, background-color 0.3s;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Garante que o padding não estoure a largura */
 }
 
-.search-input-container input[type="text"]:focus {
-    border-color: rgba(187, 134, 252, 0.5);
-    background-color: rgba(42, 42, 42, 0.7);
+.sidebar-search-input::placeholder {
+    color: var(--color-text-muted);
+    font-style: italic;
 }
 
-/* --- SEÇÃO DE RESULTADOS (Geral) --- */
-.search-results-section {
-    padding: 2rem 2rem 6rem 2rem;
-    min-height: 40vh;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: var(--color-background);
+.sidebar-search-input:focus {
+    border-color: var(--color-primary);
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(187, 134, 252, 0.1);
 }
 
-.search-results-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: left;
+/* Dica abaixo do input */
+.sidebar-search-sidebar .input-hint {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+
+/* --- ÁREA DE RESULTADOS (DIREITA) --- */
+.search-results-area {
+    min-height: 50vh;
+    padding-left: 1rem; /* Afasta levemente da linha divisória */
+}
+
+.results-header {
+    margin-bottom: 3rem;
+}
+.results-header h1 {
+    font-family: var(--font-family-paradocx);
+    font-size: 3rem;
+    margin: 0;
     color: var(--color-text-primary);
+    line-height: 1;
+}
+.results-header p {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
 }
 
-/* --- ESTILOS ESPECÍFICOS PARA DOCS (GRID / BLOCOS) --- */
-/* Somente os cards de DOCS usam Grid */
+
+/* --- CARDS DE DOCS (GRID - Mantido Glassmorphism) --- */
 .docs-grid {
     display: grid;
-    /* Responsivo: cria colunas de no mínimo 300px */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
     width: 100%;
 }
@@ -107,18 +192,18 @@
     border-radius: var(--border-radius-medium);
     overflow: hidden;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    height: 100%; /* Garante altura igual na linha */
+    height: 100%;
 }
 
 .doc-card:hover {
     transform: translateY(-5px);
     border-color: var(--color-primary);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .doc-card img {
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
     border-bottom: 1px solid var(--color-border);
 }
@@ -131,18 +216,18 @@
 }
 
 .doc-card h4 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-top: 0;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: var(--color-text-primary);
     font-weight: bold;
 }
 
 .doc-card p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--color-text-secondary);
     margin-bottom: 1.5rem;
-    line-height: 1.6;
+    line-height: 1.5;
     flex-grow: 1;
 }
 
@@ -151,88 +236,34 @@
     width: 100%;
     text-align: center;
     display: block;
-    border-radius: var(--border-radius-medium);
-    background-color: var(--color-primary);
-    padding: 0.75rem;
-    text-decoration: none;
-    color: var(--color-text-primary);
-    cursor: pointer;
-    transition: background-color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease, filter 0.18s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-/* Hover / focus */
-.doc-card .card-button:hover,
-.doc-card .card-button:focus,
-.doc-card .card-button:focus-visible {
-    transform: translateY(-3px);
-    filter: brightness(0.95);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.18);
-    color: var(--color-text-on-primary, #fff);
-    text-decoration: none;
-    outline: none;
-}
-
-
-/* --- ESTILOS ESPECÍFICOS PARA GLOSSÁRIO (LISTA VERTICAL) --- */
-/* Correção do bug: Forçar display block e margens corretas */
-
-.glossary-category {
-    display: block; /* Garante que não seja grid */
-    background-color: var(--color-surface);
+    padding: 10px;
+    background: transparent;
     border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-medium);
-    padding: 2rem;
-    margin-bottom: 3rem; /* Espaço maior entre categorias */
-    width: 100%;
-}
-
-.glossary-category h2 {
-    font-family: 'Paradocx CA', var(--font-family-monospace); /* Também aplica a fonte aqui se desejar */
-    font-size: 2rem;
-    color: var(--color-primary);
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: 1rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-.glossary-item {
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    text-align: left;
-}
-
-.glossary-item:last-child {
-    border-bottom: none;
-}
-
-.glossary-item dt {
     color: var(--color-text-primary);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
     font-weight: bold;
-    font-size: 1.3rem;
-    margin-bottom: 0rem;
-    display: block; /* Garante que o termo fique em uma linha */
-    padding: 1rem;
+    transition: all 0.3s;
 }
 
-.glossary-item dd {
-    margin-left: 0; /* Remove indentação padrão do navegador */
-    color: var(--color-text-secondary);
-    font-size: 1rem;
-    line-height: 1.7;
-    padding: 1rem;
+.doc-card .card-button:hover:not(.disabled) {
+    background: var(--color-primary);
+    color: #000;
+    border-color: var(--color-primary);
 }
 
+.doc-card .card-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
-/* --- ESTILOS ESPECÍFICOS PARA FAQ (LISTA VERTICAL EXPANSÍVEL) --- */
-
+/* --- FAQ (NOVO DESIGN: LISTA LIMPA) --- */
 .faq-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-width: 900px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .faq-item {
@@ -243,14 +274,13 @@
     transition: border-color 0.3s;
 }
 
-.faq-item:hover {
-    border-color: var(--color-primary);
-}
+.faq-item:hover { border-color: var(--color-primary); }
 
 .faq-item summary {
     padding: 1.5rem;
     font-weight: bold;
     font-size: 1.1rem;
+    gap: 5px;
     cursor: pointer;
     list-style: none;
     display: flex;
@@ -265,9 +295,7 @@
     color: var(--color-primary);
 }
 
-.faq-item[open] summary::after {
-    content: '-';
-}
+.faq-item[open] summary::after { content: '-'; }
 
 .faq-item p {
     padding: 0 1.5rem 1.5rem 1.5rem;
@@ -278,8 +306,24 @@
     line-height: 1.6;
 }
 
-/* Classe de Destaque na Busca do FAQ */
-.faq-item.faq-highlight {
-    border: 2px solid var(--color-primary);
-    background-color: rgba(187, 134, 252, 0.05);
+/* Responsividade */
+@media (max-width: 900px) {
+    .search-sidebar-layout {
+        grid-template-columns: 1fr; /* Empilha no mobile */
+        gap: 2rem;
+    }
+    
+    .search-sidebar {
+        position: static;
+        border-right: none; /* Remove a linha lateral */
+        border-bottom: 1px solid var(--color-border); /* Adiciona linha embaixo */
+        padding-right: 0;
+        padding-bottom: 2rem;
+        min-height: auto;
+        margin-bottom: 2rem;
+    }
+
+    .search-results-area {
+        padding-left: 0;
+    }
 }

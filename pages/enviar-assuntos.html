@@ -1,0 +1,34 @@
+<div class="form-layout-container">
+
+    <section class="form-image-section">
+        <img src="/image/explore-o-ese.jpg" alt="Fale com a Comunidade">
+        <p>"Toda voz construtiva ajuda a moldar o paradoxo."</p>
+    </section>
+
+    <section class="form-content-section">
+        <h1>Envie seu Assunto</h1>
+        <p class="form-description">
+            Este é o canal direto para enviar dúvidas, sugestões, comentários sobre DOCS ou qualquer outro assunto relevante para a Comunidade PARADOCX.
+        </p>
+
+        <form name="contato-geral" method="POST" data-netlify="true">
+            
+            <input type="hidden" name="form-name" value="contato-geral" />
+            
+            <label for="name">Seu Nome:</label>
+            <input type="text" id="name" name="name" required placeholder="Como devemos te chamar?">
+
+            <label for="email">Seu E-mail:</label>
+            <input type="email" id="email" name="email" required placeholder="Para onde enviamos a resposta?">
+
+            <label for="tipo">Tipo de Assunto:</label>
+            <input type="text" id="tipo" name="tipo" placeholder="Ex: Dúvida, Sugestão, Comentário sobre DOC...">
+
+            <label for="mensagem">Sua Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" required placeholder="Escreva aqui sua mensagem com detalhes..."></textarea>
+
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </section>
+
+</div>

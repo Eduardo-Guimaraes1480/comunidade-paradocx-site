@@ -1,0 +1,592 @@
+<style>
+    /* --- ESTILOS ESPECÍFICOS PARA O EDITOR DE CÓDIGO (VSCODE STYLE) --- */
+
+    .code-block-container {
+        background-color: #1e1e1e;
+        /* Fundo padrão VSCode */
+        border-radius: 8px;
+        border: 1px solid #333;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        /* Scroll horizontal se necessário */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #333;
+        padding-bottom: 0.5rem;
+        color: #888;
+        font-size: 0.8rem;
+    }
+
+    .code-content {
+        color: #d4d4d4;
+        /* Texto padrão claro */
+        line-height: 1.6;
+        white-space: pre;
+        /* Mantém a formatação de espaços */
+    }
+
+    /* Cores de Sintaxe (Simulação) */
+    .k {
+        color: #569cd6;
+    }
+
+    /* Keyword (function, var, const) */
+    .s {
+        color: #ce9178;
+    }
+
+    /* String */
+    .c {
+        color: #6a9955;
+    }
+
+    /* Comentário */
+    .f {
+        color: #dcdcaa;
+    }
+
+    /* Função */
+    .v {
+        color: #9cdcfe;
+    }
+
+    /* Variável */
+    .n {
+        color: #b5cea8;
+    }
+    .p{
+        color: #bb86fc;
+    }
+
+    /* Número */
+</style>
+<div class="doc-hero-banner" style="background-image: url('/image/explore-o-ese.jpg');">
+    <div class="hero-overlay">
+        <span class="doc-meta-tag">Dev Log • Experimento v1.0</span>
+        <h1>Sistema de Comentários (Protótipo)</h1>
+    </div>
+</div>
+
+<div class="doc-body">
+
+    <article class="doc-main-content">
+        <p class="doc-meta-tag">Publicado em 25 de Novembro de 2025 | Por: Alexson</p>
+        <p class="lead"><strong>Resumo:</strong> Documentação técnica do experimento que REGISTRA o processo de criação do sistema de comentários interativo
+            (avaliativo) implementado no Hub Digital PARADOCX. Detalhamos a arquitetura atual (Client-Side) e o roteiro para
+            integração futura com Backend (Firebase). O objetivo é transformar o site de um leitor estático em uma comunidade viva.</p>
+
+        <h2>O Conceito</h2>
+        <p>Para transformar o site de um "leitor estático" em uma <strong>Comunidade Viva</strong>, criamos um módulo
+            que permite aos usuários avaliar DOCS, deixar feedbacks e interagir com curtidas. A filosofia por trás disso
+            é descentralizar o feedback, permitindo que a própria comunidade valide o conteúdo.</p>
+
+        <div class="doc-quote">
+            "Uma comunidade não se constrói apenas com conteúdo, mas com a conversa que acontece ao redor dele."
+        </div>
+
+        <h2>1. O Desafio Técnico</h2>
+        <p>Como nosso site opera em uma arquitetura <strong>SPA (Single Page Application)</strong> hospedada
+            gratuitamente no Netlify (sem backend próprio), enfrentamos um obstáculo: onde salvar os dados dos usuários?
+        </p>
+
+        <p>Tivemos duas opções na mesa:</p>
+        <ul>
+            <li><strong>Opção A (Simulação):</strong> Salvar localmente no navegador (LocalStorage) ou em memória
+                temporária para validar o design.</li>
+            <li><strong>Opção B (Backend as a Service):</strong> Conectar a serviços como Firebase ou Supabase para
+                persistência real de dados.</li>
+        </ul>
+
+        <p>Optamos pela <strong>Opção A</strong> nesta fase inicial para focar na Experiência do Usuário (UX) e Design
+            Visual antes de comprometer recursos com infraestrutura.</p>
+
+        <h2>2. A Solução Implementada (Front-end)</h2>
+        <p>Criamos um módulo JavaScript isolado (`comments.js`) que injeta dinamicamente uma seção de avaliações ao
+            final de qualquer página de conteúdo.</p>
+
+        <h3>Funcionalidades Atuais:</h3>
+        <ul>
+            <li>★ Sistema de Avaliação por Estrelas (1-5).</li>
+            <li>✎ Formulário de Comentário com Nome e Texto.</li>
+            <li>♥ Botão de "Curtir" funcional (estado local).</li>
+            <li>✨ Design Glassmorphism integrado ao tema Dark.</li>
+        </ul>
+
+        <h3>Arquitetura do Código</h3>
+        <p>O sistema funciona através de um "Banco de Dados Simulado" em JavaScript:</p>
+
+        <div style="background: #1e1e1e; padding: 1rem; border-radius: 8px; border: 1px solid #333; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #a9b7c6; overflow-x: auto;">
+                <pre><code>// Exemplo da estrutura de dados 
+        let commentsDB = [
+            {
+                id: 1,
+                author: "Guilherme Nunes",
+                stars: 5,
+                text: "Análise incrível sobre Whiplash...",
+                date: "21/11/2025",
+                likes: 4
+            }
+        ];
+                </code></pre>
+        </div>
+
+        <h2>Para implementar em Arquitetura Atual</h2>
+        <p>Já que atualmente, o sistema opera em modo de simulação. E os dados são armazenados temporariamente no navegador para
+            validar a UX (Experiência do Usuário).</p>
+
+        <h3>Estrutura do Código seria essa: (Front-End)</h3>
+        <p>O sistema deve então compor por esses três arquivos:</p>
+        <ul>
+            <li><strong>CSS (_comments.css):</strong> Responsável pelo visual Glassmorphism e animações.</li>
+        <div class="code-block-container">
+            <div class="code-header">
+                <span>assets/css/_comments.css</span>
+                <span>CSS</span>
+            </div>
+            <div class="code-content">
+<span class="p">
+/* /assets/css/_comments.css */
+
+/* --- SEÇÃO DE COMENTÁRIOS --- */
+.comments-wrapper {
+    max-width: 900px; /* Mesmo do doc-header */
+    margin: 4rem auto 0 auto;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.comments-header h2 {
+    font-family: 'Paradocx CA', monospace;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+/* --- FORMULÁRIO DE AVALIAÇÃO --- */
+.comment-form-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Estrelas */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse; 
+    /* Truque para o hover funcionar da esq pra dir */
+    justify-content: flex-end;
+    gap: 5px;
+    margin-bottom: 1.5rem;
+}
+
+.star-rating input { display: none; }
+
+.star-rating label {
+    font-size: 2rem;
+    color: #444;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+/* Lógica visual das estrelas */
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #FFD700; /* Dourado */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Inputs do Comentário */
+.comment-inputs {
+    display: grid;
+    gap: 1rem;
+}
+
+.comment-input-field {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 12px;
+    color: #fff;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.comment-input-field:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.btn-submit-comment {
+    background: var(--color-primary);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 1rem;
+}
+
+/* --- LISTA DE COMENTÁRIOS --- */
+.comment-item {
+    background: transparent;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 1.5rem 0;
+    animation: fadeIn 0.5s ease;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: var(--color-primary);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.comment-stars {
+    color: #FFD700;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.comment-text {
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Ações (Like, Reply) */
+.comment-actions {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+
+.action-btn:hover { color: #fff; }
+.action-btn.liked { color: #ff4757; } /* Vermelho para like */
+
+/* Respostas (Aninhadas) */
+.replies-container {
+    margin-left: 2rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(255,255,255,0.1);
+    margin-top: 1rem;
+}
+</span> 
+            </div>
+        </div>
+            <li><strong>JS (comments.js):</strong> Gerencia a lógica de renderização e eventos (Like, Responder).</li>
+            <div class="code-block-container">
+                <div class="code-header">
+                    <span>js/comments.js</span>
+                    <span>JavaScript</span>
+                </div>
+                <div class="code-content">
+<span class="c">// /js/comments.js</span>
+
+<span class="c">// 1. Estrutura HTML do Sistema de Comentários</span>
+<span class="k">const</span> <span class="v">COMMENTS_TEMPLATE</span> = <span class="s">`
+&lt;div class="comments-wrapper"&gt;
+    &lt;div class="comments-header"&gt;
+        &lt;h2&gt;Avaliações da Comunidade&lt;/h2&gt;
+    &lt;/div&gt;
+
+    &lt;div class="comment-form-box"&gt;
+        &lt;h4 style="margin-top:0; color:#ccc;"&gt;
+        Deixe sua análise&lt;/h4&gt;
+        
+        &lt;div class="star-rating"&gt;
+            &lt;input type="radio" id="star5" name="rating" value="5" /&gt;&lt;
+            label for="star5"&gt;★&lt;/label&gt;
+            &lt;input type="radio" id="star4" name="rating" value="4" /&gt;&lt;
+            label for="star4"&gt;★&lt;/label&gt;
+            &lt;input type="radio" id="star3" name="rating" value="3" /&gt;&lt;
+            label for="star3"&gt;★&lt;/label&gt;
+            &lt;input type="radio" id="star2" name="rating" value="2" /&gt;&lt;
+            label for="star2"&gt;★&lt;/label&gt;
+            &lt;input type="radio" id="star1" name="rating" value="1" /&gt;&lt;
+            label for="star1"&gt;★&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class="comment-inputs"&gt;
+            &lt;input type="text" id="comment-name" class="comment-input-field" 
+            placeholder="Seu Nome" required&gt;
+            &lt;textarea id="comment-body" class="comment-input-field" rows="3" 
+            placeholder="O que achou?" required&gt;&lt;/textarea&gt;
+            &lt;button id="submit-comment" class="btn-submit-comment"&gt;
+            Publicar Avaliação&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id="comments-list-container"&gt;
+        &lt;p style="text-align:center; color:#666;"&gt;Nenhuma avaliação ainda.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;`</span>;
+
+<span class="c">// 2. Banco de Dados Simulado (Array em Memória para teste)
+// No futuro, isso virá do Firebase</span>
+<span class="k">let</span> <span class="v">commentsDB</span> = [
+    {
+        <span class="v">id</span>: <span class="n">1</span>,
+        <span class="v">author</span>: <span class="s">"Guilherme Nunes"</span>,
+        <span class="v">stars</span>: <span class="n">5</span>,
+        <span class="v">text</span>: <span class="s">"Achei a análise de Whiplash incrível..."</span>,
+        <span class="v">likes</span>: <span class="n">4</span>
+    }
+];
+
+<span class="c">// 3. Função Principal de Inicialização</span>
+<span class="v">window</span>.<span class="v">ParadocxComments</span> = {
+    <span class="f">init</span>: <span class="k">function</span>() {
+        <span class="c">// Procura se existe um container de artigo 
+            para injetar os comentários no final</span>
+        <span class="k">const</span> <span class="v">docContainer</span> = <span class="v">document</span>.<span class="f">querySelector</span>(<span class="s">'.doc-page-container'</span>);
+        
+        <span class="k">if</span> (<span class="v">docContainer</span>) {
+            <span class="c">// Cria o elemento container</span>
+            <span class="k">const</span> <span class="v">commentsDiv</span> = <span class="v">document</span>.<span class="f">createElement</span>(<span class="s">'section'</span>);
+            <span class="v">commentsDiv</span>.<span class="v">innerHTML</span> = <span class="v">COMMENTS_TEMPLATE</span>;
+            <span class="v">docContainer</span>.<span class="f">appendChild</span>(<span class="v">commentsDiv</span>);
+            
+            <span class="k">this</span>.<span class="f">renderComments</span>();
+            <span class="k">this</span>.<span class="f">setupEvents</span>();
+        }
+    }
+
+<span class="f">renderComments</span>: <span class="k">function</span>() {
+        <span class="k">const</span> <span class="v">listContainer</span> = 
+        <span class="v">document</span>.<span class="f">getElementById</span>(<span class="s">'comments-list-container'</span>);
+        <span class="k">if</span> (!<span class="v">listContainer</span>) <span class="k">return</span>;
+
+        <span class="k">if</span> (<span class="v">commentsDB</span>.<span class="v">length</span> === <span class="n">0</span>) {
+            <span class="v">listContainer</span>.<span class="v">innerHTML</span> = <span class="s">'&lt;p style="text-align:center; 
+                color:#666;"&gt;Nenhuma avaliação ainda.&lt;/p&gt;'</span>;
+            <span class="k">return</span>;
+        }
+
+        <span class="v">listContainer</span>.<span class="v">innerHTML</span> = <span class="v">commentsDB</span>.<span class="f">map</span>(<span class="v">comment</span> => <span class="s">`
+            &lt;div class="comment-item" data-id="${<span class="v">comment</span>.<span class="v">id</span>}"&gt;
+                &lt;div class="comment-header"&gt;
+                    &lt;span class="comment-author"&gt;${<span class="v">comment</span>.<span class="v">author</span>}&lt;/span&gt;
+                    &lt;span class="comment-date"&gt;${<span class="v">comment</span>.<span class="v">date</span>}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="comment-stars"&gt;${<span class="s">'★'</span>.<span class="f">
+                    repeat</span>(<span class="v">comment</span>.<span class="v">stars</span>)}${<span class="s">'☆'</span>.<span class="f">repeat</span>(<span class="n">5</span>-<span class="v">comment</span>.<span class="v">stars</span>)}&lt;/div&gt;
+                &lt;div class="comment-text"&gt;${<span class="v">comment</span>.<span class="v">text</span>}&lt;/div&gt;
+                
+                &lt;div class="comment-actions"&gt;
+                    &lt;button class="action-btn like-btn" 
+                    onclick="window.ParadocxComments.toggleLike(${<span class="v">comment</span>.<span class="v">id</span>})"&gt;
+                        ♥ ${<span class="v">comment</span>.<span class="v">likes</span>}
+                    &lt;/button&gt;
+                    &lt;button class="action-btn reply-btn"&gt;
+                        ↩ Responder
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `</span>).<span class="f">join</span>(<span class="s">''</span>);
+    },
+
+    <span class="f">setupEvents</span>: <span class="k">function</span>() {
+        <span class="k">const</span> <span class="v">btn</span> = <span class="v">document</span>.<span class="f">getElementById</span>(<span class="s">'submit-comment'</span>);
+        <span class="k">if</span> (<span class="v">btn</span>) {
+            <span class="v">btn</span>.<span class="f">addEventListener</span>(<span class="s">'click'</span>, () => {
+                <span class="k">const</span> <span class="v">name</span> = <span class="v">document</span>.<span class="f">getElementById</span>(<span class="s">'comment-name'</span>).<span class="v">value</span>;
+                <span class="k">const</span> <span class="v">body</span> = <span class="v">document</span>.<span class="f">getElementById</span>(<span class="s">'comment-body'</span>).<span class="v">value</span>;
+                <span class="c">// Pega o valor da estrela marcada</span>
+                <span class="k">const</span> <span class="v">rating</span> = 
+                <span class="v">document</span>.<span class="f">querySelector</span>
+                (<span class="s">'input[name="rating"]:checked'</span>)?.<span class="v">value</span> || <span class="n">0</span>;
+
+                <span class="k">if</span> (<span class="v">name</span> && <span class="v">body</span>) {
+                    <span class="k">this</span>.<span class="f">addComment</span>(<span class="v">name</span>, <span class="v">body</span>, <span class="f">parseInt</span>(<span class="v">rating</span>));
+                    <span class="c">// Limpa form</span>
+                    <span class="v">document</span>.<span class="f">getElementById</span>(<span class="s">'comment-name'</span>).<span class="v">value</span> = <span class="s">''</span>;
+                    <span class="v">document</span>.<span class="f">getElementById</span>(<span class="s">'comment-body'</span>).<span class="v">value</span> = <span class="s">''</span>;
+                } <span class="k">else</span> {
+                    <span class="f">alert</span>(<span class="s">"Preencha o nome e o comentário!"</span>);
+                }
+            });
+        }
+    },
+
+    <span class="f">addComment</span>: <span class="k">function</span>(<span class="v">name</span>, <span class="v">text</span>, <span class="v">stars</span>) {
+        <span class="k">const</span> <span class="v">newComment</span> = {
+            <span class="v">id</span>: <span class="v">Date</span>.<span class="f">now</span>(), <span class="c">// ID único baseado no tempo</span>
+            <span class="v">author</span>: <span class="v">name</span>,
+            <span class="v">text</span>: <span class="v">text</span>,
+            <span class="v">stars</span>: <span class="v">stars</span>,
+            <span class="v">date</span>: <span class="k">new</span> <span class="v">Date</span>().<span class="f">toLocaleDateString</span>(<span class="s">'pt-BR'</span>),
+            <span class="v">likes</span>: <span class="n">0</span>,
+            <span class="v">replies</span>: []
+        };
+        <span class="v">commentsDB</span>.<span class="f">push</span>(<span class="v">newComment</span>);
+        <span class="k">this</span>.<span class="f">renderComments</span>();
+    },
+
+    <span class="f">toggleLike</span>: <span class="k">function</span>(<span class="v">id</span>) {
+        <span class="k">const</span> <span class="v">comment</span> = <span class="v">commentsDB</span>.<span class="f">find</span>(<span class="v">c</span> => <span class="v">c</span>.<span class="v">id</span> === <span class="v">id</span>);
+        <span class="k">if</span> (<span class="v">comment</span>) {
+            <span class="v">comment</span>.<span class="v">likes</span>++;
+            <span class="k">this</span>.<span class="f">renderComments</span>();
+        }
+    }
+};
+                </div>
+            </div>
+
+            <li><strong>Injeção Automática:</strong> O script detecta containers compatíveis e insere o módulo.</li>
+        </ul>
+
+        <h3>Exemplo de Implementação</h3>
+        <p>Precisamos chamar a função de inicialização sempre que uma página carregar.
+Dentro da função Maps(), logo abaixo das outras chamadas de setup:</p>
+
+        <div class="code-block-container">
+            <div class="code-header">
+                <span>js/router.js</span>
+                <span>JavaScript</span>
+            </div>
+            <div class="code-content">
+                <span class="c">// Inicializa o sistema após o carregamento da rota</span>
+                <span class="k">if</span> (<span class="v">window</span>.<span class="v">ParadocxComments</span>) {
+                <span class="v">setTimeout</span>(() => {
+                <span class="v">window</span>.<span class="v">ParadocxComments</span>.<span class="f">init</span>();
+                }, <span class="n">200</span>);
+                }
+            </div>
+        </div>
+
+        <h2>3. O Futuro: Integração Backend</h2>
+        <p>Para que os comentários sejam visíveis para todos os usuários, o próximo passo lógico é substituir o array
+            local por chamadas de API.</p>
+
+        <div class="doc-callout">
+            <h4>🚀 Roadmap de Implementação (Backend)</h4>
+            <ul>
+                <li><strong>Passo 1:</strong> Criar projeto no Firebase (Google).</li>
+                <li><strong>Passo 2:</strong> Configurar Firestore Database (NoSQL).</li>
+                <li><strong>Passo 3:</strong> Substituir `commentsDB.push()` por `addDoc(collection(db, "comments"),
+                    {...})`.</li>
+                <li><strong>Passo 4:</strong> Adicionar autenticação simples (ou manter anônimo moderado).</li>
+            </ul>
+        </div>
+
+        <h2>Futura Implementação</h2>
+        <p>Para persistir os dados (fazer com que todos vejam os comentários de todos), precisamos conectar a um serviço
+            de Backend as a Service (BaaS). A escolha recomendada é o <strong>Google Firebase</strong>.</p>
+
+        <h3>Roteiro de Migração</h3>
+        <ol>
+            <li>Criar projeto no Console do Firebase (Plano Spark/Gratuito).</li>
+            <li>Ativar o <strong>Firestore Database</strong>.</li>
+            <li>Substituir o array local <code>commentsDB</code> pelas chamadas de API do Firebase.</li>
+        </ol>
+
+        <div class="code-block-container">
+            <div class="code-header">
+                <span>Exemplo de Conexão Futura</span>
+                <span>JavaScript (Firebase SDK)</span>
+            </div>
+            <div class="code-content">
+                <span class="c">// Como será a função addComment no futuro</span>
+                <span class="k">async function</span> <span class="f">addComment</span>(<span class="v">name</span>,
+                <span class="v">text</span>) {
+                <span class="k">await</span> <span class="f">addDoc</span>(<span class="f">collection</span>(<span
+                    class="v">db</span>, <span class="s">"comments"</span>), {
+                <span class="v">author</span>: <span class="v">name</span>,
+                <span class="v">content</span>: <span class="v">text</span>,
+                <span class="v">timestamp</span>: <span class="v">serverTimestamp</span>()
+                });
+                }
+            </div>
+        </div>
+
+        <h2>4. Galeria do Experimento</h2>
+        <p>Abaixo, capturas de tela do funcionamento atual e do processo de desenvolvimento.</p>
+
+        <img src="/image/docs-img/comments-pt1.png" alt="Visual do Formulário de Comentários">
+        <p class="doc-figure-caption" style="margin-top: -1.5rem; text-align: center; font-style: italic;">Fig. 1: Interface de avaliação com estrelas douradas e inputs minimalistas (Pagina DOCS).</p>
+
+        <img src="/image/docs-img/comments-pt2.png" alt="Lista de Comentários">
+        <p class="doc-figure-caption" style="margin-top: -1.5rem; text-align: center; font-style: italic;">Fig. 2: Lista de comentários renderizada. (Pagina Sobre)</p>
+
+        <!-- Sessão 2 -->
+
+        <div class="doc-author-bio">
+            <img src="/image/escudo-equipe-logo.png" alt="Equipe Dev">
+            <div class="author-info">
+                <h4>Equipe de Desenvolvimento</h4>
+                <p>Documentação técnica para colaboradores Open Source.</p>
+            </div>
+        </div>
+    </article>
+
+    <aside class="doc-sidebar">
+
+        <div class="sidebar-widget">
+            <h4>Dados do Experimento</h4>
+            <ul class="sidebar-info-list">
+                <li><span class="label">Estado:</span> <span class="value" style="color: #f1c40f;">Protótipo (V1)</span>
+                </li>
+                <li><span class="label">Tech:</span> <span class="value">Vanilla JS</span></li>
+                <li><span class="label">Persistência:</span> <span class="value">Local (Temp)</span></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-widget">
+            <h4>Recursos</h4>
+            <ul style="padding-left: 1rem;">
+                <li><a href="https://github.com/Eduardo-Guimaraes1480/comunidade-paradocx-site" class="inline-link">Repositório GitHub</a></li>
+                <li><a href="https://firebase.google.com/docs/firestore" target="_blank" class="inline-link">Doc do Firebase</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-widget">
+            <h4>Contribuir</h4>
+            <p style="font-size: 0.9rem; color: #aaa;">Quer ajudar a conectar isso ao Firebase? Fale com a gente.</p>
+            <a href="#/enviar-assuntos" class="sidebar-cta">Sugerir Integração</a>
+        </div>
+
+    </aside>
+
+</div>

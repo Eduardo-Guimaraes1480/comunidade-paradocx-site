@@ -59,6 +59,15 @@
     border: 1px solid rgba(187, 134, 252, 0.3);
 }
 
+.doc-quote {
+    font-style: italic;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--color-primary);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    color: #ddd;
+}
+
 /* --- 3. ESTRUTURA PRINCIPAL (GRID) --- */
 .doc-body {
     display: grid;

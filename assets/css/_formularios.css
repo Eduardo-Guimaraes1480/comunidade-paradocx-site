@@ -58,15 +58,10 @@
 
 /* --- 4. COLUNA DA DIREITA (FORMULÁRIO) --- */
 .form-content-section {
-    background: rgba(30, 30, 30, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     padding: 3rem;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
     text-align: left;
     position: relative;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
 
 .form-content-section h1 {
@@ -112,6 +107,31 @@
     transition: all 0.3s ease;
     margin-bottom: 0.5rem;
     box-sizing: border-box;
+}
+
+/* --- CORREÇÃO DO TEXTAREA (TEXTO GRANDE) --- */
+.form-content-section form textarea {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.03); /* Leve fundo para diferenciar */
+    border: 1px solid var(--color-border); /* Borda completa para área de texto */
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 1.5rem; /* Espaço interno confortável */
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    min-height: 150px; /* Altura mínima garantida */
+    resize: vertical; /* Permite ao usuário esticar se quiser */
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+/* Placeholder discreto */
+.form-content-section form input::placeholder,
+.form-content-section form textarea::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+    font-style: italic;
 }
 
 .form-content-section form input:focus {

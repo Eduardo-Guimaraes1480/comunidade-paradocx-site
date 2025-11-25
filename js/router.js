@@ -13,6 +13,7 @@ const routes = {
 
     //Formularios
     '/junte-se': { content: '/pages/junte-se.html', layout: '/layouts/_formularios-base.html', title: 'Junte-se a Nós | Comunidade PARADOCX' },
+    '/enviar-assuntos': { content: '/pages/enviar-assuntos.html', layout: '/layouts/_formularios-base.html', title: 'Enviar Assuntos | Comunidade PARADOCX' },
 
     // Páginas de Pesquisa
     '/docs/produzido-comunidade': { content: '/pages/docs/produzido-comunidade.html', layout: '/layouts/_pesquisa-base.html', title: 'Docs da Comunidade | Comunidade PARADOCX' },
@@ -47,6 +48,7 @@ const routes = {
     //Docs Comunidade
     '/docs/detail/ese-guanambi-2-0': { content: '/pages/docs/detail/ese-guanambi-2-0.html', layout: '/layouts/_docs-base.html', title: 'ESE Guanambi 2.0 | Documentos' },
     '/docs/detail/guia-modelos': { content: '/pages/docs/detail/guia-modelos.html', layout: '/layouts/_docs-base.html', title: 'Design System | Comunidade PARADOCX'},
+    '/docs/detail/experimento-comentarios': { content: '/pages/docs/detail/experimento-comentarios.html', layout: '/layouts/_docs-base.html', title: 'Dev Log: Comentários | Comunidade PARADOCX'},
     //Docs Referências
     '/docs/detail/wiplash': { content: '/pages/docs/detail/wiplash.html', layout: '/layouts/_docs-base.html', title: 'Wiplash | Documentos' },
     // Docs = Projetos Individuais
@@ -413,53 +415,112 @@ function setupGlossarySearch() {
     });
 }
 
-// --- NOVO: LÓGICA DE ENVIO DO FORMULÁRIO (Netlify) ---
+// LÓGICA GENÉRICA PARA FORMULÁRIOS (FUNCIONA EM QUALQUER PÁGINA)
 function setupFormSubmission() {
-    // CORREÇÃO: Procura o formulário APENAS dentro da área de conteúdo injetada
-    // Isso evita pegar o formulário oculto do index.html por engano
-    const form = document.querySelector('#content-placeholder form[name="inscricao-oficial"]');
+    // Seleciona QUALQUER formulário dentro do content-placeholder
+    const form = document.querySelector('#content-placeholder form');
     
-    if (!form) return; // Se não achar o formulário visível, sai da função
+    if (!form) return; // Se não tiver formulário na página, sai
 
     form.addEventListener('submit', (e) => {
-        e.preventDefault(); // 1. IMPEDE O REDIRECIONAMENTO E O ERRO 405
-
-        // Cria os dados para envio
+        e.preventDefault();
         const formData = new FormData(form);
-
-        // Mostra que está enviando (feedback visual)
-        const btn = form.querySelector('button');
+        const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.innerText;
+        
         btn.innerText = "Enviando...";
         btn.disabled = true;
-        btn.style.opacity = "0.7"; // Visual de desabilitado
-
-        // Envia usando AJAX (Fetch)
+        btn.style.opacity = "0.7";
+        
         fetch('/', {
             method: 'POST',
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(formData).toString()
         })
         .then(() => {
-            // SUCESSO! Substitui o form por uma mensagem bonita
             const container = document.querySelector('.form-content-section');
             if(container) {
                 container.innerHTML = `
-                    <div style="text-align:center; animation: fadeIn 1s;">
-                        <h2 style="color: var(--color-primary); font-size: 2rem; margin-bottom: 1rem;">Bem-vindo ao Paradoxo!</h2>
-                        <img src="/image/escudo-equipe-logo.png" style="width: 80px; margin: 0 auto 1rem auto; opacity: 0.8;">
-                        <p style="font-size: 1.1rem; line-height: 1.6;">Seus dados foram recebidos com sucesso.<br>Em breve entraremos em contato.</p>
-                        <a href="#/inicio" class="cta-button" style="margin-top: 2rem; display:inline-block;">Voltar ao Início</a>
+                    <div style="
+                        animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+                        background: linear-gradient(145deg, rgba(46, 204, 113, 0.07), rgba(46, 204, 113, 0.03)); 
+                        border: 1px solid rgba(46, 204, 113, 0.5); 
+                        border-radius: 16px; 
+                        padding: 3rem 2rem; 
+                        text-align: center; 
+                        box-shadow: 0 10px 40px rgba(46, 204, 113, 0.1);
+                        backdrop-filter: blur(10px);
+                        -webkit-backdrop-filter: blur(10px);
+                        max-width: 500px;
+                        margin: 0 auto;
+                    ">
+                        <div style="
+                            width: 80px; 
+                            height: 80px; 
+                            background: rgba(46, 204, 113, 0.1); 
+                            border-radius: 50%; 
+                            display: flex; 
+                            align-items: center; 
+                            justify-content: center; 
+                            margin: 0 auto 1.5rem auto;
+                            border: 2px solid #2ecc71;
+                            box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+                        ">
+                            <span style="
+                                font-size: 2.5rem; 
+                                color: #2ecc71; 
+                                text-shadow: 0 0 10px #2ecc71;
+                            ">🕭</span>
+                        </div>
+
+                        <h2 style="
+                            font-family: 'Paradocx CA', monospace; 
+                            color: #fff; 
+                            font-size: 2.5rem; 
+                            margin-bottom: 0.5rem;
+                            text-transform: uppercase;
+                            line-height: 1;
+                        ">Transmissão Recebida</h2>
+                        
+                        <p style="
+                            font-family: 'JetBrains Mono', monospace;
+                            font-size: 0.9rem; 
+                            color: #2ecc71; 
+                            margin-bottom: 1.5rem; 
+                            text-transform: uppercase; 
+                            letter-spacing: 2px;
+                        ">/// Status: Sucesso ///</p>
+
+                        <p style="
+                            color: #ccc; 
+                            text-align: justify !important; 
+                            font-size: 1.1rem; 
+                            line-height: 1.6; 
+                            margin-bottom: 2.5rem;
+                        ">
+                            Agradecemos o contato. Nossos sistemas registraram sua mensagem e a equipe analisará em breve.
+                        </p>
+
+                        <a href="#/inicio" class="cta-button" style="
+                            display: inline-block; 
+                            background-color: transparent; 
+                            border: 1px solid #2ecc71; 
+                            color: #2ecc71; 
+                            padding: 12px 30px;
+                            text-decoration: none;
+                            border-radius: 4px;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            transition: all 0.3s;
+                        " onmouseover="this.style.background='#2ecc71'; this.style.color='#000';" onmouseout="this.style.background='transparent'; this.style.color='#2ecc71';">
+                            Retornar à Base
+                        </a>
                     </div>
                 `;
             }
         })
         .catch((error) => {
-            // ERRO (Comum no Localhost)
-            console.error('Erro no envio:', error);
-            alert("Nota de Desenvolvimento: O envio real funcionará quando publicado no Netlify. No Localhost, esse erro é esperado.");
-            
-            // Reseta o botão para tentar de novo
+            alert("Nota de Dev: O envio real só funciona no servidor (Netlify). No Localhost, este erro é esperado.");
             btn.innerText = originalText;
             btn.disabled = false;
             btn.style.opacity = "1";

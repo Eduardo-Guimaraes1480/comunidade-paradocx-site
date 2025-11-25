@@ -1,18 +1,26 @@
 <div class="search-layout-base">
 
-    <section class="search-header">
-        <h1>Documentos da Comunidade</h1>
-        <p>Documentos originais, artigos e manifestos produzidos pelos integrantes da Equipe ESE e da Comunidade.</p>
-    </section>
+    <div class="search-sidebar-layout">
+        
+        <aside class="search-sidebar">
+            <h2>Filtro</h2>
+            <p>Busque por documentos originais produzidos pela Equipe ESE.</p>
+            
+            <input type="text" id="doc-search-input" class="sidebar-search-input" placeholder="Digite para filtrar...">
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                <p style="text-align: justify; font-size: 0.8rem; color: #666;">DICA: Use palavras-chave como "Regras" ou "Filosofia".</p>
+            </div>
+        </aside>
 
-    <section class="search-input-container">
-        <input type="text" id="doc-search-input" placeholder="Buscar documento por título...">
-    </section>
+        <main class="search-results-area">
+            <div class="results-header">
+                <h1>Docs da Comunidade</h1>
+                <p>O acervo oficial de manifestos e artigos originais.</p>
+            </div>
 
-    <section class="search-results-section">
-        <div class="search-results-main">
             <div class="docs-grid" id="community-docs-grid-container"></div>
-        </div>
-    </section>
+        </main>
+
+    </div>
 
 </div>

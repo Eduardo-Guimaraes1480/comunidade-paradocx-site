@@ -1,21 +1,27 @@
 <div class="search-layout-base">
 
-    <section class="search-header">
-        <h1>Perguntas Frequentes</h1>
-        <p>Dúvidas comuns que surgem na jornada pelo Universo E SE e na estrutura da comunidade.</p>
-    </section>
-
-    <section class="search-input-container">
-        <input type="text" id="faq-search-input" placeholder="Qual a sua dúvida? (Ex: Como participar)">
-    </section>
-
-    <section class="search-results-section">
-        <div class="search-results-main">
+    <div class="search-sidebar-layout">
+        
+        <aside class="search-sidebar">
+            <h2>Central de Ajuda</h2>
+            <p>Digite sua dúvida abaixo para filtrar as perguntas.</p>
             
-            <!-- O JavaScript vai preencher esta div com os dados do data.js -->
-            <div class="faq-container" id="faq-list-container"></div>
+            <input type="text" id="faq-search-input" class="sidebar-search-input" placeholder="Ex: Como participar?">
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                <p style="text-align: justify; font-size: 0.8rem; color: #666;">Não encontrou sua duvida? Envie sua duvida no botão abaixo</p>
+                <a href="#/enviar-assuntos"><div class="secondary-button" style="margin-top: -2rem; padding: 0.5rem 4.5rem;"> Enviar Duvida</div></a>
+            </div>
+        </aside>
 
-        </div>
-    </section>
+        <main class="search-results-area">
+            <div class="results-header">
+                <h1>Perguntas Frequentes</h1>
+                <p>Respostas diretas sobre o funcionamento da comunidade.</p>
+            </div>
+
+            <div class="faq-container" id="faq-list-container"></div>
+        </main>
+
+    </div>
 
 </div>

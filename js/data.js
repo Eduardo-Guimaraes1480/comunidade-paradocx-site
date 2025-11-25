@@ -65,6 +65,15 @@ const communityDocsData = [
         enabled: true
     },
     {
+        title: "Dev Log: Sistema de Comentários",
+        image: "/image/explore-o-ese.jpg", // Ou outra imagem de capa
+        alt: "Código e Design",
+        description: "Relatório técnico do experimento de interatividade social (comentários e avaliações) implementado no Hub.",
+        url: "#/docs/detail/experimento-comentarios",
+        buttonText: "Ler Relatório",
+        enabled: true
+    },
+    {
         title: "UNIVERSO E SE Livro Oficial",
         image: "/image/explore-o-ese.jpg",
         alt: "Universo ESE",

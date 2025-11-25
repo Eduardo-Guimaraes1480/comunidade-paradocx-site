@@ -22,6 +22,7 @@
     <link rel="icon" href="/image/logo2.png" type="image/png">
     
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/_comments.css">
 </head>
 
 <body>
@@ -39,6 +40,14 @@
         <input type="text" name="social" />
     </form>
 
+    <form name="contato-geral" netlify netlify-honeypot="bot-field" style="display: none !important;">
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="text" name="tipo" />
+        <textarea name="mensagem"></textarea>
+    </form>
+
+    <script src="/js/comments.js"></script>
     <script src="/js/data.js"></script>
     <script src="/js/carousel.js"></script>
     <script src="/js/router.js?v=6"></script>
