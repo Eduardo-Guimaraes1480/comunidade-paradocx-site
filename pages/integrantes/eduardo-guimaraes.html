@@ -6,6 +6,61 @@
         src: url('/assets/fonts/PARADOCX_CA-Regular.ttf') format('truetype');
     }
 
+    /* 1. FAIXA MARQUEE BRANCO DOURADO */
+    .blue-strip-container {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%); /* Força a largura total da tela */
+        overflow: hidden;
+        background: linear-gradient(90deg, #ffffff, #ffe6a8, #ffffff); /* Gradiente Azul */
+        transform: rotate(1deg); /* Leve inclinação estilosa */
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+        box-shadow: 0 0 50px rgb(255, 255, 255, 0.6);
+        border-top: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+        z-index: 2;
+    }
+
+    .marquee-track {
+        display: flex;
+        white-space: nowrap;
+        gap: 2rem;
+        animation: marqueeScroll 25s linear infinite;
+    }
+
+    .marquee-item {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 4rem;
+        color: #fde199;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    @keyframes marqueeScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* 2. TEXTO INTRODUTÓRIO */
+    .intro-blue-role {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 4rem auto;
+    }
+    .intro-blue-role h2 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: 2.5rem;
+        color: #daa520; /* Dourado */
+        margin-bottom: 1.5rem;
+    }
+    .intro-blue-role p {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.8;
+        text-align: justify;
+    }
+
     /* Banner Gigante */
     .integrante-hero {
         height: 70vh;
@@ -99,6 +154,27 @@
             <p>Fundador da Equipe</p>
         </div>
     </section>
+
+     <div class="blue-strip-container">
+        <div class="marquee-track">
+            <div class="marquee-item">CARGO BRANCO-DOURADO /// CRIADOR /// ORIGEM ///</div>
+            <div class="marquee-item">CARGO BRANCO-DOURADO /// CRIADOR /// ORIGEM ///</div>
+            <div class="marquee-item">CARGO BRANCO-DOURADO /// CRIADOR /// ORIGEM ///</div>
+            <div class="marquee-item">CARGO BRANCO-DOURADO /// CRIADOR /// ORIGEM ///</div>
+            <div class="marquee-item">CARGO BRANCO-DOURADO /// CRIADOR /// ORIGEM ///</div>
+            <div class="marquee-item">CARGO BRANCO-DOURADO /// CRIADOR /// ORIGEM ///</div>
+        </div>
+    </div>
+
+    <div class="static-main-wrapper" style="display: block;"> <div class="intro-blue-role">
+    <h2>O Cargo Branco/Dourado</h2>
+            <p>
+                Na hierarquia da ESE, o <strong>Cargo Azul (XXX)</strong> representa aqueles que encontraram seu propósito e possuem habilidades valiosas.
+                Os integrantes listados abaixo são a prova viva desse conceito. Eles não apenas lideram, mas aplicam suas competências — seja em código, arte, design ou gestão — para expandir o nosso universo.
+                <br><br>
+                Eles são os exemplos práticos do que buscamos: <strong>Proatividade, Talento e Entrega.</strong> Inspire-se na jornada deles.
+    </p>
+    </div>
 
     <section class="integrante-content">
         <div class="integrante-quote">

@@ -36,6 +36,19 @@
     margin: 0 auto;
 }
 
+/* Overlay para garantir leitura */
+.hero-principal::before,
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
 /* Título Principal (Aplicado tanto no Hero Estático quanto no Carrossel) */
 .hero-principal h1,
 .hero-carousel h1 { /* Seletor duplo para garantir */
@@ -166,16 +179,20 @@
 .nav-prev { left: 20px; }
 .nav-next { right: 20px; }
 
-/* --- SISTEMA DE GRID (NOVO) --- */
+/* --- SISTEMA DE GRID (CORRIGIDO E RESPONSIVO) --- */
 .content-grid {
     display: grid;
-    /* Cria colunas automáticas de no mínimo 300px */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 0rem 8rem;
-    padding-bottom: 2rem;
-    max-width: var(--container-width);
+    /* Melhor lógica para responsividade e zoom: */
+    /* Usa auto-fit para preencher a linha, mas centraliza se sobrar espaço */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    justify-content: center; /* Centraliza os blocos na tela */
+    gap: 2.5rem;
+    padding: 4rem 2rem;
+    max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .featured-project {
@@ -224,6 +241,24 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
+.content-card, .contact-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Ocupa toda a altura disponível da linha */
+}
+
+.content-card:hover, .contact-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
 .content-card img {
     width: 80px;
     height: 80px;
@@ -270,6 +305,12 @@
     color: #000;
     border-color: var(--color-primary);
     font-weight: bold;
+}
+
+/* Estilo para botão desabilitado */
+.card-button[style*="opacity"] {
+    pointer-events: none;
+    filter: grayscale(1);
 }
 
 /* Estilo para botão desabilitado (Em Breve) */

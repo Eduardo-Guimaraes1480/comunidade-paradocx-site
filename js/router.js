@@ -111,6 +111,94 @@ async function loadPartials() {
     }
 }
 
+function setupTypewriterEffect() {
+    // Procura o elemento de texto dinâmico na página de Equipe
+    const dynamicText = document.getElementById('dynamic-text');
+    if (!dynamicText) return; // Se não achar, sai da função
+
+    const words = [
+        "...",
+        "nlouquentes",
+        "xperimentais",
+        "speciais",
+        "nigmáticas",
+        "xtraordinárias",
+        "starpafúrdiantes"
+    ];
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
+
+    function type() {
+        // Verifica se o elemento ainda existe (se o usuário trocou de página, para o loop)
+        if (!document.getElementById('dynamic-text')) return;
+
+        const currentWord = words[wordIndex];
+
+        if (isDeleting) {
+            // Apagando
+            dynamicText.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+            typeSpeed = 50; // Mais rápido ao apagar
+        } else {
+            // Escrevendo
+            dynamicText.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+            typeSpeed = 100;
+        }
+
+        // Lógica de troca de estado
+        if (!isDeleting && charIndex === currentWord.length) {
+            // Terminou de escrever a palavra
+            isDeleting = true;
+            typeSpeed = 5000; // Pausa de 5s antes de apagar
+        } else if (isDeleting && charIndex === 0) {
+            // Terminou de apagar
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length; // Próxima palavra
+            typeSpeed = 500; // Pausa curta antes de começar a próxima
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    // Inicia o ciclo
+    type();
+}
+
+// --- FUNÇÃO DO CARROSSEL DE HUBS (NOVO) ---
+function setupHubCarousel() {
+    const track = document.getElementById('hubs-track');
+    const prevBtn = document.getElementById('hub-prev');
+    const nextBtn = document.getElementById('hub-next');
+    
+    if (!track || !prevBtn || !nextBtn) return; // Se não estiver na página de contato, sai
+
+    const slides = Array.from(track.children);
+    let currentIndex = 0;
+
+    function updateSlide(index) {
+        // Move o trilho
+        track.style.transform = `translateX(-${index * 100}%)`;
+        
+        // Atualiza classe active para animações de texto
+        slides.forEach(s => s.classList.remove('active'));
+        slides[index].classList.add('active');
+    }
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length; // Loop infinito
+        updateSlide(currentIndex);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Loop infinito reverso
+        updateSlide(currentIndex);
+    });
+}
+
 // --- FUNÇÕES DE RENDERIZAÇÃO ---
 function renderIntegrantes() {
     const container = document.getElementById('integrantes-grid-container');
@@ -432,6 +520,9 @@ async function navigate() {
         setupGlossarySearch();
         setupFaqSearch();
         setupFormSubmission();
+
+        setupTypewriterEffect();
+        setupHubCarousel();
 
         // 7. Inicializa Carrossel (Seguro)
         if (window.CarouselSystem) {

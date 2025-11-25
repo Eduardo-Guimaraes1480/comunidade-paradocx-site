@@ -1,15 +1,203 @@
+<style>
+    /* --- ESTILOS EXCLUSIVOS: FAIXA PRETA --- */
+    .black-strip-container {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%); 
+        overflow: hidden;
+        background: linear-gradient(90deg, #000000, #1a1a1a, #000000);
+        transform: rotate(-1deg);
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        z-index: 2;
+    }
+
+    .marquee-track-black {
+        display: flex;
+        white-space: nowrap;
+        gap: 3rem;
+        animation: marqueeScrollBlack 35s linear infinite;
+    }
+
+    .marquee-item-black {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 4rem;
+        color: #3f3f3f;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    @keyframes marqueeScrollBlack {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+      /* 2. TEXTO INTRODUTÓRIO */
+    .intro-black-role h2 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: 2.5rem;
+        color: #fff; /* Branco para contraste máximo */
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        border-bottom: 1px solid #333;
+        padding-bottom: 1rem;
+    }
+    
+    .intro-black-box {
+        background: rgba(0, 0, 0, 0.4);
+        border-left: 4px solid #fff; /* Identidade do Cargo Preto */
+        padding: 2rem;
+        border-radius: 0 8px 8px 0;
+        margin-bottom: 3rem;
+    }
+
+    /* --- NOVO: CARROSSEL DE HUBS (PREMIUM) --- */
+    .hubs-carousel-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 800px; /* Tamanho contido para elegância */
+        height: 500px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 16px;
+        border: 1px solid var(--color-border);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .hubs-track {
+        display: flex;
+        height: 100%;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .hub-slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end; /* Texto embaixo */
+        overflow: hidden;
+    }
+
+    /* Imagem com Zoom Effect */
+    .hub-bg {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: transform 6s ease; /* Zoom lento constante */
+    }
+    
+    .hub-slide:hover .hub-bg {
+        transform: scale(1.1);
+    }
+
+    /* Overlay Gradiente para leitura */
+    .hub-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(to top, #000 10%, rgba(0,0,0,0.6) 50%, transparent);
+        z-index: 1;
+    }
+
+    /* Conteúdo do Slide */
+    .hub-content {
+        position: relative;
+        z-index: 2;
+        padding: 3rem;
+        width: 100%;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.5s ease 0.3s; /* Delay para entrar suave */
+    }
+
+    /* Classe ativa para animar entrada */
+    .hub-slide.active .hub-content {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .hub-tag {
+        font-family: 'JetBrains Mono', monospace;
+        background: #fff;
+        color: #000;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+
+    .hub-title {
+        font-family: 'Paradocx CA', monospace;
+        font-size: 3rem;
+        color: #fff;
+        margin: 0 0 0.5rem 0;
+        line-height: 1;
+        text-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    .hub-desc {
+        font-size: 1.1rem;
+        color: #ddd;
+        margin-bottom: 1.5rem;
+        max-width: 500px;
+    }
+
+    /* Botões de Navegação */
+    .hub-nav-btn {
+        position: absolute;
+        top: 10%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.2);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 10;
+        backdrop-filter: blur(5px);
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .hub-nav-btn:hover { background: #fff; color: #000; }
+    .hub-prev { left: 20px; }
+    .hub-next { right: 20px; }
+
+</style>
+
 <div class="static-layout-container">
 
     <section class="static-header" style="background-image: url('/image/escudo-equipe-logo.png');">
         <h1>Fale Conosco</h1>
-        <p>Estamos aqui para ajudar. Encontre o canal certo para sua dúvida ou ideia.</p>
+        <p>Canais oficiais de comunicação, suporte e presença física da Comunidade PARADOCX.</p>
     </section>
+
+    <div class="black-strip-container">
+        <div class="marquee-track-black">
+            <div class="marquee-item-black">CONSELHO DAS LENDAS /// ADMINISTRAÇÃO /// SUPORTE ///</div>
+            <div class="marquee-item-black">CONSELHO DAS LENDAS /// ADMINISTRAÇÃO /// SUPORTE ///</div>
+            <div class="marquee-item-black">CONSELHO DAS LENDAS /// ADMINISTRAÇÃO /// SUPORTE ///</div>
+            <div class="marquee-item-black">CONSELHO DAS LENDAS /// ADMINISTRAÇÃO /// SUPORTE ///</div>
+        </div>
+    </div>
 
     <div class="static-main-wrapper">
         
         <aside class="static-sidebar">
-            <h3>Canais</h3>
+            <h3>Diretório</h3>
             <ul>
+                <li><a href="#contexto" class="anchor-link">O Cargo Preto</a></li>
                 <li><a href="#online" class="anchor-link">Canais Digitais</a></li>
                 <li><a href="#presencial" class="anchor-link">Hubs Presenciais</a></li>
                 <li><a href="#faq-link" class="anchor-link">FAQ (Ajuda)</a></li>
@@ -17,49 +205,97 @@
         </aside>
 
         <div class="static-main-content">
+
+            <div id="intro" class="intro-black-role">
+                <h2>A Voz da Liderança</h2>
+                <div class="intro-black-box">
+                    <p style="margin: 0; color: #ccc; font-size: 1.05rem;">
+                        Esta página é o portal direto para o <strong>Conselho das Lendas (Cargo Preto)</strong>. 
+                        Aqui tratamos de assuntos estratégicos, parcerias, gestão de crises e da manutenção da ordem no universo PARADOCX.
+                        <br><br>
+                        As Lendas são os guardiões da cultura. Ao entrar em contato por aqui, você está acionando a estrutura administrativa da comunidade.
+                        Seja direto, respeitoso e claro em sua solicitação.
+                    </p>
+                </div>
+            </div>
             
-            <h2 id="online">Atendimento Online</h2>
+             <h2 id="online" style="margin-top: 2rem;">Canais de Atendimento</h2>
+            <p>Selecione o departamento adequado para sua necessidade.</p>
+            
             <div class="contact-grid">
                 <div class="contact-card">
                     <h3>Consultas Gerais</h3>
-                    <p>Dúvidas gerais sobre a comunidade.</p>
+                    <p>Dúvidas sobre como participar, problemas de acesso ou questões básicas sobre a filosofia.</p>
                     <a href="mailto:geral@comunidadeparadox.com" class="contact-link">geral@comunidadeparadox.com</a>
                 </div>
-                <div class="contact-card">
+                <div class="contact-card" style="border-color: #fff;">
                     <h3>Falar com o Criador</h3>
-                    <p>Assuntos estratégicos e parcerias.</p>
+                    <p>Assuntos de alto nível, visão estratégica e parcerias de longo prazo.</p>
                     <a href="mailto:criador@comunidadeparadox.com" class="contact-link">criador@comunidadeparadox.com</a>
                 </div>
                 <div class="contact-card">
-                    <h3>Conselho das Lendas</h3>
-                    <p>Questões administrativas e cultura.</p>
+                    <h3>Administração (Lendas)</h3>
+                    <p>Denúncias, sugestões estruturais ou contato direto com os moderadores.</p>
                     <a href="mailto:lendas@comunidadeparadox.com" class="contact-link">lendas@comunidadeparadox.com</a>
                 </div>
                 <div class="contact-card">
                     <h3>Projetos & Ideias</h3>
-                    <p>Fale com nossos líderes criativos.</p>
+                    <p>Tem uma proposta criativa? Fale com nossos líderes de Cargo Vermelho & Azul.</p>
                     <a href="mailto:projetos@comunidadeparadox.com" class="contact-link">projetos@comunidadeparadox.com</a>
                 </div>
             </div>
 
-            <h2 id="presencial" style="margin-top: 4rem;">Nossos Hubs de Eventos</h2>
-            <div class="locations-grid">
-                <div class="location-card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/image/explore-o-ese.jpg');">
-                    <h3>Caculé - BA</h3>
+            <h2 id="presencial" style="margin-top: 5rem; border-bottom: 1px solid #333; padding-bottom: 1rem; margin-bottom: 2rem;">Nossos Hubs (Território)</h2>
+            <p style="margin-bottom: 2rem;">A Comunidade PARADOCX é digital, mas nossas raízes são reais. Explore nossas bases operacionais.</p>
+
+            <div class="hubs-carousel-wrapper">
+                
+                <div class="hubs-track" id="hubs-track">
+                    
+                    <div class="hub-slide active">
+                        <div class="hub-bg" style="background-image: url('/image/explore-o-ese.jpg');"></div>
+                        <div class="hub-overlay"></div>
+                        <div class="hub-content">
+                            <span class="hub-tag">Base Operacional 01</span>
+                            <h3 class="hub-title">Caculé - BA</h3>
+                            <p class="hub-desc">O berço da organização. Onde as estratégias são traçadas e o núcleo administrativo reside.</p>
+                            <a href="https://goo.gl/maps/cacule" target="_blank" class="card-button" style="display: inline-block; width: auto;">Ver no Mapa ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="hub-slide">
+                        <div class="hub-bg" style="background-image: url('/image/filosofia-pilares.jpg');"></div>
+                        <div class="hub-overlay"></div>
+                        <div class="hub-content">
+                            <span class="hub-tag">Centro de Eventos</span>
+                            <h3 class="hub-title">Guanambi - BA</h3>
+                            <p class="hub-desc">A metrópole regional. Palco dos nossos workshops presenciais e encontros de grande porte.</p>
+                            <a href="https://goo.gl/maps/guanambi" target="_blank" class="card-button" style="display: inline-block; width: auto;">Ver no Mapa ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="hub-slide">
+                        <div class="hub-bg" style="background-image: url('/image/ESE-Kosmo.jpg');"></div>
+                        <div class="hub-overlay"></div>
+                        <div class="hub-content">
+                            <span class="hub-tag">Ponto de Encontro</span>
+                            <h3 class="hub-title">Licínio de Almeida</h3>
+                            <p class="hub-desc">Refúgio criativo. Um espaço focado em retiros para Deep Work e brainstorming da equipe.</p>
+                            <a href="https://goo.gl/maps/licinio" target="_blank" class="card-button" style="display: inline-block; width: auto;">Ver no Mapa ↗</a>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="location-card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/image/filosofia-pilares.jpg');">
-                    <h3>Guanambi - BA</h3>
-                </div>
-                <div class="location-card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/image/ESE-Kosmo.jpg');">
-                    <h3>Licínio de Almeida - BA</h3>
-                </div>
+
+                <button class="hub-nav-btn hub-prev" id="hub-prev">&#10094;</button>
+                <button class="hub-nav-btn hub-next" id="hub-next">&#10095;</button>
+
             </div>
 
-            <h2 id="faq-link" style="margin-top: 4rem;">Perguntas Frequentes (FAQ)</h2>
-            <p>Encontre respostas para as perguntas mais comuns sobre a Comunidade PARADOCX.</p>
-            <a href="#/faq" class="secondary-button">Ir para o FAQ</a>
-            <a href="#/junte-se" class="secondary-button" style="margin: 10px;">Ou envie seu <strong>Contato</strong> para interação direta</a>
-            
+            <h2 id="faq-link" style="margin-top: 5rem;">Ainda com dúvidas?</h2>
+            <p>Antes de enviar uma mensagem, verifique se sua pergunta já não foi respondida.</p>
+            <a href="#/faq" class="secondary-button" style="margin-top: 1rem;">Acessar FAQ Oficial</a>
+
         </div>
     </div>
 </div>

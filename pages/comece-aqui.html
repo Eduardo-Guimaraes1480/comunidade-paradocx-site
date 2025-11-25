@@ -1,3 +1,222 @@
+<style>
+    /* --- ESTILOS EXCLUSIVOS DESTA PÁGINA (AMARELO/VISITANTE) --- */
+
+    /* 1. FAIXA AMARELA (MARQUEE ANIMADO) */
+    .yellow-strip-container {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        overflow: hidden;
+        background: linear-gradient(90deg, #f1c40f, #f39c12, #e67e22);
+        padding: 1rem 0;
+        transform: rotate(1deg);
+        margin-top: 4rem;
+        margin-bottom: 5rem;
+        box-shadow: 0 0 25px rgba(241, 196, 15, 0.4);
+        z-index: 2;
+    }
+
+    .marquee-track-yellow {
+        display: flex;
+        white-space: nowrap;
+        gap: 3rem;
+        animation: marqueeScrollYellow 35s linear infinite;
+    }
+
+    .marquee-item-yellow {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 4rem;
+        color: #ffe3b7;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    @keyframes marqueeScrollYellow {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+    }
+
+    /* 2. INTRODUÇÃO AO CARGO AMARELO */
+    .intro-yellow-role {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 4rem auto;
+        padding: 0 1.5rem;
+    }
+    .intro-yellow-role h2 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: clamp(2rem, 5vw, 3rem);
+        color: #f1c40f;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+    }
+    .intro-yellow-role p {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.8;
+    }
+    
+    .yellow-highlight-box {
+        background: rgba(241, 196, 15, 0.05);
+        border: 1px solid #f1c40f;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: left;
+        position: relative;
+    }
+    
+    .yellow-highlight-box::before {
+        content: '💡';
+        position: absolute;
+        top: -15px;
+        left: 20px;
+        font-size: 1.5rem;
+        background: #121212;
+        padding: 0 10px;
+    }
+
+    .card-button:hover{
+        background-color: #f1c40f;
+        color: #1a1a1a !important;
+        border-color: #f1c40f;
+    }
+
+    /* --- NOVO: MAPA DE TRILHA VERTICAL (ROADMAP) --- */
+    .roadmap-container {
+        position: relative;
+        max-width: 1000px;
+        margin: 4rem auto;
+        padding: 2rem 0;
+    }
+
+    /* Linha Central da Trilha */
+    .roadmap-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 6px; /* largura da coluna de pontos */
+        transform: translateX(-50%);
+        z-index: 0;
+        /* cada "ponto" é um círculo; ajuste background-size para diameter e espaçamento vertical */
+        background-image: radial-gradient(circle at center, #121212 70%, #f1c40f 70%);
+        background-size: 6px 30px; /* 6px de largura do ponto, 18px de altura total (ponto + espaço) */
+        background-repeat: repeat-y;
+    }
+
+    /* Mascote Guia */
+    .mascote-guia {
+        position: absolute;
+        top: 50px; /* Ajuste a altura conforme a imagem */
+        left: 10%;
+        transform: translateX(-120%); /* Posição inicial à esquerda da linha */
+        transform: rotate(10deg);
+        width: 200px; /* Tamanho do mascote */
+        z-index: 2;
+        filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+    }
+
+    /* Nó da Trilha (Ponto de Parada) */
+    .roadmap-node {
+        position: relative;
+        width: 50%;
+        padding: 2rem 3rem;
+        z-index: 1;
+    }
+
+    /* Alternância Esquerda/Direita */
+    .roadmap-node:nth-child(odd) {
+        left: 0;
+        text-align: right;
+    }
+    .roadmap-node:nth-child(even) {
+        left: 50%;
+        text-align: left;
+    }
+
+    /* Círculo Central do Nó */
+    .roadmap-node::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        background: #f1c40f;
+        border: 4px solid #1a1a1a;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px #f1c40f50;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+    /* Posicionamento do Círculo */
+    .roadmap-node:nth-child(odd)::after { right: -10px; }
+    .roadmap-node:nth-child(even)::after { left: -10px; }
+
+    /* Card de Conteúdo do Nó */
+    .roadmap-content {
+        background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s, border-color 0.3s;
+        position: relative;
+    }
+    .roadmap-node:hover .roadmap-content {
+        transform: translateY(-5px);
+        border-color: #f1c40f;
+    }
+
+    /* Ícone do Nó */
+    .node-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid #f1c40f;
+        padding: 5px;
+        background: #000;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+    .roadmap-node:nth-child(odd) .node-icon { margin-left: auto; } /* Ícone à direita */
+
+    .node-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.5rem;
+        color: #f1c40f;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .node-desc {
+        color: #ccc;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Responsividade da Trilha */
+    @media (max-width: 768px) {
+        .roadmap-container::before { left: 20px; } /* Linha vai para a esquerda */
+        .mascote-guia { left: 20px; transform: translateX(-50%); }
+        .roadmap-node {
+            width: 100%;
+            left: 0 !important;
+            padding-left: 60px; /* Espaço para a linha */
+            text-align: left !important;
+            margin-bottom: 2rem;
+        }
+        .roadmap-node::after {
+            left: 6px !important; /* Círculo alinhado com a linha */
+            right: auto !important;
+        }
+        .node-icon { margin-left: 0 !important; }
+    }
+
+</style>
+
 <div class="hero-carousel">
     
     <div class="carousel-track">
@@ -46,44 +265,104 @@
 
 </div>
 
-<div class="main-content-principal">
-    <div class="tracklist">
-        <div class="track-item">
-            <h3>1. O Manifesto PARADOCX</h3>
-            <p><strong>Conceito:</strong> Antes de tudo, entenda nossa cultura. O Manifesto detalha os "Pilares
-                Universais" que guiam nosso comportamento, nosso pensamento e nossa forma de investigar a realidade.</p>
-            <a href="#/pilares" class="secondary-button" style="margin-top: 1rem;">Ler o Manifesto</a>
-        </div>
+<section class="text-section" style="padding-bottom: 0;">
+    <h2>Sua Jornada de Descoberta</h2>
+    <p>A Comunidade PARADOCX é vasta. Este guia foi desenhado para levar você do superficial ao profundo, no seu próprio ritmo.</p>
+</section>
 
-        <div class="track-item">
-            <h3>2. A Filosofia "E SE?"</h3>
-            <p><strong>Conceito:</strong> Mergulhe no motor da nossa comunidade. Esta página explica como usamos a
-                metodologia "E SE?" para explorar possibilidades, quebrar limitações e conectar ideias.</p>
-            <a href="#/sobre" class="secondary-button" style="margin-top: 1rem;">Entender a Filosofia</a>
-        </div>
-
-        <div class="track-item">
-            <h3>3. O Quadro de Conexões</h3>
-            <p><strong>Conceito:</strong> Veja nossa filosofia em ação. O Quadro de Conexões é a nossa principal
-                ferramenta de investigação coletiva, onde visualizamos as ligações entre projetos, pessoas e ideias.</p>
-            <a href="#/conexoes" class="secondary-button" style="margin-top: 1rem;">Explorar o Quadro</a>
-        </div>
-
-        <div class="track-item">
-            <h3>4. O Documento Mestre (ESE Guanambi 2.0)</h3>
-            <p><strong>Conceito:</strong> Para aqueles que desejam ir a fundo, este é o artigo oficial que detalha toda
-                a estrutura, regras, cargos e o propósito da Equipe de Soluções Experimentais (ESE).</p>
-            <a href="#/docs/detail/ese-guanambi-2-0" class="secondary-button" style="margin-top: 1rem;">Ver Detalhes do
-                DOC</a>
-        </div>
-
-        <div class="track-item">
-            <h3>5. O Projeto Bandeira: ESE Kosmo</h3>
-            <p><strong>Conceito:</strong> Conheça o projeto que materializa nossa visão. O ESE Kosmo é a plataforma que
-                estamos construindo para gamificar a vida e aplicar os Pilares no dia a dia. É o nosso convite à
-                colaboração.</p>
-            <a href="#/projetos/ese-kosmo" class="secondary-button" style="margin-top: 1rem;">Conhecer o Projeto</a>
-        </div>
-
+<div class="yellow-strip-container">
+    <div class="marquee-track-yellow">
+        <div class="marquee-item-yellow">INTEGRANTE COLABORADOR /// CARGO AMARELO /// VISITANTE ///</div>
+        <div class="marquee-item-yellow">INTEGRANTE COLABORADOR /// CARGO AMARELO /// VISITANTE ///</div>
+        <div class="marquee-item-yellow">INTEGRANTE COLABORADOR /// CARGO AMARELO /// VISITANTE ///</div>
     </div>
 </div>
+
+<div class="intro-yellow-role">
+    <h2 style="font-family: 'Paradocx CA', monospace;">O Poder da Observação</h2>
+    <p>
+        Nem todos precisam construir o castelo; alguns podem apenas apreciar a vista ou financiar a obra. 
+        O <strong>Cargo Amarelo (Visitante/Colaborador)</strong> representa a liberdade de estar presente sem a pressão de "fazer".
+    </p>
+    
+    <div class="yellow-highlight-box">
+        <p style="margin: 0; color: #ccc;">
+            <strong style="color: #f1c40f;">Você é bem-vindo aqui.</strong><br>
+            Se você só quer ler nossos artigos, ouvir nossas músicas ou observar as discussões no Discord sem interagir, tudo bem. 
+            O "Colaborador" também é aquele que apoia moralmente ou financeiramente, permitindo que os "Construtores" (Verdes/Azuis/Vermelhos) foquem na criação.
+            Explore o guia abaixo e consuma o que for útil para você.
+        </p>
+    </div>
+</div>
+
+<section class="text-section" style="padding-bottom: 0; padding-top: 2rem;">
+    <h2 style="margin-bottom: 1rem;">O Mapa da Comunidade</h2>
+    <p style="color: #888;">Siga a trilha abaixo para entender nossa linguagem.</p>
+</section>
+
+<div class="roadmap-container">
+    
+    <img src="/image/mascote-guia.png" alt="Mascote Guia" class="mascote-guia">
+
+    <div class="roadmap-node">
+        <div class="roadmap-content">
+            <img src="/image/logo.png" alt="Manifesto" class="node-icon">
+            <h3 class="node-title">01. Manifesto (Origem)</h3>
+            <p class="node-desc">Entenda por que existimos e qual é a nossa visão de mundo. Sem isso, nada faz sentido.</p>
+            <a href="#/sobre" class="card-button" style="border-color: #f1c40f; color: #f1c40f;">Ler Manifesto</a>
+        </div>
+    </div>
+
+    <div class="roadmap-node">
+        <div class="roadmap-content">
+            <img src="/image/filosofia-pilares.jpg" alt="Pilares" class="node-icon">
+            <h3 class="node-title">02. Lógica (Pilares)</h3>
+            <p class="node-desc">A tabela periódica da nossa filosofia. Aprenda as regras que regem a construção e destruição.</p>
+            <a href="#/pilares" class="card-button" style="border-color: #f1c40f; color: #f1c40f;">Ver Tabela</a>
+        </div>
+    </div>
+
+    <div class="roadmap-node">
+        <div class="roadmap-content">
+            <img src="/image/explore-o-ese.jpg" alt="Conexões" class="node-icon">
+            <h3 class="node-title">03. Prática (Conexões)</h3>
+            <p class="node-desc">Veja como ligamos os pontos. Uma investigação visual de como as ideias se conectam na realidade.</p>
+            <a href="#/conexoes" class="card-button" style="border-color: #f1c40f; color: #f1c40f;">Investigar Quadro</a>
+        </div>
+    </div>
+
+    <div class="roadmap-node">
+        <div class="roadmap-content">
+            <img src="/image/comunidade.jpg" alt="Docs" class="node-icon">
+            <h3 class="node-title">04. Conhecimento (DOCS)</h3>
+            <p class="node-desc">Mergulhe em artigos técnicos e análises profundas produzidas pela nossa equipe de pesquisa.</p>
+            <a href="#/docs" class="card-button" style="border-color: #f1c40f; color: #f1c40f;">Ler Biblioteca</a>
+        </div>
+    </div>
+
+    <div class="roadmap-node">
+        <div class="roadmap-content">
+            <img src="/image/ESE-Kosmo.jpg" alt="Kosmo" class="node-icon">
+            <h3 class="node-title">05. Ferramenta (Kosmo)</h3>
+            <p class="node-desc">Conheça a plataforma que estamos construindo para gamificar sua evolução pessoal.</p>
+            <a href="#/projetos/ese-kosmo" class="card-button" style="border-color: #f1c40f; color: #f1c40f;">Conhecer App</a>
+        </div>
+    </div>
+
+    <div class="roadmap-node">
+        <div class="roadmap-content">
+            <img src="/image/explore-o-ese.jpg" alt="Radio" class="node-icon">
+            <h3 class="node-title">06. Vibe (Rádio)</h3>
+            <p class="node-desc">Coloque os fones. A trilha sonora oficial para focar e criar junto conosco.</p>
+            <a href="#/projetos/radio-multiversus" class="card-button" style="border-color: #f1c40f; color: #f1c40f;">Ouvir Agora</a>
+        </div>
+    </div>
+
+</div>
+
+<section class="text-section" style="margin-bottom: 2rem; background: linear-gradient(235deg, rgb(241, 196, 15, 0.09), rgba(255, 255, 255, 0.03)); border-radius: 16px; margin-top: 2rem; border: 1px solid var(--color-border);">
+    <h2 style="font-family: 'Paradocx CA', monospace;;">Sentiu o chamado?</h2>
+    <p>Se você explorou, gostou e agora quer deixar de ser apenas um observador para se tornar um construtor...</p>
+    <a href="#/como-participar" class="card-button" style="background-color: transparent; border: 1px solid #2ecc71; color: #2ecc71 !important;">Quero ser Ativo (Verde)</a>
+    <a href="#/junte-se" class="card-button" style="margin-left: 5px; border-color: #f1c40f; color: #f1c40f;">Continuar Visitante</a>
+</section>

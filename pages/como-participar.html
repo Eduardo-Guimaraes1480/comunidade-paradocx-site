@@ -1,3 +1,78 @@
+<style>
+    /* --- ESTILOS ESPECÍFICOS DESTA PÁGINA --- */
+
+    /* 1. FAIXA VERDE (MARQUEE ANIMADO - CARGO 5) */
+    .green-strip-container {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%); /* Força largura total */
+        overflow: hidden;
+        /* Gradiente Verde Matrix/Hacker */
+        background: linear-gradient(90deg, #004d00, #00b300, #004d00);
+        transform: rotate(1.5deg); /* Inclinação para dinamismo */
+        margin-top: 4rem;
+        margin-bottom: 5rem;
+        box-shadow: 0 0 25px rgba(0, 179, 0, 0.4);
+        z-index: 2;
+        border-top: 1px solid #00ff00;
+        border-bottom: 1px solid #00ff00;
+    }
+
+    .marquee-track-green {
+        display: flex;
+        white-space: nowrap;
+        gap: 3rem;
+        animation: marqueeScrollGreen 25s linear infinite;
+    }
+
+    .marquee-item-green {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 4rem;
+        color: #61df61;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    @keyframes marqueeScrollGreen {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* 2. INTRODUÇÃO AO STATUS VERDE */
+    .intro-green-role {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 4rem auto;
+        padding: 0 1.5rem;
+    }
+    .intro-green-role h2 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: clamp(2rem, 5vw, 3rem);
+        color: #2ecc71; /* Verde do Cargo Ativo */
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+    }
+    .intro-green-role p {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.8;
+    }
+    
+    /* Caixa de Destaque */
+    .green-highlight-box {
+        background: rgba(46, 204, 113, 0.05);
+        border: 1px solid #2ecc71;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: left;
+    }
+    
+    .green-highlight-box strong { color: #2ecc71; }
+
+</style>
+
 <div class="hero-carousel">
 
     <div class="carousel-track">
@@ -50,91 +125,125 @@
 
 </div>
 
+<!-- INTRODUÇÃO -->
 <section class="text-section" style="padding-bottom: 0;">
     <h2>O Caminho do Membro</h2>
-    <p>Siga estes 3 passos simples para se integrar à nossa realidade.</p>
+    <p>Participar da comunidade é simples, mas exige intenção. Não queremos apenas números, queremos mentes ativas.</p>
 </section>
 
+<!-- FAIXA VERDE (NOVIDADE) -->
+<div class="green-strip-container">
+    <div class="marquee-track-green">
+        <div class="marquee-item-green">INTEGRANTE ATIVO /// CARGO VERDE /// EVOLUÇÃO ///</div>
+        <div class="marquee-item-green">INTEGRANTE ATIVO /// CARGO VERDE /// EVOLUÇÃO ///</div>
+        <div class="marquee-item-green">INTEGRANTE ATIVO /// CARGO VERDE /// EVOLUÇÃO ///</div>
+        <div class="marquee-item-green">INTEGRANTE ATIVO /// CARGO VERDE /// EVOLUÇÃO ///</div>
+        <div class="marquee-item-green">INTEGRANTE ATIVO /// CARGO VERDE /// EVOLUÇÃO ///</div>
+    </div>
+</div>
+
+<!-- CONTEXTO DO CARGO VERDE -->
+<div class="intro-green-role">
+    <h2>Torne-se um Integrante Ativo</h2>
+    <p>
+        Seguir os passos desta página é o único caminho para alcançar o <strong>Cargo Verde</strong>. 
+        Diferente de outras comunidades onde você sobe de nível apenas "existindo", aqui valorizamos a <strong>Ação</strong>.
+    </p>
+    
+    <div class="green-highlight-box">
+        <p style="margin: 0;">
+            <strong>💡 O Conceito de "Ativo":</strong><br>
+            Um Integrante Ativo não é apenas quem fala no chat. É quem consome os DOCS, quem participa das votações e quem entende a filosofia. 
+            Ao completar os 3 passos abaixo, você deixa de ser um visitante e passa a construir o Paradoxo conosco.
+        </p>
+    </div>
+</div>
+
+<!-- 3 PASSOS (GRID) -->
 <div class="content-grid">
+
+    <!-- PASSO 1 -->
     <div class="content-card">
-        <h1 style="color: var(--color-primary); font-size: 3rem; margin: 0;">01</h1>
-        <h3>Entenda a Filosofia</h3>
-        <p>Explore o site. Leia sobre os "Pilares" e o "Manifesto". O conhecimento é a chave de entrada.</p>
+        <h1 style="color: var(--color-primary); font-size: 4rem; margin: 0; line-height: 1; opacity: 0.8;">01</h1>
+        <h3 style="margin-top: 1rem;">Entenda a Filosofia</h3>
+        <p>Explore o site. Leia sobre os "Pilares" e o "Manifesto". O conhecimento é a chave de entrada. Sem entender o "porquê", o "como" não faz sentido.</p>
         <a href="#/comece-aqui" class="card-button">Comece Aqui</a>
     </div>
+
+    <!-- PASSO 2 -->
     <div class="content-card">
-        <h1 style="color: var(--color-primary); font-size: 3rem; margin: 0;">02</h1>
-        <h3>Entre no Discord</h3>
-        <p>Onde a comunidade vive. Participe das discussões diárias e conheça outros membros.</p>
+        <h1 style="color: var(--color-primary); font-size: 4rem; margin: 0; line-height: 1; opacity: 0.8;">02</h1>
+        <h3 style="margin-top: 1rem;">Entre no Discord</h3>
+        <p>O coração pulsante da comunidade. É lá que acontecem as discussões diárias, chamadas de voz e onde você conhecerá seus futuros aliados.</p>
         <a href="https://discord.com" target="_blank" class="card-button">Acessar Discord</a>
     </div>
+
+    <!-- PASSO 3 -->
     <div class="content-card">
-        <h1 style="color: var(--color-primary); font-size: 3rem; margin: 0;">03</h1>
-        <h3>Oficialize</h3>
-        <p>Preencha a ficha de inscrição para entrar no banco de talentos da equipe.</p>
+        <h1 style="color: var(--color-primary); font-size: 4rem; margin: 0; line-height: 1; opacity: 0.8;">03</h1>
+        <h3 style="margin-top: 1rem;">Oficialize</h3>
+        <p>Preencha a ficha de inscrição para entrar no banco de talentos. Isso sinaliza para a liderança (Cargo Preto) que você está pronto para evoluir.</p>
         <a href="#/junte-se" class="card-button">Inscrever-se</a>
     </div>
+
 </div>
 
 <hr style="border: 0; border-top: 1px solid var(--color-border); margin: 4rem auto; max-width: 900px;">
 
-<div class="content-grid">
-    <div class="contact-card" style="width: 900px; margin: 0rem 6rem; text-align: center;">
-        <h3>Seu Kit de Boas-Vindas Digital</h3>
-        <p>Use os links abaixo para mergulhar em cada faceta do nosso universo:</p>
+<!-- KIT DE BOAS VINDAS (LINKS EXTERNOS) -->
+<section class="text-section" style="padding-top: 0;">
+    <h2 style="margin-bottom: 2rem;">Seu Kit de Boas-Vindas Digital</h2>
+    <p>Nossa comunidade é descentralizada. Use os links abaixo para mergulhar em cada faceta do nosso universo:</p>
+</section>
+
+<div class="content-grid" style="padding-top: 0;">
+    
+    <div class="contact-card">
+        <img src="/image/explore-o-ese.jpg" alt="Figma" style="width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 1rem auto; object-fit: cover;">
+        <h3>O Quadro de Conexões</h3>
+        <p>Nossas investigações colaborativas e a visualização da filosofia "E SE?" acontecem em tempo real no Figma. É o nosso cérebro coletivo visual.</p>
+        <a href="https://www.figma.com/" target="_blank" class="card-button" style="background: transparent;">Acessar o Figma</a>
     </div>
+    
+    <div class="contact-card">
+        <img src="/image/comunidade.jpg" alt="Reddit" style="width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 1rem auto; object-fit: cover;">
+        <h3>As Discussões</h3>
+        <p>Os debates, teorias profundas e a apresentação de novos membros acontecem em nosso Subreddit oficial.</p>
+        <a href="https://www.reddit.com/" target="_blank" class="card-button" style="background: transparent;">Ir para o Reddit</a>
+    </div>
+    
+    <div class="contact-card">
+        <img src="/image/filosofia-pilares.jpg" alt="Substack" style="width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 1rem auto; object-fit: cover;">
+        <h3>DOCS Aprofundados</h3>
+        <p>Publicamos nossas descobertas e manifestos no Substack. Inscreva-se para receber os DOCS no seu e-mail.</p>
+        <a href="https://substack.com/" target="_blank" class="card-button" style="background: transparent;">Ler no Substack</a>
+    </div>
+
+    <div class="contact-card">
+        <img src="/image/banner.png" alt="Eventos" style="width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 1rem auto; object-fit: cover;">
+        <h3>Eventos e Encontros</h3>
+        <p>Fique por dentro dos workshops online e eventos presenciais através do Eventbrite.</p>
+        <a href="https://www.eventbrite.com/" target="_blank" class="card-button" style="background: transparent;">Ver Eventos</a>
+    </div>
+
 </div>
 
-<div class="content-grid" style="margin-top: 2rem; margin-left: 5rem; margin-right: 5rem;">
-        <div class="contact-card">
-            <h3>O Quadro de Conexões</h3>
-            <p>Nossas investigações colaborativas, diagramas e a visualização da filosofia "E SE?" acontecem em
-                tempo real em um quadro no Figma. É o nosso cérebro coletivo visual.</p>
-            <a href="[https://www.figma.com/](https://www.figma.com/)" target="_blank" class="cta-button"
-                style="margin-top: 0;">Acessar o
-                Figma</a>
-        </div>
-        <div class="contact-card">
-            <h3>As Discussões e Debates</h3>
-            <p>Os debates, teorias, troca de ideias e a apresentação de novos membros acontecem em nosso Subreddit
-                oficial. É o coração pulsante da nossa comunidade.</p>
-            <a href="[https://www.reddit.com/](https://www.reddit.com/)" target="_blank" class="cta-button"
-                style="margin-top: 0;">Ir para o
-                Reddit</a>
-        </div>
-        <div class="contact-card">
-            <h3>Artigos e DOCS Aprofundados</h3>
-            <p>Publicamos nossas descobertas, manifestos e análises filosóficas em nosso Substack. Inscreva-se para
-                receber os DOCS diretamente no seu e-mail e não perder nada.</p>
-            <a href="[https://substack.com/](https://substack.com/)" target="_blank" class="cta-button"
-                style="margin-top: 0;">Ler no
-                Substack</a>
-        </div>
-        <div class="contact-card">
-            <h3>Eventos, Workshops e Encontros</h3>
-            <p>Fique por dentro dos nossos encontros online, workshops e eventos presenciais através da nossa página
-                no Eventbrite. Garanta sua vaga em nossas próximas reuniões.</p>
-            <a href="[https://www.eventbrite.com/](https://www.eventbrite.com/)" target="_blank" class="cta-button"
-                style="margin-top: 0;">Ver
-                Eventos</a>
-        </div>
-</div>
+<hr style="border: 0; border-top: 1px solid var(--color-border); margin: 4rem auto; max-width: 900px;">
 
-<hr style="border: 0; border-top: 1px solid var(--color-border); margin: 0rem auto; max-width: 900px;">
-
-<section class="text-section" style="text-align: left;">
+<!-- DETALHES EM TEXTO (MANTIDO) -->
+<section class="text-section" style="text-align: left; max-width: 900px;">
     
     <h2 style="text-align: center; margin-bottom: 3rem;">Detalhes da Jornada</h2>
 
     <div style="margin-bottom: 4rem;">
-        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem;">1. A Porta de Entrada: O Hub Digital</h3>
+        <h3 style="color: #fff; font-size: 1.5rem; border-left: 3px solid var(--color-primary); margin-bottom: 1rem; padding-left: 1rem;">1. A Porta de Entrada: O Hub Digital</h3>
         <p>Você já está aqui. Este site é o "mapa" do nosso território. Antes de tentar entrar no círculo interno, explore. Leia os <a href="#/docs" style="color: var(--color-primary);">DOCS</a> da comunidade, entenda o que é o <a href="#/projetos/ese-kosmo" style="color: var(--color-primary);">ESE Kosmo</a> e veja se nossos valores ressoam com você.</p>
     </div>
 
     <div style="margin-bottom: 4rem;">
-        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem;">2. A Praça Pública: Discord & Redes</h3>
-        <p>A interação real acontece nas nossas plataformas externas. Não temos um "fórum" neste site porque acreditamos em usar as melhores ferramentas para cada fim.</p>
-        <ul style="list-style: none; padding: 0; margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem; border-left: 3px solid var(--color-primary); padding-left: 1rem;">2. A Praça Pública: Discord & Redes</h3>
+        <p>A interação real acontece nas nossas plataformas externas. Não temos um "fórum" neste site porque acreditamos em usar as melhores ferramentas para cada fim. O Discord é nossa sala de estar, o Reddit é nossa biblioteca e o Instagram é nosso megafone.</p>
+        <ul style="font-family: 'JetBrains Mono', monospace; list-style: none; padding: 0; margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
             <li><a href="https://discord.com" target="_blank" class="card-button">Discord (Chat)</a></li>
             <li><a href="https://instagram.com" target="_blank" class="card-button">Instagram (News)</a></li>
             <li><a href="https://reddit.com" target="_blank" class="card-button">Reddit (Fórum)</a></li>
@@ -142,17 +251,23 @@
     </div>
 
     <div style="margin-bottom: 4rem;">
-        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem;">3. O Rito de Passagem: Eventos</h3>
+        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem; border-left: 3px solid var(--color-primary); padding-left: 1rem;">3. O Rito de Passagem: Eventos</h3>
         <p>A melhor forma de provar seu valor é aparecendo. Organizamos workshops online e encontros presenciais. A participação nesses eventos é frequentemente o primeiro passo para ser notado pela liderança (Cargo Preto).</p>
         <div style="margin-top: 1.5rem;">
-            <a href="#/eventos-noticias" class="card-button">Ver Calendário de Eventos</a>
+            <a href="#/eventos-noticias" id="end" class="card-button" style="background: transparent; border: 1px solid var(--color-primary);">Ver Calendário de Eventos</a>
+            <style>
+                .card-button:hover{
+                    color: var(--color-text-primary);
+                }
+            </style>
         </div>
     </div>
 
-    <div style="background-color: var(--color-surface); padding: 3rem; border-radius: 16px; text-align: center; border: 1px solid var(--color-border);">
-        <h2 style="margin-top: 0;">Fique por dentro</h2>
-        <p>Ainda não está pronto para mergulhar de cabeça? Inscreva-se para receber as últimas análises e anúncios importantes.</p>
-        <a href="#/junte-se" class="card-button" style="background-color: var(--color-primary); color: #000; font-weight: bold;">Assinar Newsletter</a>
+    <!-- Bloco Newsletter Destacado -->
+    <div style="background: linear-gradient(235deg, rgb(46, 204, 113, 0.09), rgba(255, 255, 255, 0.03)); padding: 3rem; border-radius: 16px; text-align: center; border: 1px solid var(--color-border); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        <h2 style="margin-top: 0; color: #fff;">Fique por dentro</h2>
+        <p style="margin-bottom: 2rem;">Ainda não está pronto para mergulhar de cabeça? Inscreva-se para receber as últimas análises e anúncios importantes.</p>
+        <a href="#/junte-se" class="card-button" style="background-color: var(--color-primary); color: #000; font-weight: bold; padding: 15px 30px;">Assinar Newsletter</a>
     </div>
 
 </section>

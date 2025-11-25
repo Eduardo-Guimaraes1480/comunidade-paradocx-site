@@ -1,4 +1,19 @@
 /* assets/css/_variables.css */
+@font-face {
+    font-family: 'Paradocx CA';
+    /* Certifique-se de criar a pasta 'fonts' dentro de 'assets' e colocar o arquivo lá */
+    src: url('../fonts/PARADOCX_CA-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrainsMono-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 :root {
   --color-background: #121212;
   --color-surface: #1f1f1f;
@@ -14,6 +29,8 @@
 
   --font-family-base: Arial, Helvetica, sans-serif;
   --font-family-monospace: 'Courier New', Courier, monospace; /* Para títulos específicos */
+  --font-family-paradocx: 'Paradocx CA', sans-serif; /* Fonte personalizada para títulos */
+  --font-family-code: 'JetBrains Mono', monospace; /* Fonte monoespaçada para código */
 
   --border-radius-small: 5px;
   --border-radius-medium: 8px;

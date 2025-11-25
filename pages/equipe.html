@@ -1,3 +1,258 @@
+<style>
+    /* --- ESTILOS EXCLUSIVOS: LISTA HORIZONTAL DE CARGOS --- */
+
+    /* Estilo da Seção de Destaque (Rito de Passagem) */
+    .featured-project {
+        border: 1px solid #555;
+        border-radius: var(--border-radius-medium);
+        padding: 2.5rem;
+        margin: 3rem 0;
+        position: relative;
+    }
+    
+    .featured-project h2 {
+        font-family: var(--font-family-display);
+        color: var(--color-text-primary);
+        margin-bottom: 1.5rem;
+    }
+
+    .featured-project ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0rem 0;
+        text-align: left;
+    }
+
+    .featured-project li {
+        font-weight: bold;
+        margin-bottom: 0.8rem;
+        padding-left: 2rem;
+        position: relative;
+        color: var(--color-text-secondary);
+    }
+
+    .featured-project li::before {
+        content: '🎁'; /* Ícone de presente */
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-size: 0.9rem;
+    }
+
+    /* Cursor piscante para o efeito de digitação */
+    #dynamic-text::after {
+        content: '|';
+        margin-left: 2px;
+        animation: blinkCursor 0.7s infinite;
+        color: var(--color-primary);
+    }
+
+    @keyframes blinkCursor {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+    
+    .role-list-container {
+        display: flex;
+        flex-direction: column; /* Empilha os cards um abaixo do outro */
+        gap: 2rem;
+        margin-top: 3rem;
+        max-width: 900px; /* Largura controlada para leitura confortável */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Card Deitado (Horizontal) */
+    .role-card-horizontal {
+        display: grid;
+        grid-template-columns: 100px 1fr; /* Coluna do ícone fixa, resto flexível */
+        gap: 2rem;
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        padding: 2.5rem;
+        text-decoration: none;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        align-items: start;
+        text-align: left;
+    }
+
+    .role-card-horizontal:hover {
+        transform: translateX(10px); /* Move para a direita ao passar o mouse */
+    }
+
+    /* Ícone/Avatar na Esquerda */
+    .role-icon-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .role-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #333;
+        padding: 4px;
+        background: #000;
+        transition: border-color 0.3s;
+        margin-bottom: 1rem;
+    }
+
+    /* Badge de Nível abaixo do ícone */
+    .role-badge-mini {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid currentColor;
+        opacity: 0.8;
+    }
+
+    /* Conteúdo na Direita */
+    .role-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .role-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .role-title {
+        font-family: 'Paradocx CA', monospace;
+        font-size: 2rem;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .role-desc {
+        color: var(--color-text-secondary);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Lista de Atributos (Poder, Como Alcançar) */
+    .role-attributes {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas colunas de atributos */
+        gap: 2rem;
+        margin-top: 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .attr-box h4 {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        margin: 0 0 0.5rem 0;
+        opacity: 0.7;
+    }
+
+    .attr-box p {
+        font-size: 0.95rem;
+        color: #ccc;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* Botão de Ação Sutil */
+    .role-action {
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: inline-block;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s;
+        border: 1px solid currentColor;
+        padding: 6px 12px;
+        margin-right: 29rem;
+        border-radius: 4px;
+    }
+
+    .role-card-horizontal:hover .role-action {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* --- TEMAS DE CORES --- */
+
+    /* 1. CARGO CRIADOR (BRANCO/DOURADO) */
+    .theme-gold { border-left: 6px solid #daa520; background: linear-gradient(90deg, rgb(218, 165, 32, 0.09), rgba(255, 255, 255, 0.1)); }
+    .theme-gold:hover { border-color: #daa520; box-shadow: 0 5px 30px rgba(255, 215, 0, 0.15); background: linear-gradient(90deg, rgb(218, 165, 32, 0.05), rgba(255, 255, 255, 0.05));}
+    .theme-gold .role-title { color: #daa520; }
+    .theme-gold .role-icon { border-color: #daa520; }
+    .theme-gold .role-badge-mini { color: #daa520; background: rgb(218, 165, 32, 0.2);}
+    .theme-gold .role-action { color: #daa520; }
+
+    /* 2. CARGO PRETO (LENDAS) */
+    .theme-black { border-left: 6px solid  #444; background: linear-gradient(90deg, rgb(0, 0, 0, 0.3), rgba(0, 0, 0, 0.25));}
+    .theme-black:hover { border-color:  #444; box-shadow: 0 5px 30px rgba(255, 255, 255, 0.1); background: linear-gradient(90deg, rgb(0, 0, 0, 0.4), rgba(0, 0, 0, 0.35));}
+    .theme-black .role-title { color: #fff; }
+    .theme-black .role-icon { border-color: #444; }
+    .theme-black .role-badge-mini { color: #fff; border-color: #444; background: rgba(0, 0, 0, 0.2);}
+    .theme-black .role-action { color: #fff; }
+
+    /* 3. CARGO VERMELHO (ESPECIALISTAS) */
+    .theme-red { border-left: 6px solid #ef473a; background: linear-gradient(90deg, rgb(239, 71, 58, 0.09), rgba(255, 255, 255, 0.03));}
+    .theme-red:hover { border-color: #ef473a; box-shadow: 0 5px 30px rgba(239, 71, 58, 0.2); background: linear-gradient(90deg, rgb(239, 71, 58, 0.05), rgba(255, 255, 255, 0.02));}
+    .theme-red .role-title { color: #ef473a; }
+    .theme-red .role-icon { border-color: #ef473a; }
+    .theme-red .role-badge-mini { color: #ef473a; background: rgb(239, 71, 58, 0.2);}
+    .theme-red .role-action { color: #ef473a; }
+
+    /* 4. CARGO AZUL (XXX) */
+    .theme-blue { border-left: 6px solid #4364F7; background: linear-gradient(90deg, rgb(67, 100, 247, 0.09), rgba(255, 255, 255, 0.03));}
+    .theme-blue:hover { border-color: #4364F7; box-shadow: 0 5px 30px rgba(67, 100, 247, 0.2); background: linear-gradient(90deg, rgb(67, 100, 247, 0.05), rgba(255, 255, 255, 0.02)); }
+    .theme-blue .role-title { color: #4364F7; }
+    .theme-blue .role-icon { border-color: #4364F7; }
+    .theme-blue .role-badge-mini { color: #4364F7; background: rgb(67, 100, 247, 0.2); }
+    .theme-blue .role-action { color: #4364F7; }
+
+    /* 5. CARGO VERDE (ATIVO) */
+    .theme-green { border-left: 6px solid #2ecc71; background: linear-gradient(90deg, rgb(46, 204, 113, 0.09), rgba(255, 255, 255, 0.03));}
+    .theme-green:hover { border-color: #2ecc71; box-shadow: 0 5px 30px rgba(46, 204, 113, 0.2); background: linear-gradient(90deg, rgb(46, 204, 113, 0.05), rgba(255, 255, 255, 0.02));}
+    .theme-green .role-title { color: #2ecc71; }
+    .theme-green .role-icon { border-color: #2ecc71; }
+    .theme-green .role-badge-mini { color: #2ecc71; background: rgb(46, 204, 113, 0.2);}
+    .theme-green .role-action { color: #2ecc71; }
+
+    /* 6. CARGO AMARELO (COLABORADOR) */
+    .theme-yellow { border-left: 6px solid #f1c40f; background: linear-gradient(90deg, rgb(241, 196, 15, 0.09), rgba(255, 255, 255, 0.03));}
+    .theme-yellow:hover { border-color: #f1c40f; box-shadow: 0 5px 30px rgba(241, 196, 15, 0.2); background: linear-gradient(90deg, rgb(241, 196, 15, 0.05), rgba(255, 255, 255, 0.02));}
+    .theme-yellow .role-title { color: #f1c40f; }
+    .theme-yellow .role-icon { border-color: #f1c40f; }
+    .theme-yellow .role-badge-mini { color: #f1c40f; background: rgb(241, 196, 15, 0.2);}
+    .theme-yellow .role-action { color: #f1c40f; }
+
+    /* Responsividade Mobile: Vira Card Vertical */
+    @media (max-width: 700px) {
+        .role-card-horizontal {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 1.5rem;
+        }
+        .role-icon-wrapper { margin: 0 auto; }
+        .role-header { justify-content: center; }
+        .role-attributes { grid-template-columns: 1fr; text-align: left; }
+        .role-action { opacity: 1; transform: none; margin-top: 2rem; display: block; }
+    }
+
+</style>
 <div class="hero-carousel">
 
     <div class="carousel-track">
@@ -50,16 +305,21 @@
 
 </div>
 
-<div class="main-content-principal">
+<div class="main-content-principal" style="max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; text-align: center;">
 
-    <p>
-        A Equipe de Soluções Experimentais (ESE) é o motor criativo e filosófico da Comunidade PARADOCX. Enquanto a
+    <section class="text-section" style="padding-bottom: 0; padding-top: 0;">
+    <h2 id="equipe-title-container" style="font-family: var(--font-family-code); text-transform: uppercase; font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.4; min-height: 2.4em; width: 1200px; margin-left: -230px;">
+        A EQUIPE DE SOLUÇÕES E<span id="dynamic-text" style="color: var(--color-text-primary);">...</span> <br>(ESE)
+    </h2>
+    <p style="font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+        O motor criativo e filosófico da Comunidade PARADOCX. Enquanto a
         comunidade é a porta de entrada para todos, a equipe é formada por membros que demonstraram um profundo
         engajamento e desejo de construir ativamente nosso universo.
     </p>
+    </section>
 
-    <div class="featured-project" style="text-align: left; border-color: #555; margin-top: 3rem; margin-bottom: 3rem;">
-        <h2 style="text-align: center;">O Rito de Passagem: Como Entrar na Equipe</h2>
+    <div class="featured-project">
+        <h2 style="text-align: justify;">O Rito de Passagem: Como Entrar na Equipe</h2>
         <p>
             Inspirados pelo princípio de "gifting" (presentear) de comunidades como o Burning Man, a transição da
             Comunidade (círculo externo) para a Equipe ESE (círculo interno) acontece através de uma contribuição
@@ -81,97 +341,178 @@
         </p>
     </div>
 
-    <h2 style="margin-top: 3rem;">Estrutura de Cargos da Equipe ESE</h2>
-    <p style="font-style: italic; color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+    <h2 style="margin-top: 4rem; font-family: var(--font-family-paradocx); font-size: 2.5rem;">Estrutura de Cargos da Equipe ESE</h2>
+    
+    <p style="text-align: justify; font-style: italic; color: #888; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
         "Lembre-se… vocês entram nesse Grupo para conversar sobre Trabalho, e trabalho é coisa séria, mas ao mesmo tempo
         saiba que nesse trabalho o seu Chefe não te obriga a sempre se manter ativo... os que se manterem mais ativos
         aumentam de Cargo e Benefícios, os que não se manterem ativos, perda de Cargos até não ser mais um membro da
         Equipe…"
     </p>
 
-    <p>
+    <p style="text-align: justify;">
         A estrutura da equipe é um reflexo direto da filosofia do "Paradoxo Humano". Para entender a origem desses
         conceitos, conheça a história por trás do fundador e seus alter egos.
     </p>
-    <a href="#/integrantes" class="secondary-button" style="margin-bottom: 3rem;">Conheça os Integrantes da Equipe</a>
+    
+    <a href="#/integrantes" class="card-button" style="margin-bottom: 4rem; display: inline-block;">Conheça os Integrantes da Equipe</a>
 
-    <div class="cargo-container">
+<div class="role-list-container">
 
-        <div class="cargo-card">
-            <h3>{COR: Branco/Dourado} - Cargo 1: Criador </h3>
-            <ul>
-                <li><strong>Descrição:</strong> Criador dos Prós ou dos Contras; ele tenta ao máximo não ser limitante.
-                </li>
-                <li><strong>Poder:</strong> Liderança ou Vice-Liderança; Mantém e tem todo o controle sobre a equipe e
-                    os Cargos abaixo. </li>
-                <li><strong>Como Alcançar:</strong> Criar o Grupo; ou Remodelar o Grupo. </li>
-            </ul>
+    <a href="#/comece-aqui" class="role-card-horizontal theme-yellow">
+        <div class="role-icon-wrapper">
+            <img src="/image/logo2.png" alt="Colaborador" class="role-icon">
+            <span class="role-badge-mini">NIVEL 6</span>
         </div>
-
-        <div class="cargo-card">
-            <h3>{COR: Preto} - Cargo 2: Lendas</h3>
-            <ul>
-                <li><strong>Descrição:</strong> Os mais habilidosos que merecem respeito; os que sempre fazem acontecer;
-                    os que estão na equipe há muito tempo. </li>
-                <li><strong>Poder:</strong> Administrar os Grupos; Permissão em usar o que quiser; fazer o que quiser; e
-                    mandar no que quiser, sob a supervisão do Criador. </li>
-                <li><strong>Como Alcançar:</strong> Marcar seu nome na equipe; feitos Grandes; muito tempo na Equipe.
-                </li>
-            </ul>
+        <div class="role-content">
+            <div class="role-header">
+                <h3 class="role-title">Colaborador</h3>
+            </div>
+            <p class="role-desc">Apenas visualiza o grupo, interage com reações e participa pontualmente.</p>
+            
+            <div class="role-attributes">
+                <div class="attr-box">
+                    <h4>/// Poder</h4>
+                    <p>Interagir e participar de projetos sob supervisão.</p>
+                </div>
+                <div class="attr-box">
+                    <h4>/// Requisito</h4>
+                    <p>Ser um apoiador ou patrocinador.</p>
+                </div>
+            </div>
+            <span class="role-action">Comece Aqui &rarr;</span>
         </div>
+    </a>
 
-        <div class="cargo-card">
-            <h3>{COR: Vermelho} - Cargo 3: Especialistas</h3>
-            <p>Estes são cargos para membros confiáveis e imersos na Filosofia "ESE?", focados em áreas específicas.
-            </p>
-            <ul>
-                <li><strong>Pequeno Criador:</strong> Focado em pôr em prática o lado criativo, liderar projetos e
-                    experimentos.</li>
-                <li><strong>Belo Discutidor:</strong> Usa os dois lados do cérebro para desenvolver conversas, organizar
-                    reuniões e compartilhar conhecimentos.</li>
-                <li><strong>Grande Pesquisador:</strong> Prefere os fatos e o lado lógico para pesquisar, organizar e
-                    coletar dados para a equipe.</li>
-                <li><strong>Saúde:</strong> Responsável por cuidar da saúde física e mental dos integrantes, oferecendo
-                    um espaço para descanso e recomendações.</li>
-                <li><strong>Administradores Financeiros:</strong> Cuida dos negócios, marketing, investimentos e da
-                    parte financeira da equipe.</li>
-            </ul>
+    <a href="#/como-participar" class="role-card-horizontal theme-green">
+        <div class="role-icon-wrapper">
+            <img src="/image/banner.png" alt="Ativo" class="role-icon">
+            <span class="role-badge-mini">NIVEL 5</span>
         </div>
-
-        <div class="cargo-card">
-            <h3>{COR: Azul} - Cargo 4: XXX </h3>
-            <ul>
-                <li><strong>Descrição:</strong> Pessoa disposta a dar seu máximo, que achou seu propósito e tem
-                    habilidades valiosas. </li>
-                <li><strong>Poder:</strong> Pode definir o nome do seu próprio cargo e a área específica em que deseja
-                    trabalhar na equipe. </li>
-                <li><strong>Como Alcançar:</strong> Ser habilidoso em qualquer área ou ter hobbies úteis para a Equipe.
-                </li>
-            </ul>
+        <div class="role-content">
+            <div class="role-header">
+                <h3 class="role-title">Integrante Ativo</h3>
+            </div>
+            <p class="role-desc">Pessoa interessada que já agregou ao grupo e está se descobrindo na Equipe.</p>
+            
+            <div class="role-attributes">
+                <div class="attr-box">
+                    <h4>/// Poder</h4>
+                    <p>Voto em reuniões e respeito nas decisões.</p>
+                </div>
+                <div class="attr-box">
+                    <h4>/// Requisito</h4>
+                    <p>Manter-se ativo e participativo.</p>
+                </div>
+            </div>
+            <span class="role-action">Como Participar &rarr;</span>
         </div>
+    </a>
 
-        <div class="cargo-card">
-            <h3>{COR: Verde} - Cargo 5: Integrante Ativo</h3>
-            <ul>
-                <li><strong>Descrição:</strong> Pessoa interessada que já agregou ao grupo e está se descobrindo na
-                    Equipe. </li>
-                <li><strong>Poder:</strong> Tem respeito pelos integrantes e uma boa posição para discutir em reuniões e
-                    tomar decisões importantes. </li>
-                <li><strong>Como Alcançar:</strong> Se manter ativo na Equipe. </li>
-            </ul>
+    <a href="#/integrantes" class="role-card-horizontal theme-blue">
+        <div class="role-icon-wrapper">
+            <img src="/image/comunidade.jpg" alt="XXX" class="role-icon">
+            <span class="role-badge-mini">NIVEL 4</span>
         </div>
-
-        <div class="cargo-card">
-            <h3>{COR: Amarelo} - Cargo 6: Integrante Colaborador</h3>
-            <ul>
-                <li><strong>Descrição:</strong> Apenas visualiza o grupo, interage com reações e fala o que acha
-                    necessário. </li>
-                <li><strong>Poder:</strong> Interagir no grupo ou privado e participar de projetos sob supervisão.
-                </li>
-                <li><strong>Como Alcançar:</strong> Se manter na equipe, mesmo que inativo, ou ser um
-                    colaborador/patrocinador. </li>
-            </ul>
+        <div class="role-content">
+            <div class="role-header">
+                <h3 class="role-title">Cargo XXX (Azul)</h3>
+            </div>
+            <p class="role-desc">Pessoa disposta a dar seu máximo, que achou seu propósito e tem habilidades valiosas para a equipe.</p>
+            
+            <div class="role-attributes">
+                <div class="attr-box">
+                    <h4>/// Poder</h4>
+                    <p>Definir o nome do próprio cargo e área de trabalho.</p>
+                </div>
+                <div class="attr-box">
+                    <h4>/// Requisito</h4>
+                    <p>Ser habilidoso e ter hobbies úteis para a Equipe.</p>
+                </div>
+            </div>
+            <span class="role-action">Ver Integrantes &rarr;</span>
         </div>
+    </a>
 
-    </div>
+    <a href="#/areas" class="role-card-horizontal theme-red">
+        <div class="role-icon-wrapper">
+            <img src="/image/filosofia-pilares.jpg" alt="Especialistas" class="role-icon">
+            <span class="role-badge-mini">NIVEL 3</span>
+        </div>
+        <div class="role-content">
+            <div class="role-header">
+                <h3 class="role-title">Especialistas</h3>
+            </div>
+            <p class="role-desc">Membros confiáveis e imersos na Filosofia "ESE?", focados em áreas específicas como Criação, Debate, Pesquisa e Saúde.</p>
+            
+            <div class="role-attributes">
+                <div class="attr-box">
+                    <h4>/// Poder</h4>
+                    <p>Liderar Áreas e Subgrupos temáticos.</p>
+                </div>
+                <div class="attr-box">
+                    <h4>/// Requisito</h4>
+                    <p>Especializar-se e assumir responsabilidade técnica.</p>
+                </div>
+            </div>
+            <span class="role-action">Ver Áreas de Atuação &rarr;</span>
+        </div>
+    </a>
+
+    <a href="#/contato" class="role-card-horizontal theme-black">
+        <div class="role-icon-wrapper">
+            <img src="/image/escudo-equipe-logo.png" alt="Lendas" class="role-icon">
+            <span class="role-badge-mini">NIVEL 2</span>
+        </div>
+        <div class="role-content">
+            <div class="role-header">
+                <h3 class="role-title">Conselho das Lendas</h3>
+            </div>
+            <p class="role-desc">Os mais habilidosos que merecem respeito; os que sempre fazem acontecer; os que estão na equipe há muito tempo.</p>
+            
+            <div class="role-attributes">
+                <div class="attr-box">
+                    <h4>/// Poder</h4>
+                    <p>Administrar Grupos e tomar decisões estratégicas.</p>
+                </div>
+                <div class="attr-box">
+                    <h4>/// Requisito</h4>
+                    <p>Marcar seu nome na história com feitos grandes.</p>
+                </div>
+            </div>
+            <span class="role-action">Contatar Lendas &rarr;</span>
+        </div>
+    </a>
+
+    <a href="#/integrantes/eduardo-guimaraes" class="role-card-horizontal theme-gold">
+        <div class="role-icon-wrapper">
+            <img src="/image/logo.png" alt="Criador" class="role-icon">
+            <span class="role-badge-mini">NIVEL 1</span>
+        </div>
+        <div class="role-content">
+            <div class="role-header">
+                <h3 class="role-title">Criador</h3>
+            </div>
+            <p class="role-desc">Criador dos Prós ou dos Contras; ele tenta ao máximo não ser limitante. Mantém e tem todo o controle sobre a equipe e os Cargos abaixo.</p>
+            
+            <div class="role-attributes">
+                <div class="attr-box">
+                    <h4>/// Poder</h4>
+                    <p>Liderança ou Vice-Liderança Suprema.</p>
+                </div>
+                <div class="attr-box">
+                    <h4>/// Requisito</h4>
+                    <p>Criar o Grupo ou Remodelar o Grupo.</p>
+                </div>
+            </div>
+            <span class="role-action">Ver Sobre &rarr;</span>
+        </div>
+    </a>
+
 </div>
+
+<section class="text-section" style="margin-top: 4rem;">
+    <p style="font-style: italic; color: var(--color-text-secondary);">
+        "Lembre-se… vocês entram nesse Grupo para conversar sobre Trabalho, e trabalho é coisa séria. O seu Chefe não te obriga a sempre se manter ativo... mas os que se mantêm, colhem os frutos."
+    </p>
+</section>

@@ -1,79 +1,208 @@
+<style>
+    /* --- ESTILOS EXCLUSIVOS: CRONOLOGIA & LENDAS --- */
+
+    /* 1. FAIXA PRETA (MARQUEE) */
+    .black-strip-container {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%); 
+        overflow: hidden;
+        background: linear-gradient(90deg, #000000, #1a1a1a, #000000);
+        transform: rotate(1deg);
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        z-index: 2;
+    }
+
+    .marquee-track-black {
+        display: flex;
+        white-space: nowrap;
+        gap: 3rem;
+        animation: marqueeScrollBlack 35s linear infinite;
+    }
+
+    .marquee-item-black {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 4rem;
+        color: #3f3f3f;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    @keyframes marqueeScrollBlack {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* 2. INTRODUÇÃO AO CARGO PRETO */
+    .intro-black-role {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 4rem auto;
+        padding: 0 1.5rem;
+    }
+    .intro-black-role h2 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: clamp(2rem, 5vw, 3rem);
+        color: #fff; /* Branco/Preto */
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        text-shadow: 0 0 20px rgba(255,255,255,0.5);
+    }
+    .intro-black-role p {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.8;
+    }
+
+    /* Destaque solene */
+    .legend-box {
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid #fff;
+        border-radius: 8px;
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: left;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    }
+
+    /* 3. TRACKLIST ESTILIZADA (LINHA DO TEMPO) */
+    .timeline-header {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.2rem;
+        color: #fff;
+        border-bottom: 2px solid #fff;
+        padding-bottom: 0.5rem;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .timeline-header::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #fff;
+    }
+
+    /* Ajustes finos nos itens da timeline original */
+    .track-item {
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+        border-left: 2px solid #333;
+        transition: border-color 0.3s;
+    }
+    .track-item:hover {
+        border-left-color: var(--color-primary);
+    }
+    .track-item h3 {
+        color: #fff;
+        margin-bottom: 0.5rem;
+    }
+
+</style>
+
 <div class="static-layout-container">
 
     <section class="static-header" style="background-image: url('/image/banner.png');">
-        <h1>Cronologia & Roadmap</h1>
-        <p>A linha do tempo dos nossos marcos, projetos e evoluções filosóficas.</p>
+        <h1>Cronologia & Legado</h1>
+        <p>O registro oficial dos marcos, eras e evoluções da Comunidade PARADOCX.</p>
     </section>
 
-    <div class="static-main-wrapper">
+    <div class="black-strip-container">
+        <div class="marquee-track-black">
+            <div class="marquee-item-black">CARGO PRETO /// LENDAS /// GUARDIÕES DO TEMPO ///</div>
+            <div class="marquee-item-black">CARGO PRETO /// LENDAS /// GUARDIÕES DO TEMPO ///</div>
+            <div class="marquee-item-black">CARGO PRETO /// LENDAS /// GUARDIÕES DO TEMPO ///</div>
+            <div class="marquee-item-black">CARGO PRETO /// LENDAS /// GUARDIÕES DO TEMPO ///</div>
+        </div>
+    </div>
 
+    <div class="static-main-wrapper">
+        
         <aside class="static-sidebar">
-            <h3>Linha do Tempo</h3>
+            <h3>Navegação Temporal</h3>
             <ul>
-                <li><a href="#historia" class="anchor-link">História (2023-2025)</a></li>
-                <li><a href="#roadmap" class="anchor-link">Roadmap Futuro</a></li>
+                <li><a href="#conceito" class="anchor-link">O Papel das Lendas</a></li>
+                <li><a href="#passado" class="anchor-link">Era I: A Gênese</a></li>
+                <li><a href="#presente" class="anchor-link">Era II: O Hub Digital</a></li>
+                <li><a href="#futuro" class="anchor-link">Era III: O Futuro</a></li>
             </ul>
         </aside>
 
         <div class="static-main-content">
 
-            <h2 id="historia">A Nossa História</h2>
-            <div class="tracklist">
-                <div class="track-item">
-                    <h3>2023: A Gênese</h3>
-                    <p><strong>Conceito:</strong> O nascimento da "Equipe de Soluções Experimentais" (ESE) a partir de
-                        discussões e da vontade de explorar o "E SE?". É formulada a primeira versão da "Tabela dos
-                        Pilares
-                        Universais".</p>
-                </div>
-                <div class="track-item">
-                    <h3>2024: O Universo Criativo</h3>
-                    <p><strong>Conceito:</strong> Foco na expansão do universo ficcional. Desenvolvimento dos conceitos
-                        para
-                        álbuns como "RÁDIO MULTIVERSUS" e documentação da história dos alter egos (Dudheloco, 4STICK).
+            <div id="conceito" class="intro-black-role" style="padding: 0; margin: 0 0 4rem 0; text-align: left;">
+                <h2 style="text-align: left; color: #fff; font-size: 2.5rem;">O Registro das Lendas</h2>
+                <p>
+                    Na PARADOCX, o tempo não é apenas uma sequência de eventos, é uma construção consciente. 
+                    O <strong>Cargo Preto (Lendas)</strong> é composto por aqueles que não apenas testemunharam a história, mas que a escreveram com suas próprias ações.
+                </p>
+                
+                <div class="legend-box">
+                    <p style="margin: 0; color: #ddd;">
+                        <strong>🗝️ A Responsabilidade do Cargo Preto:</strong><br>
+                        As Lendas são os arquitetos do longo prazo. Enquanto outros focam no projeto da semana, o Cargo Preto olha para o horizonte de 10 anos. 
+                        Esta página de Cronologia é mantida por eles para garantir que cada passo dado pela comunidade — seja um erro ou uma vitória — fique registrado como aprendizado para as futuras gerações.
                     </p>
-                </div>
-                <div class="track-item">
-                    <h3>2025: A Estruturação</h3>
-                    <p><strong>Conceito:</strong> Lançamento do site oficial da Comunidade PARADOCX como um "Hub"
-                        central.
-                        Adoção do modelo "Hub-and-Spoke", conectando a comunidade a ferramentas externas como Figma,
-                        Reddit e
-                        Substack. Foco no desenvolvimento do projeto bandeira, "ESE Kosmo".</p>
                 </div>
             </div>
 
-            <h2 id="roadmap" style="margin-top: 4rem;">Roadmap de Desenvolvimento</h2>
-            <p>Acreditamos na transparência e na construção coletiva. Acompanhe o progresso do nosso projeto bandeira em
-                tempo real.</p>
-            <div class="tracklist">
-                <div class="track-item" style="border-left-color: #4caf50;">
-                    <h3>Fase 1: Fundação (Concluído)</h3>
-                    <p><strong>Status:</strong> Finalizado.</p>
-                    <p><strong>Foco:</strong> Consolidação da visão estratégica, definição da arquitetura do ecossistema
-                        e desenvolvimento do site "Hub" da comunidade.</p>
+            <div id="passado">
+                <div class="timeline-header">Era I: A Fundação (2023-2024)</div>
+                <div class="tracklist">
+                    <div class="track-item">
+                        <h3>2023: A Gênese</h3>
+                        <p><strong>O Marco Zero.</strong> O nascimento da "Equipe de Soluções Experimentais" (ESE). As primeiras discussões em grupos fechados revelaram a necessidade de explorar o "E SE?". Aqui foi formulada a primeira versão da "Tabela dos Pilares Universais" pelas primeiras Lendas.</p>
+                    </div>
+                    <div class="track-item">
+                        <h3>2024: A Expansão Criativa</h3>
+                        <p>Foco total na construção de *lore*. O universo ficcional começou a ganhar forma com o desenvolvimento dos conceitos para "RÁDIO MULTIVERSUS" e a documentação da história dos alter egos (4STICK, Dudheloco).</p>
+                    </div>
                 </div>
-                <div class="track-item" style="border-left-color: #bb86fc;">
-                    <h3>Fase 2: MVP do ESE Kosmo</h3>
-                    <p><strong>Status:</strong> Em Desenvolvimento Ativo.</p>
-                    <p><strong>Foco:</strong> Construir o Produto Mínimo Viável (MVP) da plataforma, replicando a
-                        funcionalidade do protótipo U.P.T. e implementando o sistema de Guildas. Lançamento da versão
-                        Alpha para a Equipe ESE.</p>
+            </div>
+
+            <div id="presente">
+                <div class="timeline-header" style="color: var(--color-primary); border-color: var(--color-primary);">Era II: A Estruturação (2025 - Atual)</div>
+                <div class="tracklist">
+                    <div class="track-item" style="border-left-color: var(--color-primary);">
+                        <h3>O Hub Digital</h3>
+                        <p>Lançamento deste site. A transição de um grupo de WhatsApp para uma organização digital descentralizada. Adoção do modelo "Hub-and-Spoke" para conectar ferramentas externas.</p>
+                    </div>
+                    <div class="track-item" style="border-left-color: var(--color-primary);">
+                        <h3>MVP do ESE Kosmo</h3>
+                        <p><strong>Status: Em Desenvolvimento.</strong> Início da codificação da nossa plataforma própria de gamificação. O foco atual da equipe de Programação (Liderada por Alexson).</p>
+                    </div>
                 </div>
-                <div class="track-item" style="border-left-color: #555;">
-                    <h3>Fase 3: Beta Comunitário</h3>
-                    <p><strong>Status:</strong> Planejado.</p>
-                    <p><strong>Foco:</strong> Abrir o acesso da plataforma para a Comunidade PARADOCX mais ampla.
-                        Coletar feedback sobre as funcionalidades sociais e validar a experiência do usuário em maior
-                        escala.</p>
+            </div>
+
+            <div id="futuro">
+                <div class="timeline-header" style="border-color: #555; color: #888;">Era III: O Horizonte</div>
+                <div class="tracklist">
+                    <div class="track-item" style="border-left-color: #555;">
+                        <h3 style="color: #aaa;">Beta Comunitário</h3>
+                        <p style="color: #888;">Abertura das portas do ESE Kosmo para todos os membros da comunidade. Validação em massa da metodologia U.P.T.</p>
+                    </div>
+                    <div class="track-item" style="border-left-color: #555;">
+                        <h3 style="color: #aaa;">Expansão Física</h3>
+                        <p style="color: #888;">Estabelecimento de Hubs físicos permanentes em capitais, transformando a PARADOCX em um movimento cultural tangível.</p>
+                    </div>
                 </div>
-                <div class="track-item" style="border-left-color: #555;">
-                    <h3>Fase 4: Lançamento Público e Expansão</h3>
-                    <p><strong>Status:</strong> Futuro</p>
-                    <p><strong>Foco:</strong> Lançamento oficial da plataforma. Introdução de sistemas avançados como
-                        Árvores de Habilidades e a economia comunitária. Intensificação do marketing usando o "Universo
-                        ESE" como motor cultural.</p>
-                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center; padding: 2rem; border: 1px solid #333; border-radius: 12px;">
+                <h3>Quer fazer parte da história?</h3>
+                <p style="color: #ccc; margin-bottom: 1.5rem;">O futuro não está escrito. Ele está sendo codificado, desenhado e debatido agora mesmo.</p>
+                <a href="#/junte-se" class="secondary-button">Junte-se à Construção</a>
             </div>
 
         </div>
