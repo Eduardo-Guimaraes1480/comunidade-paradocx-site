@@ -84,7 +84,7 @@ main {
 /* A Sidebar (Estilo Limpo com Linha) */
 .search-sidebar {
     position: sticky;
-    top: 120px; /* Fixa abaixo do header */
+    top: 100px; /* Fixa abaixo do header */
     
     /* REMOVIDO: Background e Borda de Caixa */
     background-color: transparent;

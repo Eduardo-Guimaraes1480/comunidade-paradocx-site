@@ -1,0 +1,128 @@
+<div class="search-layout-base">
+    
+    <div class="search-sidebar-layout">
+
+        <aside class="search-sidebar">
+            
+            <h2>Cargos Azuis</h2>
+            <p>Conecte-se com as habilidades únicas dos membros (Cargos Azuis e Especialistas).</p>
+
+            <input type="text" id="talent-search-input" placeholder="Buscar por nome, skill ou cargo..." class="sidebar-search-input">
+            
+            <div class="categories-list" style="text-align: left;">
+                <h3>Filtrar por Categorias:</h3>
+                <ul>
+                    <li><a href="#" onclick="document.getElementById('talent-search-input').value='Programador'; document.getElementById('talent-search-input').dispatchEvent(new Event('input')); return false;">Programação</a></li>
+                    <li><a href="#" onclick="document.getElementById('talent-search-input').value='Design'; document.getElementById('talent-search-input').dispatchEvent(new Event('input')); return false;">Design & Arte</a></li>
+                    <li><a href="#" onclick="document.getElementById('talent-search-input').value='Escrita'; document.getElementById('talent-search-input').dispatchEvent(new Event('input')); return false;">Escrita & Roteiro</a></li>
+                    <li><a href="#" onclick="document.getElementById('talent-search-input').value='Gestão'; document.getElementById('talent-search-input').dispatchEvent(new Event('input')); return false;">Gestão & Liderança</a></li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>Seja um Cargo Azul</h4>
+                <p>Defina sua própria vocação. Os Cargos Azuis são membros que oferecem suas habilidades específicas para fortalecer a comunidade.</p>
+                <a href="#/junte-se" class="secondary-button small">Cadastrar Perfil</a>
+            </div>
+        </aside>
+    </div>
+
+    <main class="search-results-area">
+        <div class="results-header">
+            <h1>Membros Cadastrados</h1>
+            <p>Rede de Colaboração</p>
+        </div>
+
+        <div class="grid-container" id="talents-grid-container">
+            </div>
+    </main>
+
+</div>
+
+<style>
+    /* Estilos Locais para garantir funcionamento */
+    .search-layout-base {
+        display: grid;
+        grid-template-columns: 280px 1fr; /* Sidebar Fixa | Conteúdo Fluido */
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        min-height: 80vh;
+    }
+
+    .search-sidebar-layout {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+    }
+
+    .results-header {
+        margin-bottom: 1rem;
+    }
+
+    .search-results-area {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-left: 3rem;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .grid-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .skill-tag {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        border-radius: 12px;
+        font-family: 'JetBrains Mono', monospace;
+        display: inline-block;
+    }
+    
+    .talent-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: rgba(67, 100, 247, 0.09);
+        border: 1px solid rgba(67, 100, 247, 0.15);
+        padding: 1.5rem;
+        border-radius: 12px;
+        transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .talent-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--color-primary);
+    }
+
+    /* Responsividade Mobile */
+    @media (max-width: 768px) {
+        .search-layout-base {
+            grid-template-columns: 1fr;
+        }
+        .search-sidebar {
+            border-right: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+</style>

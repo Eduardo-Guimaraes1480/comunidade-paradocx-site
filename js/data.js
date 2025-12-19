@@ -4,45 +4,90 @@ const integrantesData = [
     {
         id: 'eduardo-guimaraes',
         name: 'Eduardo Guimarães',
-        role: 'Fundador da Equipe',
+        role: 'A Origem (Criador)',
         image: '/image/integrantes/Eduardo-Guimaraes.jpg',
-        url: '#/integrantes/eduardo-guimaraes'
+        url: '#/integrantes/eduardo-guimaraes',
+        skills: ['Filosofia', 'Gestão', 'Visão Sistêmica'],
+        bio: 'O Arquiteto. Aquele que iniciou o movimento e plantou as sementes fundamentais.'
     },
     {
         id: 'guilherme-nunes',
         name: 'Guilherme Nunes',
         role: 'Pequeno Criador',
         image: '/image/integrantes/Guilherme-Nunes.png',
-        url: '#' // Manter sem link por enquanto
+        url: '#/integrantes/guilherme-nunes',
+        skills: ['Criação', 'Liderança', 'Projetos'],
+        bio: 'Líder da classe criativa, focado em materializar ideias abstratas em projetos reais.'
     },
     {
         id: 'alexson-pereira',
         name: 'Alexson Pereira',
         role: 'Programador da Equipe',
         image: '/image/integrantes/Alexson-Pereira.jpg',
-        url: '#' // Manter sem link por enquanto
+        url: '#',
+        skills: ['Fullstack', 'Lógica', 'Automação'],
+        bio: 'O arquiteto digital. Responsável por traduzir a filosofia em código funcional.'
     },
     {
         id: 'gabriel-nestor',
         name: 'Gabriel Nestor',
         role: 'Artista (Comunicação)',
         image: '/image/integrantes/Gabriel-Nestor.png',
-        url: '#' // Manter sem link por enquanto
+        url: '#',
+        skills: ['Design', 'Comunicação', 'Artes Visuais'],
+        bio: 'A voz visual da equipe. Transforma conceitos complexos em arte acessível.'
     },
     {
         id: 'jandilson-dias',
         name: 'Jandilson Dias',
         role: 'Artista e Neurociência',
         image: '/image/integrantes/Jandilson-Dias.png',
-        url: '#' // Manter sem link por enquanto
+        url: '#',
+        skills: ['Neurociência', 'Arte', 'Pesquisa'],
+        bio: 'Explora a interseção entre o cérebro humano e a expressão artística.'
     },
     {
         id: 'pedro-castro',
         name: 'Pedro Castro',
         role: 'Designer da Equipe',
         image: '/image/integrantes/Pedro-Castro.png',
-        url: '#' // Manter sem link por enquanto
+        url: '#',
+        skills: ['UI/UX', 'Branding', 'Estética'],
+        bio: 'Guardião da identidade visual e da experiência do usuário no ecossistema.'
     }
+];
+
+const talentsData = [
+    ...integrantesData, // Inclui a equipe ESE
+    {
+        id: 'talento-exemplo-1',
+        name: 'Membro Exemplo 1',
+        role: 'Nível 4: Especialista (Designer)',
+        image: '/image/mascote-guia.png',
+        url: '#',
+        skills: ['Motion Design', 'Edição de Vídeo', '3D'],
+        bio: 'Especialista em criar narrativas visuais em movimento. Disponível para freelas.'
+    },
+    {
+        id: 'talento-exemplo-2',
+        name: 'Membro Exemplo 2',
+        role: 'Nível 5: Iniciado (Escritor)',
+        image: '/image/mascote-guia.png',
+        url: '#',
+        skills: ['Copywriting', 'Storytelling', 'Revisão'],
+        bio: 'Apaixonado por palavras e construção de mundos fictícios.'
+    }
+];
+
+// --- NOVO: MURAL DE PARCEIROS (CARGO AMARELO/COLABORAÇÕES) ---
+const partnersData = [
+    { name: "Sociedade Vera Cruz", logo: "🏛️", type: "Comunidade Parceira", description: "Debates de alta cultura." },
+    { name: "Eventbrite", logo: "🎫", type: "Ferramenta", description: "Plataforma de gestão de eventos." },
+    { name: "Notion", logo: "📓", type: "Ferramenta", description: "O cérebro digital da organização." },
+    { name: "Medium", logo: "📝", type: "Plataforma", description: "Onde publicamos nossos artigos longos." },
+    { name: "Discord", logo: "💬", type: "Comunicação", description: "Nossa base de operações em tempo real." },
+    { name: "Colaborador Anônimo", logo: "👤", type: "Apoiador", description: "Doou recursos para o servidor." },
+    { name: "Café Local", logo: "☕", type: "Espaço Físico", description: "Sede dos encontros presenciais." }
 ];
 
 const communityDocsData = [

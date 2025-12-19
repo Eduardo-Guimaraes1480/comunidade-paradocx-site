@@ -10,6 +10,7 @@ const routes = {
     '/contribuicoes': { content: '/pages/contribuicoes.html', layout: '/layouts/_principais-base.html', title: 'Contribuições | Comunidade PARADOCX'},
     '/equipe': { content: '/pages/equipe.html', layout: '/layouts/_principais-base.html', title: 'Equipe ESE | Comunidade PARADOCX'},
     '/docs': { content: '/pages/docs.html', layout: '/layouts/_personalizaveis-base.html', title: 'Documentação | Comunidade PARADOCX' },
+    '/mural': { content: '/pages/mural.html', layout: '/layouts/_personalizaveis-base.html', title: 'Mural de Impacto | Parceiros' },
 
     //Formularios
     '/junte-se': { content: '/pages/junte-se.html', layout: '/layouts/_formularios-base.html', title: 'Junte-se a Nós | Comunidade PARADOCX' },
@@ -20,6 +21,7 @@ const routes = {
     '/docs/referencias': { content: '/pages/docs/referencias.html', layout: '/layouts/_pesquisa-base.html', title: 'Referências | Comunidade PARADOCX' },
     '/glossario': { content: '/pages/glossario.html', layout: '/layouts/_pesquisa-base.html', title: 'Glossário | Comunidade PARADOCX' },
     '/faq': { content: '/pages/faq.html', layout: '/layouts/_pesquisa-base.html', title: 'FAQ | Comunidade PARADOCX' },
+    '/talentos': { content: '/pages/talentos.html', layout: '/layouts/_pesquisa-base.html', title: 'Diretório de Talentos | Cargos Azuis' },
 
     // Páginas Sobre a Comunidade
     '/comece-aqui': { content: '/pages/comece-aqui.html', layout: '/layouts/_principais-base.html', title: 'Comece Aqui | Comunidade PARADOCX' },
@@ -43,6 +45,7 @@ const routes = {
     // Páginas de integrantes 
     '/integrantes': { content: '/pages/integrantes.html', layout: '/layouts/_estatico-base.html', title: 'Integrantes | Comunidade PARADOCX' },
     '/integrantes/eduardo-guimaraes': { content: '/pages/integrantes/eduardo-guimaraes.html', layout: '/layouts/_personalizaveis-base.html', title: 'Eduardo Guimarães | Integrantes' },
+    '/integrantes/guilherme-nunes': { content: '/pages/integrantes/guilherme-nunes.html', layout: '/layouts/_docs-base.html', title: 'Perfil: Guilherme Nunes' },
 
     // DOCS GERAIS:
     //Docs Comunidade
@@ -199,6 +202,93 @@ function setupHubCarousel() {
         currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Loop infinito reverso
         updateSlide(currentIndex);
     });
+}
+
+function renderTalents(data) {
+    const container = document.getElementById('talents-grid-container');
+    if (!container) return; // Se não estiver na página certa, sai silenciosamente
+
+    container.innerHTML = '';
+    
+    if (!data || data.length === 0) {
+        container.innerHTML = '<p style="color: var(--color-text-muted); padding: 1rem;">Nenhum talento encontrado com esse filtro.</p>';
+        return;
+    }
+
+    data.forEach(person => {
+        const skillsHTML = person.skills 
+            ? person.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('') 
+            : '';
+
+        const cardHTML = `
+            <div class="doc-card talent-card" data-name="${person.name}" data-role="${person.role}">
+                <div class="talent-header" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <img src="${person.image}" alt="${person.name}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-primary);">
+                    <div>
+                        <h4 style="margin: 0; font-size: 1.1rem;">${person.name}</h4>
+                        <span style="font-size: 0.8rem; color: var(--color-text-muted);">${person.role}</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5; color: #ccc;">${person.bio || 'Membro da comunidade.'}</p>
+                <div class="skills-container" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                    ${skillsHTML}
+                </div>
+                <a href="${person.url}" class="card-button" style="width: 100%; text-align: center;">Ver Perfil Completo</a>
+            </div>
+        `;
+        container.innerHTML += cardHTML;
+    });
+}
+
+function setupTalentsSearch() {
+    const searchInput = document.getElementById('talent-search-input');
+    if (!searchInput || typeof talentsData === 'undefined') return;
+    
+    // Renderiza todos inicialmente
+    renderTalents(talentsData);
+
+    searchInput.addEventListener('input', function() {
+        const term = this.value.toLowerCase();
+        const filteredData = talentsData.filter(person => 
+            person.name.toLowerCase().includes(term) || 
+            (person.skills && person.skills.some(s => s.toLowerCase().includes(term))) ||
+            person.role.toLowerCase().includes(term)
+        );
+        renderTalents(filteredData);
+    });
+}
+
+// --- FUNÇÃO PARA O MURAL DE PARCEIROS ---
+function renderMarquee(containerId, direction = 'normal') {
+    const container = document.getElementById(containerId);
+    if (!container || typeof partnersData === 'undefined') return;
+
+    // Duplicamos os dados para criar o loop infinito
+    const content = [...partnersData, ...partnersData, ...partnersData].map(p => `
+        <div class="marquee-item" style="
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            padding: 1rem 2rem; 
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 50px; 
+            margin: 0 1rem;
+            white-space: nowrap;
+        ">
+            <span style="font-size: 1.5rem;">${p.logo}</span>
+            <div>
+                <strong style="color: #fff; display: block;">${p.name}</strong>
+                <span style="font-size: 0.8rem; color: #aaa;">${p.type}</span>
+            </div>
+        </div>
+    `).join('');
+
+    container.innerHTML = `
+        <div class="marquee-track ${direction === 'reverse' ? 'reverse' : ''}" style="display: flex; width: max-content;">
+            ${content}
+        </div>
+    `;
 }
 
 // --- FUNÇÕES DE RENDERIZAÇÃO ---
@@ -540,7 +630,7 @@ async function navigate() {
             const layoutResponse = await fetch('/layouts/_principais-base.html');
             appBody.innerHTML = await layoutResponse.text();
             const contentPlaceholder = appBody.querySelector('#content-placeholder');
-            contentPlaceholder.innerHTML = '<div style="padding:4rem; text-align:center;"><h1>404</h1><p>Página não encontrada no Multiverso.</p><a href="#/inicio" class="cta-button">Voltar ao Início</a></div>';
+            contentPlaceholder.innerHTML = '<div style="padding:4rem; text-align:center;"><h1>404</h1><p>Página não encontrada.</p><a href="#/inicio" class="cta-button">Voltar ao Início</a></div>';
             document.title = 'Página Não Encontrada | Comunidade PARADOCX'; // Título 404
             await loadPartials();
             return;
@@ -573,6 +663,15 @@ async function navigate() {
         
         // Renderização Inicial do FAQ
         if (typeof faqData !== 'undefined') renderFaq(faqData);
+
+        // NOVAS RENDERIZAÇÕES FASE 7
+        if (typeof talentsData !== 'undefined' && document.getElementById('talents-grid-container')) {
+            setupTalentsSearch();
+        }
+        if (typeof partnersData !== 'undefined' && document.getElementById('marquee-row-1')) {
+            renderMarquee('marquee-row-1', 'normal');
+            renderMarquee('marquee-row-2', 'reverse');
+        }
 
         // 6. Configura Interatividades
         setupAnchorLinks();
