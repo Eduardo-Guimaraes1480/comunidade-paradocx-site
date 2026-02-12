@@ -18,3 +18,20 @@ html {
     scroll-behavior: smooth; /* Garante rolagem suave globalmente, se não estiver já */
     scroll-padding-top: 90px; /* Ajuste este valor. Ex: altura do header + um pequeno espaçamento */
 }
+
+/* Estilo para links do Glossário "Wikipedia-style" */
+.glossary-link {
+    color: #bb86fc !important; /* Roxo/Ametista */
+    text-decoration: underline;
+    text-decoration-color: rgba(187, 134, 252, 0.4);
+    text-underline-offset: 3px;
+    font-weight: 600;
+    cursor: help; /* Muda o mouse para indicar que é uma consulta */
+    transition: all 0.2s ease;
+}
+
+.glossary-link:hover {
+    background-color: rgba(187, 134, 252, 0.1);
+    text-decoration-color: #bb86fc;
+    opacity: 0.9;
+}

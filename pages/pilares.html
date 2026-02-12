@@ -1,162 +1,538 @@
 <div class="static-layout-container">
 
-    <section class="static-header" style="background-image: url('/image/filosofia-pilares.jpg');">
-        <h1>A Tabela dos Pilares Universais</h1>
-        <p>Esta é a base que sustenta nossa equipe e nossa filosofia. É o nosso projeto mais importante, que possibilita
-            o grupo se tornar realidade e que, com o tempo, se tornou uma ferramenta para analisar diversas áreas da vida.</p>
+    <section class="static-header"
+        style="background-image: url('/image/imgs-implementar-paginas/pilares-dimensionais-banner2.png'); background-position: center bottom;">
+        <div class="header-overlay">
+            <p class="doc-meta-tag">Artigo Oficial v3.0</p>
+            <h1>Pilares Dimensionais</h1>
+            <p>O Código-Fonte da Realidade: Um estudo sobre a arquitetura racional que sustenta a Comunidade PARADOCX.
+            </p>
+        </div>
     </section>
 
     <div class="static-main-wrapper">
 
         <aside class="static-sidebar">
-            <h3>Navegação</h3>
-            <ul>
-                <li><a href="#equilibrio" class="anchor-link">1. O Pilar Mestre</a></li>
-                <li><a href="#realidade" class="anchor-link">2. Pilares da Realidade</a></li>
-                <li><a href="#vida" class="anchor-link">3. Pilares da Vida</a></li>
-                <li><a href="#detalhes" class="anchor-link">4. Detalhamento</a></li>
-            </ul>
+            <h3>Sumário do Artigo</h3>
+            <nav>
+                <ul>
+                    <li><a href="#resumo" class="anchor-link">1. Resumo</a></li>
+                    <li><a href="#introducao" class="anchor-link">2. Introdução</a></li>
+                    <li><a href="#objetivos" class="anchor-link">3. Objetivos</a></li>
+                    <li><a href="#justificativa" class="anchor-link">4. Justificativa</a></li>
+                    <li><a href="#referencial" class="anchor-link">5. Referencial Teórico</a></li>
+                    <li><a href="#metodologia" class="anchor-link">6. Metodologia</a></li>
+                    <li><a href="#resultados" class="anchor-link">7. Resultados</a></li>
+                    <li><a href="#conclusao" class="anchor-link">8. Conclusão</a></li>
+                    <li><a href="#referencias" class="anchor-link">9. Referências</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-meta">
+                <p style="margin-bottom: -0.1rem;"><strong>Links Relacionados:</strong></p>
+                <p><a href="https://eduardo-guimaraes1480.github.io/pilares-dimensionais/" style="color: goldenrod;" target="_blank">Acessar o Site ↗</a></p>
+            </div>
         </aside>
 
         <div class="static-main-content">
 
-            <div class="pillar-section">
-                <h2 id="equilibrio">O Pilar Mestre: Equilíbrio</h2>
-                <p>O pilar que sustenta tudo no Universo, responsável por manter tudo em movimento. Existe Equilíbrio e
-                    Desequilíbrio em tudo ao nosso redor, seja em conceitos de Polos Opostos (Bem e Mal, Vida e Morte)
-                    ou Polos Semelhantes/Necessários (Verdade e Mentira, Descanso e Trabalho). Ele sustenta todos os
-                    outros 24 pilares.</p>
-            </div>
+            <style>
+                .tcc-content p {
+                    text-align: justify;
+                    margin-bottom: 1.2rem;
+                    line-height: 1.8;
+                    color: #ccc;
+                }
 
-            <div class="pillar-section">
-                <h2 id="realidade">Os 8 Pilares da Realidade</h2>
-                <p>Forças poderosas, sempre presentes e que não podem ser evitadas onde se conectam a todos os outros.
-                    Eles definem os polos Positivos e Negativos da construção do universo.</p>
+                .tcc-content h3 {
+                    color: var(--color-secondary);
+                    margin-top: 2rem;
+                    margin-bottom: 1rem;
+                    font-size: 1.4rem;
+                }
 
-                <div class="pillar-grid-dual">
-                    <div class="pillar-group">
-                        <h3 style="color: #4caf50;">Construção (+)</h3>
-                        <ul>
-                            <li>Impacto</li>
-                            <li>Conexões</li>
-                            <li>Perspectiva</li>
-                            <li>Limites</li>
+                .tcc-content h4 {
+                    color: #fff;
+                    margin-top: 1.5rem;
+                    margin-bottom: 0.5rem;
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                    border-left: 3px solid var(--color-primary);
+                    padding-left: 10px;
+                }
+
+                .quote-box {
+                    border-left: 4px solid var(--color-primary);
+                    background: rgba(255, 255, 255, 0.03);
+                    padding: 1.5rem;
+                    margin: 2rem 0;
+                    font-style: italic;
+                    color: #ddd;
+                }
+
+                .pillar-list-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                    gap: 1rem;
+                    margin-top: 1rem;
+                }
+
+                .pillar-tag {
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    padding: 0.8rem;
+                    text-align: center;
+                    border-radius: 6px;
+                    font-family: 'JetBrains Mono', monospace;
+                    font-size: 0.9rem;
+                    transition: all 0.3s ease;
+                }
+
+                .pillar-tag:hover {
+                    background: rgba(255, 255, 255, 0.1);
+                    cursor: pointer;
+                    border-color: rgba(255, 255, 255, 0.2);
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                }
+
+                .destruicao {
+                    border-color: rgba(244, 67, 54, 0.3);
+                    color: #ff8a80;
+                }
+
+                .destruicao:hover {
+                    background: rgba(244, 67, 54, 0.15);
+                }
+
+                .construcao {
+                    border-color: rgba(76, 175, 80, 0.3);
+                    color: #a5d6a7;
+                }
+
+                .construcao:hover {
+                    background: rgba(76, 175, 80, 0.15);
+                }
+
+                .tcc-box {
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    padding: 2rem;
+                    border-radius: 8px;
+                    margin: 2rem 0;
+                }
+
+                .doc-meta-tag {
+                    font-family: 'JetBrains Mono', monospace;
+                    display: inline-block;
+                    background-color: rgba(187, 134, 252, 0.15);
+                    color: #bb86fc !important;
+                    padding: 4px 10px;
+                    border-radius: 4px;
+                    font-size: 0.85rem !important; 
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    margin-bottom: 1rem;
+                    border: 1px solid rgba(187, 134, 252) !important;
+                }
+
+                .nomenclatura-box {
+                    background: #0a0a0a;
+                    border: 1px solid #333;
+                    border-radius: 8px;
+                    padding: 1.5rem;
+                    margin: 2rem 0;
+                    font-family: 'JetBrains Mono', monospace;
+                }
+                .code-header {
+                    color: #666;
+                    font-size: 0.85rem;
+                    margin-bottom: 0.5rem;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+                .code-block {
+                    display: block;
+                    background: #141414;
+                    padding: 1rem;
+                    border-radius: 4px;
+                    color: var(--color-primary);
+                    margin-bottom: 1.5rem;
+                    overflow-x: auto;
+                    border: 1px dashed #333;
+                }
+                .tech-list, .example-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0 0 1.5rem 0;
+                }
+                .tech-list li, .example-list li {
+                    margin-bottom: 0.8rem;
+                    color: #ccc;
+                    font-size: 0.9rem;
+                    line-height: 1.4;
+                }
+                .example-list code {
+                    background: #141414;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    color: var(--color-secondary);
+                    margin-right: 8px;
+                    border: 1px solid #333;
+                }
+                .tech-note {
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    border-top: 1px solid #222;
+                    font-size: 0.85rem;
+                    color: #777;
+                    font-style: italic;
+                }
+
+                /* --- ESTILOS NOVOS: PROPAGANDA DO SITE --- */
+                .propaganda-box {
+                    background: linear-gradient(135deg, rgba(30,30,30,0.3) 20%, rgba(184, 134, 252, 0.2) 100%);
+                    border: 1px solid rgba(255,255,255,0.1);
+                    border-radius: 12px;
+                    padding: 2rem;
+                    margin: 3rem 0;
+                    display: grid;
+                    grid-template-columns: 1fr 1.2fr;
+                    gap: 2rem;
+                    align-items: center;
+                    overflow: hidden;
+                    position: relative;
+                }
+                .propaganda-box::before {
+                    content: '';
+                    position: absolute;
+                    top: -50%;
+                    left: -50%;
+                    width: 200%;
+                    height: 200%;
+                    background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.05) 0%, transparent 70%);
+                    pointer-events: none;
+                }
+                .propaganda-content h4 {
+                    font-family: 'Paradocx CA', monospace;
+                    font-size: 2.5rem;
+                    color: #fff;
+                    margin-bottom: 1rem;
+                    border: none;
+                    padding: 0;
+                }
+                .propaganda-images {
+                    display: grid;
+                    grid-template-rows: 1fr 1fr 1fr;
+                    gap: 15px;
+                    perspective: 1000px;
+                    margin-right: -5rem;
+                }
+                .propaganda-images img {
+                    width: 80%;
+                    border-radius: 8px;
+                    border: 1px solid #333;
+                    transition: all 0.4s ease;
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+                }
+                .propaganda-images img:first-child { transform: rotateY(-15deg) translateZ(20px); }
+                .propaganda-images img:last-child { transform: rotateY(15deg) translateZ(20px); }
+                
+                .propaganda-box:hover .propaganda-images img:first-child { transform: rotateY(0deg) translateZ(50px) scale(1.05); z-index: 2; }
+                .propaganda-box:hover .propaganda-images img:last-child { transform: rotateY(0deg) translateZ(50px) scale(1.05); z-index: 2; }
+
+                .cta-button-prop {
+                     display: inline-block;
+                     padding: 12px 24px;
+                     background: var(--color-primary);
+                     color: #000;
+                     text-decoration: none;
+                     border-radius: 6px;
+                     font-weight: bold;
+                     margin-top: 1.5rem;
+                     transition: all 0.3s;
+                     text-transform: uppercase;
+                     letter-spacing: 1px;
+                     font-size: 0.9rem;
+                }
+                .cta-button-prop:hover {
+                    background: #fff;
+                    box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.5);
+                    transform: translateY(-3px);
+                }
+
+                @media (max-width: 900px) {
+                    .propaganda-box { grid-template-columns: 1fr; }
+                    .propaganda-images { margin-top: 1rem; }
+                    .propaganda-images img:first-child, .propaganda-images img:last-child { transform: none; }
+                }
+            </style>
+
+            <div class="tcc-content">
+
+                <article id="resumo" class="content-block">
+                    <h2>1. Resumo</h2>
+                    <div class="tcc-box">
+                        <p>Este documento apresenta os <strong>"Pilares Dimensionais"</strong>, o sistema central de
+                            navegação da Comunidade PARADOCX e da Equipe ESE. Diferente de regras morais arbitrárias,
+                            estes pilares são apresentados como "Postulados Físicos e Metafísicos" que regem a
+                            existência; um sistema de navegação baseado na Convergência e Divergência de conceitos.</p>
+                        <p>O estudo categoriza INICIALMENTE mais de 25 fundamentos em seis grupos: Impacto (Vida),
+                            Equilíbrio (Construção/Destruição), Perspectiva, Limites (Existência/Ambiente),
+                            Possibilidades, Tudo/Nada. O objetivo é fornecer ao membro da comunidade um "código-fonte"
+                            para decodificar situações complexas e tomar decisões alinhadas com a realidade.</p>
+                    </div>
+                </article>
+
+
+
+                <article id="introducao" class="content-block">
+                    <h2>2. Introdução</h2>
+                    <div class="quote-box" style="font-family: JetBrains Mono, monospace;">
+                        "Se você quiser encontrar os segredos do universo, pense em termos de energia, frequência e
+                        vibração." — Nikola Tesla.
+                    </div>
+                    <p>A filosofia que mais manuseamos na equipe não é um conceito abstrato, mas uma ferramenta de
+                        engenharia social. Os Pilares Dimensionais são as bases que sustentam nossa equipe; portanto,
+                        este é o nosso projeto mais importante, pois é o que possibilita o grupo se tornar uma realidade
+                        tangível e não apenas uma ideia.</p>
+                    <p>Originalmente concebidos para sustentar a organização interna da Equipe ESE, com a passagem do
+                        tempo e a aplicação do método empírico, percebeu-se que estes pilares eram abrangentes o
+                        suficiente para explicar fenômenos em várias áreas da Vida. Esta reflexão permitiu visualizar a
+                        <strong>DUALIDADE</strong> em cada pilastra: o Bem (que protege e constrói) e o Mal (que denigre
+                        e destrói).</p>
+                    <p>A conclusão recente do nosso estudo é definitiva: <strong>Os Pilares são Postulados.</strong>
+                        Eles não "devem ser", eles são. Eles existem quer você concorde ou não (como a gravidade). A
+                        nossa metodologia consiste em mapear a Convergência e a Divergência, criando uma taxonomia da
+                        existência.</p>
+                </article>
+
+                <article id="objetivos" class="content-block">
+                    <h2>3. Objetivos</h2>
+
+                    <h3>3.1. Objetivo Geral</h3>
+                    <p>Estabelecer um sistema de navegação e decodificação da realidade, baseado em leis físicas e
+                        metafísicas, para equipar os membros da Comunidade PARADOCX com um "código-fonte" estrutural,
+                        capacitando-os a tomar decisões alinhadas com as verdades irredutíveis da existência.</p>
+
+                    <h3>3.2. Objetivos Específicos</h3>
+                    <ul class="styled-list">
+                        <li><strong>Decodificar Realidades:</strong> Fornecer um mapa mental para desmembrar situações
+                            complexas.</li>
+                        <li><strong>Pensamento de Primeiros Princípios:</strong> Treinar os membros para reduzir
+                            problemas às suas verdades fundamentais (Tempo, Dinheiro, Emoção).</li>
+                        <li><strong>Geração de Ordem:</strong> Mapear a Entropia e prover os Pilares da Construção como
+                            ferramentas ativas.</li>
+                        <li><strong>Diagnóstico e Navegação:</strong> Oferecer um método para identificar falhas de
+                            Ritmo, Limite ou Perspectiva.</li>
+                    </ul>
+                </article>
+
+
+
+                <article id="justificativa" class="content-block">
+                    <h2>4. Justificativa</h2>
+                    <p>Por que precisamos de Pilares? A ciência e a filosofia nos dão a resposta:</p>
+                    <p>Como Aristóteles e Elon Musk defendem, para resolver problemas complexos, devemos reduzir a
+                        realidade às suas verdades fundamentais. Os nossos Pilares são esses "Primeiros Princípios"
+                        (First Principles) — as verdades irredutíveis.
+                        Cada Pilar opera através de dois movimentos essenciais: a <strong>Convergência</strong> e a
+                        <strong>Divergência</strong>. Essa dinâmica dual permite navegar entre o específico e o
+                        universal, criando um sistema de decodificação que se
+                        adapta a qualquer contexto.</p>
+                    <p>Na Teoria do Caos, o universo tende à desordem (Entropia). Os <strong>"Pilares da
+                            Destruição"</strong> mapeiam essa tendência natural, representando o <strong>Caos</strong>.
+                        Em contrapartida, os <strong>"Pilares da Construção"</strong>
+                        simbolizam o esforço humano contínuo e necessário para criar e manter a <strong>Ordem</strong>.
+                        A tensão entre esses dois conjuntos de pilares reflete a dinâmica fundamental da existência.
+                    </p>
+                    <p>Portanto na Dialética a existência de pólos opostos (Verdade/Mentira, Construção/Destruição) não
+                        é um erro do sistema, mas a base da própria existência, conforme a filosofia hegeliana e o
+                        conceito oriental de Yin-Yang.</p>
+                </article>
+
+                <article id="referencial" class="content-block">
+                    <h2>5. Referencial Teórico</h2>
+                    <p>O alicerce conceitual repousa sobre três grandes correntes:</p>
+
+                    <h4>1. Pensamento de Primeiros Princípios</h4>
+                    <p>Fundamentado na abordagem aristotélica, exige a desconstrução de qualquer problema complexo até
+                        suas verdades fundamentais. Os Pilares atuam como as leis elementares que regem o Tempo, o
+                        Dinheiro e a Emoção.</p>
+
+                    <h4>2. Teoria do Caos e Entropia (2ª Lei da Termodinâmica)</h4>
+                    <p>A metodologia PARADOCX abraça a inevitabilidade da desordem. Os Pilares da Destruição mapeiam o
+                        Caos; os da Construção representam a negação da Entropia (Negentropia).</p>
+
+                    <h4>3. Dialética (Hegel e Yin-Yang)</h4>
+                    <p>A coexistência de pólos opostos (Tese e Antítese), como Bem e Mal, Construção e Destruição, não é
+                        uma falha do sistema, mas o motor essencial da evolução, conforme a filosofia hegeliana.</p>
+                </article>
+
+
+
+                <article id="metodologia" class="content-block">
+                    <h2>6. Metodologia e Apresentação</h2>
+                    <p>Para tornar este sistema navegável, desenvolvemos uma nomenclatura técnica que classifica cada pilar como um endereço no multiverso de ideias.</p>
+
+                    <div class="nomenclatura-box">
+                        <div class="code-header">Estrutura da Nomenclatura:</div>
+                        <code class="code-block">existência (fundamental) . herança & campo de visão | filtro | nº da possibilidade | id (Oculto) - Título</code>
+
+                        <div class="code-header">Definições dos Termos:</div>
+                        <ul class="tech-list">
+                            <li><strong style="color: var(--color-primary);">Existência:</strong> IMPACTO => A raiz fundamental do pilar (ex: O número base).</li>
+                            <li><strong style="color: var(--color-primary);">Herança & Campo de Visão:</strong> (Conexões & Perspectiva) => A classificação como subcapítulo. Indica em qual campo de percepção você está situado.</li>
+                            <li><strong style="color: var(--color-primary);">Filtro:</strong> LIMITES => Uma letra que especifica o filtro/etiqueta aplicado para restringir o significado.</li>
+                            <li><strong style="color: var(--color-primary);">Possibilidade:</strong> A numeração específica daquela possibilidade (a frequência do conceito).</li>
+                            <li><strong style="color: #777;">ID (Oculto):</strong> O identificador único dentro do banco de dados, a "matéria escura" do sistema.</li>
+                        </ul>
+
+                        <div class="code-header" style="margin-top: 1.5rem;">Exemplos Práticos de Leitura:</div>
+                        <ul class="example-list">
+                            <li><code>[0 | A | 1 - 0D]</code> -> (A Origem / O Ponto Zero).</li>
+                            <li><code>[1.1 | A | 2 - Impacto]</code> -> (Ação Fundamental; herdada da raiz 1, no filtro A).</li>
+                            <li><code>[1.2.2 | A | 1 - Tempo]</code> -> (A consequência da ação continuada; alta frequência de conexão).</li>
+                        </ul>
+                        <div class="tech-note">Nota: Essa nomenclatura prova que os Pilares não são isolados; são Capítulos de uma História Interligada.</div>
+                    </div>
+
+                    <h3>6.1. Dimensão Biopsicossocial (Os 16 Pilares da Vida)</h3>
+                    <p>Identificados através de pesquisas sobre os motivos que mantêm a vida funcional.</p>
+                    <div class="pillar-list-grid">
+                        <div class="pillar-tag">SAÚDE</div>
+                        <div class="pillar-tag">TEMPO</div>
+                        <div class="pillar-tag">SOCIAL</div>
+                        <div class="pillar-tag">INDIVIDUAL</div>
+                        <div class="pillar-tag">RITMO</div>
+                        <div class="pillar-tag">MAPA</div>
+                        <div class="pillar-tag">ORGANIZAÇÃO</div>
+                        <div class="pillar-tag">INTERESSE</div>
+                        <div class="pillar-tag">SENTIMENTOS</div>
+                        <div class="pillar-tag">DINHEIRO</div>
+                        <div class="pillar-tag">INFORMAÇÃO</div>
+                        <div class="pillar-tag">ESPÍRITO</div>
+                        <div class="pillar-tag">PACIÊNCIA</div>
+                        <div class="pillar-tag">MORTE</div>
+                        <div class="pillar-tag">SENTIDOS</div>
+                        <div class="pillar-tag">LÓGICA</div>
+                    </div>
+
+                    <h3>6.2. Dimensão da Polaridade (Construção e Destruição)</h3>
+                    <p>Aqui reside o motor da dualidade PARADOCX. Estes pilares são responsáveis pelos polos Positivos e
+                        Negativos encontrados no Universo.
+                        Eles são poderosos, capazes de mudar a trajetória de uma vida drasticamente e, crucialmente,
+                        estão sempre presentes e não podem ser evitados, apenas gerenciados.</p>
+
+                    <h4 style="color: #66bb6a; border-color: #66bb6a;">A. Pilares da Construção (Ordem)</h4>
+                    <div class="pillar-list-grid">
+                        <div class="pillar-tag construcao">IMPACTO</div>
+                        <div class="pillar-tag construcao">CONEXÕES</div>
+                        <div class="pillar-tag construcao">PERSPECTIVA</div>
+                        <div class="pillar-tag construcao">LIMITES</div>
+                        <div class="pillar-tag construcao">POSSIBILIDADES</div>
+                        <div class="pillar-tag construcao">TUDO</div>
+                    </div>
+
+                    <h4 style="color: #ef5350; border-color: #ef5350;">B. Pilares da Destruição (Entropia)</h4>
+                    <div class="pillar-list-grid">
+                        <div class="pillar-tag destruicao">ALIENAÇÃO</div>
+                        <div class="pillar-tag destruicao">CONSEQUÊNCIAS</div>
+                        <div class="pillar-tag destruicao">MENTIRA</div>
+                        <div class="pillar-tag destruicao">EXTREMO</div>
+                        <div class="pillar-tag destruicao">CERTEZAS</div>
+                        <div class="pillar-tag destruicao">NADA</div>
+                    </div>
+
+                    <h3>6.3. A Constante Universal (O Pilar Mestre)</h3>
+                    <div class="tcc-box"
+                        style="background-color: rgba(224, 202, 1, 0.05); border-color: rgba(224, 202, 1, 0.2); ">
+                        <h2 style="color: #fff; margin: 0; text-align: center;">EQUILÍBRIO</h2>
+                        <p style="margin-top: 1rem;">Este é o pilar que sustenta tudo no Universo. Ele é o responsável
+                            por manter a "Ação" e o movimento.
+                            Sem o desequilíbrio, não há movimento; sem a busca pelo equilíbrio, há o colapso.</p>
+                        <p style="margin-top: 1rem;"><strong>Exemplificação Prática da Dualidade:</strong> O pilar do
+                            Equilíbrio gerencia os conceitos de Pólos Opostos e
+                            Necessários que observamos na realidade:</p>
+                        <ul class="styled-list">
+                            <li><strong>Opostos:</strong> Bem/Mal; Construção/Destruição; Deus/Diabo; Início/Fim;
+                                Vida/Morte.</li>
+                            <li><strong>Semelhantes/Complementares: </strong> Verdade/Mentira; Muito/Pouco;
+                                Preto/Branco; Arroz/Feijão; Comida/Bebida; Descanso/Trabalho; Imaginação/Lógica;
+                                Individual/Social; Duro/Mole.</li>
                         </ul>
                     </div>
-                    <div class="pillar-group">
-                        <h3 style="color: #f44336;">Destruição (-)</h3>
-                        <ul>
-                            <li>Alienação</li>
-                            <li>Consequências</li>
-                            <li>Mentira</li>
-                            <li>Extremo</li>
+
+                    <h3>6.4. Dimensão Experimental (Existência/Ambiente)</h3>
+                        <p>Estes são os pilares "FRONTEIRIÇOS", ainda em fase de desenvolvimento e observação
+                            (Alpha/Beta), que tentam mapear a física e a metafísica do ambiente onde operamos.
+                            Eles representam a busca da Equipe ESE por entender o intangível.</p>
+                        <ul class="styled-list">
+                            <li><strong>Fundamentos Físicos:</strong> [1.1.6 CONSTRUÇÃO/AMBIENTE]; [1.6 PILARES/AMBIENTE].</li>
+                            <li><strong>As Forças Ocultas:</strong> [1.0.1 DESTRUIÇÃO/MATÉRIA ESCURA]; [3.2 INVISÍVEL/AR].</li>
+                            <li><strong>Sensorial e Elementar:</strong>  [2.4 TÓXICO/SÍMBOLOS]; [1.1.5 FOGO/ENERGIA] (Cheiro – Fogo/Gelo); 
+                            [2.2 CORDAS/INTERFERE]; [2.3 MAGNETISMO/TRANSFORMA] (Mão – Água/Gás); [2.5 DIMENSÃO/CAMADAS]; [4.4 SÓLIDO/CAPACIDADE]; 
+                            [4.5 NÚMEROS/TERRA] (Boca/Ouvido – Terra/Som)</li>
                         </ul>
+
+                    <h3>6.5. A Aplicação Prática (Decodificador Online)</h3>
+                    <div class="propaganda-box">
+                        <div class="propaganda-content">
+                            <h4>Explore o Multiverso dos Pilares</h4>
+                            <p>A teoria é densa, mas a prática deve ser acessível. Desenvolvemos uma interface web interativa (O Decodificador) onde você pode navegar visualmente por toda essa estrutura.</p>
+                            <p>Lá, a nomenclatura técnica ganha vida. Você pode filtrar por dimensões, pesquisar por IDs e entender como cada conceito se conecta na teia da realidade PARADOCX. <strong>É o nosso sistema operacional rodando em tempo real.</strong></p>
+                            <a href="https://eduardo-guimaraes1480.github.io/pilares-dimensionais/" target="_blank" class="cta-button-prop">Acessar Decodificador Online ↗</a>
+                        </div>
+                        <div class="propaganda-images">
+                            <img src="/image/imgs-implementar-paginas/site-pilares1.png" alt="Interface do Decodificador dos Pilares">
+                            <img src="/image/imgs-implementar-paginas/site-pilares2.png" alt="Inicio do site">
+                            <img src="/image/imgs-implementar-paginas/site-pilares3.png" alt="Opções de Start">
+                        </div>
                     </div>
-                </div>
+                </article>
+
+
+
+                <article id="resultados" class="content-block">
+                    <h2>7. Resultados</h2>
+                    <p>A aplicação destes Pilares Dimensionais permite ao membro da comunidade:</p>
+                    <ul class="styled-list">
+                        <li><strong>Diagnóstico Rápido:</strong> Identificar se um problema é de "Ritmo", de "Limite" ou
+                            de "Perspectiva".</li>
+                        <li><strong>Navegação no Caos:</strong> Usar os pilares de Construção para combater os de
+                            Destruição (ex: usar [LIMITES] para combater o [EXTREMO]).</li>
+                        <li><strong>Associação Universal:</strong> Associar qualquer coisa (pessoas, objetos, situações)
+                            a estes pilares. Eles funcionam como um decodificador universal.</li>
+                    </ul>
+                </article>
+
+                <article id="conclusao" class="content-block">
+                    <h2>8. Conclusão</h2>
+                    <p>Os "25+" Pilares Dimensionais apresentados neste tratado guiam, em quase todos os sentidos, a
+                        nossa Metodologia e Filosofia. Este foi um projeto criado a partir da própria essência "ESE".
+                    </p>
+                    <p>No entanto, não exigimos obediência cega. Exigimos <strong>Intelectualidade Ativa</strong>: você
+                        deve chegar às suas próprias conclusões. Os Pilares não são o destino; são o mapa. Eles
+                        esclarecerão suas dúvidas com respostas estruturais e guiarão sua caminhada, desde que você
+                        tenha a coragem de usá-los para olhar a realidade de frente.</p>
+                </article>
+
+                <article id="referencias" class="content-block references-section">
+                    <h2>9. Referências Bibliográficas</h2>
+                    <ul class="ref-list">
+                        <li><strong>ARISTÓTELES.</strong> Metafísica (Conceito de Primeiros Princípios).</li>
+                        <li><strong>PRIGOGINE, Ilya.</strong> O Fim das Certezas (Teoria do Caos e Sistemas Complexos).
+                        </li>
+                        <li><strong>HEGEL, Georg Wilhelm Friedrich.</strong> Fenomenologia do Espírito (Dialética).</li>
+                        <li><strong>RODRIGUES, Eduardo G. S.</strong> Documentos Internos ESE: "Aprofundando Realidade:
+                            E Se, Paradoxos, Pilares".</li>
+                        <li><strong>TESLA, Nikola.</strong> Entrevistas e arquivos sobre Energia, Frequência e Vibração.
+                        </li>
+                    </ul>
+                </article>
+
             </div>
-
-            <div class="pillar-section">
-                <h2 id="vida">Os 16 Pilares da Vida</h2>
-                <p>Conceitos fundamentais que guiam nossa metodologia e filosofia diária.</p>
-                <div class="pillar-grid-life">
-                    <div class="pillar-card">Saúde</div>
-                    <div class="pillar-card">Tempo</div>
-                    <div class="pillar-card">Social</div>
-                    <div class="pillar-card">Individual</div>
-                    <div class="pillar-card">Ritmo</div>
-                    <div class="pillar-card">Mapa</div>
-                    <div class="pillar-card">Organização</div>
-                    <div class="pillar-card">Interesse</div>
-                    <div class="pillar-card">Sentimentos</div>
-                    <div class="pillar-card">Dinheiro</div>
-                    <div class="pillar-card">Informação</div>
-                    <div class="pillar-card">Espírito</div>
-                    <div class="pillar-card">Paciência</div>
-                    <div class="pillar-card">Morte</div>
-                    <div class="pillar-card">Sentidos</div>
-                    <div class="pillar-card">Lógica</div>
-                </div>
-            </div>
-
-            <div class="pillar-section pillar-details"></div>
-            <h2 id="detalhes" class="section-title">8 Pilares da Realidade em Detalhe</h2>
-
-            <section class="pillar-group" aria-labelledby="construcao"></section>
-            <h3 id="construcao" class="group-title" style="color: #4caf50;">Os 4 Pilares da Construção</h3>
-            <p class="group-desc">São as forças que usamos ativamente para criar, moldar a realidade e expandir nosso
-                potencial.</p>
-
-            <article class="pillar-item"></article>
-            <h4 class="pillar-title">Impacto</h4>
-            <p class="pillar-text">Refere-se à nossa capacidade de causar mudança, de deixar uma marca no mundo e nas
-                pessoas. É a prova de que existimos e agimos. Na PARADOCX, buscamos entender e maximizar o impacto
-                positivo de nossas ações, projetos e ideias.</p>
-            </article>
-
-            <article class="pillar-item">
-                <h4 class="pillar-title">Conexões</h4>
-                <p class="pillar-text">É o princípio de que nada existe isoladamente. Este pilar governa a forma como
-                    ligamos ideias, pessoas e projetos para gerar um entendimento maior. O "Quadro de Conexões" é a
-                    manifestação literal deste pilar, nossa principal ferramenta para construir conhecimento coletivo.
-                </p>
-            </article>
-
-            <article class="pillar-item">
-                <h4 class="pillar-title">Perspectiva</h4>
-                <p class="pillar-text">A habilidade de ver o mundo através de múltiplos ângulos e dos olhos dos outros.
-                    É o antídoto para o dogmatismo. Praticamos a troca de perspectivas para enriquecer nossas análises,
-                    promover a empatia e encontrar soluções que não seriam visíveis de um único ponto de vista.</p>
-            </article>
-
-            <article class="pillar-item"></article>
-            <h4 class="pillar-title">Limites</h4>
-            <p class="pillar-text">Entender os limites — sejam eles pessoais, éticos, físicos ou de um projeto — não é
-                uma fraqueza, mas uma sabedoria. Este pilar nos ensina a importância do foco, do autocontrole e da
-                definição de escopo. Conhecer e respeitar os limites é fundamental para construir algo sustentável e
-                saudável.</p>
-            </article>
-            </section>
-
-            <hr class="section-divider">
-            <br>
-
-            <section class="pillar-group" aria-labelledby="destruicao">
-                <h3 id="destruicao" class="group-title" style="color: #f44336;">Os 4 Pilares da Destruição</h3>
-                <p class="group-desc">São as forças que, se não compreendidas e gerenciadas, podem minar nossos
-                    esforços, desmantelar projetos e limitar nosso potencial. Nós as estudamos não para usá-las, mas
-                    para reconhecê-las e nos defender delas.</p>
-
-                <article class="pillar-item"></article>
-                <h4 class="pillar-title">Alienação</h4>
-                <p class="pillar-text">Representa a desconexão — de si mesmo, dos outros ou de um propósito. É o estado
-                    de isolamento que impede a colaboração e o crescimento. A comunidade existe como um contraponto
-                    direto à alienação, buscando sempre a reintegração e o senso de pertencimento.</p>
-                </article>
-
-                <article class="pillar-item"></article>
-                <h4 class="pillar-title">Consequências</h4>
-                <p class="pillar-text">O princípio universal de causa e efeito. Toda ação, ou inação, gera uma
-                    consequência. Este pilar nos força a ter responsabilidade e a pensar a longo prazo, analisando os
-                    possíveis resultados de nossas escolhas antes de tomá-las.</p>
-                </article>
-
-                <article class="pillar-item"></article>
-                <h4 class="pillar-title">Mentira</h4>
-                <p class="pillar-text">Abrange o engano, a desinformação e as narrativas falsas que distorcem a
-                    realidade. Em uma comunidade focada na busca pela verdade, entender as mecânicas da mentira é
-                    crucial para proteger a integridade do nosso conhecimento e das nossas discussões.</p>
-                </article>
-
-                <article class="pillar-item">
-                    <h4 class="pillar-title">Extremo</h4>
-                    <p class="pillar-text">Qualquer força levada a um excesso desequilibrado. A ambição vira ganância, o
-                        foco vira obsessão, a cautela vira paralisia. O pilar do Extremo nos lembra constantemente da
-                        necessidade do Equilíbrio, o pilar mestre, para evitar que nossas maiores forças se tornem
-                        nossas maiores fraquezas.</p>
-                </article>
-            </section>
         </div>
-
     </div>
-</div>
 </div>

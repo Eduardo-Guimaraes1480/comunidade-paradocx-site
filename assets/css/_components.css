@@ -46,8 +46,8 @@
 .secondary-button {
     display: inline-block;
     padding: 10px 20px;
-    border: 1px solid var(--color-primary);
-    color: var(--color-primary);
+    border: 1px solid var(--color-primary) !important;
+    color: var(--color-primary) !important;
     background-color: transparent;
     text-decoration: none;
     border-radius: var(--border-radius-small);
@@ -58,8 +58,8 @@
 }
 
 .secondary-button:hover {
-    background-color: var(--color-primary);
-    color: var(--color-text-on-primary);
+    background-color: #bb86fc;
+    color: var(--color-text-on-primary) !important;
 }
 
 .secondary-button.disabled,
@@ -242,4 +242,305 @@ form button[type="submit"]:hover {
     text-decoration: none;
     color: inherit;
     display: block;
+}
+
+/* --- CARROSSEL DE DOCS RECOMENDADOS (SISTEMA GLOBAL) --- */
+.rd-carousel-section {
+    width: 100%;
+    padding: 0 2rem;
+    margin: 1rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.rd-carousel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.rd-carousel-header h2 {
+    font-family: 'JetBrains Mono', sans-serif;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.rd-carousel-container {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.rd-carousel-track-wrapper {
+    overflow: hidden;
+}
+
+.rd-carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 1rem 0;
+    width: 100%; /* Garante que o container use o espaço todo */
+}
+
+/* --- O CARD SLIM GLASS --- */
+.rd-doc-card {
+    flex: 1 1 300px; /* Explicação: Pode crescer, pode encolher, base de 300px */
+    max-width: 600px; /* Limite para não ficar bizarro com apenas 1 doc */
+    min-width: 300px; 
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+}
+
+.rd-doc-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.rd-card-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: 0.3s;
+}
+
+.rd-doc-card:hover .rd-card-img {
+    filter: brightness(1);
+}
+
+.rd-card-body {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.rd-card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.rd-card-title {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.rd-card-desc {
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.rd-card-tags {
+    margin-top: auto;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.rd-tag {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+/* --- SETAS NAV --- */
+.rd-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rd-nav-btn:hover {
+    background: var(--color-primary);
+    color: #000;
+}
+
+.rd-prev { left: -50px; }
+.rd-next { right: -50px; }
+
+@media (max-width: 768px) {
+    .rd-prev { left: 10px; }
+    .rd-next { right: 10px; }
+    .rd-doc-card { flex: 0 0 85%; }
+}
+
+/* --- GALERIA MASONRY (Exclusiva da Home) --- */
+
+.home-gallery-section {
+    padding: 6rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.home-gallery-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+}
+
+.home-gallery-header h2 {
+    font-family: 'Paradocx CA', monospace;
+    font-size: 2rem;
+    background: linear-gradient(45deg, #fff, #888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+/* O Grid Irregular */
+.gallery-masonry {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 150px; /* Altura base das linhas */
+    gap: 20px;
+    grid-auto-flow: dense; /* Preenche os buracos vazios */
+}
+
+/* O Card Individual (Moldura) */
+.gallery-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    transition: all 0.4s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    border-color: var(--color-primary, #bb86fc);
+    box-shadow: 0 10px 40px rgba(187, 134, 252, 0.15);
+    z-index: 2;
+}
+
+/* Imagem de Fundo */
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+    opacity: 0.8;
+}
+
+.gallery-card:hover .gallery-img {
+    transform: scale(1.1);
+    opacity: 0.4; /* Escurece para ler o texto */
+}
+
+/* Classes de Tamanho (O Segredo do Mosaico) */
+.gallery-card.size-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.gallery-card.size-wide {
+    grid-column: span 2;
+}
+.gallery-card.size-tall {
+    grid-row: span 2;
+}
+
+/* Overlay de Conteúdo (Aparece no Hover ou Fixo em destaque) */
+.gallery-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.8) 60%, transparent 100%);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.gallery-card:hover .gallery-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Destaque (size-large) mostra o texto sempre */
+.gallery-card.size-large .gallery-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-meta {
+    font-size: 0.75rem;
+    color: var(--color-primary, #bb86fc);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.gallery-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: #fff;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .gallery-masonry {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
+        grid-auto-rows: auto;
+    }
+    .gallery-card.size-large, 
+    .gallery-card.size-wide, 
+    .gallery-card.size-tall {
+        grid-column: auto;
+        grid-row: auto;
+        height: 300px; /* Altura fixa no mobile */
+    }
 }

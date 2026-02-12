@@ -21,7 +21,7 @@ const routes = {
     '/docs/referencias': { content: '/pages/docs/referencias.html', layout: '/layouts/_pesquisa-base.html', title: 'Referências | Comunidade PARADOCX' },
     '/glossario': { content: '/pages/glossario.html', layout: '/layouts/_pesquisa-base.html', title: 'Glossário | Comunidade PARADOCX' },
     '/faq': { content: '/pages/faq.html', layout: '/layouts/_pesquisa-base.html', title: 'FAQ | Comunidade PARADOCX' },
-    '/talentos': { content: '/pages/talentos.html', layout: '/layouts/_pesquisa-base.html', title: 'Diretório de Talentos | Cargos Azuis' },
+    '/vocacoes': { content: '/pages/vocacoes.html', layout: '/layouts/_principais-base.html', title: 'Vocações | Comunidade PARADOCX' },
 
     // Páginas Sobre a Comunidade
     '/comece-aqui': { content: '/pages/comece-aqui.html', layout: '/layouts/_principais-base.html', title: 'Comece Aqui | Comunidade PARADOCX' },
@@ -31,16 +31,24 @@ const routes = {
     '/cronologia': { content: '/pages/cronologia.html', layout: '/layouts/_estatico-base.html', title: 'Cronologia | Comunidade PARADOCX' },
     '/contato': { content: '/pages/contato.html', layout: '/layouts/_estatico-base.html', title: 'Contato | Comunidade PARADOCX' },
     '/termos-de-uso': { content: '/pages/termos-de-uso.html', layout: '/layouts/_estatico-base.html', title: 'Termos de Uso | Comunidade PARADOCX' },
+    '/privacidade': { content: '/pages/privacidade.html', layout: '/layouts/_estatico-base.html', title: 'Política de Privacidade | Comunidade PARADOCX' },
 
     // Paginas destinadas a AREAS
     '/areas': { content: '/pages/areas.html', layout: '/layouts/_principais-base.html', title: 'Áreas de Atuação | Comunidade PARADOCX' },
     '/areas/discutidores': { content: '/pages/areas/discutidores.html', layout: '/layouts/_principais-base.html', title: 'Discutidores | Comunidade PARADOCX' },
+    '/areas/criadores': { content: '/pages/areas/criadores.html', layout: '/layouts/_principais-base.html', title: 'Criadores | Comunidade PARADOCX' },
+    '/areas/pesquisadores': { content: '/pages/areas/pesquisadores.html', layout: '/layouts/_principais-base.html', title: 'Pesquisadores | Comunidade PARADOCX' },
+    '/areas/saude': { content: '/pages/areas/saude.html', layout: '/layouts/_principais-base.html', title: 'Saúde| Comunidade PARADOCX' },
+    '/areas/financeiro': { content: '/pages/areas/financeiro.html', layout: '/layouts/_principais-base.html', title: 'Financeiro | Comunidade PARADOCX' },
     '/areas/subgrupo/the-free-society': { content: '/pages/areas/subgrupo/the-free-society.html', layout: '/layouts/_personalizaveis-base.html', title: 'The Free Society | Comunidade PARADOCX' },
 
     // Páginas de Eventos e Noticias
     '/eventos-noticias': { content: '/pages/eventos-noticias.html', layout: '/layouts/_principais-base.html', title: 'Eventos & Notícias | Comunidade PARADOCX' },
     '/eventos/workshop-pilares': { content: '/pages/eventos/workshop-pilares.html', layout: '/layouts/_docs-base.html', title: 'Workshop Pilares | Eventos' },
     '/noticias/ese-kosmo-alpha': { content: '/pages/noticias/ese-kosmo-alpha.html', layout: '/layouts/_docs-base.html', title: 'ESE Kosmo Alpha | Noticias' },
+    '/noticias/entrevista-guilherme': { content: '/pages/noticias/entrevista-guilherme.html', layout: '/layouts/_docs-base.html', title: 'Entrevista Guilherme | Noticias' },
+    '/noticias/soc-veracruz-news': { content: '/pages/noticias/soc-veracruz-news.html', layout: '/layouts/_docs-base.html', title: 'Sociedade Vera Cruz | Noticias' },
+    '/noticias/sitebanco-dados-news': { content: '/pages/noticias/sitebanco-dados-news.html', layout: '/layouts/_docs-base.html', title: 'Banco de Dados | Noticias' },
 
     // Páginas de integrantes 
     '/integrantes': { content: '/pages/integrantes.html', layout: '/layouts/_estatico-base.html', title: 'Integrantes | Comunidade PARADOCX' },
@@ -49,14 +57,16 @@ const routes = {
 
     // DOCS GERAIS:
     //Docs Comunidade
-    '/docs/detail/ese-guanambi-2-0': { content: '/pages/docs/detail/ese-guanambi-2-0.html', layout: '/layouts/_docs-base.html', title: 'ESE Guanambi 2.0 | Documentos' },
+    '/docs/detail/paradocx-bahia3-0': { content: '/pages/docs/detail/paradocx-bahia3-0.html', layout: '/layouts/_docs-base.html', title: 'Paradocx Docs 3.0 | Documentos' },
     '/docs/detail/guia-modelos': { content: '/pages/docs/detail/guia-modelos.html', layout: '/layouts/_docs-base.html', title: 'Design System | Comunidade PARADOCX'},
     '/docs/detail/experimento-comentarios': { content: '/pages/docs/detail/experimento-comentarios.html', layout: '/layouts/_docs-base.html', title: 'Dev Log: Comentários | Comunidade PARADOCX'},
+    '/docs/detail/valores-e-protocolos': { content: '/pages/docs/detail/valores-e-protocolos.html', layout: '/layouts/_docs-base.html', title: 'Valores/Protocolos | Comunidade PARADOCX'},
+    '/docs/detail/debate-hub-estatico': { content: '/pages/docs/detail/debate-hub-estatico.html', layout: '/layouts/_docs-base.html', title: 'Debate Hub Estatico | Comunidade PARADOCX'},
     //Docs Referências
     '/docs/detail/wiplash': { content: '/pages/docs/detail/wiplash.html', layout: '/layouts/_docs-base.html', title: 'Wiplash | Documentos' },
     // Docs = Projetos Individuais
     '/projetos/ese-kosmo': { content: '/pages/projetos/ese-kosmo.html', layout: '/layouts/_docs-base.html', title: 'ESE Kosmo | Projetos' },
-    '/projetos/radio-multiversus': { content: '/pages/projetos/radio-multiversus.html', layout: '/layouts/_docs-base.html', title: 'Rádio Multiversus | Projetos' },
+    '/projetos/universo-ese': { content: '/pages/projetos/universo-ese.html', layout: '/layouts/_docs-base.html', title: 'Universo ESE| Projetos' },
 
     // Modelos Layouts
     '/modelo/principais': { content: '/pages/modelo/modelo-principais.html', layout: '/layouts/_principais-base.html', title: 'Modelo Principais' },
@@ -204,60 +214,6 @@ function setupHubCarousel() {
     });
 }
 
-function renderTalents(data) {
-    const container = document.getElementById('talents-grid-container');
-    if (!container) return; // Se não estiver na página certa, sai silenciosamente
-
-    container.innerHTML = '';
-    
-    if (!data || data.length === 0) {
-        container.innerHTML = '<p style="color: var(--color-text-muted); padding: 1rem;">Nenhum talento encontrado com esse filtro.</p>';
-        return;
-    }
-
-    data.forEach(person => {
-        const skillsHTML = person.skills 
-            ? person.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('') 
-            : '';
-
-        const cardHTML = `
-            <div class="doc-card talent-card" data-name="${person.name}" data-role="${person.role}">
-                <div class="talent-header" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                    <img src="${person.image}" alt="${person.name}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-primary);">
-                    <div>
-                        <h4 style="margin: 0; font-size: 1.1rem;">${person.name}</h4>
-                        <span style="font-size: 0.8rem; color: var(--color-text-muted);">${person.role}</span>
-                    </div>
-                </div>
-                <p style="font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5; color: #ccc;">${person.bio || 'Membro da comunidade.'}</p>
-                <div class="skills-container" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-                    ${skillsHTML}
-                </div>
-                <a href="${person.url}" class="card-button" style="width: 100%; text-align: center;">Ver Perfil Completo</a>
-            </div>
-        `;
-        container.innerHTML += cardHTML;
-    });
-}
-
-function setupTalentsSearch() {
-    const searchInput = document.getElementById('talent-search-input');
-    if (!searchInput || typeof talentsData === 'undefined') return;
-    
-    // Renderiza todos inicialmente
-    renderTalents(talentsData);
-
-    searchInput.addEventListener('input', function() {
-        const term = this.value.toLowerCase();
-        const filteredData = talentsData.filter(person => 
-            person.name.toLowerCase().includes(term) || 
-            (person.skills && person.skills.some(s => s.toLowerCase().includes(term))) ||
-            person.role.toLowerCase().includes(term)
-        );
-        renderTalents(filteredData);
-    });
-}
-
 // --- FUNÇÃO PARA O MURAL DE PARCEIROS ---
 function renderMarquee(containerId, direction = 'normal') {
     const container = document.getElementById(containerId);
@@ -352,19 +308,46 @@ function renderEvents() {
 
     container.innerHTML = '';
     eventsData.forEach(event => {
-        const target = event.external ? 'target="_blank"' : '';
+        const targetAttribute = event.external ? 'target="_blank"' : '';
+        
+        // Extrai dia, mês e ano da data (ex: "11/02/2026")
+        const parts = event.date ? event.date.split('/') : ['00', '00', '0000'];
+        const day = parts[0];
+        const year = parts[2];
+        const monthNames = [
+            "de Janeiro de", 
+            "de Fevereiro de", 
+            "de Março de", 
+            "de Abril de", 
+            "de Maio de", 
+            "de Junho de", 
+            "de Julho de", 
+            "de Agosto de", 
+            "de Setembro de", 
+            "de Outubro de", 
+            "de Novembro de", 
+            "de Dezembro de"
+        ];
+        const monthIndex = parseInt(parts[1]) - 1;
+        const month = monthNames[monthIndex] || 'MÊS';
+        const formattedDate = `${day} ${month} ${year}`;
+        
         const cardHTML = `
             <div class="event-item">
-                <div class="event-info">
+                <img src="${event.image}" alt="${event.title}" class="event-image">
+                
+                <div class="event-content">
                     <h3>${event.title}</h3>
                     <p>${event.description}</p>
                 </div>
-                <div class="event-action">
-                    <span class="event-date">${event.date}</span>
-                    <a href="${event.url}" ${target} class="card-button">${event.buttonText}</a>
+                
+                <div class="event-meta">
+                    <span class="event-date">${formattedDate}</span>
+                    <a href="${event.url}" class="card-button" ${targetAttribute}>${event.buttonText}</a>
                 </div>
             </div>
         `;
+        
         container.innerHTML += cardHTML;
     });
 }
@@ -416,66 +399,77 @@ function renderGlossary(data) {
 
 function renderFaq(data) {
     const container = document.getElementById('faq-list-container');
-    // DEBUG: Verifica se o container foi achado
-    if (!container) {
-        console.warn('RenderFaq: Container #faq-list-container não encontrado no HTML.');
-        return;
-    }
+    if (!container) return;
 
-    // Limpa o container
     container.innerHTML = '';
 
     if (!data || data.length === 0) {
-        container.innerHTML = '<p style="color: var(--color-text-muted); font-style: italic; padding: 1rem;">Nenhuma pergunta encontrada com esse título.</p>';
+        container.innerHTML = '<p style="color: var(--color-text-muted); font-style: italic; padding: 1rem;">Nenhuma pergunta encontrada.</p>';
         return;
     }
 
-    // Injeta o HTML
-    data.forEach(item => {
-        const faqHTML = `
-            <details class="faq-item">
-                <summary>${item.question}</summary>
-                <p>${item.answer}</p>
-            </details>
-        `;
-        container.innerHTML += faqHTML;
+    // Mapeia cada categoria
+    data.forEach(categoryObj => {
+        const categoryWrapper = document.createElement('div');
+        categoryWrapper.className = 'faq-category-section';
+        categoryWrapper.style.marginBottom = '3rem';
+
+        // Título da Categoria (Igual ao Glossário)
+        const title = document.createElement('h2');
+        title.style.color = 'var(--color-primary)';
+        title.style.marginBottom = '1.5rem';
+        title.style.fontFamily = "'JetBrains Mono', sans-serif";
+        title.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+        title.style.paddingBottom = '0.5rem';
+        title.textContent = categoryObj.category;
+
+        categoryWrapper.appendChild(title);
+
+        // Renderiza as perguntas desta categoria
+        categoryObj.questions.forEach(item => {
+            const faqHTML = `
+                <details class="faq-item">
+                    <summary>${item.question}</summary>
+                    <p style="text-align: justify; padding: 1rem; color: #ccc;">${item.answer}</p>
+                </details>
+            `;
+            categoryWrapper.innerHTML += faqHTML;
+        });
+
+        container.appendChild(categoryWrapper);
     });
-    console.log('RenderFaq: Renderizou ' + data.length + ' perguntas.');
 }
 
 function setupFaqSearch() {
     const searchInput = document.getElementById('faq-search-input');
-    // Se não houver input (não está na página de FAQ), sai da função
     if (!searchInput) return; 
     
-    // Verifica se os dados existem
     if (typeof faqData === 'undefined') {
-        console.error('Erro: faqData não está definido. Verifique o data.js');
+        console.error('Erro: faqData não definido no data.js');
         return;
     }
 
-    // Renderiza INICIALMENTE (Para aparecer ao carregar a página)
-    console.log('SetupFaqSearch: Renderizando lista inicial.');
     renderFaq(faqData);
 
-    // Configura o evento de digitação
     searchInput.addEventListener('input', function() {
         const term = this.value.toLowerCase().trim();
         
-        // Se vazio, mostra tudo
         if (term === '') {
             renderFaq(faqData);
             return;
         }
 
-        // FILTRO CORRIGIDO: APENAS PELO TÍTULO (QUESTION)
-        const filteredData = faqData.filter(item => 
-            item.question.toLowerCase().includes(term)
-        );
+        // Lógica de Filtro Complexo (Filtra perguntas e remove categorias vazias)
+        const filteredData = faqData.map(cat => ({
+            ...cat,
+            questions: cat.questions.filter(q => 
+                q.question.toLowerCase().includes(term)
+            )
+        })).filter(cat => cat.questions.length > 0);
 
         renderFaq(filteredData);
         
-        // Abre automaticamente os resultados se estiver filtrado
+        // Abre os resultados automaticamente ao pesquisar
         if(filteredData.length > 0) {
             const details = document.querySelectorAll('#faq-list-container details');
             details.forEach(d => d.open = true);
@@ -496,6 +490,23 @@ function setupDocsSearch(containerId, sourceData) {
 function setupGlossarySearch() {
     const searchInput = document.getElementById('glossary-search-input');
     if (!searchInput || typeof glossaryData === 'undefined') return;
+
+    // LÓGICA DE AUTO-PESQUISA (WIKIPEDIA STYLE)
+    const fullPath = window.location.hash.substring(1);
+    const params = new URLSearchParams(fullPath.split('?')[1]);
+    const wordParam = params.get('word');
+
+    if (wordParam) {
+        searchInput.value = wordParam;
+        // Executa o filtro imediatamente
+        const term = wordParam.toLowerCase();
+        const filteredData = glossaryData.map(cat => ({
+            ...cat, terms: cat.terms.filter(t => t.term.toLowerCase().includes(term) || t.tags.toLowerCase().includes(term))
+        })).filter(cat => cat.terms.length > 0);
+        renderGlossary(filteredData);
+    }
+
+    // Listener normal para quando o usuário digita
     searchInput.addEventListener('input', function() {
         const term = this.value.toLowerCase();
         const filteredData = glossaryData.map(cat => ({
@@ -503,6 +514,217 @@ function setupGlossarySearch() {
         })).filter(cat => cat.terms.length > 0);
         renderGlossary(filteredData);
     });
+}
+
+function setupRecommendedDocsCarousel() {
+    const container = document.getElementById('recommended-docs-carousel');
+    if (!container) return;
+
+    // 1. Unifica as fontes de dados com proteção contra variáveis inexistentes
+    const community = typeof communityDocsData !== 'undefined' ? communityDocsData : [];
+    const reference = typeof referenceDocsData !== 'undefined' ? referenceDocsData : [];
+    const recomended = typeof recomendedDocsData !== 'undefined' ? recomendedDocsData : [];
+    const news = typeof newsData !== 'undefined' ? newsData : [];
+    
+    const allDocs = [...community, ...reference, ...recomended, ...news];
+
+    // 2. Captura as tags solicitadas e a URL atual (para exclusão)
+    const filterAttr = container.getAttribute('data-filter-tag');
+    // Transforma "Tag1, Tag2" em um Array ["Tag1", "Tag2"] limpo
+    const requestedTags = filterAttr ? filterAttr.split(',').map(t => t.trim()).filter(t => t !== "") : [];
+    const currentUrl = window.location.hash;
+
+    // 3. Lógica de Filtragem Profissional
+    let filteredDocs = allDocs.filter(doc => {
+        // Regra A: Deve estar habilitado
+        const isEnabled = doc.enabled !== false;
+
+        // Regra B: Não pode ser o documento que o usuário já está vendo
+        const isCurrentDoc = doc.url === currentUrl;
+        
+        // Regra C: Deve bater com QUALQUER uma das tags solicitadas (Lógica OR)
+        const matchesAnyTag = requestedTags.length > 0 && doc.tags 
+            ? requestedTags.some(tag => doc.tags.includes(tag)) 
+            : false;
+        
+        // Regra D: Se não houver tags, usa os marcados como recommended: true
+        const isRecommended = doc.recommended === true;
+
+        // Decisão: Prioriza tags se existirem, senão usa recomendados gerais
+        const meetsCriteria = requestedTags.length > 0 ? matchesAnyTag : isRecommended;
+
+        return isEnabled && !isCurrentDoc && meetsCriteria;
+    });
+
+    // Se após os filtros não sobrar nada, esconde a seção
+    if (filteredDocs.length === 0) {
+        container.style.display = 'none';
+        return;
+    } else {
+        container.style.display = 'block'; // Garante que apareça se houver dados
+    }
+
+    // 4. Geração do Título Dinâmico (Mais elegante)
+    let displayTitle = 'Conteúdo Recomendado';
+    if (requestedTags.length > 0) {
+        displayTitle = requestedTags.length === 1 
+            ? `Relacionado: ${requestedTags[0]}` 
+            : `Relacionados: ${requestedTags.join(' & ')}`;
+    }
+
+    // 5. Injeção do HTML (Slim Glass Design)
+    container.innerHTML = `
+        <section class="rd-carousel-section">
+            <div class="rd-carousel-header">
+                <h2>${displayTitle}</h2>
+                <span style="font-size: 0.8rem; color: #666; font-family: 'JetBrains Mono';">INVESTIGAÇÃO ATIVA &rarr;</span>
+            </div>
+            <div class="rd-carousel-container">
+                <button class="rd-nav-btn rd-prev" id="rd-prev">&#10094;</button>
+                <div class="rd-carousel-track-wrapper">
+                    <div class="rd-carousel-track" id="rd-track">
+                        ${filteredDocs.map(doc => `
+                            <a href="${doc.url}" class="rd-doc-card">
+                                <img src="${doc.image}" class="rd-card-img" alt="${doc.title}">
+                                <div class="rd-card-body">
+                                    <div class="rd-card-meta">
+                                        <span>${doc.date || 'Recente'}</span>
+                                        <span>${(doc.tags && doc.tags[0]) || 'DOCS.X'}</span>
+                                    </div>
+                                    <h3 class="rd-card-title">${doc.title}</h3>
+                                    <p class="rd-card-desc">${doc.description}</p>
+                                    <div class="rd-card-tags">
+                                        ${doc.tags ? doc.tags.slice(0, 3).map(tag => `<span class="rd-tag">${tag}</span>`).join('') : ''}
+                                    </div>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+                <button class="rd-nav-btn rd-next" id="rd-next">&#10095;</button>
+            </div>
+        </section>
+    `;
+
+    // 6. Lógica de Movimento Atualizada para o novo Array
+    const track = document.getElementById('rd-track');
+    const nextBtn = document.getElementById('rd-next');
+    const prevBtn = document.getElementById('rd-prev');
+    let currentIndex = 0;
+
+    const updateSlider = () => {
+        const card = track.querySelector('.rd-doc-card');
+        if (!card) return;
+        const cardWidth = card.offsetWidth + 24; // largura + gap
+        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    };
+
+    nextBtn.addEventListener('click', () => {
+        const visibleCards = window.innerWidth > 900 ? 3 : 1;
+        const maxIndex = filteredDocs.length - visibleCards;
+        currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+        updateSlider();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = currentIndex <= 0 ? 0 : currentIndex - 1;
+        updateSlider();
+    });
+
+    // Garante que o slider se ajuste se a janela mudar de tamanho
+    window.addEventListener('resize', updateSlider);
+}
+
+// --- FUNÇÃO DE RENDERIZAÇÃO DAS VOCAÇÕES (CORRIGIDA) ---
+function initVocacoesPage() {
+    // 1. Tentar pegar os dados do arquivo data.js (Variável Global)
+    // Tenta vocationsData primeiro (se existir), senão usa integrantesData
+    let sourceData = [];
+    
+    if (typeof vocationsData !== 'undefined') {
+        sourceData = vocationsData;
+    } else if (typeof integrantesData !== 'undefined') {
+        sourceData = integrantesData;
+        console.log('Usando integrantesData como backup para Vocações');
+    } else {
+        console.warn('Dados de Vocações não encontrados.');
+    }
+
+    const gridContainer = document.getElementById('vocations-grid-container');
+    const searchInput = document.getElementById('vocation-search-input'); // ID CORRIGIDO
+
+    if (!gridContainer) return;
+
+    // Função de Renderização Interna
+    function renderVocationsList(filterText = '') {
+        gridContainer.innerHTML = '';
+        const lowerFilter = filterText.toLowerCase();
+
+        // Filtra os dados
+        const filtered = sourceData.filter(member => {
+            // Verifica nome, cargo ou skills (se existirem)
+            const matchName = member.name.toLowerCase().includes(lowerFilter);
+            const matchRole = member.role.toLowerCase().includes(lowerFilter);
+            const matchSkills = member.skills ? member.skills.some(skill => skill.toLowerCase().includes(lowerFilter)) : false;
+            
+            return matchName || matchRole || matchSkills;
+        });
+
+        if (filtered.length === 0) {
+            gridContainer.innerHTML = '<p style="color:#888; grid-column: 1/-1; text-align:center;">Nenhuma vocação encontrada.</p>';
+            return;
+        }
+
+        filtered.forEach(member => {
+            // Criação do Card
+            const card = document.createElement('div');
+            card.className = 'talent-card';
+            
+            // Tratamento de Skills (caso não tenha no array, usa vazio)
+            const skillsHtml = member.skills 
+                ? member.skills.map(s => `<span class="skill-tag">${s}</span>`).join('') 
+                : '';
+
+            card.innerHTML = `
+                <div>
+                    <div class="talent-header">
+                        <img src="${member.image}" alt="${member.name}" class="talent-avatar" onerror="this.src='/image/icons/user-profile.png'">
+                        <div class="talent-info">
+                            <h3>${member.name}</h3>
+                            <span class="talent-role">${member.role}</span>
+                        </div>
+                    </div>
+                    <p class="talent-bio">${member.bio || 'Membro da Comunidade PARADOCX.'}</p>
+                </div>
+                <div class="skills-wrapper">
+                    ${skillsHtml}
+                </div>
+            `;
+            // Torna o card clicável se tiver URL válida e não for #
+            if(member.url && member.url !== '#') {
+                card.style.cursor = 'pointer';
+                card.onclick = () => window.location.hash = member.url;
+            }
+            
+            gridContainer.appendChild(card);
+        });
+    }
+
+    // Event Listener do Input
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => renderVocationsList(e.target.value));
+    }
+
+    // Expor função global para a Sidebar (Links de Categoria)
+    window.filterVocations = (term) => {
+        if(searchInput) {
+            searchInput.value = term;
+            renderVocationsList(term); // Chama a função interna correta
+        }
+    };
+
+    // Renderização Inicial
+    renderVocationsList();
 }
 
 // LÓGICA GENÉRICA PARA FORMULÁRIOS (FUNCIONA EM QUALQUER PÁGINA)
@@ -622,8 +844,13 @@ function setupFormSubmission() {
 
 async function navigate() {
     try {
-        const path = window.location.hash.substring(1) || '/inicio';
-        const route = routes[path];
+        // Pega o caminho completo (ex: /glossario?word=Paradoxo)
+        const fullPath = window.location.hash.substring(1) || '/inicio';
+        
+        // Separa a rota dos parâmetros (rota = /glossario | params = word=Paradoxo)
+        const [path, queryString] = fullPath.split('?');
+        
+        const route = routes[path]; // Agora ele acha a rota '/glossario' corretamente
 
         // Rota 404
         if (!route) {
@@ -660,13 +887,17 @@ async function navigate() {
         if (typeof eventsData !== 'undefined') renderEvents();
         if (typeof newsData !== 'undefined') renderNews();
         if (typeof glossaryData !== 'undefined') renderGlossary(glossaryData);
-        
+
+        if (document.getElementById('recommended-docs-carousel')) {
+            setupRecommendedDocsCarousel();
+        }
+     
         // Renderização Inicial do FAQ
         if (typeof faqData !== 'undefined') renderFaq(faqData);
 
         // NOVAS RENDERIZAÇÕES FASE 7
-        if (typeof talentsData !== 'undefined' && document.getElementById('talents-grid-container')) {
-            setupTalentsSearch();
+        if (document.getElementById('vocations-grid-container')) {
+            initVocacoesPage();
         }
         if (typeof partnersData !== 'undefined' && document.getElementById('marquee-row-1')) {
             renderMarquee('marquee-row-1', 'normal');

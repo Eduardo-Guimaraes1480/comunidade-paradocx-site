@@ -96,7 +96,7 @@
 .hero-carousel {
     position: relative;
     width: 100%;
-    height: 50vh; /* Ajustado para 80vh para ocupar bem a tela */
+    height: 60vh; /* Ajustado para 80vh para ocupar bem a tela */
     min-height: 200px;
     overflow: hidden;
     background-color: var(--color-surface);
@@ -392,17 +392,25 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    align-items: flex-start;
 }
 
 .news-category {
+    display: inline-block;
+    background-color: rgba(187, 134, 252, 0.85); /* Roxo translúcido */
+    border: 1px solid rgba(187, 134, 252);
+    padding: 2px 5px;
+    border-radius: 4px;
     font-family: var(--font-family-mono);
     font-size: 0.8rem;
-    color: var(--color-primary);
+    color: var(--color-text-primary);
     text-transform: uppercase;
     margin-bottom: 0.5rem;
     font-weight: bold;
     letter-spacing: 1px;
     opacity: 0.9;
+    width: auto;
+    align-items: flex-start;
 }
 
 .news-card h4 {
@@ -428,20 +436,107 @@
     gap: 2rem;
 }
 
+    .doc-meta-tag {
+        font-family: 'JetBrains Mono', monospace;
+        display: inline-block;
+        background-color: rgba(187, 134, 252, 0.15); /* Roxo translúcido */
+        color: #bb86fc;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(187, 134, 252, 0.3);
+    }
+
+/* --- ESTILO DOS CARDS DE EVENTO (Atualizado) --- */
 .event-item {
     display: flex;
-    align-items: center;
+    align-items: center; /* Centraliza verticalmente */
     justify-content: space-between;
     background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(187, 134, 252, 0.07));
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-medium);
     padding: 2rem;
-    gap: 2rem;
-    transition: border-color 0.3s;
+    gap: 2rem; /* Espaço entre Imagem, Texto e Botão */
+    transition: border-color 0.3s, transform 0.3s;
 }
 
 .event-item:hover {
     border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* Coluna 1: Imagem (Esquerda) */
+.event-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover; /* Garante que a imagem não distorça */
+    flex-shrink: 0; /* Impede a imagem de diminuir */
+    margin-bottom: 3.5rem;
+}
+
+/* Coluna 2: Conteúdo (Meio) */
+.event-content {
+    flex: 1; /* Ocupa todo o espaço disponível no meio */
+    text-align: left;
+    margin-bottom: 3.5rem;
+}
+
+.event-content h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: #fff;
+    font-family: var(--font-family-display);
+    font-size: 1.5rem;
+    line-height: 1.1;
+}
+
+.event-content p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Coluna 3: Meta Dados (Direita) */
+.event-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinha tudo à direita */
+    gap: 1rem;
+    min-width: 180px; /* Garante espaço fixo para data e botão */
+    text-align: right;
+}
+
+.event-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-weight: bold;
+    text-align: left;
+    display: block;
+    width: 160px;
+}
+
+/* Responsividade: Empilha tudo no celular */
+@media (max-width: 768px) {
+    .event-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .event-content {
+        text-align: center;
+    }
+
+    .event-meta {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
 }
 
 .event-info h3 {
@@ -460,15 +555,6 @@
 .event-action {
     text-align: left;
     min-width: 150px;
-}
-
-.event-date {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
 }
 
 /* Responsividade */

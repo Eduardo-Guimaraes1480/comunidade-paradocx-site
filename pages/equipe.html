@@ -1,71 +1,294 @@
 <style>
-    /* --- ESTILOS EXCLUSIVOS: LISTA HORIZONTAL DE CARGOS --- */
-
-    /* Estilo da Seção de Destaque (Rito de Passagem) */
-    .featured-project {
-        border: 1px solid #555;
-        border-radius: var(--border-radius-medium);
-        padding: 2.5rem;
-        margin: 3rem 0;
-        position: relative;
+    /* ==========================================================================
+       1. ESTILOS GERAIS DE LAYOUT
+       ========================================================================== */
+    .main-layout-container {
+        width: 100%;
+        overflow-x: hidden;
     }
-    
-    .featured-project h2 {
-        font-family: var(--font-family-display);
-        color: var(--color-text-primary);
+
+    .container-limit {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .container-narrow {
+        margin: 0 auto;
+    }
+
+    .content-section {
+        padding: 4rem 1rem;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .centered-text {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .section-title {
+        font-family: 'Paradocx CA', sans-serif;
+        font-size: 2.5rem;
         margin-bottom: 1.5rem;
+        color: var(--color-text-primary);
     }
 
-    .featured-project ul {
-        list-style: none;
-        padding-left: 0;
-        margin: 0rem 0;
-        text-align: left;
+    .lead-text {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #ccc;
     }
 
-    .featured-project li {
-        font-weight: bold;
-        margin-bottom: 0.8rem;
-        padding-left: 2rem;
-        position: relative;
+    /* ==========================================================================
+       3. SEÇÕES ESPECÍFICAS (SPLIT, FULL WIDTH)
+       ========================================================================== */
+    /* Split Section (Texto + Imagem) */
+    .split-section-full {
+        padding: 6rem 0;
+        background: #0a0a0a;
+    }
+
+    .split-content-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .text-side h2 {
+        font-family: 'Paradocx CA', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: #fff;
+    }
+
+    .text-side p {
+        color: #bbb;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .text-side ul {
+        color: #bbb;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-size: 16px;
+    }
+
+    ul,
+    ol {
+        padding-left: 1.5rem;
+        /* Indentação para listas */
+        margin-bottom: 1.5rem;
+        list-style: initial;
+        /* Garante que marcadores apareçam */
+    }
+
+    li {
+        margin-bottom: 0.5rem;
         color: var(--color-text-secondary);
     }
 
-    .featured-project li::before {
-        content: '🎁'; /* Ícone de presente */
-        position: absolute;
-        left: 0;
-        top: 2px;
-        font-size: 0.9rem;
-    }
-
-    /* Cursor piscante para o efeito de digitação */
-    #dynamic-text::after {
-        content: '|';
-        margin-left: 2px;
-        animation: blinkCursor 0.7s infinite;
+    .highlight-text {
+        font-size: 1.5rem;
+        font-style: italic;
         color: var(--color-primary);
+        border-left: 3px solid var(--color-primary);
+        padding-left: 1.5rem;
+        margin-bottom: 2rem;
     }
 
-    @keyframes blinkCursor {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
+    .glass-alert-box {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 12px;
+        color: #ddd;
+        margin-top: 2rem;
     }
-    
+
+    .image-frame-glass {
+        position: relative;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        transform: rotate(2deg);
+        transition: transform 0.3s ease;
+    }
+
+    .image-frame-glass:hover {
+        transform: rotate(0deg);
+    }
+
+    .image-frame-glass img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+    }
+
+    .image-frame-glass .caption {
+        display: block;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 0.5rem;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Seção Filosofia / Banimento */
+    .ban-section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 3rem 10%;
+        background: linear-gradient(145deg, rgba(20, 0, 0, 0.8), rgba(40, 0, 0, 0.6));
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ban-text {
+        flex: 1;
+        min-width: 600px;
+        /* Ajustado para responsividade */
+    }
+
+    .ban-image {
+        flex: 1;
+        min-width: 200px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .icone-equipe {
+        padding-left: 4rem;
+        width: 500px;
+        opacity: 0.8;
+        filter: brightness(0.02) sepia(100%) hue-rotate(-60deg) saturate(5000%);
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    /* Feature Section (Azul) */
+    .full-width-feature {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        min-height: 500px;
+    }
+
+    .full-width-feature .feature-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .full-width-feature .feature-text {
+        padding: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: rgba(10, 10, 10, 0.9);
+    }
+
+    /* Seção Fitas / Níveis */
+    .niveis-visual-section {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 8rem 2rem;
+    }
+
+    .glass-panel-niveis {
+        background: linear-gradient(235deg, rgb(187, 134, 252, 0.09), rgba(255, 255, 255, 0.03));
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+    }
+
+    .niveis-content {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .fitas-img-wrapper {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .fitas-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: transform 0.5s;
+    }
+
+    .glass-panel-niveis:hover .fitas-img-wrapper img {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    /* ==========================================================================
+       4. CARDS DE CARGOS (Horizontal)
+       ========================================================================== */
+    .levels-section {
+        padding: 4rem 0 8rem 0;
+        background: linear-gradient(to bottom, #0a0a0a, #111);
+    }
+
+    .section-title-center {
+        text-align: center;
+        font-family: 'Paradocx CA', sans-serif;
+        font-size: 3rem;
+        color: #fff;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle-center {
+        text-align: left;
+        color: #666;
+        margin: 3rem 0 0rem 0;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
     .role-list-container {
         display: flex;
-        flex-direction: column; /* Empilha os cards um abaixo do outro */
+        flex-direction: column;
         gap: 2rem;
-        margin-top: 3rem;
-        max-width: 900px; /* Largura controlada para leitura confortável */
+        max-width: 900px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    /* Card Deitado (Horizontal) */
     .role-card-horizontal {
         display: grid;
-        grid-template-columns: 100px 1fr; /* Coluna do ícone fixa, resto flexível */
+        grid-template-columns: 100px 1fr;
         gap: 2rem;
         border: 1px solid var(--color-border);
         border-radius: 16px;
@@ -79,10 +302,9 @@
     }
 
     .role-card-horizontal:hover {
-        transform: translateX(10px); /* Move para a direita ao passar o mouse */
+        transform: translateX(10px);
     }
 
-    /* Ícone/Avatar na Esquerda */
     .role-icon-wrapper {
         display: flex;
         flex-direction: column;
@@ -98,11 +320,9 @@
         border: 2px solid #333;
         padding: 4px;
         background: #000;
-        transition: border-color 0.3s;
         margin-bottom: 1rem;
     }
 
-    /* Badge de Nível abaixo do ícone */
     .role-badge-mini {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.75rem;
@@ -114,7 +334,6 @@
         opacity: 0.8;
     }
 
-    /* Conteúdo na Direita */
     .role-content {
         display: flex;
         flex-direction: column;
@@ -143,14 +362,13 @@
         margin-bottom: 1.5rem;
     }
 
-    /* Lista de Atributos (Poder, Como Alcançar) */
     .role-attributes {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Duas colunas de atributos */
+        grid-template-columns: 1fr 1fr;
         gap: 2rem;
         margin-top: 1rem;
         padding-top: 1.5rem;
-        border-top: 1px solid rgba(255,255,255,0.05);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .attr-box h4 {
@@ -168,7 +386,6 @@
         line-height: 1.5;
     }
 
-    /* Botão de Ação Sutil */
     .role-action {
         margin-top: 1.5rem;
         font-size: 0.9rem;
@@ -180,8 +397,8 @@
         transition: all 0.3s;
         border: 1px solid currentColor;
         padding: 6px 12px;
-        margin-right: 29rem;
         border-radius: 4px;
+        width: fit-content;
     }
 
     .role-card-horizontal:hover .role-action {
@@ -189,75 +406,299 @@
         transform: translateX(0);
     }
 
-    /* --- TEMAS DE CORES --- */
+    /* --- TEMAS DOS CARGOS --- */
+    /* 1. Ouro (Criador) */
+    .theme-gold {
+        border-left: 6px solid #daa520;
+        background: linear-gradient(90deg, rgb(218, 165, 32, 0.09), rgba(255, 255, 255, 0.1));
+    }
 
-    /* 1. CARGO CRIADOR (BRANCO/DOURADO) */
-    .theme-gold { border-left: 6px solid #daa520; background: linear-gradient(90deg, rgb(218, 165, 32, 0.09), rgba(255, 255, 255, 0.1)); }
-    .theme-gold:hover { border-color: #daa520; box-shadow: 0 5px 30px rgba(255, 215, 0, 0.15); background: linear-gradient(90deg, rgb(218, 165, 32, 0.05), rgba(255, 255, 255, 0.05));}
-    .theme-gold .role-title { color: #daa520; }
-    .theme-gold .role-icon { border-color: #daa520; }
-    .theme-gold .role-badge-mini { color: #daa520; background: rgb(218, 165, 32, 0.2);}
-    .theme-gold .role-action { color: #daa520; }
+    .theme-gold:hover {
+        border-color: #daa520;
+        box-shadow: 0 5px 30px rgba(255, 215, 0, 0.15);
+        background: linear-gradient(90deg, rgb(218, 165, 32, 0.05), rgba(255, 255, 255, 0.05));
+    }
 
-    /* 2. CARGO PRETO (LENDAS) */
-    .theme-black { border-left: 6px solid  #444; background: linear-gradient(90deg, rgb(0, 0, 0, 0.3), rgba(0, 0, 0, 0.25));}
-    .theme-black:hover { border-color:  #444; box-shadow: 0 5px 30px rgba(255, 255, 255, 0.1); background: linear-gradient(90deg, rgb(0, 0, 0, 0.4), rgba(0, 0, 0, 0.35));}
-    .theme-black .role-title { color: #fff; }
-    .theme-black .role-icon { border-color: #444; }
-    .theme-black .role-badge-mini { color: #fff; border-color: #444; background: rgba(0, 0, 0, 0.2);}
-    .theme-black .role-action { color: #fff; }
+    .theme-gold .role-title,
+    .theme-gold .role-action,
+    .theme-gold .role-badge-mini {
+        color: #daa520;
+    }
 
-    /* 3. CARGO VERMELHO (ESPECIALISTAS) */
-    .theme-red { border-left: 6px solid #ef473a; background: linear-gradient(90deg, rgb(239, 71, 58, 0.09), rgba(255, 255, 255, 0.03));}
-    .theme-red:hover { border-color: #ef473a; box-shadow: 0 5px 30px rgba(239, 71, 58, 0.2); background: linear-gradient(90deg, rgb(239, 71, 58, 0.05), rgba(255, 255, 255, 0.02));}
-    .theme-red .role-title { color: #ef473a; }
-    .theme-red .role-icon { border-color: #ef473a; }
-    .theme-red .role-badge-mini { color: #ef473a; background: rgb(239, 71, 58, 0.2);}
-    .theme-red .role-action { color: #ef473a; }
+    .theme-gold .role-icon {
+        border-color: #daa520;
+    }
 
-    /* 4. CARGO AZUL (XXX) */
-    .theme-blue { border-left: 6px solid #4364F7; background: linear-gradient(90deg, rgb(67, 100, 247, 0.09), rgba(255, 255, 255, 0.03));}
-    .theme-blue:hover { border-color: #4364F7; box-shadow: 0 5px 30px rgba(67, 100, 247, 0.2); background: linear-gradient(90deg, rgb(67, 100, 247, 0.05), rgba(255, 255, 255, 0.02)); }
-    .theme-blue .role-title { color: #4364F7; }
-    .theme-blue .role-icon { border-color: #4364F7; }
-    .theme-blue .role-badge-mini { color: #4364F7; background: rgb(67, 100, 247, 0.2); }
-    .theme-blue .role-action { color: #4364F7; }
+    .theme-gold .role-badge-mini {
+        background: rgb(218, 165, 32, 0.2);
+    }
 
-    /* 5. CARGO VERDE (ATIVO) */
-    .theme-green { border-left: 6px solid #2ecc71; background: linear-gradient(90deg, rgb(46, 204, 113, 0.09), rgba(255, 255, 255, 0.03));}
-    .theme-green:hover { border-color: #2ecc71; box-shadow: 0 5px 30px rgba(46, 204, 113, 0.2); background: linear-gradient(90deg, rgb(46, 204, 113, 0.05), rgba(255, 255, 255, 0.02));}
-    .theme-green .role-title { color: #2ecc71; }
-    .theme-green .role-icon { border-color: #2ecc71; }
-    .theme-green .role-badge-mini { color: #2ecc71; background: rgb(46, 204, 113, 0.2);}
-    .theme-green .role-action { color: #2ecc71; }
+    /* 2. Preto (Lendas) */
+    .theme-black {
+        border-left: 6px solid #444;
+        background: linear-gradient(90deg, rgb(0, 0, 0, 0.3), rgba(0, 0, 0, 0.25));
+    }
 
-    /* 6. CARGO AMARELO (COLABORADOR) */
-    .theme-yellow { border-left: 6px solid #f1c40f; background: linear-gradient(90deg, rgb(241, 196, 15, 0.09), rgba(255, 255, 255, 0.03));}
-    .theme-yellow:hover { border-color: #f1c40f; box-shadow: 0 5px 30px rgba(241, 196, 15, 0.2); background: linear-gradient(90deg, rgb(241, 196, 15, 0.05), rgba(255, 255, 255, 0.02));}
-    .theme-yellow .role-title { color: #f1c40f; }
-    .theme-yellow .role-icon { border-color: #f1c40f; }
-    .theme-yellow .role-badge-mini { color: #f1c40f; background: rgb(241, 196, 15, 0.2);}
-    .theme-yellow .role-action { color: #f1c40f; }
+    .theme-black:hover {
+        border-color: #444;
+        box-shadow: 0 5px 30px rgba(255, 255, 255, 0.1);
+        background: linear-gradient(90deg, rgb(0, 0, 0, 0.4), rgba(0, 0, 0, 0.35));
+    }
 
-    /* Responsividade Mobile: Vira Card Vertical */
-    @media (max-width: 700px) {
+    .theme-black .role-title,
+    .theme-black .role-action,
+    .theme-black .role-badge-mini {
+        color: #fff;
+    }
+
+    .theme-black .role-icon {
+        border-color: #444;
+    }
+
+    .theme-black .role-badge-mini {
+        border-color: #444;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* 3. Vermelho (Especialistas) */
+    .theme-red {
+        border-left: 6px solid #ef473a;
+        background: linear-gradient(90deg, rgb(239, 71, 58, 0.09), rgba(255, 255, 255, 0.03));
+    }
+
+    .theme-red:hover {
+        border-color: #ef473a;
+        box-shadow: 0 5px 30px rgba(239, 71, 58, 0.2);
+        background: linear-gradient(90deg, rgb(239, 71, 58, 0.05), rgba(255, 255, 255, 0.02));
+    }
+
+    .theme-red .role-title,
+    .theme-red .role-action,
+    .theme-red .role-badge-mini {
+        color: #ef473a;
+    }
+
+    .theme-red .role-icon {
+        border-color: #ef473a;
+    }
+
+    .theme-red .role-badge-mini {
+        background: rgb(239, 71, 58, 0.2);
+    }
+
+    /* 4. Azul (XXX) */
+    .theme-blue {
+        border-left: 6px solid #4364F7;
+        background: linear-gradient(90deg, rgb(67, 100, 247, 0.09), rgba(255, 255, 255, 0.03));
+    }
+
+    .theme-blue:hover {
+        border-color: #4364F7;
+        box-shadow: 0 5px 30px rgba(67, 100, 247, 0.2);
+        background: linear-gradient(90deg, rgb(67, 100, 247, 0.05), rgba(255, 255, 255, 0.02));
+    }
+
+    .theme-blue .role-title,
+    .theme-blue .role-action,
+    .theme-blue .role-badge-mini {
+        color: #4364F7;
+    }
+
+    .theme-blue .role-icon {
+        border-color: #4364F7;
+    }
+
+    .theme-blue .role-badge-mini {
+        background: rgb(67, 100, 247, 0.2);
+    }
+
+    /* 5. Verde (Ativo) */
+    .theme-green {
+        border-left: 6px solid #2ecc71;
+        background: linear-gradient(90deg, rgb(46, 204, 113, 0.09), rgba(255, 255, 255, 0.03));
+    }
+
+    .theme-green:hover {
+        border-color: #2ecc71;
+        box-shadow: 0 5px 30px rgba(46, 204, 113, 0.2);
+        background: linear-gradient(90deg, rgb(46, 204, 113, 0.05), rgba(255, 255, 255, 0.02));
+    }
+
+    .theme-green .role-title,
+    .theme-green .role-action,
+    .theme-green .role-badge-mini {
+        color: #2ecc71;
+    }
+
+    .theme-green .role-icon {
+        border-color: #2ecc71;
+    }
+
+    .theme-green .role-badge-mini {
+        background: rgb(46, 204, 113, 0.2);
+    }
+
+    /* 6. Amarelo (Colaborador) */
+    .theme-yellow {
+        border-left: 6px solid #f1c40f;
+        background: linear-gradient(90deg, rgb(241, 196, 15, 0.09), rgba(255, 255, 255, 0.03));
+    }
+
+    .theme-yellow:hover {
+        border-color: #f1c40f;
+        box-shadow: 0 5px 30px rgba(241, 196, 15, 0.2);
+        background: linear-gradient(90deg, rgb(241, 196, 15, 0.05), rgba(255, 255, 255, 0.02));
+    }
+
+    .theme-yellow .role-title,
+    .theme-yellow .role-action,
+    .theme-yellow .role-badge-mini {
+        color: #f1c40f;
+    }
+
+    .theme-yellow .role-icon {
+        border-color: #f1c40f;
+    }
+
+    .theme-yellow .role-badge-mini {
+        background: rgb(241, 196, 15, 0.2);
+    }
+
+
+    /* ==========================================================================
+       5. BOTÕES E COMPONENTES AUXILIARES
+       ========================================================================== */
+    .button-group {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        line-height: 1.3;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+
+    .btn-primary {
+        padding: 24px 24px;
+        background: var(--color-primary);
+        border: 1px solid rgba(187, 134, 252, 0.7);
+        color: #121212;
+    }
+
+    .btn-secondary {
+        padding: 12px 12px;
+        background: transparent;
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+    }
+
+    .btn-primary:hover {
+        background: rgba(46, 204, 113, 0.5);
+        border: 1px solid rgba(46, 204, 113, 0.7);
+        color: #121212;
+    }
+
+    /* Cards de Aviso/Protocolos */
+    .warning-card {
+        background: linear-gradient(145deg, rgba(20, 0, 0, 0.8), rgba(40, 0, 0, 0.6));
+        border: 1px solid rgba(255, 71, 87, 0.3);
+        padding: 2rem;
+        border-radius: 12px;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .protocol-footer {
+        margin-top: 2rem !important;
+        text-align: center;
+        font-family: 'JetBrains Mono', monospace;
+        color: #ff4757 !important;
+        font-size: 0.9rem;
+        border-top: 1px solid rgba(255, 71, 87, 0.2);
+        padding-top: 1.5rem;
+    }
+
+    /* ==========================================================================
+       6. RESPONSIVIDADE
+       ========================================================================== */
+    @media (max-width: 900px) {
+        .split-content-wrapper {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-equipe-full h1 {
+            font-size: 2.5rem;
+        }
+
+        .image-frame-glass {
+            transform: rotate(0deg);
+        }
+
+        .ban-text {
+            min-width: 100%;
+            padding-right: 0;
+        }
+
+        .ban-image {
+            margin-top: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
         .role-card-horizontal {
             grid-template-columns: 1fr;
             text-align: center;
             gap: 1.5rem;
         }
-        .role-icon-wrapper { margin: 0 auto; }
-        .role-header { justify-content: center; }
-        .role-attributes { grid-template-columns: 1fr; text-align: left; }
-        .role-action { opacity: 1; transform: none; margin-top: 2rem; display: block; }
+
+        .role-icon-wrapper {
+            margin: 0 auto;
+        }
+
+        .role-header {
+            justify-content: center;
+        }
+
+        .role-attributes {
+            grid-template-columns: 1fr;
+            text-align: left;
+        }
+
+        .role-action {
+            opacity: 1;
+            transform: none;
+            margin: 2rem auto 0 auto;
+            display: block;
+        }
+
+        .full-width-feature {
+            grid-template-columns: 1fr;
+        }
+
+        .glass-panel-niveis {
+            grid-template-columns: 1fr;
+        }
+
+        .fitas-img-wrapper {
+            height: 250px;
+        }
     }
-
 </style>
+
 <div class="hero-carousel">
-
     <div class="carousel-track">
-
-        <div class="carousel-slide active" style="background-image: url('/image/escudo-equipe-logo.png');">
+        <div class="carousel-slide active"
+            style="background-image: url('/image/imgs-implementar-paginas/fitas-cargos-pintura2.png');">
             <div class="hero-principal-content">
                 <h1>A Equipe ESE: O Círculo Interno</h1>
                 <p>O motor criativo e filosófico da Comunidade PARADOCX.</p>
@@ -267,7 +708,7 @@
             </div>
         </div>
 
-        <div class="carousel-slide" style="background-image: url('/image/ESE-Kosmo.jpg');">
+        <div class="carousel-slide" style="background-image: url('/image/banner-carrosel/banner-ese-kosmo.png');">
             <div class="hero-principal-content">
                 <h1>ESE Kosmo</h1>
                 <p>A gamificação da vida real. Transforme pilares em conquistas.</p>
@@ -277,18 +718,18 @@
             </div>
         </div>
 
-        <div class="carousel-slide" style="background-image: url('/image/filosofia-pilares.jpg');">
+         <div class="carousel-slide" style="background-image: url('/image/banner-carrosel/banner-universe-ese.png');">
             <div class="hero-principal-content">
                 <h1>Universo Criativo</h1>
-                <p>Música, literatura e arte expandindo os limites da realidade.</p>
+                <p>Atualmente, o Universo ESE está sendo escrito em "tempo real".</p>
                 <div class="button-container">
-                    <a href="#/projetos/radio-multiversus" class="secondary-button"
-                        style="color: white; border-color: white;">Ouvir Rádio Multiversus</a>
+                    <a href="#/projetos/universo-ese" class="secondary-button"
+                        style="color: white; border-color: white;">Explorar Universo</a>
                 </div>
             </div>
         </div>
 
-        <div class="carousel-slide" style="background-image: url('/image/escudo-equipe-logo.png');">
+        <div class="carousel-slide" style="background-image: url('/image/banner-carrosel/banner-equipe-ese.png');">
             <div class="hero-principal-content">
                 <h1>Equipe ESE</h1>
                 <p>O motor criativo por trás dos projetos e da filosofia.</p>
@@ -297,222 +738,411 @@
                 </div>
             </div>
         </div>
-
     </div>
-
     <button class="carousel-nav nav-prev">&#10094;</button>
     <button class="carousel-nav nav-next">&#10095;</button>
-
 </div>
 
-<div class="main-content-principal" style="max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; text-align: center;">
-
-    <section class="text-section" style="padding-bottom: 0; padding-top: 0;">
-    <h2 id="equipe-title-container" style="font-family: var(--font-family-code); text-transform: uppercase; font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.4; min-height: 2.4em; width: 1200px; margin-left: -230px;">
-        A EQUIPE DE SOLUÇÕES E<span id="dynamic-text" style="color: var(--color-text-primary);">...</span> <br>(ESE)
-    </h2>
-    <p style="font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
-        O motor criativo e filosófico da Comunidade PARADOCX. Enquanto a
-        comunidade é a porta de entrada para todos, a equipe é formada por membros que demonstraram um profundo
-        engajamento e desejo de construir ativamente nosso universo.
-    </p>
+<div class="main-layout-container">
+    <section style="display: flex; align-items: center; justify-content: center; padding: 2rem 1rem 0rem 1rem; background: #121212;">
+        <img src="/image/imgs-png-implementar-paginas/escudo-equipe-logo-PNG.png" alt="Logo Equipe ESE"
+            style="max-width: 100%; width: 30%; height: auto; object-fit: contain;">
     </section>
 
-    <div class="featured-project">
-        <h2 style="text-align: justify;">O Rito de Passagem: Como Entrar na Equipe</h2>
-        <p>
-            Inspirados pelo princípio de "gifting" (presentear) de comunidades como o Burning Man, a transição da
-            Comunidade (círculo externo) para a Equipe ESE (círculo interno) acontece através de uma contribuição
-            significativa. Não é um teste, mas um "presente" para o ecossistema.
-        </p>
-        <p>
-            Para ser convidado a se juntar à Equipe, um membro deve primeiro criar e compartilhar um trabalho que
-            enriqueça a comunidade. Exemplos de "presentes" incluem:
-        </p>
-        <ul>
-            <li>Escrever uma análise aprofundada de um DOC fundamental.</li>
-            <li>Criar um infográfico ou resumo visual sobre um dos Pilares do Manifesto.</li>
-            <li>Organizar e mediar um debate online sobre um tema da nossa filosofia.</li>
-            <li>Contribuir com uma pequena peça de arte, música ou código para um dos projetos.</li>
-        </ul>
-        <p>
-            Este rito garante que o núcleo da nossa equipe seja formado por indivíduos proativos, colaborativos e
-            verdadeiramente alinhados com o nosso propósito de construção coletiva.
-        </p>
-    </div>
+    <section class="content-section text-center" style="padding: 0; margin: 0 auto;">
+        <div class="container-narrow">
+            <h2 class="section-title">Quem Somos Nós?</h2>
+            <p class="lead-text" style="text-align: justify;">
+                A Equipe ESE (Equipe de Soluções Experimentais) não é apenas um grupo de amigos. É a <strong>"Frente
+                    Interna"</strong> da Comunidade PARADOCX. Somos os "Tradutores" — indivíduos que sentiram na pele a
+                alienação da sociedade moderna e decidiram construir uma saída.
+            </p>
+            <p style="text-align: justify;">
+                Nosso objetivo não é conforto, é <strong>LUCIDEZ</strong>. Operamos sob uma hierarquia baseada não em
+                poder, mas em <strong>Níveis de Consciência</strong> e <strong>Responsabilidade</strong>.
+            </p>
+        </div>
+    </section>
 
-    <h2 style="margin-top: 4rem; font-family: var(--font-family-paradocx); font-size: 2.5rem;">Estrutura de Cargos da Equipe ESE</h2>
-    
-    <p style="text-align: justify; font-style: italic; color: #888; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-        "Lembre-se… vocês entram nesse Grupo para conversar sobre Trabalho, e trabalho é coisa séria, mas ao mesmo tempo
-        saiba que nesse trabalho o seu Chefe não te obriga a sempre se manter ativo... os que se manterem mais ativos
-        aumentam de Cargo e Benefícios, os que não se manterem ativos, perda de Cargos até não ser mais um membro da
-        Equipe…"
-    </p>
-
-    <p style="text-align: justify;">
-        A estrutura da equipe é um reflexo direto da filosofia do "Paradoxo Humano". Para entender a origem desses
-        conceitos, conheça a história por trás do fundador e seus alter egos.
-    </p>
-    
-    <a href="#/integrantes" class="card-button" style="margin-bottom: 4rem; display: inline-block;">Conheça os Integrantes da Equipe</a>
-
-<div class="role-list-container">
-
-    <a href="#/comece-aqui" class="role-card-horizontal theme-yellow">
-        <div class="role-icon-wrapper">
-            <img src="/image/logo2.png" alt="Colaborador" class="role-icon">
-            <span class="role-badge-mini">NIVEL 6</span>
+    <section class="content-section text-justify" style="padding: 0rem 0rem 2rem 0rem;">
+        <div class="text-container" style="text-align: justify;">
+            <h2 style="font-family: JetBrains Mono, monospace; color: var(--color-primary); font-size: 1.5rem;">Os
+                Círculos da Comunidade</h2>
+            <p>A <strong>Equipe ESE</strong> e a <strong>Comunidade PARADOCX</strong> operam em um sistema de "Círculos
+                Concêntricos". Quanto mais próximo do centro, maior o acesso aos "Segredos de Estado" (Projetos Beta,
+                Estratégias Futuras) e maior a demanda por entrega.</p>
+            <p>Nossa hierarquia não é baseada em idade ou diploma, mas em <strong>Pele em Risco (Skin in the
+                    Game)</strong> e alinhamento com a Filosofia "E SE".</p>
         </div>
-        <div class="role-content">
-            <div class="role-header">
-                <h3 class="role-title">Colaborador</h3>
-            </div>
-            <p class="role-desc">Apenas visualiza o grupo, interage com reações e participa pontualmente.</p>
-            
-            <div class="role-attributes">
-                <div class="attr-box">
-                    <h4>/// Poder</h4>
-                    <p>Interagir e participar de projetos sob supervisão.</p>
-                </div>
-                <div class="attr-box">
-                    <h4>/// Requisito</h4>
-                    <p>Ser um apoiador ou patrocinador.</p>
-                </div>
-            </div>
-            <span class="role-action">Comece Aqui &rarr;</span>
-        </div>
-    </a>
-
-    <a href="#/como-participar" class="role-card-horizontal theme-green">
-        <div class="role-icon-wrapper">
-            <img src="/image/banner.png" alt="Ativo" class="role-icon">
-            <span class="role-badge-mini">NIVEL 5</span>
-        </div>
-        <div class="role-content">
-            <div class="role-header">
-                <h3 class="role-title">Integrante Ativo</h3>
-            </div>
-            <p class="role-desc">Pessoa interessada que já agregou ao grupo e está se descobrindo na Equipe.</p>
-            
-            <div class="role-attributes">
-                <div class="attr-box">
-                    <h4>/// Poder</h4>
-                    <p>Voto em reuniões e respeito nas decisões.</p>
-                </div>
-                <div class="attr-box">
-                    <h4>/// Requisito</h4>
-                    <p>Manter-se ativo e participativo.</p>
-                </div>
-            </div>
-            <span class="role-action">Como Participar &rarr;</span>
-        </div>
-    </a>
-
-    <a href="#/integrantes" class="role-card-horizontal theme-blue">
-        <div class="role-icon-wrapper">
-            <img src="/image/comunidade.jpg" alt="XXX" class="role-icon">
-            <span class="role-badge-mini">NIVEL 4</span>
-        </div>
-        <div class="role-content">
-            <div class="role-header">
-                <h3 class="role-title">Cargo XXX (Azul)</h3>
-            </div>
-            <p class="role-desc">Pessoa disposta a dar seu máximo, que achou seu propósito e tem habilidades valiosas para a equipe.</p>
-            
-            <div class="role-attributes">
-                <div class="attr-box">
-                    <h4>/// Poder</h4>
-                    <p>Definir o nome do próprio cargo e área de trabalho.</p>
-                </div>
-                <div class="attr-box">
-                    <h4>/// Requisito</h4>
-                    <p>Ser habilidoso e ter hobbies úteis para a Equipe.</p>
-                </div>
-            </div>
-            <span class="role-action">Ver Integrantes &rarr;</span>
-        </div>
-    </a>
-
-    <a href="#/areas" class="role-card-horizontal theme-red">
-        <div class="role-icon-wrapper">
-            <img src="/image/filosofia-pilares.jpg" alt="Especialistas" class="role-icon">
-            <span class="role-badge-mini">NIVEL 3</span>
-        </div>
-        <div class="role-content">
-            <div class="role-header">
-                <h3 class="role-title">Especialistas</h3>
-            </div>
-            <p class="role-desc">Membros confiáveis e imersos na Filosofia "ESE?", focados em áreas específicas como Criação, Debate, Pesquisa e Saúde.</p>
-            
-            <div class="role-attributes">
-                <div class="attr-box">
-                    <h4>/// Poder</h4>
-                    <p>Liderar Áreas e Subgrupos temáticos.</p>
-                </div>
-                <div class="attr-box">
-                    <h4>/// Requisito</h4>
-                    <p>Especializar-se e assumir responsabilidade técnica.</p>
-                </div>
-            </div>
-            <span class="role-action">Ver Áreas de Atuação &rarr;</span>
-        </div>
-    </a>
-
-    <a href="#/contato" class="role-card-horizontal theme-black">
-        <div class="role-icon-wrapper">
-            <img src="/image/escudo-equipe-logo.png" alt="Lendas" class="role-icon">
-            <span class="role-badge-mini">NIVEL 2</span>
-        </div>
-        <div class="role-content">
-            <div class="role-header">
-                <h3 class="role-title">Conselho das Lendas</h3>
-            </div>
-            <p class="role-desc">Os mais habilidosos que merecem respeito; os que sempre fazem acontecer; os que estão na equipe há muito tempo.</p>
-            
-            <div class="role-attributes">
-                <div class="attr-box">
-                    <h4>/// Poder</h4>
-                    <p>Administrar Grupos e tomar decisões estratégicas.</p>
-                </div>
-                <div class="attr-box">
-                    <h4>/// Requisito</h4>
-                    <p>Marcar seu nome na história com feitos grandes.</p>
-                </div>
-            </div>
-            <span class="role-action">Contatar Lendas &rarr;</span>
-        </div>
-    </a>
-
-    <a href="#/integrantes/eduardo-guimaraes" class="role-card-horizontal theme-gold">
-        <div class="role-icon-wrapper">
-            <img src="/image/logo.png" alt="Criador" class="role-icon">
-            <span class="role-badge-mini">NIVEL 1</span>
-        </div>
-        <div class="role-content">
-            <div class="role-header">
-                <h3 class="role-title">Criador</h3>
-            </div>
-            <p class="role-desc">Criador dos Prós ou dos Contras; ele tenta ao máximo não ser limitante. Mantém e tem todo o controle sobre a equipe e os Cargos abaixo.</p>
-            
-            <div class="role-attributes">
-                <div class="attr-box">
-                    <h4>/// Poder</h4>
-                    <p>Liderança ou Vice-Liderança Suprema.</p>
-                </div>
-                <div class="attr-box">
-                    <h4>/// Requisito</h4>
-                    <p>Criar o Grupo ou Remodelar o Grupo.</p>
-                </div>
-            </div>
-            <span class="role-action">Ver Sobre &rarr;</span>
-        </div>
-    </a>
-
+    </section>
 </div>
 
-<section class="text-section" style="margin-top: 4rem;">
-    <p style="font-style: italic; color: var(--color-text-secondary);">
-        "Lembre-se… vocês entram nesse Grupo para conversar sobre Trabalho, e trabalho é coisa séria. O seu Chefe não te obriga a sempre se manter ativo... mas os que se mantêm, colhem os frutos."
-    </p>
+<div class="main-layout-container">
+    <section class="split-section-full">
+        <div class="container-limit">
+            <div class="split-content-wrapper">
+                <div class="text-side" style="text-align: justify;">
+                    <h2>Niveis/Cargos</h2>
+                    <p class="highlight-text">"Não é a posição que faz o líder, é o líder que faz a posição." — Stanley
+                        Huffty.</p>
+                    <p>O Protocolo de Engajamento:</p>
+                    <ul>
+                        <li><strong>Interesse vs. Desinteresse:</strong> Você trabalha quando achar necessário ou quando sentir o
+                            chamado. A intensidade da sua participação define a sua recompensa.</li>
+                        <li><strong>O Olho que Tudo Vê:</strong> Embora haja liberdade, a Liderança observa tudo. Quem se mantém ativo,
+                            desbloqueia Níveis (Cargos) e Benefícios (XP/Acesso). Quem se torna um "fantasma", perde
+                            privilégios até a desconexão natural.</li>
+                        <li><strong>Harmonia Obrigatória:</strong> Se a relação não for simbiótica (boa para você e para o grupo), não há
+                            sentido em continuar. Não aceitamos membros em estado de miséria ou infelicidade; ou mudamos
+                            a situação, ou encerramos o ciclo.</li>
+                    </ul>
+                    <p>Diferente de empresas tradicionais, a Comunidade PARADOCX opera sob uma lógica de
+                        <strong>Autonomia Radical</strong>. Não existem "funcionários", existem "agentes autônomos". A
+                        relação de trabalho aqui segue o princípio da <strong>Adesão Voluntária</strong>:</p>
+
+                    <div class="glass-alert-box">
+                        <strong>🎁 O Presente:</strong><br>
+                        "Lembre-se… vocês entram nesse Grupo como um 'Presente' (O que vocês podem oferecer?), e só
+                        depois recebem o 'Presente' (O que a comunidade pode dar a vocês?)."
+                    </div>
+                </div>
+
+                <div class="image-side">
+                    <div class="image-frame-glass">
+                        <img src="/image/imgs-implementar-paginas/equipe-chegada.jpg" alt="Fitas dos Cargos">
+                        <span class="caption">Cargos Pretos: A verdadeira Equipe ESE em Essência</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="levels-section">
+        <div class="container-limit">
+            <h3 class="section-title-center"
+                style="text-align: center; font-size: 5rem;
+        background: linear-gradient(45deg, #fff, #bb86fc); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                A Escada de Niveis</h3>
+            <div class="role-list-container">
+                <p class="section-subtitle-center">Niveis/Cargos da Comunidade [Circulo Externo]</p>
+                <a href="#/comece-aqui" class="role-card-horizontal theme-yellow">
+                    <div class="role-icon-wrapper">
+                        <img src="/image/icons/icon-fita6.png" alt="Colaborador" class="role-icon">
+                        <span class="role-badge-mini">NIVEL 6</span>
+                    </div>
+                    <div class="role-content">
+                        <div class="role-header">
+                            <h3 class="role-title">Colaborador</h3>
+                        </div>
+                        <p class="role-desc">A porta de entrada. Curiosos, visitantes e amigos que simpatizam com a
+                            causa mas ainda não mergulharam de cabeça.
+                            Observam, interagem no nível básico e absorvem a cultura.</p>
+                        <div class="role-attributes">
+                            <div class="attr-box">
+                                <h4>/// Poder</h4>
+                                <p>- Interagir e participar de projetos sob supervisão.</p>
+                                <p>- Atuar como Patrocinador ou Colaborador externo.</p>
+                            </div>
+                            <div class="attr-box">
+                                <h4>/// Requisito</h4>
+                                <p>- Visitante / Acompanhar Comunidade Aberta</p>
+                                <p>- Ser um apoiador ou patrocinador.</p>
+                            </div>
+                        </div>
+                        <span class="role-action">Comece Aqui &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="#/como-participar" class="role-card-horizontal theme-green">
+                    <div class="role-icon-wrapper">
+                        <img src="/image/icons/icon-fita5.png" alt="Ativo" class="role-icon">
+                        <span class="role-badge-mini">NIVEL 5</span>
+                    </div>
+                    <div class="role-content">
+                        <div class="role-header">
+                            <h3 class="role-title">Integrante Ativo</h3>
+                        </div>
+                        <p class="role-desc"> A pessoa que deixou de ser um fantasma. Já agregou valor, demonstrou
+                            interesse genuíno,
+                            PARTICIPA e está em processo de autodescoberta dentro da filosofia PARADOCX. </p>
+                        <div class="role-attributes">
+                            <div class="attr-box">
+                                <h4>/// Poder</h4>
+                                <p>Voto em eventos e autonomia para iniciar Discussões.</p>
+                            </div>
+                            <div class="attr-box">
+                                <h4>/// Funções</h4>
+                                <p>- Aprender e Contribuir.</p>
+                                <p>- Você combate a Alienação Compartilhando a mensagem para fora da bolha.</p>
+                            </div>
+                        </div>
+                        <span class="role-action">Como Participar &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="#/integrantes" class="role-card-horizontal theme-blue">
+                    <div class="role-icon-wrapper">
+                        <img src="/image/icons/icon-fita4.jpg" alt="XXX" class="role-icon">
+                        <span class="role-badge-mini">NIVEL 4</span>
+                    </div>
+                    <div class="role-content">
+                        <div class="role-header">
+                            <h3 class="role-title">Vocações</h3>
+                        </div>
+                        <p class="role-desc">Pessoa disposta a dar seu máximo, que achou seu propósito e tem habilidades
+                            valiosas para a Comunidade.</p>
+                        <div class="role-attributes">
+                            <div class="attr-box">
+                                <h4>/// Poder</h4>
+                                <p>- Definir o nome do próprio cargo e área de trabalho.</p>
+                                <p>- Seu perfil entra na "Lista de Solicitação" [Vocações]</p>
+                            </div>
+                            <div class="attr-box">
+                                <h4>/// Funções</h4>
+                                <p>- Ser habilidoso e ter hobbies úteis para a Comunidade.</p>
+                                <p>- Trabalha em suas próprias qualidades, hobbies e vocações </p>
+                            </div>
+                        </div>
+                        <span class="role-action">Ver Integrantes &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="#/areas" class="role-card-horizontal theme-red">
+                    <div class="role-icon-wrapper">
+                        <img src="/image/icons/icon-fita3.jpg" alt="Especialistas" class="role-icon">
+                        <span class="role-badge-mini">NIVEL 3</span>
+                    </div>
+                    <div class="role-content">
+                        <div class="role-header">
+                            <h3 class="role-title">Especialistas</h3>
+                        </div>
+                        <p class="role-desc">Membros confiáveis e imersos na Filosofia "ESE?", focados em se aprofundar
+                            em áreas específicas como Criação, Debate, Pesquisa, Finanças e Saúde.</p>
+                        <div class="role-attributes">
+                            <div class="attr-box">
+                                <h4>/// Poder</h4>
+                                <p>Liderar Áreas e Subgrupos temáticos.</p>
+                            </div>
+                            <div class="attr-box">
+                                <h4>/// Funções</h4>
+                                <p>Criar grupos, liderar esquadrões e mover multidões.</p>
+                            </div>
+                        </div>
+                        <span class="role-action">Ver Áreas de Atuação &rarr;</span>
+                    </div>
+                </a>
+
+                <p class="section-subtitle-center">Niveis/Cargos da Equipe [Circulo Interno]</p>
+                <a href="#/contato" class="role-card-horizontal theme-black">
+                    <div class="role-icon-wrapper">
+                        <img src="/image/icons/icon-fita2.jpg" alt="Lendas" class="role-icon">
+                        <span class="role-badge-mini">NIVEL 2</span>
+                    </div>
+                    <div class="role-content">
+                        <div class="role-header">
+                            <h3 class="role-title">Conselho das Lendas</h3>
+                        </div>
+                        <p class="role-desc">O braço direito e esquerdo. Responsável por garantir que a Ordem seja
+                            mantida. Ele protege a equipe de ameaças externas e internas, resolvendo conflitos e
+                            garantindo que as regras sejam seguidas.</p>
+                        <div class="role-attributes">
+                            <div class="attr-box">
+                                <h4>/// Poder</h4>
+                                <p>Administração geral de maioria dos Grupos.</p>
+                            </div>
+                            <div class="attr-box">
+                                <h4>/// Funções</h4>
+                                <p>Traduzir a Complexidade, Deixar sua Marca.</p>
+                            </div>
+                        </div>
+                        <span class="role-action">Contatar Lendas &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="#/integrantes/eduardo-guimaraes" class="role-card-horizontal theme-gold">
+                    <div class="role-icon-wrapper">
+                        <img src="/image/icons/icon-fita1.jpg" alt="Criador" class="role-icon">
+                        <span class="role-badge-mini">NIVEL 1</span>
+                    </div>
+                    <div class="role-content">
+                        <div class="role-header">
+                            <h3 class="role-title">Criador</h3>
+                        </div>
+                        <p class="role-desc">O ponto de partida. Aquele que detém a visão original e mantém a coesão
+                            filosófica de todo o sistema. Não é um ditador, mas o "Jardineiro Chefe" que garante que a
+                            árvore não cresça torta.</p>
+                        <div class="role-attributes">
+                            <div class="attr-box">
+                                <h4>/// Poder</h4>
+                                <p>Liderança ou Vice-Liderança Suprema.</p>
+                            </div>
+                            <div class="attr-box">
+                                <h4>/// Funções</h4>
+                                <p>Ser o "Pai", o ponto de origem.</p>
+                            </div>
+                        </div>
+                        <span class="role-action">Ver Sobre &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="ban-section">
+    <div class="ban-text">
+        <h2 style="color: #ff4757; font-family: Paradocx CA, monospace; font-size: 2.2rem;">⚠️ Protocolos de Banimento
+        </h2>
+        <p style="text-align: justify;">
+            A porta de entrada é pesada, mas a de saída é automática. O "Banimento" não é uma punição por erro técnico,
+            mas por falha de caráter. A Equipe ESE protege sua integridade acima de tudo. O descumprimento dos itens
+            abaixo resulta em <strong>Banimento Imediato (Blacklist)</strong>.
+        </p>
+
+        <div class="grid-container" style="margin-top: 2rem;">
+            <div class="warning-card">
+                <span
+                    style="font-size: 4rem; font-weight: bold; color: rgba(255, 71, 87, 0.2); display: block; flex: 1; min-width: 50px;">01</span>
+                <div class="text"
+                    style="flex: 1; min-width: 400px; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+                    <h4 style="color: #ff4757; margin-bottom: 0.5rem;">O "X9" (Vazamento)</h4>
+                    <p style="font-size: 0.9rem; color: #ccc;">Vazar informações de projetos Beta ou dados sensíveis de
+                        membros resulta em expulsão imediata e permanente.</p>
+                </div>
+            </div>
+
+            <div class="warning-card">
+                <span
+                    style="font-size: 4rem; font-weight: bold; color: rgba(255, 71, 87, 0.2); display: block; flex: 1; min-width: 50px;">02</span>
+                <div class="text"
+                    style="flex: 1; min-width: 400px; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+                    <h4 style="color: #ff4757; margin-bottom: 0.5rem;">Apatia Crônica</h4>
+                    <p style="font-size: 0.9rem; color: #ccc;">Membros que ficam 3 meses sem interagir ou produzir
+                        (exceto "Membros Honorários") retornam ao Nível 6 (Amarelo).</p>
+                </div>
+            </div>
+
+            <div class="warning-card">
+                <span
+                    style="font-size: 4rem; font-weight: bold; color: rgba(255, 71, 87, 0.2); display: block; flex: 1; min-width: 50px;">03</span>
+                <div class="text"
+                    style="flex: 1; min-width: 400px; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+                    <h4 style="color: #ff4757; margin-bottom: 0.5rem;">Irrelevância Crônica</h4>
+                    <p style="font-size: 0.9rem; color: #ccc;">Não agregar valor, fazer "piadinhas" ou não levar a serio
+                        em momentos de Deep Work ou tratar a missão com desdém.</p>
+                </div>
+            </div>
+
+            <div class="warning-card">
+                <span
+                    style="font-size: 4rem; font-weight: bold; color: rgba(255, 71, 87, 0.2); display: block; flex: 1; min-width: 50px;">04</span>
+                <div class="text"
+                    style="flex: 1; min-width: 400px; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+                    <h4 style="color: #ff4757; margin-bottom: 0.5rem;">Toxicidade</h4>
+                    <p style="font-size: 0.9rem; color: #ccc;">Denegrir integrantes ou a imagem da comunidade (física ou
+                        virtual).</p>
+                </div>
+            </div>
+
+            <div class="warning-card">
+                <span
+                    style="font-size: 4rem; font-weight: bold; color: rgba(255, 71, 87, 0.2); display: block; flex: 1; min-width: 50px;">05</span>
+                <div class="text"
+                    style="flex: 1; min-width: 400px; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+                    <h4 style="color: #ff4757; margin-bottom: 0.5rem;">Plágio Interno</h4>
+                    <p style="font-size: 0.9rem; color: #ccc;">Roubar a propriedade intelectual de outros membros.</p>
+                </div>
+            </div>
+
+            <p class="protocol-footer">"Quem não constrói, não tem o direito de habitar."</p>
+        </div>
+    </div>
+    <div class="ban-image">
+        <div class="container">
+            <img src="/image/imgs-png-implementar-paginas/escudo-equipe-logo-PNG.png" alt="Icone Equipe"
+                class="icone-equipe">
+        </div>
+    </div>
 </section>
+
+<div class="main-layout-container">
+    <section class="content-section full-width-feature">
+        <div class="feature-image">
+            <img src="/image/imgs-implementar-paginas/cargos-azuis-pagina.png" alt="Cargos Azuis">
+        </div>
+        <div class="feature-text glass-panel">
+            <h3>A Anomalia Azul</h3>
+            <p>O <strong>Nível 3 (Azul)</strong> é único na nossa estrutura. Diferente dos outros níveis que possuem
+                funções fixas, o membro Azul tem o direito de <strong>inventar o próprio nome do cargo</strong>.</p>
+            <p>Seja "Mago do Design", "Arquiteto de Sonhos" ou "Caçador de Bugs". Se você entrega resultados de alto
+                nível, você define como quer ser chamado. É a união perfeita entre responsabilidade e liberdade
+                criativa.</p>
+            <a href="#/vocacoes" class="cta-button">Ver Exemplos</a>
+        </div>
+    </section>
+</div>
+
+<div class="main-layout-container">
+    <section class="full-width-section"
+        style="background-image: url('/image/imgs-implementar-paginas/fitas-cargos-pintura2.png'); background-attachment: fixed; background-size: cover; padding: 6rem 2rem; position: relative;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.8); z-index: 1;"></div>
+        <div class="content-wrapper"
+            style="position: relative; z-index: 2; max-width: 800px; margin: 0 auto; text-align: center;">
+            <span class="badge-doc"
+                style="background: var(--color-primary); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; text-transform: uppercase;">Protocolo
+                de Evolução</span>
+            <h2 style="font-family: 'Paradocx CA'; font-size: 3rem; margin: 1.5rem 0; color: #fff;">O Rito de Passagem
+            </h2>
+            <p style="line-height: 1.8; color: #ddd; margin-bottom: 2rem; text-align: justify;">
+                Esta estrutura não é estática. Um membro <strong>Amarelo</strong> pode saltar para
+                <strong>Vermelho</strong> em uma semana se demonstrar um projeto genial. Um membro
+                <strong>Preto</strong> pode cair para Amarelo se for consumido pela inércia. Este sistema é
+                <strong>Viável e Flexível</strong>. Na PARADOCX, o seu "Cargo" é definido pela sua atitude no momento
+                presente. Você é livre para transitar entre as cores, desde que respeite os Pilares que regem cada uma.
+            </p>
+
+            <div class="glass-panel" style="text-align: left; padding: 2rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; background: rgba(255,255,255,0.08);">
+                <h3 style="color: var(--color-secondary); margin-bottom: 1rem;">Você não precisa "assinar um contrato"
+                    para ser Verde ou Azul:</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <span style="font-size: 1.5rem; margin-right: 1rem;">🤝</span>
+                        <span><strong>Colaborador:</strong> Hoje, você pode estar Amarelo (cansado, apenas
+                            observando).</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <span style="font-size: 1.5rem; margin-right: 1rem;">🧠</span>
+                        <span><strong>Ativo:</strong> Amanhã, você tem uma ideia genial e age como Verde
+                            (compartilhando).</span>
+                    </li>
+                    <li style="margin-bottom: 0; display: flex; align-items: center;">
+                        <span style="font-size: 1.5rem; margin-right: 1rem;">⚔️</span>
+                        <span><strong>Liderança:</strong> No fim de semana, você lidera um grupo de estudos e atua como
+                            Vermelho.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="equipe-container">
+    <section class="niveis-visual-section">
+        <div class="glass-panel-niveis">
+            <div class="niveis-content">
+                <h3 style="text-align: left;">Deseja subir de Nível?</h3>
+                <p style="text-align: justify;">
+                    A ascensão na Equipe ESE não é por tempo de casa, é por <strong>Mérito e Impacto</strong>. Mostre
+                    seu trabalho, proponha um projeto ("E SE?") e prove que você não é apenas mais um na multidão.
+                </p>
+                <div class="button-group">
+                    <a href="#/como-participar" class="btn-primary">APROFUNDAR</a>
+                    <a href="#/contato" class="btn-secondary">Falar com Líderes</a>
+                </div>
+            </div>
+            <div class="fitas-img-wrapper">
+                <img src="/image/icons/niveis-icon.png" alt="Fitas de Cargos">
+            </div>
+        </div>
+    </section>
+</div>

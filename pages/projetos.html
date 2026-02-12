@@ -1,18 +1,292 @@
+<style>
+    /* --- ESTILOS EXCLUSIVOS: PAGE PROJETOS --- */
+
+    /* 1. HERO "ESE KOSMO" (IMERSIVO) */
+    .hero-kosmo {
+        position: relative;
+        width: 100%;
+        min-height: 85vh;
+        /* Quase tela cheia */
+        background-image: url('/image/ESE-Kosmo.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        /* Texto à esquerda */
+        overflow: hidden;
+    }
+
+    .hero-kosmo::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%);
+        z-index: 1;
+    }
+
+    .secondary-button {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 1px solid var(--color-text-primary);
+        color: var(--color-text-primary);
+        background-color: transparent;
+        text-decoration: none;
+        border-radius: var(--border-radius-small);
+        transition: background-color 0.3s, color 0.3s;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .secondary-button:hover {
+        background-color: var(--color-text-primary);
+        color: var(--color-background);
+    }
+
+    .kosmo-content {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+        padding: 4rem;
+        margin-left: 5%;
+    }
+
+    .kosmo-badge {
+        display: inline-block;
+        background: var(--color-primary);
+        color: #000;
+        padding: 5px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .kosmo-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 4rem;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+    }
+
+    .kosmo-desc {
+        background: rgba(0, 3, 206, 0.1);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1rem;
+        text-align: justify;
+        color: rgba(183, 184, 255, 0.8);
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(0, 3, 206, 0.2);
+        border-radius: 12px;
+        padding: 1.5rem;
+    }
+
+    .kosmo-stats {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .stat-item h4 {
+        color: #fff;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .stat-item span {
+        color: #888;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+    }
+
+    /* 2. GRID PRINCIPAL (5 PROJETOS) */
+    .ecosystem-section {
+        padding: 6rem 2rem;
+        background: #0a0a0a;
+    }
+
+    .section-header-eco {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-header-eco h2 {
+        font-family: 'Paradocx CA', monospace;
+        font-size: 3rem;
+        color: #fff;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* Card Estilizado (Mantendo a base, mas melhorado para destaque) */
+    .eco-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-align: justify;
+    }
+
+    .eco-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .eco-img-wrapper {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .eco-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .eco-card:hover .eco-img-wrapper img {
+        transform: scale(1.1);
+    }
+
+    .eco-content {
+        padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .eco-dimensao {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--color-secondary);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+
+    .eco-title {
+        font-family: 'Paradocx CA', monospace;
+        font-size: 1.8rem;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+
+    .eco-text {
+        color: #ccc;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .eco-btn {
+        margin-top: auto;
+        padding: 0.8rem 1.5rem;
+        background: transparent;
+        border: 1px solid #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 8px;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .eco-btn:hover {
+        background: #fff;
+        color: #000;
+    }
+
+    /* 3. SEÇÃO LEGADO (HISTÓRICO) */
+    .legacy-section {
+        background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+        padding: 6rem 2rem;
+        border-top: 1px solid #222;
+    }
+
+    .legacy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .legacy-card {
+        padding: 1.5rem;
+        border-left: 2px solid #333;
+        background: rgba(0, 0, 0, 0.3);
+        transition: border-color 0.3s;
+    }
+
+    .legacy-card:hover {
+        border-left-color: var(--color-primary);
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .legacy-card h4 {
+        color: #ddd;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .legacy-card p {
+        color: #777;
+        font-size: 0.9rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .hero-kosmo {
+            min-height: auto;
+            padding: 6rem 0;
+            background-position: left;
+        }
+
+        .kosmo-content {
+            padding: 2rem;
+            margin-left: 0;
+        }
+
+        .kosmo-title {
+            font-size: 3rem;
+        }
+
+        .kosmo-stats {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+</style>
+
 <div class="hero-carousel">
-    
+
     <div class="carousel-track">
-        
-        <div class="carousel-slide active" style="background-image: url('/image/explore-o-ese.jpg');">
+
+        <div class="carousel-slide active"
+            style="background-image: url('/image/imgs-implementar-paginas/ecossistema-projetos.png');">
             <div class="hero-principal-content">
-                <h1>Nossos Projetos</h1>
-                <p>A manifestação prática da nossa filosofia. O resultado do motor criativo da Equipe ESE.</p>
-                <div class="button-container">
-                    <a href="#/projetos/ese-kosmo" class="cta-button">Ver Projeto Bandeira</a>
-                </div>
+                <h1>Ecossistema de Projetos</h1>
+                <p>A filosofia "E SE" não vive apenas no papel; ela respira através de projetos.</p>
             </div>
         </div>
 
-        <div class="carousel-slide" style="background-image: url('/image/ESE-Kosmo.jpg');">
+        <div class="carousel-slide" style="background-image: url('/image/banner-carrosel/banner-ese-kosmo.png');">
             <div class="hero-principal-content">
                 <h1>ESE Kosmo</h1>
                 <p>A gamificação da vida real. Transforme pilares em conquistas.</p>
@@ -22,17 +296,18 @@
             </div>
         </div>
 
-        <div class="carousel-slide" style="background-image: url('/image/filosofia-pilares.jpg');">
+         <div class="carousel-slide" style="background-image: url('/image/banner-carrosel/banner-universe-ese.png');">
             <div class="hero-principal-content">
                 <h1>Universo Criativo</h1>
-                <p>Música, literatura e arte expandindo os limites da realidade.</p>
+                <p>Atualmente, o Universo ESE está sendo escrito em "tempo real".</p>
                 <div class="button-container">
-                    <a href="#/projetos/radio-multiversus" class="secondary-button" style="color: white; border-color: white;">Ouvir Rádio Multiversus</a>
+                    <a href="#/projetos/universo-ese" class="secondary-button"
+                        style="color: white; border-color: white;">Explorar Universo</a>
                 </div>
             </div>
         </div>
 
-        <div class="carousel-slide" style="background-image: url('/image/escudo-equipe-logo.png');">
+        <div class="carousel-slide" style="background-image: url('/image/banner-carrosel/banner-equipe-ese.png');">
             <div class="hero-principal-content">
                 <h1>Equipe ESE</h1>
                 <p>O motor criativo por trás dos projetos e da filosofia.</p>
@@ -49,49 +324,201 @@
 
 </div>
 
-<section class="text-section" style="margin-bottom: -5rem;">
-    <h2>Ecossistema de Criação</h2>
-    <p>Não ficamos apenas na teoria. Nossos projetos variam de álbuns musicais a softwares de produtividade, todos unidos pelo propósito de expandir o potencial humano.</p>
+<section class="hero-kosmo">
+    <div class="kosmo-content">
+        <span class="kosmo-badge">Projeto Bandeira</span>
+        <h1 class="kosmo-title">ESE KOSMO</h1>
+        <div class="kosmo-desc">
+            <strong style="font-style: italic;">"E se a sua vida fosse o jogo mais importante que você joga?"</strong><br><br>
+            A materialização definitiva da filosofia ESE. Um App/Rede Social que transforma a rotina diária em um
+            MMORPG, onde hábitos viram Skills e a evolução pessoal gera XP real.
+        </div>
+
+        <div class="kosmo-stats">
+            <div class="stat-item">
+                <h4>v1.0</h4>
+                <span>Proposta de Prototipo</span>
+            </div>
+            <div class="stat-item">
+                <h4>Alpha</h4>
+                <span>Status: Conceitual</span>
+            </div>
+            <div class="stat-item">
+                <h4>Proposta</h4>
+                <span>APP Rede Social/Game</span>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="#/projetos/ese-kosmo" class="cta-button">Explorar o Sistema</a>
+            <a href="#/docs/detail/ese-kosmo-whitepaper" class="secondary-button" style="margin-left: 1rem;">Ler
+                Whitepaper</a>
+        </div>
+    </div>
+    <div class="kosmo-image-wrapper">
+        <img src="/image/logos-marcas/ese-kosmo-logoPNG.png" alt="Mockup ESE Kosmo" />
+    </div>
 </section>
 
-<div class="featured-project">
-        <img src="/image/ESE-Kosmo.jpg" alt="Logo ESE Kosmo" style="border-radius: 8px;">
-        <h3 style="color: var(--color-primary);">PROJETO BANDEIRA</h3>
-        <p><strong>"ESE Kosmo" </strong> é o nosso projeto prioritário e a manifestação mais direta da filosofia ESE. Trata-se de uma
-                futura rede social gamificada, uma ferramenta para gamificar a vida e explorar seu potencial, transformando
-                os conceitos abstratos de "Pilares" e "evolução" em uma experiência prática que os membros podem usar no dia
-                a dia.</p>
-        <a href="#/projetos/ese-kosmo" class="card-button">Ver Detalhes</a>
-</div>
-
-<div class="content-grid" style="margin-left: 4.5rem; margin-right: 4.5rem;">
-
-    <div class="content-card">
-        <img src="/image/explore-o-ese.jpg" alt="Capa Radio Multiversus" style="border-radius: 8px;">
-        <h3>Rádio Multiversus</h3>
-        <p>Álbum experimental Lo-Fi/Synthwave. Sintonize frequências de diferentes realidades para foco e imersão profunda.</p>
-        <a href="#/projetos/radio-multiversus" class="card-button">Ouvir Demo</a>
+<section class="ecosystem-section">
+    <div class="section-header-eco">
+        <h2>O Ecossistema ESE</h2>
+        <p style="color: #888;">Nódulos de Ativação desenhados para atacar o tédio e a alienação.</p>
     </div>
 
-    <div class="content-card">
-        <img src="/image/comunidade.jpg" alt="Clube do Livro">
-        <h3>Clube do Livro</h3>
-        <p>Grupo dedicado ao hábito da leitura. "Esprememos o suco" de cada obra para compartilhar aprendizados práticos.</p>
-        <a href="#" class="card-button" style="opacity: 0.5;">Em Breve</a>
+    <div class="projects-grid">
+
+        <article class="eco-card">
+            <div class="eco-img-wrapper">
+                <img src="/image/logos-marcas/ese-kosmo-logo.png" alt="Pilares Dimensionais">
+            </div>
+            <div class="eco-content">
+                <span class="eco-dimensao">[1.1 IMPACTO]</span>
+                <h3 class="eco-title">ESE Kosmo</h3>
+                <p class="eco-text">
+                    "E se a sua vida fosse o jogo mais importante?"<br>
+                A materialização definitiva da filosofia ESE. Um App/Rede Social que transforma a rotina diária em um
+                MMORPG, onde hábitos viram Skills e a evolução pessoal gera XP real.
+                </p>
+                <a href="#/projetos/ese-kosmo" class="eco-btn">Ver Proposta</a>
+            </div>
+        </article>
+
+        <article class="eco-card">
+            <div class="eco-img-wrapper">
+                <img src="/image/logos-marcas/pilares-logo.png" alt="Pilares Dimensionais">
+            </div>
+            <div class="eco-content">
+                <span class="eco-dimensao">[2.1 CONEXÕES]</span>
+                <h3 class="eco-title">Pilares Dimensionais</h3>
+                <p class="eco-text">
+                    A Teoria Unificada. A estrutura lógica que une tudo através de convergência e divergência. Os "nós"
+                    que conectam a filosofia abstrata à prática diária (Saúde, Tempo, Lógica). Sem eles, o sistema
+                    desmorona.
+                </p>
+                <a href="#/pilares" class="eco-btn">Decodificar Pilares</a>
+            </div>
+        </article>
+
+        <article class="eco-card">
+            <div class="eco-img-wrapper">
+                <img src="/image/logos-marcas/logo.png" alt="Comunidade PARADOCX">
+            </div>
+            <div class="eco-content">
+                <span class="eco-dimensao">[3.1 PERSPECTIVAS]</span>
+                <h3 class="eco-title">Comunidade PARADOCX</h3>
+                <p class="eco-text">
+                    A Teia da Egregora. O habitat onde todos os projetos se desenrolam. Um "Sindicato de Pensadores
+                    Livres" que combate a solidão intelectual através de conexões reais e debates profundos.
+                </p>
+                <a href="#/junte-se" class="eco-btn">Entrar na Egregora</a>
+            </div>
+        </article>
+
+        <article class="eco-card">
+            <div class="eco-img-wrapper">
+                <img src="/image/logos-marcas/escudo-equipe-logo.png" alt="Equipe ESE">
+            </div>
+            <div class="eco-content">
+                <span class="eco-dimensao">[4.1 LIMITES]</span>
+                <h3 class="eco-title">Equipe ESE</h3>
+                <p class="eco-text">
+                    O Círculo Interno. A disciplina necessária para capturar as possibilidades. A elite operacional que
+                    trabalha com Sprints e Prazos para transformar a "brincadeira" em legado e infraestrutura.
+                </p>
+                <a href="#/equipe" class="eco-btn">Ver Bastidores</a>
+            </div>
+        </article>
+
+        <article class="eco-card">
+            <div class="eco-img-wrapper">
+                <img src="/image/logos-marcas/universe-ese-logo.png" alt="Universo ESE">
+            </div>
+            <div class="eco-content">
+                <span class="eco-dimensao">[5.1 POSSIBILIDADES]</span>
+                <h3 class="eco-title">Universo ESE</h3>
+                <p class="eco-text">
+                    A Gênesis Ficcional. A metanarrativa de um universo paralelo que desbravamos para trazer recursos e
+                    ideias. A ponte entre a ficção lá de fora e a realidade aqui de dentro.
+                </p>
+                <a href="#/projetos/universo-ese" class="eco-btn">Explorar Ficção</a>
+            </div>
+        </article>
+
+        <article class="eco-card">
+            <div class="eco-img-wrapper">
+                <img src="/image/logos-marcas/dudheloco-logo.png" alt="Dudheloco">
+            </div>
+            <div class="eco-content">
+                <span class="eco-dimensao">[6.1 TUDO]</span>
+                <h3 class="eco-title">Dudheloco</h3>
+                <p class="eco-text">
+                    O Caos Criativo. O alter ego que personifica o "Louco do Bem". Uma tecnologia social para quebrar
+                    padrões e introduzir o caos necessário para a inovação em um mundo rígido.
+                </p>
+                <a href="#/integrantes/eduardo-guimaraes" class="eco-btn">Conhecer o Louco</a>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section class="legacy-section">
+    <div class="container-narrow text-center" style="margin-bottom: 3rem;">
+        <h3 style="color: #666; font-family: 'Paradocx CA'; margin-bottom: 1rem; font-size: 3rem;">O Arquivo Histórico
+            (Origem)</h3>
+        <p style="color: #444;">Projetos fundamentais que foram absorvidos pelo ecossistema atual.</p>
     </div>
 
-    <div class="content-card">
-        <img src="/image/filosofia-pilares.jpg" alt="Filosofia">
-        <h3>Universo ESE</h3>
-        <p>Documentação do nosso universo paralelo fictício. Recursos narrativos para quebrar os limites da realidade comum.</p>
-        <a href="#" class="card-button" style="opacity: 0.5;">Em Breve</a>
-    </div>
+    <div class="legacy-grid">
 
-    <div class="content-card">
-        <img src="/image/banner.png" alt="Arvore">
-        <h3>Filosofia da Árvore</h3>
-        <p>Manifesto sobre qualidade e paciência. "Concentre-se nas raízes antes de buscar os frutos."</p>
-        <a href="#" class="card-button" style="opacity: 0.5;">Ler Manifesto</a>
-    </div>
+        <div class="legacy-card">
+            <h4>Projeto Conexões</h4>
+            <p>A semente da "Teoria de Tudo". Deu origem aos Pilares Dimensionais.</p>
+        </div>
 
-</div>
+        <div class="legacy-card">
+            <h4>Filosofia da Árvore</h4>
+            <p>O estudo sobre paciência e longo prazo (80/20). Raízes fortes, frutos distantes.</p>
+        </div>
+
+        <div class="legacy-card">
+            <h4>Clube do Livro</h4>
+            <p>A academia de leitura. Evoluiu para o pilar de Informação e Educação.</p>
+        </div>
+
+        <div class="legacy-card">
+            <h4>UPT Methodology</h4>
+            <p>O protótipo v1.0 de produtividade pessoal. O "pai" do ESE Kosmo.</p>
+        </div>
+
+        <div class="legacy-card">
+            <h4>Novos Escritores</h4>
+            <p>Foco na dialética e política. Deu origem à Área de Debate (Cargos Vermelhos).</p>
+        </div>
+
+        <div class="legacy-card">
+            <h4>Clube do Conhecimento</h4>
+            <p>Curadoria científica e validação de dados. A base da Pesquisa.</p>
+        </div>
+
+    </div>
+</section>
+
+<section
+    style="display: flex; align-items: center; justify-content: center; padding: 4rem 0rem 0rem 0rem; background: #121212;">
+    <img src="/image/imgs-implementar-paginas/ecossistema-projetos.png" alt="Ecossistema de Projetos"
+        style="max-width: 100%; width: 50%; height: auto; object-fit: contain;">
+</section>
+
+<section class="content-section text-center" style="padding: 0rem 4rem 4rem 4rem;">
+    <div class="glass-box container-narrow" style="padding: 1rem;">
+        <h3 style="font-family: JetBrains Mono, monospace; font-size: 1.5rem; margin-bottom: -1.5rem;">
+            Não Construímos Apenas Ideias</h3>
+        <p style="margin: 1.5rem 0; color: #ccc;">
+            Construímos as ferramentas para habitar essas ideias. Ao entrar na comunidade, você não é apenas um
+            observador, mas um Agente Construtor.
+        </p>
+        <a href="#/contato" class="cta-button">Propor Novo Projeto</a>
+    </div>
+</section>

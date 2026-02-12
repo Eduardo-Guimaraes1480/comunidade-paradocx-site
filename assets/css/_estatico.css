@@ -22,6 +22,21 @@
     font-style: italic;
 }
 
+    .doc-meta-tag {
+        font-family: 'JetBrains Mono', monospace;
+        display: inline-block;
+        background-color: rgba(187, 134, 252, 0.15); /* Roxo translúcido */
+        color: #bb86fc;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(187, 134, 252, 0.3);
+    }
+
 /* Header da Página Estática */
 .static-header {
     position: relative;
@@ -196,6 +211,17 @@
     border-left-color: var(--color-primary);
     /* Highlight roxo */
     padding-left: 5px;
+}
+
+.sidebar-meta {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.sidebar-meta p{
+    margin: 0.3rem 0;
 }
 
 /* Conteúdo Principal (ao lado da Sidebar ou ocupando tudo se não houver sidebar) */

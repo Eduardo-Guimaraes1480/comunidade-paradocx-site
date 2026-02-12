@@ -3,13 +3,13 @@
     .black-strip-container {
         position: relative;
         width: 100vw;
-        margin-left: calc(-50vw + 50%); 
+        margin-left: calc(-50vw + 50%);
         overflow: hidden;
         background: linear-gradient(90deg, #000000, #1a1a1a, #000000);
         transform: rotate(-1deg);
         margin-top: 2rem;
         margin-bottom: 4rem;
-        box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
         border-top: 1px solid #333;
         border-bottom: 1px solid #333;
         z-index: 2;
@@ -32,24 +32,31 @@
     }
 
     @keyframes marqueeScrollBlack {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
     }
 
-      /* 2. TEXTO INTRODUTÓRIO */
+    /* 2. TEXTO INTRODUTÓRIO */
     .intro-black-role h2 {
         font-family: 'Paradocx CA', monospace;
         font-size: 2.5rem;
-        color: #fff; /* Branco para contraste máximo */
+        color: #fff;
+        /* Branco para contraste máximo */
         margin-bottom: 1.5rem;
         text-transform: uppercase;
         border-bottom: 1px solid #333;
         padding-bottom: 1rem;
     }
-    
+
     .intro-black-box {
         background: rgba(0, 0, 0, 0.4);
-        border-left: 4px solid #fff; /* Identidade do Cargo Preto */
+        border-left: 4px solid #fff;
+        /* Identidade do Cargo Preto */
         padding: 2rem;
         border-radius: 0 8px 8px 0;
         margin-bottom: 3rem;
@@ -59,13 +66,14 @@
     .hubs-carousel-wrapper {
         position: relative;
         width: 100%;
-        max-width: 800px; /* Tamanho contido para elegância */
+        max-width: 800px;
+        /* Tamanho contido para elegância */
         height: 500px;
         margin: 0 auto;
         overflow: hidden;
         border-radius: 16px;
         border: 1px solid var(--color-border);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
     .hubs-track {
@@ -79,19 +87,24 @@
         height: 100%;
         position: relative;
         display: flex;
-        align-items: flex-end; /* Texto embaixo */
+        align-items: flex-end;
+        /* Texto embaixo */
         overflow: hidden;
     }
 
     /* Imagem com Zoom Effect */
     .hub-bg {
         position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background-size: cover;
         background-position: center;
-        transition: transform 6s ease; /* Zoom lento constante */
+        transition: transform 6s ease;
+        /* Zoom lento constante */
     }
-    
+
     .hub-slide:hover .hub-bg {
         transform: scale(1.1);
     }
@@ -99,8 +112,11 @@
     /* Overlay Gradiente para leitura */
     .hub-overlay {
         position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(to top, #000 10%, rgba(0,0,0,0.6) 50%, transparent);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, #000 10%, rgba(0, 0, 0, 0.6) 50%, transparent);
         z-index: 1;
     }
 
@@ -112,7 +128,8 @@
         width: 100%;
         transform: translateY(20px);
         opacity: 0;
-        transition: all 0.5s ease 0.3s; /* Delay para entrar suave */
+        transition: all 0.5s ease 0.3s;
+        /* Delay para entrar suave */
     }
 
     /* Classe ativa para animar entrada */
@@ -140,7 +157,7 @@
         color: #fff;
         margin: 0 0 0.5rem 0;
         line-height: 1;
-        text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     }
 
     .hub-desc {
@@ -155,9 +172,9 @@
         position: absolute;
         top: 10%;
         transform: translateY(-50%);
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         color: #fff;
-        border: 1px solid rgba(255,255,255,0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -170,15 +187,161 @@
         align-items: center;
         justify-content: center;
     }
-    .hub-nav-btn:hover { background: #fff; color: #000; }
-    .hub-prev { left: 20px; }
-    .hub-next { right: 20px; }
 
+    .hub-nav-btn:hover {
+        background: #fff;
+        color: #000;
+    }
+
+    .hub-prev {
+        left: 20px;
+    }
+
+    .hub-next {
+        right: 20px;
+    }
+
+    /* --- SISTEMA DE GRIDS DE CONTATO (FASE 9) --- */
+
+    .contact-section-wrapper {
+        margin-top: 4rem;
+    }
+
+    /* Títulos das Categorias de Redes */
+    .contact-category-title {
+        font-family: 'Paradocx CA', monospace;
+        font-size: 1.8rem;
+        color: var(--color-primary);
+        margin: 4rem 0 1.5rem 0;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .contact-category-title::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--color-primary), transparent);
+        opacity: 0.3;
+    }
+
+    /* Grid Responsivo: Garante cards lado a lado */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Card Estilizado */
+    .contact-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 2rem;
+        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at top right, rgba(67, 100, 247, 0.05), transparent);
+        pointer-events: none;
+    }
+
+    .contact-card:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--color-primary);
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .contact-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+    }
+
+    .contact-card h3 i {
+        color: var(--color-primary);
+        font-size: 1.4rem;
+    }
+
+    .contact-card p {
+        font-size: 0.9rem;
+        color: #aaa;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    /* Links e Botões de Ação */
+    .contact-link {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: 0.3s;
+    }
+
+    .contact-link:hover {
+        background: var(--color-primary);
+        color: #000;
+        border-color: var(--color-primary);
+        font-weight: bold;
+    }
+
+    .whatsapp:hover { background: #25d36690 !important; border-color: #25d36699 !important; color: var(--color-text-primary) !important;}
+    .telegram:hover { background: #0088cc90 !important; border-color: #0088cc99 !important; color: var(--color-text-primary) !important;}
+    .discord:hover { background: #5865f290 !important; border-color: #5865f299 !important; }
+    .instagram:hover { background: linear-gradient(335deg, #f26f3295 20%, #d52f7f95 55%, #485fab95 100%) !important; border-color: #ffffff !important; color: #ffffff !important;}
+    .youtube:hover { background: #ff000090 !important; border-color: #ff000099 !important; }
+    .facebook:hover { background: #1877f290 !important; border-color: #1877f299 !important; color: var(--color-text-primary) !important;}
+    .reddit:hover { background: #ff451490 !important; border-color: #ff451499 !important; }
+    .substack:hover { background: #ff660090 !important; border-color: #ff660099 !important; color: var(--color-text-primary) !important;}
+    .tiktok:hover { background: #00000090 !important; border-color: #fe335a99 !important; color: #25f4ee!important; }
+
+    /* Utilitários de Cor Específicos */
+    .card-highlight-white {
+        border-color: rgba(255, 255, 255, 0.4) !important;
+    }
+
+    .card-highlight-gold {
+        border-color: #d08d4c !important;
+    }
+
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 
 <div class="static-layout-container">
 
-    <section class="static-header" style="background-image: url('/image/escudo-equipe-logo.png');">
+    <section class="static-header" style="background-image: url('/image/logos-marcas/logo.png'); background-position: center bottom 20%">
         <h1>Fale Conosco</h1>
         <p>Canais oficiais de comunicação, suporte e presença física da Comunidade PARADOCX.</p>
     </section>
@@ -193,12 +356,14 @@
     </div>
 
     <div class="static-main-wrapper">
-        
+
         <aside class="static-sidebar">
             <h3>Diretório</h3>
             <ul>
-                <li><a href="#contexto" class="anchor-link">O Cargo Preto</a></li>
-                <li><a href="#online" class="anchor-link">Canais Digitais</a></li>
+                <li><a href="#intro" class="anchor-link">O Cargo Preto</a></li>
+                <li><a href="#individual" class="anchor-link">Atendimento Direto</a></li>
+                <li><a href="#coletivo" class="anchor-link">Redes & Grupos</a></li>
+                <li><a href="#ecosistema" class="anchor-link">Ecossistema Transmídia</a></li>
                 <li><a href="#presencial" class="anchor-link">Hubs Presenciais</a></li>
                 <li><a href="#faq-link" class="anchor-link">FAQ (Ajuda)</a></li>
             </ul>
@@ -210,86 +375,200 @@
                 <h2>A Voz da Liderança</h2>
                 <div class="intro-black-box">
                     <p style="margin: 0; color: #ccc; font-size: 1.05rem;">
-                        Esta página é o portal direto para o <strong>Conselho das Lendas (Cargo Preto)</strong>. 
-                        Aqui tratamos de assuntos estratégicos, parcerias, gestão de crises e da manutenção da ordem no universo PARADOCX.
+                        Esta página é o portal direto para o <strong>Conselho das Lendas (Cargo Preto)</strong>.
+                        Aqui tratamos de assuntos estratégicos, parcerias, gestão de crises e da manutenção da ordem no
+                        universo PARADOCX.
                         <br><br>
-                        As Lendas são os guardiões da cultura. Ao entrar em contato por aqui, você está acionando a estrutura administrativa da comunidade.
+                        As Lendas são os guardiões da cultura. Ao entrar em contato por aqui, você está acionando a
+                        estrutura administrativa da comunidade.
                         Seja direto, respeitoso e claro em sua solicitação.
                     </p>
                 </div>
             </div>
-            
-             <h2 id="online" style="margin-top: 2rem;">Canais de Atendimento</h2>
-            <p>Selecione o departamento adequado para sua necessidade.</p>
-            
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3>Consultas Gerais</h3>
-                    <p>Dúvidas sobre como participar, problemas de acesso ou questões básicas sobre a filosofia.</p>
-                    <a href="mailto:geral@comunidadeparadox.com" class="contact-link">geral@comunidadeparadox.com</a>
+
+            <!-- Contato Online -->
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+            <div class="contact-section-wrapper">
+
+                <h2 class="contact-category-title" id="individual">
+                    <i class="fas fa-user-shield"></i> Canais de Atendimento Individual
+                </h2>
+                <p>Comunicação direta para assuntos específicos e privados.</p>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3><i class="fas fa-envelope-open-text"></i> Suporte Geral</h3>
+                        <p>Dúvidas sobre participação, acesso ou conceitos básicos da filosofia ESE.</p>
+                        <a href="mailto:paradocxcomunidade@gmail.com" class="contact-link">
+                            <i class="fas fa-paper-plane"></i> paradocxcomunidade@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="contact-card card-highlight-white">
+                        <h3><i class="fas fa-crown"></i> Visão Estratégica</h3>
+                        <p>Falar diretamente com o Criador (Dudheloco) sobre parcerias e o futuro da Egregora.</p>
+                        <a href="mailto:dudheloco@gmail.com" class="contact-link">
+                            <i class="fas fa-brain"></i> dudheloco@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-whatsapp"></i> Chat Operacional</h3>
+                        <p>Contato individual via WhatsApp para suporte técnico ou administrativo rápido.</p>
+                        <a href="https://wa.me/5577988550653" target="_blank" class="contact-link">
+                            <i class="fas fa-comment-dots"></i> Iniciar Conversa Individual
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-instagram"></i> Direct Message</h3>
+                        <p>Envie um Direct individual para nossa central no Instagram para interações rápidas.</p>
+                        <a href="https://instagram.com/paradocx.com.br" target="_blank" class="contact-link">
+                            <i class="fas fa-location-arrow"></i> Chamar no Direct
+                        </a>
+                    </div>
                 </div>
-                <div class="contact-card" style="border-color: #fff;">
-                    <h3>Falar com o Criador</h3>
-                    <p>Assuntos de alto nível, visão estratégica e parcerias de longo prazo.</p>
-                    <a href="mailto:criador@comunidadeparadox.com" class="contact-link">criador@comunidadeparadox.com</a>
+
+                <h2 class="contact-category-title" id="coletivo">
+                    <i class="fas fa-users"></i> Redes & Grupos Coletivos
+                </h2>
+                <p>Onde os Paradoxos se reúnem para debater e construir em conjunto.</p>
+
+                <div class="contact-grid">
+                    <div class="contact-card card-highlight-gold">
+                        <h3><i class="fas fa-users-rectangle"></i> Círculo de Avisos</h3>
+                        <p>Grupo oficial da comunidade no WhatsApp para anúncios e debates gerais.</p>
+                        <a href="https://chat.whatsapp.com/FRaTGXvV98i3mZ4FQIVQCC?mode=gi_t" target="_blank" class="contact-link whatsapp"><i class="fas fa-link"></i> Entrar no Grupo WA</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-telegram"></i> Canal de Transmissão</h3>
+                        <p>Acesse o nosso bunker no Telegram para receber DOCS exclusivos e áudios do Criador.</p>
+                        <a href="https://t.me/+BKzgbUM5x6AwZmU5" target="_blank" class="contact-link telegram"><i class="fab fa-telegram-plane"></i> Acessar Telegram</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-discord"></i> Laboratório Digital</h3>
+                        <p>Nosso servidor oficial. Onde os esquadrões (Cargos Vermelhos) se organizam.</p>
+                        <a href="https://discord.gg/Cs958Djt" target="_blank" class="contact-link discord"><i class="fab fa-discord"></i> Servidor Discord</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-reddit"></i> Fórum de Investigação</h3>
+                        <p>Discussões profundas, teorias de conspiração e registros permanentes no Reddit.</p>
+                        <a href="https://reddit.com/r/ComunidadeParadocxOFC" target="_blank" class="contact-link reddit"><i class="fab fa-reddit-alien"></i> r/ComunidadeParadocxOFC</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-instagram"></i> Grupo de Discussão</h3>
+                        <p>Acompanhe reels compartilhados, discussões em tempo real e interações da comunidade no Instagram.</p>
+                        <a href="https://ig.me/j/AbbfvfyhVjq2KZKZ/" target="_blank" class="contact-link instagram"><i class="fas fa-users"></i> Entrar no Grupo</a>
+                    </div>
                 </div>
-                <div class="contact-card">
-                    <h3>Administração (Lendas)</h3>
-                    <p>Denúncias, sugestões estruturais ou contato direto com os moderadores.</p>
-                    <a href="mailto:lendas@comunidadeparadox.com" class="contact-link">lendas@comunidadeparadox.com</a>
+
+                <h2 class="contact-category-title" id="ecosistema">
+                    <i class="fas fa-broadcast-tower"></i> Ecossistema Transmídia
+                </h2>
+                <p>Acompanhe a manifestação do Universo ESE através de múltiplas plataformas.</p>
+
+                <div class="contact-grid">
+                    <div class="contact-card card-highlight-gold">
+                        <h3><i class="fas fa-bookmark"></i> Substack (DOCS)</h3>
+                        <p>Artigos semanais aprofundados e a Newsletter oficial com a alma da comunidade.</p>
+                        <a href="#" target="_blank" class="contact-link substack"><i class="fas fa-newspaper"></i> Assinar Newsletter</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-reddit"></i> Comunidade Reddit</h3>
+                        <p>Junte-se à nossa comunidade no Reddit para discussões aprofundadas e compartilhamento de conteúdo.</p>
+                        <a href="https://reddit.com/r/ComunidadeParadocxOFC" target="_blank" class="contact-link reddit"><i class="fab fa-reddit-alien"></i> Acessar Comunidade</a>
+                    </div>
+                
+                    <div class="contact-card">
+                        <h3><i class="fab fa-youtube"></i> Canal Oficial</h3>
+                        <p>Séries de investigação, podcasts (Pod Loco) e vídeos explicativos do Universo ESE.</p>
+                        <a href="https://youtube.com/@paradocxcomunidade?si=K81OfJfnhqIEi2bx" target="_blank" class="contact-link youtube"><i class="fab fa-youtube"></i> Inscrever-se</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-instagram"></i> Galeria Visual</h3>
+                        <p>Acompanhe o dia a dia da comunidade, stories exclusivos e conteúdo visual inspirador.</p>
+                        <a href="https://instagram.com/paradocx.com.br" target="_blank" class="contact-link instagram"><i class="fab fa-instagram"></i> Seguir no Instagram</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-tiktok"></i> Pílulas de Lucidez</h3>
+                        <p>Cortes rápidos, experimentos sociais e reflexões curtas para combater a Idiocracia.</p>
+                        <a href="#" target="_blank" class="contact-link tiktok"><i class="fab fa-tiktok"></i> [EM BREVE]</a> <!-- Seguir no TikTok-->
+                    </div>             
+
+                    <div class="contact-card">
+                        <h3><i class="fab fa-facebook"></i> Acervo Social</h3>
+                        <p>Nossa página de registro e interação para expansão da base de membros.</p>
+                        <a href="#" target="_blank" class="contact-link facebook"><i class="fab fa-facebook-f"></i> [EM BREVE]</a> <!-- Curtir Página-->
+                    </div>                    
                 </div>
-                <div class="contact-card">
-                    <h3>Projetos & Ideias</h3>
-                    <p>Tem uma proposta criativa? Fale com nossos líderes de Cargo Vermelho & Azul.</p>
-                    <a href="mailto:projetos@comunidadeparadox.com" class="contact-link">projetos@comunidadeparadox.com</a>
-                </div>
+
             </div>
 
-            <h2 id="presencial" style="margin-top: 5rem; border-bottom: 1px solid #333; padding-bottom: 1rem; margin-bottom: 2rem;">Nossos Hubs (Território)</h2>
-            <p style="margin-bottom: 2rem;">A Comunidade PARADOCX é digital, mas nossas raízes são reais. Explore nossas bases operacionais.</p>
+            <!-- Contato Presencial -->
+
+            <h2 id="presencial"
+                style="margin-top: 5rem; border-bottom: 1px solid #333; padding-bottom: 1rem; margin-bottom: 2rem;">
+                Nossos Hubs (Território)</h2>
+            <p style="margin-bottom: 2rem;">A Comunidade PARADOCX é digital, mas nossas raízes são reais. Explore nossas
+                bases operacionais.</p>
 
             <div class="hubs-carousel-wrapper">
-                
                 <div class="hubs-track" id="hubs-track">
-                    
                     <div class="hub-slide active">
-                        <div class="hub-bg" style="background-image: url('/image/explore-o-ese.jpg');"></div>
+                        <div class="hub-bg" style="background-image: url('/image/banner-carrosel/cidade-cacule.jpg');">
+                        </div>
                         <div class="hub-overlay"></div>
                         <div class="hub-content">
                             <span class="hub-tag">Base Operacional 01</span>
                             <h3 class="hub-title">Caculé - BA</h3>
-                            <p class="hub-desc">O berço da organização. Onde as estratégias são traçadas e o núcleo administrativo reside.</p>
-                            <a href="https://goo.gl/maps/cacule" target="_blank" class="card-button" style="display: inline-block; width: auto;">Ver no Mapa ↗</a>
+                            <p class="hub-desc">O berço da organização. Onde as estratégias são traçadas e o núcleo
+                                administrativo reside.</p>
+                            <a href="https://goo.gl/maps/cacule" target="_blank" class="card-button"
+                                style="display: inline-block; width: auto;">Ver no Mapa ↗</a>
                         </div>
                     </div>
 
                     <div class="hub-slide">
-                        <div class="hub-bg" style="background-image: url('/image/filosofia-pilares.jpg');"></div>
+                        <div class="hub-bg"
+                            style="background-image: url('/image/banner-carrosel/cidade-guanambi.jpg');"></div>
                         <div class="hub-overlay"></div>
                         <div class="hub-content">
                             <span class="hub-tag">Centro de Eventos</span>
                             <h3 class="hub-title">Guanambi - BA</h3>
-                            <p class="hub-desc">A metrópole regional. Palco dos nossos workshops presenciais e encontros de grande porte.</p>
-                            <a href="https://goo.gl/maps/guanambi" target="_blank" class="card-button" style="display: inline-block; width: auto;">Ver no Mapa ↗</a>
+                            <p class="hub-desc">A metrópole regional. Palco dos nossos workshops presenciais e encontros
+                                de grande porte.</p>
+                            <a href="https://goo.gl/maps/guanambi" target="_blank" class="card-button"
+                                style="display: inline-block; width: auto;">Ver no Mapa ↗</a>
                         </div>
                     </div>
 
                     <div class="hub-slide">
-                        <div class="hub-bg" style="background-image: url('/image/ESE-Kosmo.jpg');"></div>
+                        <div class="hub-bg"
+                            style="background-image: url('/image/banner-carrosel/cidade-licinio-de-almeida.jpg');">
+                        </div>
                         <div class="hub-overlay"></div>
                         <div class="hub-content">
                             <span class="hub-tag">Ponto de Encontro</span>
                             <h3 class="hub-title">Licínio de Almeida</h3>
-                            <p class="hub-desc">Refúgio criativo. Um espaço focado em retiros para Deep Work e brainstorming da equipe.</p>
-                            <a href="https://goo.gl/maps/licinio" target="_blank" class="card-button" style="display: inline-block; width: auto;">Ver no Mapa ↗</a>
+                            <p class="hub-desc">Refúgio criativo. Um espaço focado em retiros para Deep Work e
+                                brainstorming da equipe.</p>
+                            <a href="https://goo.gl/maps/licinio" target="_blank" class="card-button"
+                                style="display: inline-block; width: auto;">Ver no Mapa ↗</a>
                         </div>
                     </div>
-
                 </div>
 
                 <button class="hub-nav-btn hub-prev" id="hub-prev">&#10094;</button>
                 <button class="hub-nav-btn hub-next" id="hub-next">&#10095;</button>
-
             </div>
 
             <h2 id="faq-link" style="margin-top: 5rem;">Ainda com dúvidas?</h2>
