@@ -1,13 +1,23 @@
 <nav class="main-nav">
+    <!-- Logo -->
     <a href="#/inicio" class="nav-logo">
         <img src="/image/paradocx-simbolo.png" alt="Logo Comunidade PARADOCX">
     </a>
 
+    <!-- Botão Hambúrguer (Adicionado para Mobile) -->
+    <button class="mobile-menu-btn" aria-label="Abrir Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <!-- Links de Navegação -->
     <ul class="nav-links">
         <li><a href="#/comece-aqui">COMECE AQUI</a></li>
 
         <li class="dropdown">
-            <a href="javascript:void(0);">PARTICIPE &#9662;</a>
+            <!-- Adicionado onclick void para facilitar toque no mobile -->
+            <a href="javascript:void(0);" class="drop-trigger">PARTICIPE &#9662;</a>
             <ul class="dropdown-content">
                 <li><a href="#/como-participar">Como Participar</a></li>
                 <li><a href="#/mural">Mural E.B.</a></li>
@@ -18,7 +28,7 @@
         </li>
 
         <li class="dropdown">
-            <a href="javascript:void(0);">SOBRE &#9662;</a>
+            <a href="javascript:void(0);" class="drop-trigger">SOBRE &#9662;</a>
             <ul class="dropdown-content">
                 <li><a href="#/sobre">Sobre</a></li>
                 <li><a href="#/equipe">A Equipe</a></li>
@@ -28,7 +38,7 @@
         </li>
 
         <li class="dropdown">
-            <a href="javascript:void(0);">CONTEUDO &#9662;</a>
+            <a href="javascript:void(0);" class="drop-trigger">CONTEUDO &#9662;</a>
             <ul class="dropdown-content">
                 <li><a href="#/docs">Docs</a></li>
                 <li><a href="#/areas">Áreas</a></li>
@@ -37,7 +47,11 @@
             </ul>
         </li>
 
-        <li><a class="cta-button-footer" style="padding: 2px 25px; margin: 8px -20px; font-weight: bold;"
-             href="#/junte-se">JUNTE-SE</a></li>
+        <!-- Botão CTA -->
+        <li>
+            <a class="cta-button-footer" style="padding: 10px 25px; margin: 0; font-weight: bold; display: inline-block;" href="#/junte-se">
+                JUNTE-SE
+            </a>
+        </li>
     </ul>
 </nav>

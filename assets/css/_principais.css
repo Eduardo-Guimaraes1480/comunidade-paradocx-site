@@ -560,11 +560,24 @@
 /* Responsividade */
 @media (max-width: 768px) {
     .hero-carousel { height: 60vh; min-height: 500px; }
-    .carousel-nav { font-size: 2rem; padding: 10px; }
+    .carousel-nav { font-size: 4rem; padding: 0px; color: rgba(255, 255, 255, 0.5); }
+
+    .nav-prev { left: 0; }
+    .nav-next { right: 3px; }
+
+    .hero-principal-content p{
+        font-size: 1.2rem;
+        padding: 0 2rem;
+    }
     
     /* Ajuste da fonte no mobile */
     .hero-principal h1,
     .hero-carousel h1 {
-        font-size: 2.5rem; 
+        margin-bottom: 0;
+    }
+
+    .intro-yellow-role h2{
+        font-size: 2.9rem;
+        line-height: 1.1;
     }
 }

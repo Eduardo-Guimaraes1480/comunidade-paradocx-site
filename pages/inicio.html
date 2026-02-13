@@ -737,9 +737,18 @@
         }
 
         .abstract-torn-section {
-            clip-path: none;
-            border-top: 2px dashed #333;
-            border-bottom: 2px dashed #333;
+            padding: 4rem 0;
+        }
+
+        .torn-title {
+            font-size: 2.8rem;
+            line-height: 1.1;
+        }
+
+        .torn-text {
+            margin-top: 1rem;
+            padding: 0 1rem;
+            font-size: 1rem;
         }
     }
 
@@ -757,13 +766,16 @@
         gap: 1rem;
         margin-bottom: 3rem;
         padding-bottom: 1rem;
-        position: relative; /* adiciona essa propriedade */
+        position: relative;
+        /* adiciona essa propriedade */
     }
 
     .tabs-header::after {
         content: '';
-        position: absolute; /* adiciona essa propriedade */
-        bottom: 0; /* adiciona essa propriedade */
+        position: absolute;
+        /* adiciona essa propriedade */
+        bottom: 0;
+        /* adiciona essa propriedade */
         left: 0;
         right: 0;
         height: 1px;
@@ -942,7 +954,7 @@
         margin: 0 auto;
     }
 
-    .vocation-glass-card {   
+    .vocation-glass-card {
         /* Azul para nível Vocações */
         border-radius: 16px;
         padding: 2.5rem;
@@ -954,16 +966,18 @@
 
     .vocation-left {
         background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .vocation-right {
-        background: rgba(0,0,0,0.4);
-        border: 1px solid rgba(255,255,255,0.05);
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 16px;
-        padding: 2rem 0; /* Padding vertical apenas */
+        padding: 2rem 0;
+        /* Padding vertical apenas */
         backdrop-filter: blur(10px);
-        overflow: hidden; /* Essencial para o marquee */
+        overflow: hidden;
+        /* Essencial para o marquee */
         position: relative;
         display: flex;
         flex-direction: column;
@@ -974,12 +988,22 @@
     .vocation-right::after {
         content: '';
         position: absolute;
-        top: 0; width: 100px; height: 100%;
+        top: 0;
+        width: 100px;
+        height: 100%;
         z-index: 2;
         pointer-events: none;
     }
-    .vocation-right::before { left: 0; background: linear-gradient(to right, #000, transparent); }
-    .vocation-right::after { right: 0; background: linear-gradient(to left, #000, transparent); }
+
+    .vocation-right::before {
+        left: 0;
+        background: linear-gradient(to right, #000, transparent);
+    }
+
+    .vocation-right::after {
+        right: 0;
+        background: linear-gradient(to left, #000, transparent);
+    }
 
     /* MARQUEE INFINITO (Rolagem de Talentos) */
     .talent-marquee-wrapper {
@@ -1032,10 +1056,11 @@
 
     /* Card Individual do Talento (Pequeno) */
     .mini-talent-card {
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         padding: 10px 20px;
-        border-radius: 50px; /* Formato Pílula */
+        border-radius: 50px;
+        /* Formato Pílula */
         display: flex;
         align-items: center;
         gap: 15px;
@@ -1050,7 +1075,8 @@
     }
 
     .mini-avatar {
-        width: 40px; height: 40px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         object-fit: cover;
         border: 1px solid #4364F7;
@@ -1084,7 +1110,7 @@
 
         .tabs-header {
             overflow-x: auto;
-            justify-content: flex-start;
+            justify-content: center;
             padding-bottom: 10px;
         }
 
@@ -1093,15 +1119,86 @@
         }
     }
 
-    
+
     /* FORMULÁRIO ESTILIZADO PARA HOME */
-    .home-form-section { background: linear-gradient(180deg, #050505 0%, #111 100%); padding: 6rem 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
-    .home-form-container { max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 3rem; border-radius: 16px; backdrop-filter: blur(10px); }
-    .home-form-container label { display: block; margin-bottom: 0.5rem; color: #aaa; font-size: 0.9rem; font-family: 'JetBrains Mono'; }
-    .home-form-container input { width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid #333; color: #fff; margin-bottom: 1.5rem; border-radius: 4px; font-family: inherit; }
-    .home-form-container input:focus { border-color: var(--color-primary); outline: none; }
-    .home-form-container button { width: 100%; padding: 15px; background: var(--color-primary); color: #000; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; transition: 0.3s; }
-    .home-form-container button:hover { background: #fff; box-shadow: 0 0 20px var(--color-primary); }
+    .home-form-section {
+        background: linear-gradient(180deg, #050505 0%, #111 100%);
+        padding: 6rem 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .home-form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 3rem;
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+    }
+
+    .home-form-container form label {
+        display: block;
+        margin-bottom: -0.5rem;
+        color: var(--color-text-primary);
+        font-size: 0.9rem;
+        font-family: 'JetBrains Mono';
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    .home-form-container form input[type="text"],
+    .home-form-container form input[type="email"],
+    .home-form-container form input[type="tel"] {
+        width: 100%;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--color-border);
+        color: #fff;
+        margin-bottom: 0.5rem;
+        border-radius: 6px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        margin-bottom: 0.5rem;
+        box-sizing: border-box;
+    }
+
+    .home-form-container form textarea {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.03); /* Leve fundo para diferenciar */
+        border: 1px solid var(--color-border); /* Borda completa para área de texto */
+        border-radius: 8px; /* Cantos arredondados */
+        padding: 1.5rem; /* Espaço interno confortável */
+        color: var(--color-text-primary);
+        font-size: 1rem;
+        font-family: inherit;
+        min-height: 150px; /* Altura mínima garantida */
+        resize: vertical; /* Permite ao usuário esticar se quiser */
+        margin-top: 0.5rem;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+
+    /* Placeholder discreto */
+    .home-form-container form input::placeholder,
+    .home-form-container form textarea::placeholder {
+        color: var(--color-text-muted);
+        opacity: 0.5;
+        font-style: italic;
+    }
+
+    .home-form-container input:focus {
+        border-color: var(--color-primary);
+        background-color: rgba(0, 0, 0, 0.5);
+        outline: none;
+        box-shadow: 0 0 10px rgba(187, 134, 252, 0.2);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
     /* Melhoria no scrollbar para parecer mais "Hacker" */
     ::-webkit-scrollbar {
@@ -1128,6 +1225,85 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
         filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    }
+
+    @media (max-width: 850px) {
+        .hero-content h1{
+            font-size: 3.5rem;
+        } 
+
+        .hero-content p{
+            margin: 0 auto 2rem auto
+        }
+
+        .btn-hero {
+            padding: 15px 10px;
+            margin: auto 1rem;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+        }
+
+        .stats-container {
+            padding: 0;
+        }
+
+        .glass-card {
+            padding: 4rem 1rem;
+        }
+
+        .glass-section{
+            padding: 4rem 1.5rem !important;
+        }
+
+        .dual-img-wrapper {
+            height: 260px;
+        }
+
+        .glass-section .video-section{
+            padding: 4rem 1.5rem !important;
+        }
+
+        .section-title {
+            line-height: 1;
+            font-size: 2.9rem;
+        }
+
+        .preview-grid{
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .events-reveal-section{
+            padding: 4rem 1.5rem !important;
+        }
+
+        .home-gallery-section {
+            padding: 4rem 1.5rem !important;
+        }
+
+        .faq-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .vocations-section{
+            padding: 4rem 1.5rem !important;
+        }
+
+        .vocation-glass-card{
+            padding: 2rem 1.5rem;
+        }
+
+        .areas-section{
+            padding: 4rem 1.5rem !important;
+        }
+
+        .area-info-side{
+            padding: 3rem 1.5rem;
+        }
+
+        .home-form-container{
+            padding: 3rem 1.5rem;
+        }
+
     }
 </style>
 
@@ -1296,7 +1472,7 @@
         </div>
 
         <p class="torn-text">Acompanhe de perto, e se mantenha conectado no dia a dia.<br><a
-        href="#/contato">Recomendamos explorar a pagina de Contatos!!</a></p>
+                href="#/contato">Recomendamos explorar a pagina de Contatos!!</a></p>
     </div>
 </section>
 
@@ -1409,7 +1585,7 @@
 
 <!-- SEÇÃO 1: AS 5 ÁREAS (TAB SYSTEM) -->
 <section class="areas-section">
-    <h2 class="section-title"  style="margin-bottom: 0;">Áreas da Comunidade</h2>
+    <h2 class="section-title" style="margin-bottom: 0;">Áreas da Comunidade</h2>
     <p class="section-subtitle">Escolha sua frente de batalha no ecossistema.</p>
 
     <!-- Menu de Abas -->
@@ -1431,10 +1607,12 @@
                 <h3>O Criador</h3>
                 <p class="area-desc">Responsáveis por materializar o abstrato. Artistas, Designers, Programadores e
                     Escritores que transformam a filosofia do "E SE" em produtos, obras e ferramentas tangíveis.</p>
-                <ul class="area-list" style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
+                <ul class="area-list"
+                    style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
                     <li><strong>Designers & Artistas</strong> Materializar ideias abstratas.</li>
                     <li><strong>Programadores</strong> Ter um portfólio de projetos em desenvolvimento</li>
-                    <li><strong>Escritores & Roteiristas</strong> Assumir a responsabilidade por iniciar novos empreendimentos dentro da Comunidade</li>
+                    <li><strong>Escritores & Roteiristas</strong> Assumir a responsabilidade por iniciar novos
+                        empreendimentos dentro da Comunidade</li>
                 </ul>
                 <div class="area-features">
                     <span class="af-tag">Projetos</span>
@@ -1457,7 +1635,8 @@
                 <h3>O Discutidor</h3>
                 <p class="area-desc">Mestres da retórica e da dialética. Sua função é testar a robustez das ideias
                     através do debate, garantindo que apenas os conceitos mais fortes sobrevivam.</p>
-                <ul class="area-list" style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
+                <ul class="area-list"
+                    style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
                     <li>Filósofos & Pensadores</li>
                     <li>Comunicadores</li>
                     <li>Moderadores de Comunidade</li>
@@ -1483,7 +1662,8 @@
                 <h3>O Pesquisador</h3>
                 <p class="area-desc">Os detetives do conhecimento. Sua missão é conectar os pontos, estudar referências
                     bibliográficas e trazer a base teórica para as loucuras da comunidade.</p>
-                <ul class="area-list" style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
+                <ul class="area-list"
+                    style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
                     <li>Cientistas de Dados</li>
                     <li>Historiadores</li>
                     <li>Investigadores Teóricos</li>
@@ -1509,7 +1689,8 @@
                 <h3>Guardião da Saúde</h3>
                 <p class="area-desc">O corpo é o templo da mente. Focados em biohacking, nutrição e saúde mental para
                     garantir que o "hardware" humano aguente o processamento de novas ideias.</p>
-                <ul class="area-list" style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
+                <ul class="area-list"
+                    style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
                     <li>Biohackers</li>
                     <li>Psicólogos</li>
                     <li>Treinadores Físicos</li>
@@ -1535,7 +1716,8 @@
                 <h3>Gestor Financeiro</h3>
                 <p class="area-desc">A sustentabilidade do sonho. Focados em recursos, investimentos e a viabilidade
                     econômica dos projetos do ecossistema PARADOCX.</p>
-                <ul class="area-list" style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
+                <ul class="area-list"
+                    style="color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-size: 16px; list-style: initial !important;">
                     <li>Empreendedores</li>
                     <li>Gestores de Tráfego</li>
                     <li>Investidores</li>
@@ -1558,12 +1740,13 @@
     <p style="color: #888; margin-bottom: 3rem;">O multiverso de possibilidades espera por você.</p>
 
     <div class="home-form-container">
-            <h2 class="section-title" style="margin-bottom: 1rem; font-size: 2.5rem;">Junte-se à Revolução</h2>
-            <p style="text-align: center; color: #888; margin-bottom: 2rem;">Preencha para iniciar seu protocolo de acesso.</p>
-            
+        <h2 class="section-title" style="margin-bottom: 0; font-size: 2.5rem;">Junte-se à Revolução</h2>
+        <p style="text-align: center; color: #888; margin-bottom: 2rem;">Preencha para iniciar seu protocolo de acesso.
+        </p>
+
         <form name="inscricao-home" method="POST" data-netlify="true">
             <input type="hidden" name="form-name" value="inscricao-home" />
-                
+
             <label for="home-name">Seu Nome:</label>
             <input type="text" id="home-name" name="name" required placeholder="Como você quer ser chamado?">
 

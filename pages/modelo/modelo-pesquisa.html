@@ -1,38 +1,48 @@
+<section class="hero-principal" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('/image/default-hero-background.jpg');">
+    <div class="hero-principal-content">
+        <h1 style="font-family: Paradocx CA, monospace;">Título da Página de Pesquisa (Modelo)</h1>
+        <p>Texto explicativo para despertar curiosidade e incentivar a pesquisar (Modelo).</p>
+    </div>
+</section>
+
 <div class="search-layout-base">
 
-    <section class="search-header">
-        <h1>Título da Página de Pesquisa (Modelo)</h1>
-        <p>Texto explicativo para despertar curiosidade e incentivar a pesquisar (Modelo).</p>
-    </section>
+    <div class="search-sidebar-layout">
 
-    <section class="search-input-container">
-        <input type="text" id="modelo-search-input" placeholder="Campo para pesquisar...">
-    </section>
+        <aside class="search-sidebar">
+            <h2>Sidebar Pesquisa</h2>
+            <p>Digite sua dúvida abaixo para filtrar as perguntas.</p>
 
-    <section class="search-results-section">
-        <div class="search-results-main" id="modelo-results-container">
-            <h2>Conteúdo Inicial (Modelo)</h2>
-            <p>Aqui aparecerão os cards, itens de FAQ, termos do glossário, etc., inicialmente.</p>
-            <p>Após digitar na busca, o JavaScript deve filtrar os dados e atualizar o conteúdo HTML <strong>dentro deste `div`</strong>.</p>
+            <input type="text" id="faq-search-input" class="sidebar-search-input" placeholder="Ex: Como participar?">
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                <p style="text-align: justify; font-size: 0.8rem; color: #666;">Mais Texto. Texto explicativo para despertar curiosidade e incentivar a pesquisar (Modelo).</p>
+                <a href="#">
+                    <div class="secondary-button" style="padding: 0.5rem 4.5rem;">Outro Botão</div>
+                </a>
+            </div>
+        </aside>
 
-            <div class="docs-grid" style="margin-top: 2rem;">
-                <div class="doc-card">
-                    <img src="/image/explore-o-ese.jpg" alt="Exemplo">
-                    <div class="card-body">
-                        <h4>Card Exemplo 1</h4>
-                        <p>Descrição do resultado da busca...</p>
-                        <a href="#" class="card-button">Ver Detalhes</a>
-                    </div>
+        <main class="search-results-area">
+            <div class="results-header">
+                <h1 style="margin-bottom: 1rem;">Conteúdo Inicial (Modelo)</h1>
+                <p>Aqui aparecerão os cards, itens de FAQ, termos do glossário, etc., inicialmente.
+                    Após digitar na busca, o JavaScript deve filtrar os dados e atualizar o conteúdo HTML <strong>dentro
+                    deste `div`</strong>.
+                </p>
+            </div>
+
+            <div class="docs-grid">
+                <!-- Exemplo de card de resultado -->
+                <div class="project-card">
+                    <h3>Card Exemplo 1</h3>
+                    <p>Conteúdo do card ou Descrição do DOCS.</p>
                 </div>
-                 <div class="doc-card">
-                    <img src="/image/filosofia-pilares.jpg" alt="Exemplo 2">
-                    <div class="card-body">
-                        <h4>Card Exemplo 2</h4>
-                        <p>Outro resultado encontrado...</p>
-                        <a href="#" class="card-button">Ver Detalhes</a>
-                    </div>
+                <div class="project-card">
+                    <h3>Card Exemplo 2</h3>
+                    <p>Conteúdo do card ou Descrição do DOCS, pode conter tambem imagem...</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </main>
+
+    </div>
 </div>

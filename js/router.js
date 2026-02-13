@@ -80,6 +80,59 @@ const routes = {
 const appBody = document.getElementById('app-body');
 const loader = document.getElementById('loader');
 
+// --- CORREÇÃO DO MENU MOBILE ---
+// Esta função será chamada toda vez que o NAV for carregado
+function setupMobileNav() {
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    // Se não encontrar os elementos, sai (pode ser um layout sem menu)
+    if (!mobileBtn || !navLinks) return;
+
+    // 1. Remove listeners antigos para não duplicar (Clone Node Trick)
+    const newBtn = mobileBtn.cloneNode(true);
+    mobileBtn.parentNode.replaceChild(newBtn, mobileBtn);
+
+    // 2. Adiciona o listener de clique
+    newBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Impede que o clique feche o menu imediatamente
+        this.classList.toggle('active'); // Animação do X
+        navLinks.classList.toggle('active'); // Desliza o menu
+    });
+
+    // 3. Fechar menu ao clicar em um link
+    const allLinks = navLinks.querySelectorAll('a:not(.drop-trigger)');
+    allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            newBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // 4. Fechar ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !newBtn.contains(e.target) && navLinks.classList.contains('active')) {
+            newBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
+
+    // 5. Lógica para Dropdowns no Mobile (Toque para abrir)
+    const dropdowns = document.querySelectorAll('.dropdown > a.drop-trigger');
+    dropdowns.forEach(drop => {
+        drop.addEventListener('click', function(e) {
+            if (window.innerWidth <= 900) {
+                e.preventDefault();
+                // Impede que o clique propague e dispare outros listeners indesejados
+                e.stopPropagation();
+                
+                const parent = this.parentElement;
+                parent.classList.toggle('mobile-open');
+            }
+        });
+    });
+}
+
 function setupAnchorLinks() {
     // Seleciona links da sidebar e botões que tenham a classe .anchor-link
     const anchorLinks = document.querySelectorAll('.anchor-link, .anchor-link-button, a[href^="#"]'); 
@@ -113,18 +166,123 @@ function setupAnchorLinks() {
     });
 }
 
+// Carregador de Parciais (Header/Footer)
 async function loadPartials() {
-    const navPlaceholder = appBody.querySelector('#nav-placeholder');
-    const footerPlaceholder = appBody.querySelector('#footer-placeholder');
-    if (navPlaceholder) {
-        const navResponse = await fetch('/_partials/nav.html');
-        navPlaceholder.innerHTML = await navResponse.text();
+    const navPlaceholder = document.getElementById('nav-placeholder');
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+
+    // Carrega NAV
+    if (navPlaceholder && !navPlaceholder.innerHTML) {
+        try {
+            const resp = await fetch('/_partials/nav.html');
+            if (resp.ok) {
+                navPlaceholder.innerHTML = await resp.text();
+                setupMobileNav(); // <--- AQUI ESTÁ A CORREÇÃO: Chama a função logo após injetar o HTML
+            }
+        } catch (e) {
+            console.error("Erro ao carregar nav:", e);
+        }
+    } else if (navPlaceholder && navPlaceholder.innerHTML) {
+        // Se o nav já existe (navegação interna), reconecta os eventos
+        setupMobileNav(); 
     }
-    if (footerPlaceholder) {
-        const footerResponse = await fetch('/_partials/footer.html');
-        footerPlaceholder.innerHTML = await footerResponse.text();
+
+    // Carrega FOOTER
+    if (footerPlaceholder && !footerPlaceholder.innerHTML) {
+        try {
+            const resp = await fetch('/_partials/footer.html');
+            if (resp.ok) footerPlaceholder.innerHTML = await resp.text();
+        } catch (e) { console.error("Erro footer:", e); }
     }
 }
+
+// Renderizador de Layout
+async function renderPage(route) {
+    if (loader) loader.classList.remove('hidden');
+    appBody.style.display = 'none';
+
+    try {
+        let layoutHtml;
+        
+        // Verifica se o layout já está carregado para otimizar
+        const currentLayout = appBody.getAttribute('data-current-layout');
+        
+        if (currentLayout !== route.layout) {
+            const layoutResp = await fetch(route.layout);
+            if (!layoutResp.ok) throw new Error('Layout não encontrado');
+            layoutHtml = await layoutResp.text();
+            appBody.innerHTML = layoutHtml;
+            appBody.setAttribute('data-current-layout', route.layout);
+            
+            // Recarrega parciais pois o layout mudou
+            await loadPartials();
+        } else {
+            // Mesmo layout, garante que eventos do menu funcionem
+            setupMobileNav();
+        }
+
+        // Carrega Conteúdo da Página
+        const contentResp = await fetch(route.content);
+        if (!contentResp.ok) throw new Error('Conteúdo não encontrado');
+        const contentHtml = await contentResp.text();
+
+        // Injeta no placeholder do layout
+        const contentPlaceholder = document.getElementById('content-placeholder');
+        if (contentPlaceholder) {
+            contentPlaceholder.innerHTML = contentHtml;
+            // Executa scripts que estavam no HTML injetado (importante para o home.js e outros)
+            executeScripts(contentPlaceholder);
+        }
+
+        // Atualiza Título
+        document.title = route.title || 'Comunidade PARADOCX';
+
+        // Recarrega Funcionalidades Específicas
+        initializePageScripts();
+
+    } catch (error) {
+        console.error('Erro render:', error);
+        appBody.innerHTML = '<h1>Erro 404 - Página não encontrada na Realidade.</h1>';
+    } finally {
+        if (loader) loader.classList.add('hidden');
+        appBody.style.display = 'block';
+    }
+}
+
+function executeScripts(element) {
+    const scripts = element.querySelectorAll('script');
+    scripts.forEach(oldScript => {
+        const newScript = document.createElement('script');
+        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+}
+
+// Inicializa scripts específicos de página (Carrossel, Marquee, etc)
+function initializePageScripts() {
+    // 1. Carrossel de Docs (Recomendados)
+    if (typeof setupRecommendedDocsCarousel === 'function') {
+        setupRecommendedDocsCarousel();
+    }
+
+    // 2. Carrossel de Integrantes
+    if (typeof setupIntegrantesCarousel === 'function') {
+        setupIntegrantesCarousel();
+    }
+
+    // 3. Marquee (Letreiro Infinito)
+    if (typeof renderMarquee === 'function') {
+        if(document.getElementById('marquee-row-1')) {
+            renderMarquee('marquee-row-1', 'normal');
+            renderMarquee('marquee-row-2', 'reverse');
+        }
+    }
+
+    // 4. Scripts da Home (Invocados via home.js observer, mas forçamos aqui se necessário)
+    // O home.js usa MutationObserver, então ele deve pegar as mudanças automaticamente.
+}
+
 
 function setupTypewriterEffect() {
     // Procura o elemento de texto dinâmico na página de Equipe

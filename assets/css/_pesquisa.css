@@ -312,6 +312,10 @@ main {
         grid-template-columns: 1fr; /* Empilha no mobile */
         gap: 2rem;
     }
+
+    .search-layout-base {
+        margin-left: 0rem;
+    }
     
     .search-sidebar {
         position: static;
@@ -325,5 +329,14 @@ main {
 
     .search-results-area {
         padding-left: 0;
+    }
+
+    .glossary-item dt {
+        font-size: 1.1rem;
+    }
+
+    .glossary-item dd {
+        font-size: 1.1rem;
+        margin-left: 0;/* Reduz o padding para mobile */
     }
 }
