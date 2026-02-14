@@ -91,6 +91,16 @@
                 color: #b57d28;
                 background-color: rgba(181, 125, 40, 0.2) !important;
             }
+
+            .grid-why {
+                display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;
+            }
+
+            @media (max-width: 768px) {
+                .grid-why {
+                    grid-template-columns: 1fr;
+                }
+            }
         </style>
     </div>
 
@@ -117,7 +127,7 @@
 <section class="text-section" style="text-align: left; padding-top: 0;">
     <h2 style="text-align: center; margin-bottom: 3rem; color: #b57d28;">O Que Administramos?</h2>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;">
+    <div class="grid-why">
         <div style="background: var(--color-surface); padding: 2rem; border-radius: 8px; border: 1px solid #b57d2844;">
             <h3 style="color: #fff; margin-top: 0;">Sustentabilidade Material</h3>
             <p style="font-size: 0.95rem;">Criação de modelos econômicos circulares onde o valor gerado pelos Criadores financia a infraestrutura dos Pesquisadores e Discutidores.</p>

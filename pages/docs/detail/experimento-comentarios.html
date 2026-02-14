@@ -66,6 +66,21 @@
     .p{
         color: #bb86fc;
     }
+    .js{
+        color: #f5de19;
+    }
+
+    @media (max-width: 600px) {
+        .code-block-container {
+            max-width: 310px;
+            font-size: 0.8rem;
+            padding: 1rem;
+        }
+
+        .doc-main-content ul, .doc-main-content ol {
+            padding-left: 0;
+        }
+    }
 
     /* Número */
 </style>
@@ -124,19 +139,26 @@
         <h3>Arquitetura do Código</h3>
         <p>O sistema funciona através de um "Banco de Dados Simulado" em JavaScript:</p>
 
-        <div style="background: #1e1e1e; padding: 1rem; border-radius: 8px; border: 1px solid #333; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #a9b7c6; overflow-x: auto;">
-                <pre><code>// Exemplo da estrutura de dados 
-        let commentsDB = [
-            {
-                id: 1,
-                author: "Guilherme Nunes",
-                stars: 5,
-                text: "Análise incrível sobre Whiplash...",
-                date: "21/11/2025",
-                likes: 4
-            }
-        ];
-                </code></pre>
+        <div class="code-block-container">
+            <div class="code-header">
+                <span>js/data.js</span>
+                <span>JS</span>
+            </div>
+            <div class="code-content">
+<span class="js">
+// Exemplo da estrutura de dados 
+let commentsDB = [
+    {
+        id: 1,
+        author: "Guilherme Nunes",
+        stars: 5,
+        text: "Análise incrível sobre Whiplash...",
+        date: "21/11/2025",
+        likes: 4
+    }
+];
+</span> 
+            </div>
         </div>
 
         <h2>Para implementar em Arquitetura Atual</h2>
@@ -479,7 +501,7 @@
 
         <h3>Exemplo de Implementação</h3>
         <p>Precisamos chamar a função de inicialização sempre que uma página carregar.
-Dentro da função Maps(), logo abaixo das outras chamadas de setup:</p>
+        Dentro da função Maps(), logo abaixo das outras chamadas de setup:</p>
 
         <div class="code-block-container">
             <div class="code-header">

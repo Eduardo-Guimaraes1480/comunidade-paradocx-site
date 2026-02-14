@@ -1,21 +1,25 @@
 <style>
     /* --- ESTILOS EXCLUSIVOS DESTA PÁGINA --- */
 
+    /* Container Principal da Página */
+    .integrantes-page-wrapper {
+        width: 100%;
+        overflow-x: hidden; /* CRUCIAL: Evita scroll lateral indesejado */
+    }
+
     /* 1. FAIXA AZUL (MARQUEE ANIMADO) */
     .blue-strip-container {
         position: relative;
         width: 100vw;
         margin-left: calc(-50vw + 50%);
-        /* Força a largura total da tela */
         overflow: hidden;
         background: linear-gradient(90deg, #0052D4, #4364F7, #6FB1FC);
-        /* Gradiente Azul */
         transform: rotate(-1deg);
-        /* Leve inclinação estilosa */
         margin-top: 4rem;
         margin-bottom: 4rem;
         box-shadow: 0 0 20px rgba(67, 100, 247, 0.6);
         z-index: 2;
+        padding: 1rem 0; /* Adicionado padding */
     }
 
     .marquee-track {
@@ -27,149 +31,157 @@
 
     .marquee-item {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 4rem;
+        font-size: clamp(2rem, 5vw, 4rem); /* Responsivo */
         color: #b7d9ff;
         text-transform: uppercase;
         font-weight: bold;
     }
 
     @keyframes marqueeScroll {
-        0% {
-            transform: translateX(0);
-        }
-
-        100% {
-            transform: translateX(-50%);
-        }
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
     }
 
-    /* 2. TEXTO INTRODUTÓRIO */
+    /* 2. TEXTO INTRODUTÓRIO + CTA (LAYOUT CORRIGIDO) */
     .intro-blue-role {
-        text-align: center;
-        max-width: 900px;
+        max-width: 1000px;
         margin: 0 auto 4rem auto;
+        padding: 0 1.5rem;
     }
 
-    .intro-blue-role h2 {
+    .cta-with-image {
+        display: grid;
+        grid-template-columns: 1fr 300px; /* Texto ocupa o resto, imagem fixa */
+        gap: 2rem;
+        align-items: center;
+        border-radius: 20px;
+        padding: 2rem;
+    }
+
+    .cta-box h2 {
         font-family: 'Paradocx CA', monospace;
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 4vw, 3.5rem);
         color: #4364F7;
-        /* Azul claro */
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+        text-align: left;
     }
 
-    .intro-blue-role p {
+    .cta-box p {
         font-size: 1.1rem;
         color: var(--color-text-secondary);
-        line-height: 1.8;
-        text-align: justify;
+        line-height: 1.6;
+        text-align: left;
     }
 
-    /* 3. CARROSSEL DE INTEGRANTES (ESTILO EFFECTIVE ALTRUISM) */
-    /* Transformamos o grid antigo em um container flexível com scroll */
+    .cta-image {
+        width: 100%;
+        max-width: 350px;
+        padding-left: 2rem;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    }
+
+    /* Responsividade do CTA */
+    @media (max-width: 800px) {
+        .cta-with-image {
+            grid-template-columns: 1fr; /* Empilha */
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .cta-image {
+            margin: 0 auto; /* Centraliza a imagem */
+            max-width: 200px;
+            order: -1; /* Imagem vai para cima */
+            padding-left: 0;
+        }
+
+        .cta-box h2 {
+            margin-top: 1rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        .cta-box p {
+            text-align: center; /* Centraliza texto no mobile */
+        }
+    }
+
+    /* 3. CARROSSEL DE INTEGRANTES */
     #integrantes-grid-container {
         display: flex;
         overflow-x: auto;
-        /* Permite rolar para o lado */
-        gap: 2rem;
-        padding: 2rem 1rem 5rem 1rem;
-        /* Espaço para sombra e scrollbar */
+        gap: 1.5rem;
+        padding: 1rem 1rem 3rem 1rem; /* Padding extra embaixo */
         scroll-snap-type: x mandatory;
-        /* Efeito magnético ao rolar */
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
-        /* Scrollbar fina no Firefox */
-        scrollbar-color: var(--color-primary) var(--color-background);
+        
+        /* Centralizar se houver poucos itens */
+        /* justify-content: flex-start;  Mude para center se quiser centralizar */
     }
 
-    /* Estilização da barra de rolagem */
-    #integrantes-grid-container::-webkit-scrollbar {
-        height: 8px;
-    }
+    /* Barra de rolagem estilizada */
+    #integrantes-grid-container::-webkit-scrollbar { height: 6px; }
+    #integrantes-grid-container::-webkit-scrollbar-track { background: #111; border-radius: 3px; }
+    #integrantes-grid-container::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
 
-    #integrantes-grid-container::-webkit-scrollbar-track {
-        background: #1a1a1a;
-        border-radius: 4px;
-    }
-
-    #integrantes-grid-container::-webkit-scrollbar-thumb {
-        background: var(--color-primary);
-        border-radius: 4px;
-    }
-
-    /* CARD DO INTEGRANTE (PORTRAIT / EM PÉ) */
     .integrante-card {
-        flex: 0 0 300px;
-        /* Largura fixa: garante 3 ou 4 na tela dependendo do zoom */
-        height: 450px;
-        /* Altura fixa: formato retrato */
-        background-color: var(--color-surface);
-        border: 1px solid var(--color-border);
+        flex: 0 0 280px; /* Largura fixa do card */
+        height: 420px;
+        background-color: #151515;
+        border: 1px solid rgba(255,255,255,0.1);
         border-radius: 12px;
         overflow: hidden;
         position: relative;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+        transition: 0.3s;
         scroll-snap-align: center;
-        /* Centraliza o card ao parar de rolar */
-        text-decoration: none;
     }
 
     .integrante-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        transform: translateY(-5px);
         border-color: var(--color-primary);
-        z-index: 10;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    /* Imagem ocupando o card */
     .integrante-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        /* Corta a imagem perfeitamente para preencher */
-        object-position: center top;
-        /* Foca no rosto */
-        transition: transform 0.5s ease;
+        object-position: top center;
+        transition: 0.5s;
     }
+    
+    .integrante-card:hover img { transform: scale(1.05); }
 
-    .integrante-card:hover img {
-        transform: scale(1.05);
-    }
-
-    /* Informações sobrepostas no final (Overlay) */
     .integrante-card .card-info {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 2rem 1.5rem 1.5rem 1.5rem;
-        /* Gradiente preto para o texto ficar legível */
-        background: linear-gradient(to top, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.8) 50%, transparent);
+        bottom: 0; left: 0; width: 100%;
+        padding: 4rem 1.5rem 1.5rem;
+        background: linear-gradient(to top, #000 20%, transparent);
         color: #fff;
-        text-align: left;
         margin-bottom: 0;
     }
 
     .integrante-card h3 {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 1.6rem;
-        margin: 0 0 0.3rem 0;
+        font-size: 1.4rem;
+        margin: 0;
         text-transform: uppercase;
         color: #fff;
     }
 
     .integrante-card p {
-        font-size: 0.9rem;
-        color: #ccc;
-        margin: 0;
+        font-size: 0.85rem;
+        color: var(--color-primary);
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 1px;
+        margin-top: 5px;
     }
-</style>
 
-<style>
-    /* Reaproveitando a lógica do tcc-content e doc-main-content */
+    /* 4. SEÇÃO AZUL (NÍVEL 4) */
     .blue-section-wrapper {
         max-width: 1100px;
         margin: 0 auto 6rem auto;
@@ -177,30 +189,6 @@
         color: #e0e0e0;
     }
 
-    .blue-section-wrapper p {
-        text-align: justify;
-        line-height: 1.8;
-        margin-bottom: 1.5rem;
-        color: #ccc;
-    }
-
-    /* Tag Nível 4 (Estilo .doc-meta-tag) */
-    .level-tag-blue {
-        font-family: 'JetBrains Mono', monospace;
-        display: inline-block;
-        background-color: rgba(67, 100, 247, 0.1);
-        color: #4364F7;
-        padding: 4px 12px;
-        border-radius: 4px;
-        font-size: 0.85rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 1.5rem;
-        border: 1px solid rgba(67, 100, 247, 0.3);
-    }
-
-    /* Grid de Conceitos (Estilo .pillar-list-grid / .tcc-box) */
     .concept-grid-docs {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -213,43 +201,39 @@
         border: 1px solid rgba(255, 255, 255, 0.05);
         padding: 2rem;
         border-radius: 8px;
-        transition: all 0.3s ease;
+        transition: 0.3s;
     }
-
+    
     .concept-doc-card:hover {
         background: rgba(67, 100, 247, 0.05);
-        border-color: rgba(67, 100, 247, 0.2);
-        transform: translateY(-5px);
+        border-color: rgba(67, 100, 247, 0.3);
     }
 
     .concept-doc-card h3 {
         color: #4364F7;
         margin-bottom: 1rem;
-        font-size: 1.2rem;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono';
     }
 
-    /* Mapa de Relação (Estilo .nomenclatura-box / .relation-map) */
+    /* 5. MAPA DE RELAÇÃO */
     .relation-map-docs {
         background: #0a0a0a;
         border: 1px dashed #333;
-        border-radius: 8px;
-        padding: 2.5rem;
+        border-radius: 12px;
+        padding: 3rem 2rem;
         margin: 4rem 0;
+        text-align: center;
     }
 
-    .relation-tag {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 1rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        padding: 4px 10px;
-        border-radius: 4px;
-        margin-bottom: 1rem;
-        display: inline-block;
+    .relation-map-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-top: 2rem;
+        text-align: left;
     }
 
-    /* CTA ESTILO PROPAGANDA BOX (3D EFFECT) */
+    /* 6. PROPAGANDA BOX (RESPONSIVA) */
     .propaganda-box-vocações {
         background: linear-gradient(135deg, rgba(20, 20, 20, 1) 30%, rgba(67, 100, 247, 0.15) 100%);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -270,11 +254,11 @@
     }
 
     .propaganda-content-left h2 {
-        font-family: 'Paradocx CA', monospace;
-        font-size: 3rem;
-        line-height: 1;
-        margin-bottom: 1.5rem;
+        font-family: 'Paradocx CA';
+        font-size: clamp(2rem, 4vw, 3rem);
         color: #fff;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
     }
 
     .propaganda-visual-right {
@@ -287,64 +271,80 @@
         width: 100%;
         max-width: 400px;
         transform: rotateY(-15deg) rotateX(5deg);
-        filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.5));
-        transition: 0.5s ease;
+        filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.5));
+        transition: 0.5s;
     }
-
+    
     .propaganda-box-vocações:hover .propaganda-visual-right img {
-        transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+        transform: rotateY(0) rotateX(0) scale(1.05);
     }
 
     .stats-grid-tcc {
         display: flex;
         gap: 3rem;
         margin-top: 2.5rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(255,255,255,0.1);
         padding-top: 2rem;
     }
 
     .stat-block h4 {
-        border: none !important;
-        padding: 0 !important;
-        font-size: 2.2rem !important;
-        color: #4364F7 !important;
-        margin: 0 !important;
+        font-size: 2rem;
+        color: #4364F7;
+        margin: 0;
+        font-family: 'JetBrains Mono';
+        font-weight: 900;
     }
 
     .stat-block p {
         font-size: 0.8rem;
+        color: #777;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: #777;
     }
 
+    /* MOBILE ADJUSTMENTS (MEDIA QUERIES) */
     @media (max-width: 900px) {
         .propaganda-box-vocações {
             grid-template-columns: 1fr;
             text-align: center;
+            padding: 1rem;
+            gap: 0;
         }
-
-        .propaganda-box-vocações img {
-            margin: 0 auto;
+        
+        .propaganda-content-left { order: 2; text-align: center; }
+        .propaganda-visual-right { order: 1; margin-bottom: 2rem; }
+        
+        .propaganda-visual-right img {
+            max-width: 300px;
+            transform: none; /* Remove 3D no mobile para simplificar */
         }
 
         .stats-grid-tcc {
             justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .relation-map-grid {
+            text-align: center;
+        }
+
+        .blue-section-wrapper {
+            padding: 0 1rem;
         }
     }
 </style>
 
-<div class="static-layout-container">
+<div class="integrantes-page-wrapper">
 
+    <!-- HEADER ESTÁTICO -->
     <section class="static-header" style="background-image: url('/image/banner-carrosel/banner-portfolios.png');">
         <h1>Integrantes da Equipe</h1>
         <p>Conheça os colaboradores, artistas e programadores que formam o núcleo da Comunidade PARADOCX.</p>
     </section>
 
+    <!-- FAIXA AZUL -->
     <div class="blue-strip-container">
         <div class="marquee-track">
-            <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
-            <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
             <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
             <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
             <div class="marquee-item">CARGOS AZUIS /// EXCELÊNCIA /// HABILIDADE ///</div>
@@ -352,56 +352,37 @@
         </div>
     </div>
 
-    <section class="intro-blue-role" style="max-width: 900px !important; max-height: 336px;">
-            <div class="cta-with-image">
-                <div class="cta-box">
-                    <h2 style="font-size: 3.5rem;">O Exemplo do Cargo Azul</h2>
-                    <p>
-                        Na hierarquia da ESE, o <strong>Cargo Azul (XXX)</strong> representa aqueles que encontraram seu
-                    propósito e possuem habilidades valiosas.
-                    Os integrantes listados abaixo são a prova viva desse conceito. Eles não apenas lideram, mas aplicam
-                    suas competências — seja em código, arte, design ou gestão — para expandir o nosso universo.
+    <!-- INTRODUÇÃO + CTA COM LAYOUT CORRIGIDO -->
+    <section class="intro-blue-role">
+        <div class="cta-with-image">
+            <div class="cta-box">
+                <h2>O Exemplo do <br>Cargo Azul</h2>
+                <p>
+                    Na hierarquia da ESE, o <strong>Cargo Azul</strong> representa aqueles que encontraram seu propósito e possuem habilidades valiosas. 
                     <br><br>
-                    Eles são os exemplos práticos do que buscamos: <strong>Proatividade, Vocação e Entrega.</strong>
-                    Inspire-se na jornada deles.
-                    </p>
-                </div>
-                <img src="/image/imgs-png-implementar-paginas/people-habilidades.png" alt="Habilidades" class="cta-image" aria-hidden="true">
+                    Os integrantes listados abaixo são a prova viva desse conceito. Eles aplicam suas competências — seja em código, arte, design ou gestão — para expandir nosso universo.
+                </p>
             </div>
-            <style>
-                 /* CTA com imagem sobreposta */
-                .cta-with-image {
-                    position: relative;
-                    max-width: 900px;
-                    margin: 2rem auto 0rem auto;
-                }
-                .cta-with-image .cta-box {
-                    position: relative;
-                    z-index: 10; /* Sobre o conteúdo da caixa */
-                }
-                .cta-image {
-                    z-index: -1;
-                    position: relative;
-                    left: 800px;
-                    transform: translateY(-360px);
-                    max-width: 22%;
-                    pointer-events: none;
-                }
-                @media (max-width: 700px) {
-                    .cta-image {
-                        right: 10px;
-                        top: -30px;
-                        width: 140px;
-                    }
-                    .cta-with-image { padding: 0 1rem; }
-                }
-            </style>
+            <!-- Imagem posicionada via Grid/Flex, não position absolute -->
+            <img src="/image/imgs-png-implementar-paginas/people-habilidades.png" alt="Habilidades" class="cta-image">
+        </div>
     </section>
 
+    <!-- CARROSSEL DE INTEGRANTES -->
     <div class="static-main-wrapper" style="display: block;">
-
-        <div class="static-main-content" style="width: 100%;">
+        <div class="static-main-content" style="width: 100%; padding: 0;">
+            
             <div id="integrantes-grid-container">
+                <!-- PREENCHIDO PELO JS (data.js + router.js) -->
+                <!-- Exemplo de como ficará o HTML gerado:
+                <a href="#" class="integrante-card">
+                    <img src="..." alt="...">
+                    <div class="card-info">
+                        <h3>Nome</h3>
+                        <p>Cargo</p>
+                    </div>
+                </a> 
+                -->
             </div>
 
             <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
@@ -410,95 +391,76 @@
         </div>
     </div>
 
+    <!-- CONTEÚDO EDUCACIONAL (BLUE SECTION) -->
     <div class="static-main-wrapper blue-section-wrapper" style="display: block;">
 
-        <section class="intro-section"
-            style="margin-top: 4rem; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
-            <span class="level-tag-blue">Nível 4: O Especialista Definido</span>
-            <h2 style="font-size: 3.5rem; margin-bottom: 2rem; font-family: 'Paradocx CA', sans-serif;">A Alquimia da
-                Habilidade</h2>
-            <p>
-                O <strong>Cargo Azul</strong> não é apenas um título, é uma declaração de utilidade. Após atravessar o
-                processo de despertar e entender seus paradoxos internos, o membro deixa de ser um observador para se
-                tornar um <strong>Especialista</strong>. É aqui que o autoconhecimento se transforma em serviço.
+        <section style="text-align: center; margin-bottom: 4rem;">
+            <span class="level-tag-blue" style="border: 1px solid #4364F7; color: #4364F7; padding: 5px 15px; border-radius: 4px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Nível 4: O Especialista Definido</span>
+            <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 1rem; font-family: 'Paradocx CA'; color: #fff;">A Alquimia da Habilidade</h2>
+            <p style="max-width: 800px; margin: 1rem auto; color: #ccc;">
+                O Cargo Azul não é apenas um título, é uma declaração de utilidade. É aqui que o autoconhecimento se transforma em serviço prático.
             </p>
         </section>
 
-        <section style="display: flex; align-items: center; justify-content: center; padding: 0rem 1rem 0rem 1rem; background: #121212;">
-            <img src="/image/imgs-png-implementar-paginas/people-multi-habilidades.png" alt="Logo Equipe ESE"
-                style="max-width: 100%; width: 90%; height: auto; object-fit: contain;">
-        </section>
+        <!-- IMAGEM CENTRALIZADA E RESPONSIVA -->
+        <div style="display: flex; justify-content: center; margin-bottom: 4rem;">
+            <img src="/image/imgs-png-implementar-paginas/people-multi-habilidades.png" alt="Multi Habilidades" 
+                 style="max-width: 100%; width: 500px; height: auto; object-fit: contain;">
+        </div>
 
         <div class="concept-grid-docs">
             <div class="concept-doc-card">
                 <h3>Utilidade na Comunidade</h3>
-                <p>Você se torna um "Laboratório de si mesmo". Ao cadastrar sua vocação, você usa os projetos da
-                    PARADOCX para testar seus limites e gerenciar seu tempo, evoluindo suas Hard e Soft Skills em um
-                    ambiente real.</p>
+                <p style="font-size: 0.95rem; color: #aaa;">Você se torna um "Laboratório de si mesmo". Usa os projetos reais para testar e evoluir suas Hard e Soft Skills.</p>
             </div>
             <div class="concept-doc-card">
                 <h3>Exposição de Elite</h3>
-                <p>Ao atingir este nível, seu perfil entra na <strong>"Lista de Solicitação"</strong>. Isso significa
-                    que Líderes de projetos estratégicos (Níveis Pretos e Brancos) buscarão você para missões de alta
-                    complexidade.</p>
+                <p style="font-size: 0.95rem; color: #aaa;">Seu perfil entra na "Lista de Solicitação". Líderes de projetos estratégicos buscarão você para missões.</p>
             </div>
             <div class="concept-doc-card">
                 <h3>Auto-Definição</h3>
-                <p>Diferente de cargos corporativos engessados, no Nível Azul você tem o poder de nomear sua própria
-                    função (ex: Arquiteto de Sonhos, Engenheiro de Fluxo), baseando-se no seu <strong>Propósito
-                        (X)</strong>.</p>
+                <p style="font-size: 0.95rem; color: #aaa;">Você tem o poder de nomear sua própria função (ex: Arquiteto de Sonhos), baseando-se no seu Propósito (X).</p>
             </div>
         </div>
+
     </div>
 
-        <section class="relation-map-docs" style="max-width: 1400px;">
-             <img src="/image/imgs-png-implementar-paginas/escudo-equipe-logo-PNG.png" alt="Logo Equipe ESE"
-                style="max-width: 100%; width: 10%; height: auto; object-fit: contain; display: block; margin: 0 auto 0 auto;">
-            <h3 style="font-size: 6rem; text-align: center; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 3px; font-family: 'JetBrains Mono', monospace;">
-                Ecossistema de Valor</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
-
+        <!-- MAPA DE RELAÇÃO -->
+        <section class="relation-map-docs">
+            <img src="/image/imgs-png-implementar-paginas/escudo-equipe-logo-PNG.png" alt="Logo Equipe ESE" 
+                 style="width: 100px; height: auto; display: block; margin: 0 auto 1rem auto; opacity: 0.8;">
+            
+            <h3 style="font-size: clamp(2rem, 6vw, 4rem); text-transform: uppercase; font-family: 'JetBrains Mono'; margin-bottom: 1rem; color: #fff;">
+                Ecossistema de Valor
+            </h3>
+            
+            <div class="relation-map-grid">
                 <div>
-                    <span class="relation-tag"
-                        style="background: rgba(230, 57, 70, 0.15); color: #e63946; border: 1px solid #e63946;">Para os
-                        Vermelhos</span>
-                    <p style="font-size: 0.95rem;">Os Azuis são o "combustível" das áreas vermelhas. Eles materializam
-                        as
-                        ideias das Guildas Criativas, Científicas e Filosóficas, transformando debates em produtos
-                        tangíveis.</p>
+                    <span style="background: rgba(230, 57, 70, 0.15); color: #e63946; border: 1px solid #e63946; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; display: inline-block; margin-bottom: 10px;">Para os Vermelhos</span>
+                    <p style="font-size: 0.95rem; color: #bbb;">Os Azuis são o "combustível". Eles materializam as ideias das Guildas Criativas, transformando debates em produtos.</p>
                 </div>
-
                 <div>
-                    <span class="relation-tag"
-                        style="background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid #333;">Para Pretos e
-                        Brancos</span>
-                    <p style="font-size: 0.95rem;">Para a alta cúpula, o Cargo Azul é a unidade de execução mais
-                        valiosa.
-                        Sem os especialistas, as visões macro dos líderes nunca sairiam do campo das ideias.</p>
+                    <span style="background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid #777; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; display: inline-block; margin-bottom: 10px;">Para a Liderança</span>
+                    <p style="font-size: 0.95rem; color: #bbb;">A unidade de execução mais valiosa. Sem os especialistas, as visões macro nunca sairiam do campo das ideias.</p>
                 </div>
-
                 <div>
-                    <span class="relation-tag" style="background: #fff; color: #000;">Vocações Bíblicas</span>
-                    <p style="font-size: 0.95rem;">Conectamos seu talento ao conceito de <em>Vocatio</em>. Servir com
-                        sua
-                        habilidade técnica é a forma mais alta de honrar o potencial que Deus depositou em você.</p>
+                    <span style="background: #fff; color: #000; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; display: inline-block; margin-bottom: 10px;">Conceito Vocatio</span>
+                    <p style="font-size: 0.95rem; color: #bbb;">Servir com sua habilidade técnica é a forma mais alta de honrar o potencial que foi depositado em você.</p>
                 </div>
             </div>
         </section>
 
     <div class="static-main-wrapper blue-section-wrapper" style="display: block;">
-
+        <!-- CTA FINAL (PROPAGANDA BOX) -->
         <section class="propaganda-box-vocações">
             <div class="propaganda-content-left">
                 <h2>Banco Global de Vocações</h2>
                 <p style="color: #aaa; font-size: 1.1rem; margin-bottom: 2rem;">
-                    Interessado em ver todos os especialistas, freelancers e talentos disponíveis para colaboração
-                    imediata?
-                    Acesse nosso diretório completo de Níveis Azuis.
+                    Interessado em ver todos os especialistas disponíveis? Acesse nosso diretório completo.
                 </p>
-                <a href="#/vocacoes" class="cta-button-prop"
-                    style="background: #4364F7; color: #fff; padding: 1.2rem 2.5rem; border-radius: 4px; font-weight: 900; display: inline-block; text-decoration: none;">
-                    EXPLORAR BANCO DE VOCAÇÕES →
+                
+                <a href="#/vocacoes" style="background: #4364F7; color: #fff; padding: 15px 30px; border-radius: 4px; font-weight: 900; display: inline-block; text-decoration: none; text-transform: uppercase; transition: 0.3s;">
+                    Explorar Banco de Vocações &rarr;
                 </a>
 
                 <div class="stats-grid-tcc">

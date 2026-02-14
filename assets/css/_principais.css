@@ -526,16 +526,43 @@
     .event-item {
         flex-direction: column;
         text-align: center;
+        padding: 1rem;
+        gap: 0;
+        margin-bottom: 1rem;
     }
     
     .event-content {
-        text-align: center;
+        text-align: justify;
+        margin-bottom: 2rem;
     }
 
     .event-meta {
         align-items: center;
         text-align: center;
         width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    #event-list-container {
+        padding: 0;
+        margin: 2rem auto;
+    }
+
+    #news-grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+        padding: 0;
+        margin: 2rem auto;
+    }
+
+    .event-image {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 1rem;
+    }
+
+    .event-content p {
+        font-size: 1.1rem;
     }
 }
 
@@ -579,5 +606,9 @@
     .intro-yellow-role h2{
         font-size: 2.9rem;
         line-height: 1.1;
+    }
+
+    .card-button {
+        width: 100%;
     }
 }

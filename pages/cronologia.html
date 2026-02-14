@@ -117,6 +117,14 @@
 
     }
 
+    @media (max-width: 900px) {
+        .static-main-wrapper { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+        .static-sidebar { display: none; /* Ocultar sidebar no mobile ou transformar em menu suspenso */ }
+        .marquee-track-black {
+            animation: marqueeScrollBlack 15s linear infinite;
+        }
+    }
+
 </style>
 
 <div class="static-layout-container">

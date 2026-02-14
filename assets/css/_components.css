@@ -401,9 +401,26 @@ form button[type="submit"]:hover {
 .rd-next { right: -50px; }
 
 @media (max-width: 768px) {
-    .rd-prev { left: 10px; }
-    .rd-next { right: 10px; }
+    .rd-prev { left: -20px; }
+    .rd-next { right: -20px; }
     .rd-doc-card { flex: 0 0 85%; }
+
+    .rd-carousel-section {
+        padding: 0 2rem;
+    }
+
+    .rd-carousel-header {
+        padding: 0;
+    }
+
+    .rd-carousel-header h2 {
+        font-size: 1.2rem;
+        text-align: left;
+    }
+
+    .rd-carousel-header span {
+        text-align: right;
+    }
 }
 
 /* --- GALERIA MASONRY (Exclusiva da Home) --- */

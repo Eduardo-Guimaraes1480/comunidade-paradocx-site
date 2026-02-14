@@ -81,6 +81,16 @@
                 color: #ffffff !important;
                 border-color: #d08d4c;
             }
+
+            .grid-why {
+                display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;
+            }
+
+            @media (max-width: 768px) {
+                .grid-why {
+                    grid-template-columns: 1fr;
+                }
+            }
         </style>
     </div>
 
@@ -107,7 +117,7 @@
 <section class="text-section" style="text-align: left; padding-top: 0;">
     <h2 style="text-align: center; margin-bottom: 3rem; color: #d08d4c;">O Que Pesquisamos?</h2>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;">
+    <div class="grid-why">
         <div style="background: var(--color-surface); padding: 2rem; border-radius: 8px; border: 1px solid #d08d4c44;">
             <h3 style="color: #fff; margin-top: 0;">Evidências Históricas</h3>
             <p style="font-size: 0.95rem;">Busca de padrões em civilizações passadas e grandes gênios que já utilizaram os Pilares (mesmo sem saber) para atingir o ápice.</p>

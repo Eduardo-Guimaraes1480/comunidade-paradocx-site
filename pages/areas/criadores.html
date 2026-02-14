@@ -80,6 +80,16 @@
                 color: #ffffff !important;
                 border-color: #9c6bce;
             }
+
+            .grid-why {
+                display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;
+            }
+
+            @media (max-width: 768px) {
+                .grid-why {
+                    grid-template-columns: 1fr;
+                }
+            }
         </style>
     </div>
 
@@ -106,7 +116,7 @@
 <section class="text-section" style="text-align: left; padding-top: 0;">
     <h2 style="text-align: center; margin-bottom: 3rem; color: #9c6bce;">O Que Criamos?</h2>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;">
+    <div class="grid-why">
         <div style="background: var(--color-surface); padding: 2rem; border-radius: 8px; border: 1px solid #9c6bce44;">
             <h3 style="color: #fff; margin-top: 0;">Mídias Convergentes</h3>
             <p style="font-size: 0.95rem;">Produção de vídeos, edições cinematográficas e "Dossiers" visuais que explicam a engenharia da realidade através da arte.</p>
